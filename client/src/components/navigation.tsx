@@ -240,21 +240,7 @@ export default function Navigation() {
     <>
       {/* Professional Navigation Bar */}
       <nav 
-        className="fixed top-0 left-0 right-0 w-full z-50 transition-all duration-500 ease-out will-change-transform"
-        style={{
-          transform: 'translateZ(0)',
-          background: isScrolled 
-            ? 'rgba(255, 255, 255, 0.98)' 
-            : 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(24px) saturate(200%)',
-          WebkitBackdropFilter: 'blur(24px) saturate(200%)',
-          borderBottom: isScrolled 
-            ? '1px solid var(--border)' 
-            : '1px solid rgba(0, 0, 0, 0.03)',
-          boxShadow: isScrolled 
-            ? 'var(--glass-shadow)' 
-            : '0 1px 3px rgba(0, 0, 0, 0.01)'
-        }}
+        className={`glass-navbar fixed top-0 left-0 right-0 w-full z-50 transition-all duration-500 ease-out will-change-transform ${isScrolled ? 'is-scrolled' : ''}`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center h-18 sm:h-20">
@@ -338,14 +324,7 @@ export default function Navigation() {
                     {openDropdown === 'education' && (
                       <div className="absolute top-full left-0 -mt-1 w-80 z-[55] pt-1">
                         <div 
-                          className="rounded-xl p-4 shadow-xl transition-all duration-200 mt-1"
-                          style={{
-                            background: 'rgba(255, 255, 255, 0.95)',
-                            backdropFilter: 'blur(20px)',
-                            WebkitBackdropFilter: 'blur(20px)',
-                            border: '1px solid rgba(0, 0, 0, 0.08)',
-                            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9)'
-                          }}
+                          className="glass-panel glass-elevated rounded-xl p-4 transition-all duration-200 mt-1"
                           onMouseEnter={() => handleDropdownContentEnter('education')}
                           onMouseLeave={handleDropdownContentLeave}
                         >
@@ -395,14 +374,7 @@ export default function Navigation() {
                     {openDropdown === 'experience' && (
                       <div className="absolute top-full left-0 -mt-1 w-80 z-[55] pt-1">
                         <div 
-                          className="rounded-xl p-4 shadow-xl transition-all duration-200 mt-1"
-                          style={{
-                            background: 'rgba(255, 255, 255, 0.95)',
-                            backdropFilter: 'blur(20px)',
-                            WebkitBackdropFilter: 'blur(20px)',
-                            border: '1px solid rgba(0, 0, 0, 0.08)',
-                            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9)'
-                          }}
+                          className="glass-panel glass-elevated rounded-xl p-4 transition-all duration-200 mt-1"
                           onMouseEnter={() => handleDropdownContentEnter('experience')}
                           onMouseLeave={handleDropdownContentLeave}
                         >
@@ -520,14 +492,7 @@ export default function Navigation() {
                     {openDropdown === 'certifications' && (
                       <div className="absolute top-full left-0 -mt-1 w-80 z-[55] pt-1">
                         <div 
-                          className="rounded-xl p-4 shadow-xl transition-all duration-200 mt-1"
-                          style={{
-                            background: 'rgba(255, 255, 255, 0.95)',
-                            backdropFilter: 'blur(20px)',
-                            WebkitBackdropFilter: 'blur(20px)',
-                            border: '1px solid rgba(0, 0, 0, 0.08)',
-                            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9)'
-                          }}
+                          className="glass-panel glass-elevated rounded-xl p-4 transition-all duration-200 mt-1"
                           onMouseEnter={() => handleDropdownContentEnter('certifications')}
                           onMouseLeave={handleDropdownContentLeave}
                         >
@@ -629,14 +594,7 @@ export default function Navigation() {
                     {openDropdown === 'community' && (
                       <div className="absolute top-full left-0 -mt-1 w-80 z-[55] pt-1">
                         <div 
-                          className="rounded-xl p-4 shadow-xl transition-all duration-200 mt-1"
-                          style={{
-                            background: 'rgba(255, 255, 255, 0.95)',
-                            backdropFilter: 'blur(20px)',
-                            WebkitBackdropFilter: 'blur(20px)',
-                            border: '1px solid rgba(0, 0, 0, 0.08)',
-                            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9)'
-                          }}
+                          className="glass-panel glass-elevated rounded-xl p-4 transition-all duration-200 mt-1"
                           onMouseEnter={() => handleDropdownEnter('community')}
                           onMouseLeave={handleDropdownLeave}
                         >
@@ -710,14 +668,7 @@ export default function Navigation() {
                     {openDropdown === 'contact' && (
                       <div className="absolute top-full left-0 -mt-1 w-80 z-[55] pt-1">
                         <div 
-                          className="rounded-xl p-4 shadow-xl transition-all duration-200 mt-1"
-                          style={{
-                            background: 'rgba(255, 255, 255, 0.95)',
-                            backdropFilter: 'blur(20px)',
-                            WebkitBackdropFilter: 'blur(20px)',
-                            border: '1px solid rgba(0, 0, 0, 0.08)',
-                            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9)'
-                          }}
+                          className="glass-panel glass-elevated rounded-xl p-4 transition-all duration-200 mt-1"
                           onMouseEnter={() => handleDropdownEnter('contact')}
                           onMouseLeave={handleDropdownLeave}
                         >
