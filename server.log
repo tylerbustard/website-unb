@@ -1,0 +1,7 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+11:25:40 PM [express] serving on http://127.0.0.1:3001
+11:25:40 PM [express] Tyler Bustard user ready for PDF uploads
+11:25:45 PM [vite] Pre-transform error: Failed to resolve import "@assets/bloomberg_1755923720190.png" from "client/src/pages/resume.tsx". Does the file exist?

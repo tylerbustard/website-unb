@@ -1,0 +1,10 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+Warning: No OpenAI API key found in environment variables
+7:26:16 PM [express] serving on http://127.0.0.1:5174
+7:26:16 PM [express] Tyler Bustard user ready for PDF uploads
+Browserslist: browsers data (caniuse-lite) is 13 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
