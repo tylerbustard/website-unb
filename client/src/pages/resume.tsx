@@ -38,6 +38,15 @@ export default function Resume() {
   });
 
   useEffect(() => {
+    const originalTitle = document.title;
+    document.title = "Tyler Bustard - Resume";
+
+    return () => {
+      document.title = originalTitle;
+    };
+  }, []);
+
+  useEffect(() => {
     let timeoutId: NodeJS.Timeout | null = null;
     let lastKnownScrollY = 0;
     
@@ -214,7 +223,7 @@ export default function Resume() {
                   </ul>
                   <div className="mt-2 pl-16 flex flex-wrap gap-2">
                     {['Monitoring Controls', 'Reconciliation', 'NAV Validation', 'SQL', 'Excel'].map((skill) => (
-                      <span key={skill} className="inline-block px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200 text-xs font-semibold">
+                      <span key={skill} className="resume-skill-chip inline-block px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200 text-xs font-semibold">
                         {skill}
                       </span>
                     ))}
@@ -252,7 +261,7 @@ export default function Resume() {
                   </ul>
                   <div className="mt-2 pl-16 flex flex-wrap gap-2">
                     {['Portfolio Management', 'Client Relations', 'Financial Analysis', 'Excel'].map((skill) => (
-                      <span key={skill} className="inline-block px-2.5 py-1 rounded-lg bg-red-50 text-red-700 border border-red-200 text-xs font-semibold">
+                      <span key={skill} className="resume-skill-chip inline-block px-2.5 py-1 rounded-lg bg-red-50 text-red-700 border border-red-200 text-xs font-semibold">
                         {skill}
                       </span>
                     ))}
@@ -297,7 +306,7 @@ export default function Resume() {
                       </ul>
                       <div className="mt-2 pl-16 flex flex-wrap gap-2">
                         {["Financial Planning", "Sales", "Client Advisory", "Product Knowledge"].map((skill) => (
-                          <span key={skill} className="inline-block px-2.5 py-1 rounded-lg bg-green-50 text-green-700 border border-green-200 text-xs font-semibold">
+                          <span key={skill} className="resume-skill-chip inline-block px-2.5 py-1 rounded-lg bg-green-50 text-green-700 border border-green-200 text-xs font-semibold">
                             {skill}
                           </span>
                         ))}
@@ -338,7 +347,7 @@ export default function Resume() {
                       </ul>
                       <div className="mt-2 pl-16 flex flex-wrap gap-2">
                         {["Banking Products", "Financial Advisory", "Client Relationship Management", "Digital Banking"].map((skill) => (
-                          <span key={skill} className="inline-block px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200 text-xs font-semibold">
+                          <span key={skill} className="resume-skill-chip inline-block px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200 text-xs font-semibold">
                             {skill}
                           </span>
                         ))}
@@ -568,7 +577,7 @@ export default function Resume() {
                         <p className="text-sm text-blue-600 font-semibold">United Way</p>
                         <p className="text-sm text-gray-600">Toronto, ON</p>
                       </div>
-                      <span className="inline-flex items-center rounded-full bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-1 shadow-sm">2020-Present</span>
+                      <span className="inline-flex items-center rounded-full bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-1 shadow-sm whitespace-nowrap self-start">2020-Present</span>
                     </div>
                     
                   </div>
@@ -591,10 +600,10 @@ export default function Resume() {
                       <div className="flex justify-between items-start">
                         <div>
                           <h5 className="text-sm font-bold text-gray-900">Student Ambassador</h5>
-                          <p className="text-sm text-blue-600 font-semibold">Royal Bank of Canada</p>
+                          <p className="text-sm text-blue-600 font-semibold whitespace-nowrap">Royal Bank of Canada</p>
                           <p className="text-sm text-gray-600">Fredericton, NB</p>
                         </div>
-                        <span className="inline-flex items-center rounded-full bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-1 shadow-sm">2019-2020</span>
+                        <span className="inline-flex items-center rounded-full bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-1 shadow-sm whitespace-nowrap self-start">2019-2020</span>
                       </div>
                     </div>
                   </div>
@@ -616,7 +625,7 @@ export default function Resume() {
                           <p className="text-sm text-blue-600 font-semibold">Irving Oil Limited</p>
                           <p className="text-sm text-gray-600">Saint John, NB</p>
                         </div>
-                        <span className="inline-flex items-center rounded-full bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-1 shadow-sm">2018</span>
+                        <span className="inline-flex items-center rounded-full bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-1 shadow-sm whitespace-nowrap self-start">2018</span>
                       </div>
                     </div>
                   </div>
@@ -629,12 +638,12 @@ export default function Resume() {
       </div>
 
 
-      {/* Print Styles - Single Page with Exact UI */}
+      {/* Print Styles - Continuous Layout */}
       <style>{`
         @media print {
           @page {
-            size: letter;
-            margin: 0.5in 0.75in;
+            size: legal portrait;
+            margin: 0.3in 0.35in;
           }
           
           body, html {
@@ -666,16 +675,16 @@ export default function Resume() {
             margin: 0 !important;
           }
           
-          /* Resume page specific - Single page with exact UI */
+          /* Resume page specific - fixed legal layout */
           .resume-page {
             background: white !important;
             border: none !important;
             border-radius: 0 !important;
             box-shadow: none !important;
-            padding: 0.5in 0.75in !important;
-            margin: 0 !important;
+            padding: 0.32in 0.35in !important;
+            margin: 0 auto !important;
             width: 100% !important;
-            max-width: 100% !important;
+            max-width: calc(8.5in - 0.7in) !important;
             height: auto !important;
             min-height: auto !important;
             overflow: visible !important;
@@ -716,6 +725,14 @@ export default function Resume() {
           .border-green-200 { border-color: #bbf7d0 !important; }
           .border-red-200 { border-color: #fecaca !important; }
           .border-purple-200 { border-color: #e9d5ff !important; }
+
+          .resume-skill-chip {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+            border-radius: 0 !important;
+            color: #1f2937 !important;
+          }
           
           /* Profile image adjustments */
           img {
@@ -724,23 +741,31 @@ export default function Resume() {
             max-width: 100% !important;
           }
           
-          /* Section spacing - Compact for single page */
+          /* Section spacing & flow */
           section {
-            margin-bottom: 0.3in !important;
+            margin-bottom: 0.28in !important;
             page-break-inside: auto !important;
             break-inside: auto !important;
           }
-          
-          /* Keep elements together */
-          .rounded-xl, .rounded-lg {
-            page-break-inside: auto !important;
-            break-inside: auto !important;
+
+          /* Give Banking Advisor role breathing room on page two */
+          #experience-royal-bank-of-canada-banking-advisor {
+            margin-top: 0.25in !important;
           }
-          
-          /* Grid adjustments - Single column for print */
-          .grid-cols-2 { grid-template-columns: repeat(2, 1fr) !important; }
-          .grid-cols-3 { grid-template-columns: repeat(3, 1fr) !important; }
-          
+
+          section:last-of-type {
+            margin-bottom: 0 !important;
+          }
+
+          /* Keep card-based layouts intact */
+          .rounded-xl,
+          .rounded-lg,
+          .border,
+          .shadow-sm {
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+          }
+
           /* Remove hover effects */
           .hover\\:shadow-md:hover,
           .hover\\:shadow-xl:hover,
