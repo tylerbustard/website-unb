@@ -48,39 +48,43 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background">
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
       <Navigation />
-      <HeroSection />
-      <EducationSection />
-      <ExperienceSection />
-      <CertificationsSection />
-      <CommunitySection />
-      <ContactInfoSection />
+      <main id="main-content">
+        <HeroSection />
+        <EducationSection />
+        <ExperienceSection />
+        <CertificationsSection />
+        <CommunitySection />
+        <ContactInfoSection />
+      </main>
       
-      {/* Clean Scroll to Top Button with Glass Effect */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-8 left-1/2 transform -translate-x-1/2 z-40 transition-all duration-300 ease-in-out rounded-full glass-panel ${
+        className={`fixed bottom-6 right-6 z-40 transition-all duration-300 ease-in-out rounded-full glass-panel ${
           showScrollToTop 
             ? 'opacity-100 pointer-events-auto translate-y-0' 
             : 'opacity-0 pointer-events-none translate-y-4'
         } hover:scale-105 shadow-xl hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background`}
         data-testid="scroll-to-top-button"
+        aria-label="Back to top"
       >
-        <div className="flex items-center px-5 py-3">
-          <span className="text-sm font-medium mr-3 text-gray-700">
+        <div className="flex items-center px-4 py-3">
+          <span className="mr-3 text-sm font-medium text-slate-700">
             Back to top
           </span>
-          <div className="w-8 h-8 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center transition-colors duration-200">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-white transition-colors duration-200">
             <ChevronUp size={18} />
           </div>
         </div>
       </button>
       
-      {/* Clean Footer with Smooth Transition */}
-      <footer className="relative bg-gradient-to-b from-gray-900 to-black border-t border-gray-800 py-8 transition-all duration-500">
+      <footer className="footer-shell relative border-t border-border/80 py-8 transition-all duration-500">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-white/90 font-medium">
+            <p className="font-medium text-slate-700">
               © Tyler Bustard. All rights reserved.
             </p>
             <button
@@ -88,7 +92,7 @@ export default function Home() {
                 localStorage.setItem('previousPage', location);
                 window.location.href = '/sign-in';
               }}
-              className="px-4 py-2 text-sm font-medium rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/30 text-white transition-all duration-200 hover:scale-105"
+              className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-900 transition-all duration-200 hover:scale-105 hover:border-slate-300 hover:bg-slate-50"
               data-testid="footer-employer-signin"
             >
               Sign In

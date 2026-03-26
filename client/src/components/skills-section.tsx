@@ -146,15 +146,16 @@ export default function CertificationsSection() {
           ref={headerAnimation.ref}
           className={`text-center mb-12 sm:mb-16 lg:mb-20 scroll-slide-up ${headerAnimation.isVisible ? 'visible' : ''}`}
         >
-          <h2 className="text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif' }}>
+          <p className="section-kicker mb-4">Credentials</p>
+          <h2 className="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
             Certifications
           </h2>
-          <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }}>
+          <p className="mx-auto max-w-3xl text-lg leading-relaxed text-muted-foreground sm:text-xl lg:text-2xl">
             Certifications in finance, technology, and banking
           </p>
         </div>
 
-        <div className="bg-white/90 backdrop-blur-xl rounded-[28px] p-8 sm:p-10 lg:p-12 border border-white/20 shadow-2xl hover:shadow-3xl transition-all duration-500">
+        <div className="section-shell p-8 sm:p-10 lg:p-12">
 
         {/* All Certifications */}
         <div ref={certificationsRef} className="space-y-8 sm:space-y-10 mb-12 sm:mb-16 lg:mb-20 certifications-container">
@@ -163,7 +164,7 @@ export default function CertificationsSection() {
                 key={categoryIndex} 
                 id={`certifications-${slugify(category.title)}`} 
                 ref={categoryIndex === 0 ? certificationsRef : undefined}
-                className={`relative overflow-hidden rounded-[20px] sm:rounded-[28px] bg-gradient-to-r from-gray-100/50 to-gray-200/50 backdrop-blur-sm border border-white/20 shadow-2xl hover:shadow-3xl transition-all duration-500 scroll-scale-in scroll-stagger-${categoryIndex + 1} ${visibleItems.has(categoryIndex) ? 'visible' : ''}`}
+                className={`section-shell section-shell-muted relative overflow-hidden rounded-[20px] sm:rounded-[28px] transition-all duration-500 scroll-scale-in scroll-stagger-${categoryIndex + 1} ${visibleItems.has(categoryIndex) ? 'visible' : ''}`}
               >
                 <div className="absolute inset-0 bg-white/85" />
                 <div className="relative p-6 sm:p-8 lg:p-10">
@@ -183,7 +184,7 @@ export default function CertificationsSection() {
                         <div 
                           key={certIndex}
                           id={`cert-${slugify(cert.name)}`}
-                          className="bg-white/90 backdrop-blur-xl rounded-2xl p-4 border border-white/20 shadow-lg hover:shadow-xl hover:bg-white/95 transition-all duration-500 hover:scale-[1.02] flex flex-col h-full min-h-[160px]"
+                          className="section-card flex h-full min-h-[160px] flex-col p-4 transition-all duration-500 hover:scale-[1.02] hover:shadow-xl"
                           data-testid={`cert-${categoryIndex}-${certIndex}`}
                         >
                           {/* Header with title and year */}
@@ -229,7 +230,7 @@ export default function CertificationsSection() {
         </div>
 
         {/* Achievement Metrics - Clean stats */}
-        <div className="bg-white/90 backdrop-blur-xl rounded-[28px] border border-white/20 shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden">
+        <div className="section-shell section-shell-muted overflow-hidden">
           <div className="bg-gradient-to-r from-gray-100/50 to-gray-200/50 p-8 sm:p-10 lg:p-12">
             <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-6 sm:mb-8 text-center">
               Professional Development Highlights
@@ -377,15 +378,16 @@ export function CommunitySection() {
           ref={communityHeaderAnimation.ref}
           className={`text-center mb-8 sm:mb-10 lg:mb-12 scroll-slide-up ${communityHeaderAnimation.isVisible ? 'visible' : ''}`}
         >
-          <h2 className="text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">
+          <p className="section-kicker mb-4">Leadership</p>
+          <h2 className="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
             Community
           </h2>
-          <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="mx-auto max-w-3xl text-lg leading-relaxed text-muted-foreground sm:text-xl lg:text-2xl">
             Community leadership and volunteer service initiatives
           </p>
         </div>
 
-        <div className="bg-white/90 backdrop-blur-xl rounded-[28px] p-8 sm:p-10 lg:p-12 border border-white/20 shadow-2xl hover:shadow-3xl transition-all duration-500">
+        <div className="section-shell p-8 sm:p-10 lg:p-12">
 
         {/* Community Activities Timeline */}
         <div ref={communityRef} className="relative">
@@ -409,7 +411,7 @@ export function CommunitySection() {
                 
                 {/* Content */}
                 <div className="md:ml-24">
-                  <div className="relative bg-white/90 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-[1.02] group">
+                  <div className="section-card relative transition-all duration-500 hover:scale-[1.02] group">
                     <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="relative p-8">
                       {/* Header Section - Match Experience formatting */}

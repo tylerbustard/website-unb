@@ -459,10 +459,11 @@ export default function EducationSection() {
           ref={headerAnimation.ref}
           className="text-center mb-12 sm:mb-16 lg:mb-20"
         >
-          <h2 className="text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif' }}>
+          <p className="section-kicker mb-4">Academic foundation</p>
+          <h2 className="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
             Education
           </h2>
-          <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }}>
+          <p className="mx-auto max-w-3xl text-lg leading-relaxed text-muted-foreground sm:text-xl lg:text-2xl">
             Strategic business foundation with finance expertise
           </p>
         </div>
@@ -474,7 +475,7 @@ export default function EducationSection() {
               key={index}
               id={education.institution.includes('Desautels') ? 'mcgill-education' : 'unb-education'}
               ref={index === 0 ? heroCardAnimation.ref : undefined}
-              className={`bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-xl rounded-[24px] sm:rounded-[32px] p-8 sm:p-10 lg:p-12 border border-white/30 shadow-2xl hover:shadow-3xl transition-all duration-500 relative overflow-hidden group ${index === 0 ? `scroll-scale-in scroll-stagger-${index + 1} visible` : 'visible'}`}
+              className={`section-shell section-shell-strong rounded-[24px] p-8 sm:rounded-[32px] sm:p-10 lg:p-12 relative overflow-hidden group transition-all duration-500 ${index === 0 ? `scroll-scale-in scroll-stagger-${index + 1} visible` : 'visible'}`}
           >
               {/* Education Header */}
               <div className="mb-12 sm:mb-16 lg:mb-20">
