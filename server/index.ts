@@ -99,8 +99,9 @@ app.use((req, res, next) => {
       log('Database initialization failed, but server will continue: ' + error, 'error');
     });
 
-    // Serve the app on the configured port/host. Default to 5000 on localhost in dev.
-    const port = parseInt(process.env.PORT || '5000', 10);
+    // Serve the app on the configured port/host.
+    // Default to 5003 to avoid clashing with common services that use 5000 on macOS.
+    const port = parseInt(process.env.PORT || '5003', 10);
     const host = process.env.HOST || (app.get('env') === 'development' ? '127.0.0.1' : '0.0.0.0');
     
     // Add error handling for server listen operation

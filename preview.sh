@@ -6,7 +6,7 @@
 
 set -e
 
-PORT=5000
+PORT=5003
 HOST="127.0.0.1"
 SERVER_PID_FILE="dev_server.pid"
 
@@ -192,4 +192,3 @@ else
     echo "⚠️  Could not extract tunnel URL from log. Check cf_tunnel.log for details."
     echo "Tunnel PID: $TUNNEL_PID"
 fi
-
