@@ -3,18 +3,37 @@ import { Button } from "@/components/ui/button";
 import { useInitialPageAnimation } from "@/hooks/useScrollAnimation";
 import { useQuery } from "@tanstack/react-query";
 import profileImage from "@assets/89BBD451-CD8B-47EB-AA2E-C39D4637B01D_1_105_c_1755896148330.jpeg";
+
+// Employment
+import seventyThreeStringsLogo from "@assets/73-strings-logo.webp";
 import bmoLogo from "@assets/BMO_Logo.svg_1755913265896.png";
 import tdLogo from "@assets/Toronto-Dominion_Bank_logo.svg_1755913265896.png";
 import rbcLogo from "@assets/RBC-Logo_1755913716813.png";
-import cfaLogo from "@assets/CFA_Institute_Logo_1755923720192.png";
-import mcgillLogo from "@assets/mcgill_university_logo.png";
-import seventyThreeStringsLogo from "@assets/73-strings-logo.webp";
+import irvingLogo from "@assets/Irving_Oil.svg_1755913265895.png";
+import grantThorntonLogo from "@assets/Grant_Thornton_logo_1755913265895.png";
+import roiLogo from "@assets/roi_logo_icon.png";
+
+// Education
 import unbLogo from "@assets/University_of_New_Brunswick_Logo.svg_1755912478863.png";
+import nccLogo from "@assets/northeast_christian_college_logo.png";
+
+// Certifications & Training
+import cfaLogo from "@assets/CFA_Institute_Logo_1755923720192.png";
 import trainingTheStreetLogo from "@assets/trainning the street_1755938972014.png";
+import csiLogo from "@assets/canadian securities institute_1755923720191.png";
+import bloombergLogo from "@assets/bloomberg_1755923720190.png";
+import wallStreetPrepLogo from "@assets/wall street prep_1755923720193.png";
+import courseraLogo from "@assets/Coursera_1755937682843.png";
+import etsLogo from "@assets/ETS_1755939510188.png";
+
+// Community
 import unitedWayLogo from "@assets/United-Way-Logo_1755913265895.png";
 
 export default function HeroSection() {
   const isPageLoaded = useInitialPageAnimation(400);
+  const yearsExperience = Math.max(1, new Date().getFullYear() - 2018);
+  const heroSummary =
+    "Building trust at the intersection of finance, portfolio operations, and technology. Frontline client experience, rigorous financial training, and hands-on analytics supporting better decisions and stronger operating discipline.";
 
   const videosQuery = useQuery({
     queryKey: ["/api/videos"],
@@ -113,228 +132,196 @@ export default function HeroSection() {
     document.body.appendChild(overlay);
   };
 
-  const credibilityPanels = [
-    {
-      label: "Current role",
-      value: "Portfolio monitoring",
-      detail: "Senior Associate at 73 Strings",
-    },
-    {
-      label: "Sector depth",
-      value: "6+ years",
-      detail: "Wealth, banking, and financial operations",
-    },
-    {
-      label: "Professional track",
-      value: "CFA Level I",
-      detail: "Candidate with a strong analytics base",
-    },
-  ];
-
-  const focusCards = [
-    {
-      title: "McGill MMF Candidate",
-      detail: "Continuing advanced finance training with a capital-markets lens.",
-      logo: mcgillLogo,
-    },
-    {
-      title: "BMO Private Wealth",
-      detail: "Supported investment counsellors and client portfolio execution.",
-      logo: bmoLogo,
-    },
-    {
-      title: "TD & RBC Experience",
-      detail: "Built client trust in retail banking and financial advisory roles.",
-      logo: tdLogo,
-    },
-    {
-      title: "Finance + Data",
-      detail: "Combining modeling, monitoring, and analytics workflows.",
-      logo: cfaLogo,
-    },
-  ];
-
   const institutionLogos = [
+    // Experience (chronological, most recent first)
     { src: seventyThreeStringsLogo, alt: "73 Strings" },
+    { src: roiLogo, alt: "ROI" },
     { src: bmoLogo, alt: "BMO Private Wealth" },
     { src: tdLogo, alt: "TD Canada Trust" },
     { src: rbcLogo, alt: "Royal Bank of Canada" },
+    { src: irvingLogo, alt: "Irving Oil" },
+    { src: grantThorntonLogo, alt: "Grant Thornton" },
+    // Education
+    { src: unbLogo, alt: "University of New Brunswick" },
+    { src: nccLogo, alt: "Northeast Christian College", className: "hero-logo-image--ncc" },
+    // Certifications (chronological, most recent first)
     { src: cfaLogo, alt: "CFA Institute" },
+    { src: etsLogo, alt: "ETS" },
     { src: trainingTheStreetLogo, alt: "Training the Street" },
+    { src: csiLogo, alt: "Canadian Securities Institute" },
+    { src: courseraLogo, alt: "Coursera" },
+    { src: bloombergLogo, alt: "Bloomberg" },
+    { src: wallStreetPrepLogo, alt: "Wall Street Prep" },
+    // Community
+    { src: unitedWayLogo, alt: "United Way" },
   ];
 
-  const quickLinks = [
-    {
-      title: "Education",
-      summary: "BBA in Finance from UNB with a strong base in markets, analytics, and strategy.",
-      target: "education",
-      logo: unbLogo,
-    },
-    {
-      title: "Experience",
-      summary: "Career progression across portfolio monitoring, wealth management, and frontline banking.",
-      target: "experience",
-      logo: seventyThreeStringsLogo,
-    },
-    {
-      title: "Certifications",
-      summary: "Credentials across investment analysis, data analytics, valuation, and financial services advice.",
-      target: "certifications",
-      logo: trainingTheStreetLogo,
-    },
-    {
-      title: "Community",
-      summary: "Leadership through fundraising, mentoring, and workplace engagement initiatives.",
-      target: "community",
-      logo: unitedWayLogo,
-    },
+  const sections = [
+    { label: "Experience", target: "experience" },
+    { label: "Education", target: "education" },
+    { label: "Certifications", target: "certifications" },
+    { label: "Community", target: "community" },
   ];
 
   return (
-    <section id="hero" className="relative overflow-hidden bg-background pb-16 pt-28 sm:pt-32 lg:pb-24 lg:pt-40">
-      <div className="absolute inset-x-0 top-0 h-[32rem] bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.14),transparent_38%),radial-gradient(circle_at_top_right,rgba(15,23,42,0.08),transparent_28%)]" />
-      <div className="relative z-10 px-4 sm:px-6">
+    <section
+      id="hero"
+      className="hero-layout relative overflow-hidden bg-background min-h-[88svh] pt-24 pb-8 sm:min-h-[92svh] sm:pt-28 sm:pb-10 lg:min-h-[100svh] lg:pt-32 lg:pb-14 flex flex-col justify-between"
+    >
+      {/* Ambient hero reveal */}
+      <div
+        className={`hero-aurora hero-ambient-scene absolute inset-0 ${isPageLoaded ? "is-ready" : ""}`}
+        aria-hidden="true"
+      >
+        <span className="hero-ambient-scrim" />
+        <span className="hero-ambient-veil hero-ambient-veil--left" />
+        <span className="hero-ambient-veil hero-ambient-veil--right" />
+        <span className="hero-ambient-layer hero-ambient-layer--left">
+          <span className="hero-ambient-blob hero-ambient-blob--left" />
+        </span>
+        <span className="hero-ambient-layer hero-ambient-layer--right">
+          <span className="hero-ambient-blob hero-ambient-blob--right" />
+        </span>
+      </div>
+
+      <div className="hero-content-shell relative z-10 flex-1 flex flex-col justify-center">
         <div className="container-width">
-          <div className={`grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:items-center page-load-fade-in ${isPageLoaded ? "loaded" : ""}`}>
-            <div className="space-y-8">
-              <div className="hero-tag">Toronto, Ontario • Finance and technology execution</div>
-
-              <div className="space-y-5">
-                <p className="section-kicker">Finance • Technology • Portfolio Monitoring</p>
-                <div className="space-y-4">
-                  <h1
-                    className="text-5xl leading-[0.9] tracking-tight text-slate-950 sm:text-6xl lg:text-7xl xl:text-[5.25rem]"
-                    style={{ fontFamily: "var(--font-display)" }}
-                  >
-                    Tyler Bustard
-                  </h1>
-                  <p className="max-w-2xl text-xl font-semibold text-primary sm:text-2xl lg:text-[1.7rem]">
-                    Finance & Technology Professional
-                  </p>
-                </div>
-                <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-                  Building trust at the intersection of finance, portfolio operations, and technology. Tyler combines frontline client experience,
-                  rigorous financial training, and hands-on analytics to support better decisions and stronger operating discipline.
-                </p>
-              </div>
-
-              <div className="grid gap-4 sm:grid-cols-3">
-                {credibilityPanels.map((panel) => (
-                  <div key={panel.label} className="hero-metric-card">
-                    <p className="section-kicker mb-3">{panel.label}</p>
-                    <p className="text-xl font-semibold text-slate-950 sm:text-2xl">{panel.value}</p>
-                    <p className="mt-2 text-sm leading-6 text-muted-foreground">{panel.detail}</p>
+          <div>
+            {/* ── Primary: Name + Role + Portrait ── */}
+            <div className="hero-primary-grid grid items-center gap-10 md:gap-12 lg:grid-cols-[1fr_340px] xl:grid-cols-[1fr_400px] xl:gap-16">
+              {/* Left: Identity */}
+              <div className="hero-copy-column max-w-full sm:max-w-[42rem] lg:max-w-none">
+                <div className="hero-intro-grid mb-7 grid items-center gap-x-4 gap-y-4 [grid-template-columns:minmax(0,1fr)_clamp(5.2rem,24vw,6.15rem)] sm:mb-8 sm:[grid-template-columns:minmax(0,1fr)_clamp(7rem,19vw,9rem)] md:mb-9 md:gap-x-8 lg:mb-0 lg:block">
+                  <div className="min-w-0 order-1">
+                    <h1
+                      className="hero-entrance hero-entrance-1 text-slate-950"
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: "clamp(2.45rem, 11vw, 5rem)",
+                        lineHeight: "0.92",
+                        letterSpacing: "-0.05em",
+                        textWrap: "balance",
+                      }}
+                    >
+                      Tyler Bustard
+                    </h1>
+                    <p
+                      className="hero-entrance hero-entrance-2 mt-3 text-slate-500 md:mt-4"
+                      style={{
+                        fontSize: "clamp(1.15rem, 4.2vw, 1.65rem)",
+                        lineHeight: "1.14",
+                        textWrap: "balance",
+                      }}
+                    >
+                      Finance &amp; Technology
+                    </p>
                   </div>
-                ))}
-              </div>
+                  <div className="hero-entrance hero-entrance-3 order-2 justify-self-end lg:hidden">
+                    <div className="hero-portrait-frame relative overflow-hidden rounded-[1.35rem] border border-slate-200/90 bg-white shadow-lg">
+                      <img
+                        src={profileImage}
+                        alt="Tyler Bustard professional headshot"
+                        className="hero-portrait-img aspect-[3/4] w-full object-cover object-top"
+                        data-testid="img-profile-inline"
+                        loading="eager"
+                        fetchPriority="high"
+                        decoding="async"
+                      />
+                      <div className="absolute inset-0 rounded-[1.35rem] ring-1 ring-inset ring-black/5" />
+                    </div>
+                  </div>
+                </div>
 
-              <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-                <Button
-                  onClick={() => scrollToSection("experience")}
-                  className="min-h-[56px] rounded-full bg-slate-950 px-6 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:translate-y-[-1px] hover:bg-slate-800"
-                  data-testid="button-view-experience"
-                >
-                  View experience
-                  <ArrowRight size={16} className="ml-2" />
-                </Button>
-                <Button
-                  variant="outline"
-                  onClick={() => scrollToSection("contact")}
-                  className="min-h-[56px] rounded-full border-slate-300 bg-white/70 px-6 text-base font-semibold text-slate-900 shadow-sm transition-all duration-300 hover:bg-white"
-                  data-testid="button-contact-hero"
-                >
-                  Contact Tyler
-                </Button>
-                {videos.length > 0 && (
+                <p className="hero-entrance hero-entrance-4 hero-summary mt-4 max-w-full text-[1.02rem] leading-[1.64] text-slate-600 sm:mt-5 sm:max-w-[38rem] sm:text-[1.06rem] md:max-w-[44rem] md:text-[1.08rem] lg:max-w-[36rem] lg:text-[1.05rem]">
+                  {heroSummary}
+                </p>
+
+                {/* Actions */}
+                <div className="hero-entrance hero-entrance-5 hero-actions mt-8 flex flex-col gap-3.5 sm:flex-row sm:flex-wrap md:gap-4 lg:flex-row">
+                  <Button
+                    onClick={() => scrollToSection("experience")}
+                    className="min-h-[48px] cursor-pointer rounded-full bg-slate-950 px-7 text-[0.9rem] font-semibold text-white shadow-md transition-all duration-200 hover:bg-slate-800"
+                    data-testid="button-view-experience"
+                  >
+                    View experience
+                    <ArrowRight size={15} className="ml-2" />
+                  </Button>
                   <Button
                     variant="outline"
-                    onClick={openIntroductionVideo}
-                    className="min-h-[56px] rounded-full border-primary/20 bg-primary/5 px-6 text-base font-semibold text-primary shadow-sm transition-all duration-300 hover:bg-primary/10"
-                    data-testid="button-introduction"
+                    onClick={() => scrollToSection("contact")}
+                    className="min-h-[48px] cursor-pointer rounded-full border-slate-200 bg-white px-7 text-[0.9rem] font-semibold text-slate-900 shadow-sm transition-all duration-200 hover:bg-slate-50"
+                    data-testid="button-contact-hero"
                   >
-                    <Play size={16} className="mr-2" />
-                    {activeVideo ? "Watch introduction video" : "Introduction"}
+                    Contact
                   </Button>
-                )}
-              </div>
-            </div>
+                  {videos.length > 0 && (
+                    <Button
+                      variant="outline"
+                      onClick={openIntroductionVideo}
+                      className="min-h-[48px] cursor-pointer rounded-full border-slate-200 bg-white px-7 text-[0.9rem] font-semibold text-slate-900 shadow-sm transition-all duration-200 hover:bg-slate-50"
+                      data-testid="button-introduction"
+                    >
+                      <Play size={14} className="mr-2" />
+                      {activeVideo ? "Watch introduction" : "Introduction"}
+                    </Button>
+                  )}
+                </div>
 
-            <aside className="section-shell section-shell-strong p-4 sm:p-5 lg:p-6">
-              <div className="grid gap-5">
-                <div className="relative overflow-hidden rounded-[2rem] bg-slate-950">
+                {/* Proof stats — inline with copy */}
+                <div className="hero-entrance hero-entrance-6 mt-8 hidden gap-5 md:grid md:grid-cols-3 md:gap-8 lg:mt-10">
+                  <div>
+                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-slate-400">Sector depth</p>
+                    <p className="mt-1.5 text-xl font-semibold tracking-tight text-slate-950">{yearsExperience}+ years</p>
+                    <p className="mt-1 text-xs text-slate-500">Wealth, banking &amp; financial operations</p>
+                  </div>
+                  <div>
+                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-slate-400">Professional track</p>
+                    <p className="mt-1.5 text-xl font-semibold tracking-tight text-slate-950">CFA Level I</p>
+                    <p className="mt-1 text-xs text-slate-500">Investment analysis &amp; valuation</p>
+                  </div>
+                  <div>
+                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-slate-400">Operating lens</p>
+                    <p className="mt-1.5 text-xl font-semibold tracking-tight text-slate-950">Portfolio ops</p>
+                    <p className="mt-1 text-xs text-slate-500">Analytics-forward execution</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Portrait */}
+              <div className="hero-entrance hero-entrance-3 hero-portrait hidden lg:block">
+                <div className="hero-portrait-frame relative overflow-hidden rounded-2xl border border-slate-200 shadow-lg">
                   <img
                     src={profileImage}
                     alt="Tyler Bustard professional headshot"
-                    className="aspect-[4/5] w-full object-cover object-center"
+                    className="hero-portrait-img aspect-[3/4] w-full object-cover object-top"
                     data-testid="img-profile"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
                   />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent p-6 text-white">
-                    <p className="section-kicker !text-white/70">Current focus</p>
-                    <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">Senior Associate, Portfolio Monitoring</h2>
-                    <p className="mt-3 max-w-md text-sm leading-6 text-white/78">
-                      Supporting valuation integrity, reconciliations, and operational control within a modern portfolio monitoring environment.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {focusCards.map((card) => (
-                    <div key={card.title} className="section-card flex items-start gap-4 p-4">
-                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-slate-100">
-                        <img src={card.logo} alt={card.title} className="h-7 w-7 object-contain" />
-                      </div>
-                      <div>
-                        <h3 className="text-base font-semibold text-slate-950">{card.title}</h3>
-                        <p className="mt-2 text-sm leading-6 text-muted-foreground">{card.detail}</p>
-                      </div>
-                    </div>
-                  ))}
+                  <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-black/5" />
                 </div>
               </div>
-            </aside>
-          </div>
+            </div>
 
-          <div className="section-shell mt-8 p-5 sm:p-6">
-            <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-              <div>
-                <p className="section-kicker mb-2">Selected institutions and platforms</p>
-                <p className="max-w-2xl text-sm leading-6 text-muted-foreground sm:text-base">
-                  Experience and training spanning portfolio monitoring, wealth management, Canadian banking, and investment education.
-                </p>
-              </div>
-              <div className="grid grid-cols-3 gap-3 sm:grid-cols-6 sm:gap-4">
-                {institutionLogos.map((logo) => (
-                  <div key={logo.alt} className="logo-lockup flex items-center justify-center">
-                    <img src={logo.src} alt={logo.alt} className="h-8 w-full object-contain sm:h-10" />
-                  </div>
+            {/* ── Institution logos ── */}
+            <div className="hero-entrance hero-entrance-7 hero-logo-strip mt-7 border-t border-slate-200/45 pt-5 sm:mt-8 md:mt-9 md:pt-6 lg:mt-10">
+              <div className="hero-logo-row">
+                {institutionLogos.map((logo, i) => (
+                  <span key={logo.alt} className="hero-logo-entry">
+                    {(i === 7 || i === 9 || i === 16) && (
+                      <span className="hero-logo-separator hero-logo-light hidden sm:block" style={{ animationDelay: `${1.1 + i * 0.08}s` }} />
+                    )}
+                    <img
+                      src={logo.src}
+                      alt={logo.alt}
+                      className={`hero-logo-image hero-logo-light ${logo.className ?? ""}`}
+                      style={{ animationDelay: `${1.1 + i * 0.08}s` }}
+                    />
+                  </span>
                 ))}
               </div>
             </div>
-          </div>
-
-          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {quickLinks.map((link, index) => (
-              <button
-                key={link.title}
-                type="button"
-                onClick={() => scrollToSection(link.target)}
-                aria-label={`Scroll to ${link.title.toLowerCase()} section`}
-                className={`quick-link-card page-load-fade-in focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background ${isPageLoaded ? "loaded" : ""}`}
-                style={{ animationDelay: `${0.45 + index * 0.1}s` }}
-                data-testid={`card-${link.title.toLowerCase()}`}
-              >
-                <div className="mb-5 flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100">
-                    <img src={link.logo} alt={link.title} className="h-7 w-7 object-contain" />
-                  </div>
-                  <div>
-                    <p className="section-kicker mb-1">Explore</p>
-                    <h3 className="text-lg font-semibold text-slate-950">{link.title}</h3>
-                  </div>
-                </div>
-                <p className="text-sm leading-6 text-muted-foreground">{link.summary}</p>
-              </button>
-            ))}
           </div>
         </div>
       </div>

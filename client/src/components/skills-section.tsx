@@ -1,36 +1,40 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { SiGoogle } from "react-icons/si";
-import { useScrollAnimation, useStaggeredScrollAnimation } from "@/hooks/useScrollAnimation";
+import {
+  SCROLL_REVEAL_OBSERVER_OPTIONS,
+  getScrollRevealDelay,
+  getScrollRevealStyle,
+  useScrollAnimation,
+  useStaggeredScrollAnimation,
+} from "@/hooks/useScrollAnimation";
 import { useCounterAnimation } from "@/hooks/use-counter-animation";
 import { slugify } from "@/lib/utils";
-import { FaCertificate, FaGraduationCap, FaTrophy, FaStar, FaChartLine, FaCalculator, FaHeart, FaRunning, FaUsers, FaHandshake } from "react-icons/fa";
 import unitedWayLogo from "@assets/United-Way-Logo_1755913265895.png";
 import rbcLogo from "@assets/RBC-Logo_1755913716813.png";
 import irvingLogo from "@assets/Irving_Oil.svg_1755913265895.png";
 import cfaLogo from "@assets/CFA_Institute_Logo_1755923720192.png";
 import csiLogo from "@assets/canadian securities institute_1755923720191.png";
 import wallStreetPrepLogo from "@assets/wall street prep_1755923720193.png";
-import mcgillLogo from "@assets/mcgill_university_logo.png";
 import trainingTheStreetLogo from "@assets/trainning the street_1755938972014.png";
-import bloombergLogo from "@assets/bloomberg_1755939196335.png";
-import courseraLogo from "@assets/Coursera_1755939373919.png";
+import bloombergLogo from "@assets/bloomberg_1755923720190.png";
+import courseraLogo from "@assets/Coursera_1755937682843.png";
 import etsLogo from "@assets/ETS_1755939510188.png";
+import mcgillLogo from "@assets/mcgill_university_logo.png";
+import anthropicLogo from "@assets/anthropic_logo.svg";
+import openaiLogo from "@assets/openai_logo.svg";
 
 interface Certification {
   name: string;
   year: string;
-  institution: string;
-  description: string;
-  highlight?: boolean;
-  percentile?: string;
+  issuer: string;
   logoSrc?: string;
+  logoFallback?: string;
+  logoTone?: "anthropic" | "openai";
+  detail?: string;
+  emphasis?: boolean;
 }
 
 interface CertificationCategory {
   title: string;
-  icon: React.ComponentType<{ className?: string }>;
-  color: string;
+  caption: string;
   certifications: Certification[];
 }
 
@@ -41,108 +45,190 @@ interface CounterStatProps {
   prefix?: string;
   label: string;
   className?: string;
+  labelClassName?: string;
   delay?: number;
 }
 
-function CertificationCounter({ end, suffix = '', prefix = '', label, className = '', delay = 0 }: CounterStatProps) {
+function CertificationCounter({ end, suffix = '', prefix = '', label, className = '', labelClassName = 'text-muted-foreground', delay = 0 }: CounterStatProps) {
   const { count, elementRef } = useCounterAnimation({ end, delay });
-  
+
   return (
     <div className="text-center" ref={elementRef}>
       <div className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 ${className}`}>
         {prefix}{count}{suffix}
       </div>
-      <div className="text-base text-muted-foreground font-medium">{label}</div>
+      <div className={`text-base font-medium ${labelClassName}`}>{label}</div>
     </div>
   );
 }
 
-export default function CertificationsSection() {
-  const sectionAnimation = useScrollAnimation({ threshold: 0.15, triggerOnce: true });
-  const headerAnimation = useScrollAnimation({ threshold: 0.25, triggerOnce: true, delay: 100 });
-  const { ref: certificationsRef, visibleItems } = useStaggeredScrollAnimation(4, { threshold: 0.15, triggerOnce: true, delay: 200 });
-  const communityAnimation = useScrollAnimation({ threshold: 0.15, triggerOnce: true });
-  const communityHeaderAnimation = useScrollAnimation({ threshold: 0.25, triggerOnce: true, delay: 100 });
-  const { ref: communityRef, visibleItems: communityItems } = useStaggeredScrollAnimation(3, { threshold: 0.15, triggerOnce: true, delay: 200 });
+const parseCertificationYear = (certification: Certification) => {
+  const year = Number.parseInt(certification.year, 10);
+  return Number.isFinite(year) ? year : Number.MAX_SAFE_INTEGER;
+};
 
-  const certificationCategories: CertificationCategory[] = [
+export default function CertificationsSection() {
+  const sectionAnimation = useScrollAnimation(SCROLL_REVEAL_OBSERVER_OPTIONS);
+  const headerAnimation = useScrollAnimation({
+    ...SCROLL_REVEAL_OBSERVER_OPTIONS,
+    threshold: 0.18,
+    delay: 60,
+  });
+
+  const certificationCategories: CertificationCategory[] = ([
     {
-      title: "Financial Certifications",
-      icon: FaChartLine,
-      color: "bg-blue-500",
+      title: "Investment & Markets",
+      caption: "CFA, valuation, and market fluency",
       certifications: [
-        { name: "CFA Level I Candidate", year: "2026", institution: "CFA Institute", description: "Comprehensive training in investment analysis, portfolio management, and ethical standards for investment professionals.", highlight: true, logoSrc: cfaLogo },
-        { name: "Discounted Cash Flow Analysis", year: "2024", institution: "Training the Street", description: "Advanced financial modeling techniques for valuation using discounted cash flow methodology and sensitivity analysis.", logoSrc: trainingTheStreetLogo },
-        { name: "Financial Planning 1", year: "2023", institution: "Canadian Securities Institute", description: "Foundational principles of personal financial planning including budgeting, insurance, and retirement planning strategies.", logoSrc: csiLogo },
-        { name: "Certificate in Financial Services Advice", year: "2022", institution: "Canadian Securities Institute", description: "Professional qualification for providing financial advisory services and investment recommendations to clients.", logoSrc: csiLogo },
-        { name: "Personal Financial Service Advice", year: "2021", institution: "Canadian Securities Institute", description: "Client relationship management and personalized financial advisory services for individual investors.", logoSrc: csiLogo },
-        { name: "Canadian Securities Course", year: "2021", institution: "Canadian Securities Institute", description: "Comprehensive overview of Canadian capital markets, securities regulation, and investment products.", logoSrc: csiLogo },
-        { name: "Financial & Valuation Modeling", year: "2020", institution: "Wall Street Prep", description: "Excel-based financial modeling for company valuation, mergers & acquisitions, and investment banking analysis.", logoSrc: wallStreetPrepLogo },
-        { name: "Investment Funds in Canada", year: "2020", institution: "Canadian Securities Institute", description: "Mutual funds, ETFs, and alternative investment vehicles available in the Canadian market.", logoSrc: csiLogo },
-        { name: "Bloomberg Market Concepts Certificate", year: "2020", institution: "Bloomberg", description: "Financial markets fundamentals using Bloomberg Terminal for market analysis and economic indicators.", logoSrc: bloombergLogo },
-        { name: "Personal Finance Essentials", year: "2020", institution: "McGill University", description: "Core concepts of personal financial management including investing, debt management, and financial planning.", logoSrc: mcgillLogo }
-      ]
+        { name: "CFA Level I Candidate", year: "2026", issuer: "CFA Institute", emphasis: true, logoSrc: cfaLogo },
+        { name: "Discounted Cash Flow Analysis and Modeling", year: "2024", issuer: "Training The Street", logoSrc: trainingTheStreetLogo },
+        { name: "Financial & Valuation Modeling", year: "2020", issuer: "Wall Street Prep", logoSrc: wallStreetPrepLogo },
+        { name: "Bloomberg Market Concepts Certificate", year: "2020", issuer: "Bloomberg", logoSrc: bloombergLogo },
+      ],
     },
     {
-      title: "Data Science & Technology Certifications",
-      icon: SiGoogle,
-      color: "bg-emerald-500",
+      title: "Advisory & Wealth Planning",
+      caption: "Licensing, suitability, and client advice",
       certifications: [
-        { name: "Data Analytics Professional", year: "2023", institution: "Google", description: "End-to-end data analysis workflow including data cleaning, analysis, visualization, and presentation of insights.", highlight: true, logoSrc: courseraLogo },
-        { name: "Data Visualization with Tableau", year: "2023", institution: "UC Davis", description: "Creating interactive dashboards and visualizations to communicate data insights effectively using Tableau.", logoSrc: courseraLogo },
-        { name: "Python for Everybody", year: "2023", institution: "University of Michigan", description: "Programming fundamentals in Python including data structures, web scraping, and database interactions.", logoSrc: courseraLogo },
-        { name: "Machine Learning", year: "2020", institution: "Stanford University", description: "Supervised and unsupervised learning algorithms, neural networks, and practical machine learning applications.", logoSrc: courseraLogo },
-        { name: "SQL for Data Science", year: "2020", institution: "UC Davis", description: "Database querying, data manipulation, and analysis using SQL for data science applications.", logoSrc: courseraLogo },
-        { name: "Power BI Data Visualization", year: "2020", institution: "Microsoft", description: "Business intelligence reporting and dashboard creation using Microsoft Power BI platform.", logoSrc: courseraLogo }
-      ]
+        { name: "Financial Planning 1", year: "2023", issuer: "Canadian Securities Institute", logoSrc: csiLogo },
+        { name: "Certificate in Financial Services Advice", year: "2022", issuer: "Canadian Securities Institute", logoSrc: csiLogo },
+        { name: "Canadian Securities Course", year: "2021", issuer: "Canadian Securities Institute", logoSrc: csiLogo },
+        { name: "Personal Financial Service Advice", year: "2021", issuer: "Canadian Securities Institute", logoSrc: csiLogo },
+        { name: "Investment Funds in Canada", year: "2020", issuer: "Canadian Securities Institute", logoSrc: csiLogo },
+        { name: "Personal Finance Essentials", year: "2020", issuer: "McGill University", logoSrc: mcgillLogo },
+      ],
     },
     {
-      title: "Mathematical & Statistical Certifications",
-      icon: FaCalculator,
-      color: "bg-purple-500",
+      title: "Data & Business Intelligence",
+      caption: "Analytics, visualization, and automation",
       certifications: [
-        { name: "Econometrics: Methods & Applications", year: "2024", institution: "Erasmus University", description: "Statistical methods for economic analysis including regression modeling, hypothesis testing, and causal inference.", logoSrc: courseraLogo },
-        { name: "Matrix Algebra for Engineers", year: "2024", institution: "HKUST", description: "Linear algebra applications in engineering including matrix operations, eigenvalues, and system analysis.", logoSrc: courseraLogo },
-        { name: "Introduction to Calculus", year: "2023", institution: "University of Sydney", description: "Fundamental calculus concepts including derivatives, integrals, and applications to optimization problems.", logoSrc: courseraLogo },
-        { name: "Inferential Statistics", year: "2020", institution: "Duke University", description: "Statistical inference methods including confidence intervals, hypothesis testing, and regression analysis.", logoSrc: courseraLogo },
-        { name: "Excel Skills for Business", year: "2020", institution: "Macquarie University", description: "Advanced Excel techniques for business analysis including formulas, pivot tables, and data visualization.", logoSrc: courseraLogo }
-      ]
+        { name: "Google Data Analytics Professional Certificate", year: "2023", issuer: "Google", logoSrc: courseraLogo },
+        { name: "Data Visualization with Tableau", year: "2023", issuer: "UC Davis", logoSrc: courseraLogo },
+        { name: "Python for Everybody Specialization", year: "2023", issuer: "University of Michigan", logoSrc: courseraLogo },
+        { name: "SQL for Data Science", year: "2020", issuer: "UC Davis", logoSrc: courseraLogo },
+        { name: "Power BI Data Visualization", year: "2020", issuer: "Microsoft", logoSrc: courseraLogo },
+      ],
     },
     {
-      title: "Standardized Exam",
-      icon: FaGraduationCap,
-      color: "bg-amber-500",
+      title: "Quantitative & Statistical Methods",
+      caption: "Modeling, inference, and mathematical foundations",
+      certifications: [
+        { name: "Econometrics: Methods & Applications", year: "2024", issuer: "Erasmus University", logoSrc: courseraLogo },
+        { name: "Matrix Algebra for Engineers", year: "2024", issuer: "HKUST", logoSrc: courseraLogo },
+        { name: "Introduction to Calculus", year: "2023", issuer: "University of Sydney", logoSrc: courseraLogo },
+        { name: "Machine Learning", year: "2020", issuer: "Stanford University", logoSrc: courseraLogo },
+        { name: "Inferential Statistics", year: "2020", issuer: "Duke University", logoSrc: courseraLogo },
+        { name: "Excel Skills for Business", year: "2020", issuer: "Macquarie University", logoSrc: courseraLogo },
+      ],
+    },
+    {
+      title: "Claude Code & Agent Skills",
+      caption: "Anthropic Academy credentials for agentic development",
+      certifications: [
+        { name: "Claude Code 101", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic", emphasis: true },
+        { name: "Claude Code in Action", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic", emphasis: true },
+        { name: "Introduction to subagents", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
+        { name: "Introduction to agent skills", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
+      ],
+    },
+    {
+      title: "Claude Platform, API & MCP",
+      caption: "Claude engineering paths across API, MCP, and cloud deployment",
+      certifications: [
+        { name: "Building with the Claude API", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic", emphasis: true },
+        { name: "Introduction to Model Context Protocol", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
+        { name: "Model Context Protocol: Advanced Topics", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
+        { name: "Claude with Amazon Bedrock", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
+        { name: "Claude with Google Cloud's Vertex AI", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
+      ],
+    },
+    {
+      title: "Claude AI Fluency",
+      caption: "Claude productivity, AI fluency, education, nonprofit, and small business coursework",
+      certifications: [
+        { name: "Claude 101", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic", emphasis: true },
+        { name: "AI Capabilities and Limitations", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
+        { name: "AI Fluency: Framework & Foundations", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
+        { name: "AI Fluency for educators", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
+        { name: "AI Fluency for students", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
+        { name: "Teaching AI Fluency", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
+        { name: "AI Fluency for nonprofits", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
+        { name: "AI Fluency for Small Businesses", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
+        { name: "Introduction to Claude Cowork", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
+      ],
+    },
+    {
+      title: "OpenAI Codex Academy",
+      caption: "OpenAI Academy modules for coding agents and automated workflows",
+      certifications: [
+        { name: "Get started with Codex", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai", emphasis: true },
+        { name: "Try real tasks with Codex", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
+        { name: "Write better prompts for Codex", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
+        { name: "Work faster with the Codex app", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
+        { name: "Codex fundamentals", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai", emphasis: true },
+        { name: "Hands-on workshop: Practical Codex workflows", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
+        { name: "How OpenAI uses Codex", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
+        { name: "Advanced workflows and automations", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
+      ],
+    },
+    {
+      title: "Graduate Admissions",
+      caption: "Standardized assessment",
       certifications: [
         { 
           name: "GRE General Test", 
           year: "2024", 
-          institution: "ETS", 
-          description: "Standardized test measuring verbal reasoning, quantitative reasoning, and analytical writing skills for graduate school admission.",
-          highlight: true,
-          logoSrc: etsLogo
+          issuer: "ETS", 
+          detail: "Score: 325",
+          emphasis: true,
+          logoSrc: etsLogo,
         }
-      ]
-    }
-  ];
+      ],
+    },
+  ] satisfies CertificationCategory[]).map((category): CertificationCategory => ({
+    ...category,
+    certifications: [...category.certifications].sort(
+      (left, right) => parseCertificationYear(right) - parseCertificationYear(left),
+    ),
+  }));
 
-  // Get featured certifications (highlighted ones)
-  const featuredCerts = certificationCategories.flatMap(category => 
-    category.certifications
-      .filter(cert => cert.highlight)
-      .map(cert => ({ ...cert, category: category.title, icon: category.icon }))
+  const leftColumnCertificationTitles = new Set([
+    "Investment & Markets",
+    "Data & Business Intelligence",
+    "Claude Code & Agent Skills",
+    "OpenAI Codex Academy",
+    "Graduate Admissions",
+  ]);
+
+  const certificationColumns = [
+    certificationCategories.filter((category) => leftColumnCertificationTitles.has(category.title)),
+    certificationCategories.filter((category) => !leftColumnCertificationTitles.has(category.title)),
+  ];
+  const totalCerts = certificationCategories.reduce((sum, cat) => sum + cat.certifications.length, 0);
+  const organizationCount = new Set(
+    certificationCategories.flatMap((category) => category.certifications.map((certification) => certification.issuer)),
+  ).size;
+  const certificationRevealSequence = certificationCategories.map((category) => category.title);
+  const certificationRevealOrder = new Map(
+    certificationRevealSequence.map((title, index) => [title, index]),
   );
+  const certificationItemsAnimation = useStaggeredScrollAnimation(certificationRevealSequence.length + 3, {
+    ...SCROLL_REVEAL_OBSERVER_OPTIONS,
+    threshold: 0.14,
+    delay: 90,
+    staggerDelay: 90,
+    fastStaggerDelay: 55,
+  });
 
   return (
-    <section 
+    <section
       ref={sectionAnimation.ref}
-      id="certifications" 
-      className={`py-20 sm:py-28 lg:py-36 relative overflow-hidden scroll-fade-in ${sectionAnimation.isVisible ? 'visible' : ''}`}
+      id="certifications"
+      className="py-20 sm:py-28 lg:py-36 relative overflow-hidden"
     >
-      {/* Background - inherits Apple grey from parent */}
-      
       <div className="container-width">
-        {/* Header - Outside the card */}
-        <div 
+        {/* Header */}
+        <div
           ref={headerAnimation.ref}
           className={`text-center mb-12 sm:mb-16 lg:mb-20 scroll-slide-up ${headerAnimation.isVisible ? 'visible' : ''}`}
         >
@@ -151,114 +237,119 @@ export default function CertificationsSection() {
             Certifications
           </h2>
           <p className="mx-auto max-w-3xl text-lg leading-relaxed text-muted-foreground sm:text-xl lg:text-2xl">
-            Certifications in finance, technology, and banking
+            Structured across investment, advisory, analytics, and quantitative training.
           </p>
         </div>
 
-        <div className="section-shell p-8 sm:p-10 lg:p-12">
-
-        {/* All Certifications */}
-        <div ref={certificationsRef} className="space-y-8 sm:space-y-10 mb-12 sm:mb-16 lg:mb-20 certifications-container">
-            {certificationCategories.map((category, categoryIndex) => (
-              <div 
-                key={categoryIndex} 
-                id={`certifications-${slugify(category.title)}`} 
-                ref={categoryIndex === 0 ? certificationsRef : undefined}
-                className={`section-shell section-shell-muted relative overflow-hidden rounded-[20px] sm:rounded-[28px] transition-all duration-500 scroll-scale-in scroll-stagger-${categoryIndex + 1} ${visibleItems.has(categoryIndex) ? 'visible' : ''}`}
+        <div
+          ref={certificationItemsAnimation.ref}
+          className="homepage-certifications-panel group bg-white border border-border rounded-lg p-6 transition-shadow duration-200 hover:shadow-sm sm:p-8 lg:p-10"
+        >
+          <div className="resume-certification-columns homepage-certification-columns">
+            {certificationColumns.map((column, columnIndex) => (
+              <div
+                key={`homepage-certification-column-${columnIndex}`}
+                className="resume-certification-column homepage-certification-column"
               >
-                <div className="absolute inset-0 bg-white/85" />
-                <div className="relative p-6 sm:p-8 lg:p-10">
-                  <div className="flex flex-col lg:flex-row lg:items-center gap-8">
-                    {/* Category Title */}
-                    <div className="lg:w-1/4 text-center sm:text-left">
-                      <h4 className="text-xl sm:text-2xl font-bold text-foreground mb-3" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif' }}>
-                        {category.title}
-                      </h4>
-                      <div className="w-12 h-1 bg-gradient-to-r from-primary to-blue-500 rounded-full mx-auto sm:mx-0 mb-3" />
-                      <p className="text-base text-muted-foreground" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }}>{category.certifications.length} professional certifications</p>
-                    </div>
+                {column.map((category) => (
+                  (() => {
+                    const isCategoryVisible = certificationItemsAnimation.visibleItems.has(certificationRevealOrder.get(category.title) ?? -1);
+                    const revealClass = isCategoryVisible ? 'visible' : '';
 
-                    {/* Certification Items */}
-                    <div className="lg:w-3/4 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      {category.certifications.map((cert, certIndex) => (
-                        <div 
-                          key={certIndex}
-                          id={`cert-${slugify(cert.name)}`}
-                          className="section-card flex h-full min-h-[160px] flex-col p-4 transition-all duration-500 hover:scale-[1.02] hover:shadow-xl"
-                          data-testid={`cert-${categoryIndex}-${certIndex}`}
-                        >
-                          {/* Header with title and year */}
-                          <div className="flex items-start justify-between mb-4">
-                            <h5 className="font-bold text-foreground text-lg flex-1 leading-tight pr-3" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }}>
-                              {cert.name}
-                            </h5>
-                            <span className="text-sm font-semibold text-gray-600 bg-gray-100 px-3 py-1 rounded-full flex-shrink-0" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }}>{cert.year}</span>
-                          </div>
-                          
-                          {/* Institution with logo */}
-                          <div className="flex items-center gap-3 mb-4">
-                            {cert.logoSrc && (
-                              <img 
-                                src={cert.logoSrc} 
-                                alt={`${cert.institution} Logo`} 
-                                className="w-6 h-6 object-contain flex-shrink-0"
-                              />
-                            )}
-                            <p className="text-muted-foreground font-semibold text-base" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }}>{cert.institution}</p>
-                          </div>
-                          
-                          {/* Description */}
-                          <div className="flex-1 mb-4">
-                            <p className="text-muted-foreground text-sm leading-relaxed" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }}>{cert.description}</p>
-                          </div>
-                          
-                          {/* Footer badges */}
-                          <div className="flex items-center justify-start gap-2 mt-auto pt-4">
-                            {cert.percentile && (
-                              <div className="text-xs text-blue-600 font-semibold bg-blue-50 px-3 py-1.5 rounded-full">
-                                {cert.percentile}
-                              </div>
-                            )}
-                          </div>
+                    return (
+                      <article
+                        key={category.title}
+                        id={`certifications-${slugify(category.title)}`}
+                        className={`resume-certification-area homepage-certification-area scroll-slide-up ${revealClass}`}
+                      >
+                        <div className="resume-certification-area-header homepage-certification-area-header">
+                          <h3
+                            className={`resume-certification-area-title homepage-certification-area-title scroll-slide-up ${revealClass}`}
+                            style={getScrollRevealStyle('cardHeader')}
+                          >
+                            {category.title}
+                          </h3>
+                          <p
+                            className={`resume-certification-area-caption homepage-certification-area-caption scroll-slide-up ${revealClass}`}
+                            style={getScrollRevealStyle('subheading')}
+                          >
+                            {category.caption}
+                          </p>
                         </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+
+                        <div className="resume-certification-cards homepage-certification-cards">
+                          {category.certifications.map((certification, certificationIndex) => (
+                            <div
+                              key={`${category.title}-${certification.name}`}
+                              id={`cert-${slugify(certification.name)}`}
+                              className={`resume-certification-card homepage-certification-card scroll-slide-up ${revealClass}`}
+                              style={getScrollRevealStyle('body', certificationIndex)}
+                            >
+                              <div className="resume-certification-card-brand homepage-certification-card-brand">
+                                {certification.logoSrc ? (
+                                  <span
+                                    className={`resume-certification-card-logo-shell homepage-certification-card-logo-shell${certification.logoTone ? ` resume-certification-card-logo-shell--${certification.logoTone}` : ""}`}
+                                    aria-hidden="true"
+                                  >
+                                    <img
+                                      src={certification.logoSrc}
+                                      alt={certification.issuer}
+                                      className="resume-certification-card-logo homepage-certification-card-logo"
+                                    />
+                                  </span>
+                                ) : certification.logoFallback ? (
+                                  <span
+                                    className={`resume-certification-card-logo-shell homepage-certification-card-logo-shell resume-certification-card-logo-fallback resume-certification-card-logo-fallback--${certification.logoTone ?? "openai"}`}
+                                    aria-hidden="true"
+                                  >
+                                    {certification.logoFallback}
+                                  </span>
+                                ) : null}
+                                <div className="resume-certification-card-copy homepage-certification-card-copy">
+                                  <p className={`resume-certification-card-title homepage-certification-card-title${certification.emphasis ? " resume-certification-card-title-emphasis" : ""}`}>
+                                    {certification.name}
+                                  </p>
+                                  <p className="resume-certification-card-issuer homepage-certification-card-issuer">{certification.issuer}</p>
+                                </div>
+                              </div>
+
+                              <div className="resume-certification-card-meta homepage-certification-card-meta">
+                                <span className="resume-certification-card-year homepage-certification-card-year">{certification.year}</span>
+                                {certification.detail ? (
+                                  <span className="resume-certification-card-detail homepage-certification-card-detail">{certification.detail}</span>
+                                ) : null}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </article>
+                    );
+                  })()
+                ))}
               </div>
             ))}
+          </div>
         </div>
 
-        {/* Achievement Metrics - Clean stats */}
-        <div className="section-shell section-shell-muted overflow-hidden">
-          <div className="bg-gradient-to-r from-gray-100/50 to-gray-200/50 p-8 sm:p-10 lg:p-12">
-            <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-6 sm:mb-8 text-center">
+        {/* Highlights */}
+        <div className="mt-12">
+          <div className="bg-white border border-border rounded-lg p-8 lg:p-10">
+            <h3 className="text-xl font-bold text-foreground mb-8 text-center">
               Professional Development Highlights
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
-              <CertificationCounter 
-                end={22} 
-                label="Total Certifications" 
-                className="text-foreground"
-                delay={0}
-              />
-              <CertificationCounter 
-                end={4} 
-                label="Expertise Areas" 
-                className="text-green-600"
-                delay={200}
-              />
-              <CertificationCounter 
-                end={17} 
-                label="Different Organizations" 
-                className="text-primary"
-                delay={400}
-              />
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className={`scroll-slide-up ${certificationItemsAnimation.visibleItems.has(certificationRevealSequence.length) ? 'visible' : ''}`}>
+                <CertificationCounter end={totalCerts} label="Total Certifications & Courses" className="text-sky-700" delay={0} />
+              </div>
+              <div className={`scroll-slide-up ${certificationItemsAnimation.visibleItems.has(certificationRevealSequence.length + 1) ? 'visible' : ''}`}>
+                <CertificationCounter end={certificationCategories.length} label="Expertise Areas" className="text-emerald-700" delay={200} />
+              </div>
+              <div className={`scroll-slide-up ${certificationItemsAnimation.visibleItems.has(certificationRevealSequence.length + 2) ? 'visible' : ''}`}>
+                <CertificationCounter end={organizationCount} label="Different Organizations" className="text-amber-600" delay={400} />
+              </div>
             </div>
           </div>
         </div>
-        </div>
-
       </div>
     </section>
   );
@@ -274,29 +365,45 @@ interface CommunityActivity {
   description: string;
   achievements: string[];
   skills: string[];
-  icon?: React.ComponentType<{ className?: string }>;
   logoSrc?: string;
   color: string;
 }
 
 // Counter components for community section
-function CommunityCounter({ end, suffix = '', prefix = '', label, className = '', delay = 0 }: CounterStatProps) {
+function CommunityCounter({ end, suffix = '', prefix = '', label, className = '', labelClassName = 'text-muted-foreground', delay = 0 }: CounterStatProps) {
   const { count, elementRef } = useCounterAnimation({ end, delay });
-  
+
   return (
     <div className="text-center" ref={elementRef}>
       <div className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 ${className}`}>
         {prefix}{count}{suffix}
       </div>
-      <div className="text-base text-muted-foreground font-medium">{label}</div>
+      <div className={`text-base font-medium ${labelClassName}`}>{label}</div>
     </div>
   );
 }
 
 export function CommunitySection() {
-  const communityAnimation = useScrollAnimation({ threshold: 0.15, triggerOnce: true });
-  const communityHeaderAnimation = useScrollAnimation({ threshold: 0.25, triggerOnce: true, delay: 100 });
-  const { ref: communityRef, visibleItems: communityItems } = useStaggeredScrollAnimation(3, { threshold: 0.15, triggerOnce: true, delay: 200 });
+  const communityAnimation = useScrollAnimation(SCROLL_REVEAL_OBSERVER_OPTIONS);
+  const communityHeaderAnimation = useScrollAnimation({
+    ...SCROLL_REVEAL_OBSERVER_OPTIONS,
+    threshold: 0.18,
+    delay: 60,
+  });
+  const { ref: communityRef, visibleItems: communityItems } = useStaggeredScrollAnimation(3, {
+    ...SCROLL_REVEAL_OBSERVER_OPTIONS,
+    threshold: 0.15,
+    delay: 90,
+    staggerDelay: 90,
+    fastStaggerDelay: 55,
+  });
+  const communitySummaryAnimation = useStaggeredScrollAnimation(3, {
+    ...SCROLL_REVEAL_OBSERVER_OPTIONS,
+    threshold: 0.16,
+    delay: 220,
+    staggerDelay: 90,
+    fastStaggerDelay: 55,
+  });
   
   const communityActivities: CommunityActivity[] = [
     {
@@ -318,7 +425,7 @@ export function CommunitySection() {
         "Stakeholder Management",
       ],
       logoSrc: unitedWayLogo,
-      color: "#FF5A28"
+      color: "#FF5A28",
     },
     {
       title: "Student Ambassador",
@@ -339,7 +446,7 @@ export function CommunitySection() {
         "Student Engagement",
       ],
       logoSrc: rbcLogo,
-      color: "#005DAA"
+      color: "#005DAA",
     },
     {
       title: "Volunteer Staff",
@@ -360,15 +467,23 @@ export function CommunitySection() {
         "Safety Management",
       ],
       logoSrc: irvingLogo,
-      color: "#1E40AF"
+      color: "#1E40AF",
     }
   ];
+  const currentYear = new Date().getFullYear();
+  const communityStartYears = communityActivities
+    .map((activity) => Number.parseInt(activity.period.slice(0, 4), 10))
+    .filter((year) => Number.isFinite(year));
+  const firstCommunityYear = Math.min(...communityStartYears);
+  const yearsOfService = Math.max(1, currentYear - firstCommunityYear);
+  const organizationsServed = new Set(communityActivities.map((activity) => activity.organization)).size;
+  const peopleHelped = 100;
 
   return (
     <section 
       ref={communityAnimation.ref}
       id="community" 
-      className={`py-16 sm:py-24 lg:py-32 relative overflow-hidden scroll-fade-in ${communityAnimation.isVisible ? 'visible' : ''}`}
+      className={`py-20 sm:py-28 lg:py-36 relative overflow-hidden bg-amber-50/20 scroll-fade-in ${communityAnimation.isVisible ? 'visible' : ''}`}
     >
       {/* Background - inherits Apple grey from parent */}
       
@@ -376,7 +491,7 @@ export function CommunitySection() {
         {/* Header - Outside the card */}
         <div 
           ref={communityHeaderAnimation.ref}
-          className={`text-center mb-8 sm:mb-10 lg:mb-12 scroll-slide-up ${communityHeaderAnimation.isVisible ? 'visible' : ''}`}
+          className={`text-center mb-12 sm:mb-16 lg:mb-20 scroll-slide-up ${communityHeaderAnimation.isVisible ? 'visible' : ''}`}
         >
           <p className="section-kicker mb-4">Leadership</p>
           <h2 className="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
@@ -387,139 +502,141 @@ export function CommunitySection() {
           </p>
         </div>
 
-        <div className="section-shell p-8 sm:p-10 lg:p-12">
+        {/* Community Activities — matches experience card pattern */}
+        <div ref={communityRef} className="space-y-6">
+          {communityActivities.map((activity, index) => (
+            (() => {
+              const isCardVisible = communityItems.has(index);
+              const revealClass = isCardVisible ? 'visible' : '';
+              const competenciesHeadingDelay = getScrollRevealDelay('body', activity.achievements.length + 2);
+              const chipStartDelay = competenciesHeadingDelay + 90;
 
-        {/* Community Activities Timeline */}
-        <div ref={communityRef} className="relative">
-          {/* Clean Timeline Line */}
-          <div className="absolute left-8 top-0 bottom-0 w-px bg-gray-200 hidden md:block"></div>
-          
-          <div className="space-y-6 sm:space-y-8">
-            {communityActivities.map((activity, index) => (
-              <div 
-                key={index} 
-                id={`community-${slugify(activity.organization)}`} 
-                ref={index === 0 ? communityRef : undefined}
-                className={`relative scroll-scale-in scroll-stagger-${index + 1} ${communityItems.has(index) ? 'visible' : ''}`}
-                data-testid={`community-activity-${index}`}
-              >
-                {/* Beautiful Timeline Marker */}
-                <div className="absolute left-5 w-6 h-6 rounded-full bg-gradient-to-br from-white to-gray-50 border border-gray-200/60 shadow-[0_2px_8px_rgba(0,0,0,0.08),0_1px_2px_rgba(0,0,0,0.12)] hidden md:block backdrop-blur-sm">
-                  <div className="absolute inset-1 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 shadow-inner"></div>
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/30 via-transparent to-transparent"></div>
-                </div>
-                
-                {/* Content */}
-                <div className="md:ml-24">
-                  <div className="section-card relative transition-all duration-500 hover:scale-[1.02] group">
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="relative p-8">
-                      {/* Header Section - Match Experience formatting */}
-                      <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 mb-6 text-center sm:text-left">
-                        {/* Logo on left */}
-                        <div className="w-20 h-20 sm:w-24 sm:h-24 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-110">
-                          {activity.logoSrc ? (
-                            <img 
-                              src={activity.logoSrc} 
-                              alt={`${activity.organization} Logo`} 
-                              className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
-                            />
-                          ) : activity.icon ? (
-                            <activity.icon className="w-12 h-12 sm:w-16 sm:h-16 text-foreground" />
-                          ) : null}
+              return (
+                <div
+                  key={index}
+                  id={`community-${slugify(activity.organization)}`}
+                  className={`community-card-shell group bg-white border border-border rounded-lg p-6 transition-shadow duration-200 hover:shadow-sm scroll-slide-up ${revealClass}`}
+                  data-testid={`community-activity-${index}`}
+                >
+                  <div className="experience-card-header mb-4">
+                    <div
+                      className={`experience-card-header-shell scroll-slide-up ${revealClass}`}
+                      style={getScrollRevealStyle('cardHeader')}
+                    >
+                      {activity.logoSrc ? (
+                        <div className="experience-card-logo-shell">
+                          <img
+                            src={activity.logoSrc}
+                            alt={`${activity.organization} Logo`}
+                            className="experience-card-logo"
+                          />
                         </div>
-                        {/* Content on right */}
-                        <div className="flex-1">
-                          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1 gap-0 sm:gap-0">
-                            <h3 className="text-xl font-bold text-foreground">{activity.title}</h3>
-                            <span className="hidden sm:block text-base font-medium text-gray-500">{activity.period}</span>
-                          </div>
-                          <div className="space-y-0">
-                            <p className="text-lg font-semibold text-primary">{activity.organization}</p>
-                            <p className="text-base text-muted-foreground">{activity.location}</p>
-                            <span className="block sm:hidden text-base font-medium text-gray-500">{activity.period}</span>
-                          </div>
+                      ) : null}
+
+                      <div className="experience-card-copy min-w-0">
+                        <div className="experience-card-title-row">
+                          <h3 className="text-lg font-semibold text-foreground">{activity.title}</h3>
+                          <span className="experience-card-period text-sm font-medium text-muted-foreground">
+                            {activity.period}
+                          </span>
                         </div>
-                      </div>
 
-                      {/* Details */}
-                      <div className="mt-4">
-                        {activity.achievements && activity.achievements.length > 0 && (
-                          <div className="mb-6">
-                            <h4 className="font-semibold text-foreground mb-4">Key Achievements</h4>
-                            <div className="space-y-3">
-                              {activity.achievements.map((ach, i) => (
-                                <div key={i} className="flex items-start gap-3">
-                                  <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2.5 flex-shrink-0"></div>
-                                  <p className="text-base text-muted-foreground font-medium leading-relaxed">{ach}</p>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-
-                        {activity.skills && activity.skills.length > 0 && (
-                          <div>
-                            <h4 className="font-semibold text-foreground mb-3">Core Competencies</h4>
-                            {/* Mobile version - Row format */}
-                            <div className="sm:hidden space-y-2">
-                              {activity.skills.map((skill, i) => (
-                                <div key={i} className="bg-primary/10 text-primary px-4 py-2 rounded-lg text-sm font-medium border border-primary/20 w-full text-center">
-                                  {skill}
-                                </div>
-                              ))}
-                            </div>
-                            {/* Desktop version - Wrap format (exact match with Experience) */}
-                            <div className="hidden sm:flex flex-wrap gap-2">
-                              {activity.skills.map((skill, i) => (
-                                <span key={i} className="bg-primary/10 text-primary px-3 py-1.5 rounded-full text-sm font-medium hover:bg-primary/20 transition-colors duration-300">
-                                  {skill}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                        )}
+                        <p
+                          className={`experience-card-company text-base font-medium text-primary scroll-slide-up ${revealClass}`}
+                          style={getScrollRevealStyle('subheading')}
+                        >
+                          {activity.organization}
+                        </p>
+                        <p
+                          className={`experience-card-location text-sm text-muted-foreground scroll-slide-up ${revealClass}`}
+                          style={getScrollRevealStyle('body', 0)}
+                        >
+                          {activity.location}
+                        </p>
                       </div>
                     </div>
                   </div>
+
+                  <div className="mb-4">
+                    <h4
+                      className={`text-sm font-semibold text-foreground mb-2 scroll-slide-up ${revealClass}`}
+                      style={getScrollRevealStyle('body', 1)}
+                    >
+                      Key Achievements
+                    </h4>
+                    <div className="space-y-1.5">
+                      {activity.achievements.map((ach, i) => (
+                        <div
+                          key={i}
+                          className={`flex items-start gap-2 scroll-slide-up ${revealClass}`}
+                          style={getScrollRevealStyle('body', i + 2)}
+                        >
+                          <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
+                          <p className="text-sm text-muted-foreground leading-relaxed">{ach}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <h4
+                      className={`text-sm font-semibold text-foreground mb-2 scroll-slide-up ${revealClass}`}
+                      style={getScrollRevealStyle(competenciesHeadingDelay)}
+                    >
+                      Core Competencies
+                    </h4>
+                    <div className="flex flex-wrap gap-1.5">
+                      {activity.skills.map((skill, i) => (
+                        <span
+                          key={i}
+                          className={`bg-slate-50 text-slate-700 border border-border/60 px-2.5 py-1 rounded-md text-xs font-medium scroll-slide-up ${revealClass}`}
+                          style={getScrollRevealStyle(chipStartDelay + i * 65)}
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              );
+            })()
+          ))}
         </div>
 
         {/* Community Impact Summary */}
-        <div className="mt-16 sm:mt-20 lg:mt-24">
-          <div className="bg-white/90 backdrop-blur-xl rounded-[28px] border border-white/20 shadow-2xl hover:shadow-3xl transition-all duration-500 overflow-hidden">
-            <div className="bg-gradient-to-r from-gray-100/50 to-gray-200/50 p-8 sm:p-10 lg:p-12">
-              <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-8 sm:mb-12 text-center">
-                Community Highlights
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
-                <CommunityCounter 
-                  end={6} 
-                  suffix="+" 
-                  label="Years of Service" 
-                  className="text-foreground"
+        <div className="mt-12" ref={communitySummaryAnimation.ref}>
+          <div className="bg-white border border-border rounded-lg p-8 lg:p-10">
+            <h3 className="text-xl font-bold text-foreground mb-8 text-center">
+              Community Highlights
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className={`scroll-slide-up ${communitySummaryAnimation.visibleItems.has(0) ? 'visible' : ''}`}>
+                <CommunityCounter
+                  end={yearsOfService}
+                  suffix="+"
+                  label="Years of Service"
+                  className="text-sky-700"
                   delay={0}
                 />
-                <CommunityCounter 
-                  end={500} 
-                  suffix="+" 
-                  label="People Helped" 
-                  className="text-primary"
+              </div>
+              <div className={`scroll-slide-up ${communitySummaryAnimation.visibleItems.has(1) ? 'visible' : ''}`}>
+                <CommunityCounter
+                  end={peopleHelped}
+                  suffix="+"
+                  label="People Helped"
+                  className="text-emerald-700"
                   delay={200}
                 />
-                <CommunityCounter 
-                  end={3} 
-                  label="Organizations Served" 
-                  className="text-green-600"
+              </div>
+              <div className={`scroll-slide-up ${communitySummaryAnimation.visibleItems.has(2) ? 'visible' : ''}`}>
+                <CommunityCounter
+                  end={organizationsServed}
+                  label="Organizations Served"
+                  className="text-amber-600"
                   delay={400}
                 />
               </div>
             </div>
           </div>
-        </div>
         </div>
       </div>
     </section>

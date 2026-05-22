@@ -5,8 +5,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Switch, Route, useLocation } from "wouter";
 import Home from "@/pages/home";
 import Resume from "@/pages/resume";
-import ResumeUploadSignIn from "@/pages/resume-upload-signin";
-import UploadResumeDashboard from "@/pages/upload-resume-dashboard";
 import { useGlobalAnimations } from "@/hooks/useGlobalAnimations";
 
 function Router() {
@@ -14,9 +12,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/resume" component={Resume} />
-      <Route path="/upload" component={UploadResumeDashboard} />
-      <Route path="/sign-in" component={ResumeUploadSignIn} />
-      
+
       <Route>404: Page not found</Route>
     </Switch>
   );

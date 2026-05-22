@@ -1,1 +1,8 @@
 node_modules
+dist
+.netlify
+.DS_Store
+*.log
+*.pid
+local_host_*.log
+local_host_*.pid

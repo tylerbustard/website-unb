@@ -6,6 +6,58 @@ interface UseScrollAnimationOptions {
   triggerOnce?: boolean;
   delay?: number;
   reducedMotion?: boolean;
+  staggerDelay?: number;
+  fastStaggerDelay?: number;
+}
+
+export const SCROLL_REVEAL_OBSERVER_OPTIONS = {
+  threshold: 0.12,
+  rootMargin: '0px 0px -10% 0px',
+  triggerOnce: true,
+} as const;
+
+export const SCROLL_REVEAL_TIMING = {
+  section: 0,
+  cardHeader: 90,
+  subheading: 170,
+  bodyBase: 250,
+  bodyStep: 90,
+  denseBase: 300,
+  denseStep: 65,
+} as const;
+
+export type ScrollRevealStage = 'section' | 'cardHeader' | 'subheading' | 'body' | 'dense';
+
+export function getScrollRevealDelay(stage: ScrollRevealStage, index = 0, offset = 0) {
+  const position = Math.max(index + offset, 0);
+
+  switch (stage) {
+    case 'section':
+      return SCROLL_REVEAL_TIMING.section;
+    case 'cardHeader':
+      return SCROLL_REVEAL_TIMING.cardHeader;
+    case 'subheading':
+      return SCROLL_REVEAL_TIMING.subheading;
+    case 'body':
+      return SCROLL_REVEAL_TIMING.bodyBase + position * SCROLL_REVEAL_TIMING.bodyStep;
+    case 'dense':
+      return SCROLL_REVEAL_TIMING.denseBase + position * SCROLL_REVEAL_TIMING.denseStep;
+    default:
+      return 0;
+  }
+}
+
+export function getScrollRevealStyle(
+  stageOrDelay: ScrollRevealStage | number,
+  index = 0,
+  offset = 0,
+) {
+  const delay =
+    typeof stageOrDelay === 'number'
+      ? stageOrDelay
+      : getScrollRevealDelay(stageOrDelay, index, offset);
+
+  return { transitionDelay: `${delay}ms` };
 }
 
 // Enhanced scroll animation hook with better performance and accessibility
@@ -83,8 +135,8 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
         }
       },
       {
-        threshold: options.threshold || 0.15,
-        rootMargin: options.rootMargin || '0px 0px -8% 0px',
+        threshold: options.threshold ?? SCROLL_REVEAL_OBSERVER_OPTIONS.threshold,
+        rootMargin: options.rootMargin ?? SCROLL_REVEAL_OBSERVER_OPTIONS.rootMargin,
       }
     );
 
@@ -138,6 +190,8 @@ export function useStaggeredScrollAnimation(
       if (deltaTime > 0) {
         const velocity = deltaY / deltaTime;
         setScrollVelocity(velocity > 1 ? 'fast' : 'slow');
+        document.body.classList.toggle('scroll-fast', velocity > 1);
+        document.body.classList.toggle('scroll-slow', velocity <= 1);
       }
       
       setScrollDirection(currentScrollY > lastScrollY.current ? 'down' : 'up');
@@ -151,7 +205,10 @@ export function useStaggeredScrollAnimation(
           const baseDelay = options.delay || 0;
           // Get current scroll velocity from body classes
           const currentVelocity = document.body.classList.contains('scroll-fast') ? 'fast' : 'slow';
-          const staggerDelay = currentVelocity === 'fast' ? 40 : 80;
+          const staggerDelay =
+            currentVelocity === 'fast'
+              ? options.fastStaggerDelay ?? 40
+              : options.staggerDelay ?? 80;
           const adaptiveBaseDelay = currentVelocity === 'fast' ? Math.max(baseDelay * 0.4, 100) : baseDelay;
           
           // Clear any existing timeouts
@@ -180,8 +237,8 @@ export function useStaggeredScrollAnimation(
         }
       },
       {
-        threshold: options.threshold || 0.12,
-        rootMargin: options.rootMargin || '0px 0px -8% 0px',
+        threshold: options.threshold ?? SCROLL_REVEAL_OBSERVER_OPTIONS.threshold,
+        rootMargin: options.rootMargin ?? SCROLL_REVEAL_OBSERVER_OPTIONS.rootMargin,
       }
     );
 

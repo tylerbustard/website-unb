@@ -14,22 +14,19 @@ export function useCounterAnimation({
   delay = 0 
 }: UseCounterAnimationProps) {
   const [count, setCount] = useState(start);
-  const [hasStarted, setHasStarted] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
   const hasStartedRef = useRef(false);
   const animationFrameRef = useRef<number | null>(null);
-  const fallbackTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
     const element = elementRef.current;
-    if (!element || hasStarted) return;
+    if (!element || hasStartedRef.current) return;
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const completeImmediately = () => {
       if (hasStartedRef.current) return;
       hasStartedRef.current = true;
-      setHasStarted(true);
       setCount(end);
     };
 
@@ -37,7 +34,6 @@ export function useCounterAnimation({
       if (hasStartedRef.current) return;
 
       hasStartedRef.current = true;
-      setHasStarted(true);
 
       const startTime = Date.now() + delay;
       const animateCount = () => {
@@ -63,43 +59,35 @@ export function useCounterAnimation({
       animationFrameRef.current = requestAnimationFrame(animateCount);
     };
 
-    if (prefersReducedMotion || typeof IntersectionObserver === 'undefined') {
+    if (prefersReducedMotion) {
       completeImmediately();
       return;
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        if (entry.isIntersecting) {
-          startAnimation();
-        }
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '0px 0px 180px 0px'
-      }
-    );
+    const checkVisibility = () => {
+      if (hasStartedRef.current) return;
 
-    observer.observe(element);
+      const rect = element.getBoundingClientRect();
+      const isVisible = rect.top <= window.innerHeight - 120 && rect.bottom >= 0;
 
-    // Fallback: do not leave semantic values at zero if the section is never scrolled into view.
-    fallbackTimeoutRef.current = window.setTimeout(() => {
-      if (!hasStartedRef.current) {
-        completeImmediately();
+      if (isVisible) {
+        startAnimation();
       }
-    }, Math.max(delay + 1200, 1600));
+    };
+
+    checkVisibility();
+
+    window.addEventListener('scroll', checkVisibility, { passive: true });
+    window.addEventListener('resize', checkVisibility);
 
     return () => {
-      observer.unobserve(element);
+      window.removeEventListener('scroll', checkVisibility);
+      window.removeEventListener('resize', checkVisibility);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
-      if (fallbackTimeoutRef.current) {
-        window.clearTimeout(fallbackTimeoutRef.current);
-      }
     };
-  }, [end, start, duration, delay, hasStarted]);
+  }, [end, start, duration, delay]);
 
   return { count, elementRef };
 }
