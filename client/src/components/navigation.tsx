@@ -30,7 +30,7 @@ ${canonicalResumePdfUrl}`,
   const navSectionButtonClasses = (isActive: boolean) =>
     `nav-section-button ${isActive ? 'is-active' : ''}`;
   const initialPathRef = useRef(location);
-  const shouldPlayHomepageIntro = isHomePage && initialPathRef.current === "/";
+  const shouldPlayHomepageIntro = isHomePage && initialPathRef.current === "/" && typeof window !== "undefined" && !sessionStorage.getItem("homepageIntroPlayed");
   
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [navExpanded, setNavExpanded] = useState(!shouldPlayHomepageIntro);
@@ -49,6 +49,7 @@ ${canonicalResumePdfUrl}`,
 
     const expandTimer = setTimeout(() => setNavExpanded(true), 1500);
     const contentTimer = setTimeout(() => setShowNavContent(true), 2000);
+    try { sessionStorage.setItem("homepageIntroPlayed", "1"); } catch (e) {}
 
     return () => {
       clearTimeout(expandTimer);
@@ -133,6 +134,28 @@ ${canonicalResumePdfUrl}`,
       }
     };
   }, [openDropdown, hoverTimeout, isMobileMenuOpen]);
+
+  // Lock body scroll while the mobile menu is open (prevents scroll-chaining behind the overlay)
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    const prevOverscroll = document.documentElement.style.overscrollBehavior;
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overscrollBehavior = 'contain';
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      document.documentElement.style.overscrollBehavior = prevOverscroll;
+    };
+  }, [isMobileMenuOpen]);
+
+  // Close the mobile menu when the viewport grows to desktop so it cannot reappear stale
+  useEffect(() => {
+    const mql = window.matchMedia('(min-width: 1024px)');
+    const onChange = (e: MediaQueryListEvent) => { if (e.matches) setIsMobileMenuOpen(false); };
+    if (mql.matches) setIsMobileMenuOpen(false);
+    mql.addEventListener('change', onChange);
+    return () => mql.removeEventListener('change', onChange);
+  }, []);
 
   useEffect(() => {
     let rafId: number | null = null;
@@ -406,7 +429,9 @@ ${canonicalResumePdfUrl}`,
                     onMouseLeave={handleDropdownLeave}
                   >
                     <button
-                      onClick={() => scrollToSection('#experience')}
+                      onClick={(e) => { if (window.matchMedia('(pointer: coarse)').matches || e.detail === 0) { e.preventDefault(); setOpenDropdown(openDropdown === 'experience' ? null : 'experience'); } else { scrollToSection('#experience'); } }}
+                      aria-haspopup="menu"
+                      aria-expanded={openDropdown === 'experience'}
                       className={navSectionButtonClasses(currentSection === 'experience')}
                     >
                       Experience
@@ -546,7 +571,9 @@ ${canonicalResumePdfUrl}`,
                     onMouseLeave={handleDropdownLeave}
                   >
                     <button
-                      onClick={() => scrollToSection('#education')}
+                      onClick={(e) => { if (window.matchMedia('(pointer: coarse)').matches || e.detail === 0) { e.preventDefault(); setOpenDropdown(openDropdown === 'education' ? null : 'education'); } else { scrollToSection('#education'); } }}
+                      aria-haspopup="menu"
+                      aria-expanded={openDropdown === 'education'}
                       className={navSectionButtonClasses(currentSection === 'education')}
                     >
                       Education
@@ -600,7 +627,9 @@ ${canonicalResumePdfUrl}`,
                     onMouseLeave={handleDropdownLeave}
                   >
                     <button
-                      onClick={() => scrollToSection('#certifications')}
+                      onClick={(e) => { if (window.matchMedia('(pointer: coarse)').matches || e.detail === 0) { e.preventDefault(); setOpenDropdown(openDropdown === 'certifications' ? null : 'certifications'); } else { scrollToSection('#certifications'); } }}
+                      aria-haspopup="menu"
+                      aria-expanded={openDropdown === 'certifications'}
                       className={navSectionButtonClasses(currentSection === 'certifications')}
                     >
                       Certifications
@@ -698,7 +727,9 @@ ${canonicalResumePdfUrl}`,
                     onMouseLeave={handleDropdownLeave}
                   >
                     <button
-                      onClick={() => scrollToSection('#community')}
+                      onClick={(e) => { if (window.matchMedia('(pointer: coarse)').matches || e.detail === 0) { e.preventDefault(); setOpenDropdown(openDropdown === 'community' ? null : 'community'); } else { scrollToSection('#community'); } }}
+                      aria-haspopup="menu"
+                      aria-expanded={openDropdown === 'community'}
                       className={navSectionButtonClasses(currentSection === 'community')}
                     >
                       Community
@@ -768,7 +799,9 @@ ${canonicalResumePdfUrl}`,
                     onMouseLeave={handleDropdownLeave}
                   >
                     <button
-                      onClick={() => scrollToSection('#contact')}
+                      onClick={(e) => { if (window.matchMedia('(pointer: coarse)').matches || e.detail === 0) { e.preventDefault(); setOpenDropdown(openDropdown === 'contact' ? null : 'contact'); } else { scrollToSection('#contact'); } }}
+                      aria-haspopup="menu"
+                      aria-expanded={openDropdown === 'contact'}
                       className={navSectionButtonClasses(currentSection === 'contact')}
                     >
                       Contact
@@ -794,7 +827,7 @@ ${canonicalResumePdfUrl}`,
                             >
                               <div className="space-y-1">
                                 <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Email</div>
-                <div className="text-xs text-white/50">tyler@tylerbustard.com</div>
+                <div className="text-xs text-white/50">tyler@tylerbustard.ca</div>
                               </div>
                             </button>
 
@@ -845,7 +878,9 @@ ${canonicalResumePdfUrl}`,
                   onMouseLeave={handleDropdownLeave}
                 >
                   <button
-                    onClick={() => scrollToSection('#experience')}
+                    onClick={(e) => { if (window.matchMedia('(pointer: coarse)').matches || e.detail === 0) { e.preventDefault(); setOpenDropdown(openDropdown === 'experience' ? null : 'experience'); } else { scrollToSection('#experience'); } }}
+                    aria-haspopup="menu"
+                    aria-expanded={openDropdown === 'experience'}
                     className={navSectionButtonClasses(currentSection === 'experience')}
                   >
                     Experience
@@ -994,7 +1029,9 @@ ${canonicalResumePdfUrl}`,
                   onMouseLeave={handleDropdownLeave}
                 >
                   <button
-                    onClick={() => scrollToSection('#education')}
+                    onClick={(e) => { if (window.matchMedia('(pointer: coarse)').matches || e.detail === 0) { e.preventDefault(); setOpenDropdown(openDropdown === 'education' ? null : 'education'); } else { scrollToSection('#education'); } }}
+                    aria-haspopup="menu"
+                    aria-expanded={openDropdown === 'education'}
                     className={navSectionButtonClasses(currentSection === 'education')}
                   >
                     Education
@@ -1043,7 +1080,9 @@ ${canonicalResumePdfUrl}`,
                   onMouseLeave={handleDropdownLeave}
                 >
                   <button
-                    onClick={() => scrollToSection('#certifications')}
+                    onClick={(e) => { if (window.matchMedia('(pointer: coarse)').matches || e.detail === 0) { e.preventDefault(); setOpenDropdown(openDropdown === 'certifications' ? null : 'certifications'); } else { scrollToSection('#certifications'); } }}
+                    aria-haspopup="menu"
+                    aria-expanded={openDropdown === 'certifications'}
                     className={navSectionButtonClasses(
                       currentSection === 'certifications' || currentSection === 'skills',
                     )}
@@ -1370,7 +1409,9 @@ ${canonicalResumePdfUrl}`,
                   onMouseLeave={handleDropdownLeave}
                 >
                   <button
-                    onClick={() => scrollToSection('#community')}
+                    onClick={(e) => { if (window.matchMedia('(pointer: coarse)').matches || e.detail === 0) { e.preventDefault(); setOpenDropdown(openDropdown === 'community' ? null : 'community'); } else { scrollToSection('#community'); } }}
+                    aria-haspopup="menu"
+                    aria-expanded={openDropdown === 'community'}
                     className={navSectionButtonClasses(currentSection === 'community')}
                   >
                     Community
@@ -1449,7 +1490,9 @@ ${canonicalResumePdfUrl}`,
                   onMouseLeave={handleDropdownLeave}
                 >
                   <button
-                    onClick={() => scrollToSection('#contact')}
+                    onClick={(e) => { if (window.matchMedia('(pointer: coarse)').matches || e.detail === 0) { e.preventDefault(); setOpenDropdown(openDropdown === 'contact' ? null : 'contact'); } else { scrollToSection('#contact'); } }}
+                    aria-haspopup="menu"
+                    aria-expanded={openDropdown === 'contact'}
                     className={navSectionButtonClasses(currentSection === 'contact')}
                   >
                     Contact
@@ -1480,7 +1523,7 @@ ${canonicalResumePdfUrl}`,
                           >
                             <div className="space-y-1">
                               <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Email</div>
-                              <div className="text-xs text-white/50">tyler@tylerbustard.com</div>
+                              <div className="text-xs text-white/50">tyler@tylerbustard.ca</div>
                             </div>
                           </button>
 

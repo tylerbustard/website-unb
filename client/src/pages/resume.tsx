@@ -429,9 +429,9 @@ export default function Resume() {
                   </div>
                 </div>
                 <div id="contact" className="resume-header-contact">
-                  <a href="mailto:tyler@tylerbustard.com" className="resume-header-contact-link" aria-label="Email Tyler Bustard">
+                  <a href="mailto:tyler@tylerbustard.ca" className="resume-header-contact-link" aria-label="Email Tyler Bustard">
                     <Mail size={13} />
-                    tyler@tylerbustard.com
+                    tyler@tylerbustard.ca
                   </a>
                   <span className="resume-contact-separator" aria-hidden="true" />
                   <a href="tel:+16139851223" className="resume-header-contact-link" aria-label="Call Tyler Bustard">

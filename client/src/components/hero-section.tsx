@@ -59,6 +59,11 @@ export default function HeroSection() {
       return;
     }
 
+    if (document.getElementById("video-overlay")) return;
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
     const overlay = document.createElement("div");
     overlay.id = "video-overlay";
     overlay.style.cssText = `
@@ -111,6 +116,8 @@ export default function HeroSection() {
     const closeOverlay = () => {
       overlay.remove();
       document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = previousOverflow;
+      previouslyFocused?.focus?.();
     };
 
     const handleEscape = (event: KeyboardEvent) => {
@@ -130,6 +137,7 @@ export default function HeroSection() {
     overlay.appendChild(video);
     overlay.appendChild(closeButton);
     document.body.appendChild(overlay);
+    closeButton.focus();
   };
 
   const institutionLogos = [
