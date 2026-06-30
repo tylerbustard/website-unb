@@ -15,7 +15,7 @@ export default function Navigation() {
   const canonicalResumePdfUrl =
     typeof window !== 'undefined'
       ? new URL(canonicalResumePdfPath, window.location.origin).toString()
-      : `https://tylerbustard.ca${canonicalResumePdfPath}`;
+      : `https://tylerbustard.com${canonicalResumePdfPath}`;
   const emailResumeHref = `mailto:?subject=${encodeURIComponent('Tyler Bustard Resume')}&body=${encodeURIComponent(
     `Hi,
 
@@ -794,7 +794,7 @@ ${canonicalResumePdfUrl}`,
                             >
                               <div className="space-y-1">
                                 <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Email</div>
-                <div className="text-xs text-white/50">tyler@tylerbustard.ca</div>
+                <div className="text-xs text-white/50">tyler@tylerbustard.com</div>
                               </div>
                             </button>
 
@@ -1480,7 +1480,7 @@ ${canonicalResumePdfUrl}`,
                           >
                             <div className="space-y-1">
                               <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Email</div>
-                              <div className="text-xs text-white/50">tyler@tylerbustard.ca</div>
+                              <div className="text-xs text-white/50">tyler@tylerbustard.com</div>
                             </div>
                           </button>
 

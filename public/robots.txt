@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tylerbustard.ca/sitemap.xml
+Sitemap: https://tylerbustard.com/sitemap.xml

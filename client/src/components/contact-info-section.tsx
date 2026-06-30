@@ -18,7 +18,7 @@ type ContactFormState = {
   "bot-field": string;
 };
 
-const CONTACT_FORM_ENDPOINT = "https://formsubmit.co/ajax/tyler@tylerbustard.ca";
+const CONTACT_FORM_ENDPOINT = "https://formsubmit.co/ajax/tyler@tylerbustard.com";
 
 export default function ContactInfoSection() {
   const { toast } = useToast();
@@ -73,7 +73,7 @@ export default function ContactInfoSection() {
         _template: "table",
         _captcha: "false",
         _honey: formData["bot-field"],
-        _url: "https://tylerbustard.ca/#contact",
+        _url: "https://tylerbustard.com/#contact",
       };
 
       const response = await fetch(CONTACT_FORM_ENDPOINT, {
@@ -184,7 +184,7 @@ export default function ContactInfoSection() {
 
                   <div className="contact-detail-list">
                     <a
-                      href="mailto:tyler@tylerbustard.ca"
+                      href="mailto:tyler@tylerbustard.com"
                       className={`contact-detail-item scroll-slide-up ${revealClass}`}
                       style={getScrollRevealStyle("body", 1)}
                     >
@@ -193,7 +193,7 @@ export default function ContactInfoSection() {
                       </span>
                       <span className="contact-detail-copy">
                         <span className="contact-detail-label">Email</span>
-                        <span className="contact-detail-value">tyler@tylerbustard.ca</span>
+                        <span className="contact-detail-value">tyler@tylerbustard.com</span>
                       </span>
                     </a>
 
@@ -212,7 +212,7 @@ export default function ContactInfoSection() {
                     </a>
 
                     <a
-                      href="https://tylerbustard.ca"
+                      href="https://tylerbustard.com"
                       className={`contact-detail-item scroll-slide-up ${revealClass}`}
                       target="_blank"
                       rel="noreferrer"
@@ -223,7 +223,7 @@ export default function ContactInfoSection() {
                       </span>
                       <span className="contact-detail-copy">
                         <span className="contact-detail-label">Website</span>
-                        <span className="contact-detail-value">tylerbustard.ca</span>
+                        <span className="contact-detail-value">tylerbustard.com</span>
                       </span>
                     </a>
 
