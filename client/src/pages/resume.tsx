@@ -508,7 +508,7 @@ export default function Resume() {
                     const isAreaVisible = certificationAnimation.visibleItems.has(certificationRevealOrder.get(area.title) ?? -1);
 
                     return (
-                      <article key={area.title} className="resume-certification-area resume-certification-area-compact">
+                      <article key={area.title} id={`certifications-${slugify(area.title)}`} className="resume-certification-area resume-certification-area-compact">
                         <div
                           className={`resume-certification-area-header resume-certification-area-header-compact scroll-slide-up ${
                             isAreaVisible ? "visible" : ""
@@ -539,6 +539,7 @@ export default function Resume() {
                           {area.certifications.map((certification, certificationIndex) => (
                             <div
                               key={`${area.title}-${certification.name}`}
+                              id={`cert-${slugify(certification.name)}`}
                               className={`resume-certification-card resume-certification-card-compact scroll-slide-up ${
                                 isAreaVisible ? "visible" : ""
                               }`}

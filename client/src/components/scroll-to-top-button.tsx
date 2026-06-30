@@ -17,17 +17,12 @@ export default function ScrollToTopButton({
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout | null = null;
-    let lastKnownScrollY = 0;
 
     const handleScroll = () => {
       if (timeoutId) clearTimeout(timeoutId);
 
       timeoutId = setTimeout(() => {
-        const scrollY = window.scrollY;
-        if (Math.abs(scrollY - lastKnownScrollY) > 50) {
-          setShowScrollToTop(scrollY > 300);
-          lastKnownScrollY = scrollY;
-        }
+        setShowScrollToTop(window.scrollY > 300);
       }, 100);
     };
 
