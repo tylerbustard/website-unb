@@ -37,6 +37,7 @@ import roiLogo from "@assets/roi_logo_icon.png";
 import anthropicLogo from "@assets/anthropic_logo.svg";
 import openaiLogo from "@assets/openai_logo.svg";
 import nccLogo from "@assets/northeast_christian_college_logo.png";
+import queensLogo from "@assets/queens_university_logo.png";
 
 type ResumeEntry = {
   id: string;
@@ -236,6 +237,20 @@ export default function Resume() {
   ];
 
   const educationEntries: ResumeEntry[] = [
+    {
+      id: "education-rotman-school-of-management",
+      role: "Master of Business Administration",
+      period: "2024 - Present",
+      organization: "Rotman School of Management",
+      location: "University of Toronto · Toronto, ON",
+      logo: queensLogo,
+      bullets: [
+        "Analyst, Financials and Real Estate sectors - Rotman Student Investment Fund",
+        "Case Competitions: 1st Place (CIBC), 3rd Place (TD), RBC and SLC participant",
+        "Member of Finance, Asset Management, Business Technology, and Management Consulting Associations",
+        "Entrance Scholarship and Emerging Canadian Leadership Award, Total $25,000",
+      ],
+    },
     {
       id: "education-unb",
       role: "Bachelor of Business Administration, Finance",
