@@ -36,6 +36,7 @@ import amaLogo from "@assets/ama_logo.png";
 import garpLogo from "@assets/garp_logo.png";
 import hrciLogo from "@assets/hrci_logo.png";
 import scrumAllianceLogo from "@assets/scrum_alliance_logo.png";
+import ibmLogo from "@assets/ibm_logo.svg";
 
 interface Certification {
   name: string;
@@ -92,6 +93,14 @@ export default function CertificationsSection() {
   });
 
   const [activeCert, setActiveCert] = useState<CertificateModalCert | null>(null);
+  const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
+  const toggleCategory = (title: string) =>
+    setExpandedCategories((prev) => {
+      const next = new Set(prev);
+      if (next.has(title)) next.delete(title);
+      else next.add(title);
+      return next;
+    });
   const openCertificate = (certification: Certification) => {
     const asset = getCertificateAsset(certification.name);
     if (asset) {
@@ -105,6 +114,15 @@ export default function CertificationsSection() {
       });
     }
   };
+
+  const coreCredentials: Certification[] = [
+    { name: "CFA Level I Candidate", year: "2026", issuer: "CFA Institute", logoSrc: cfaLogo },
+    { name: "Canadian Securities Course", year: "2021", issuer: "Canadian Securities Institute", logoSrc: csiLogo },
+    { name: "Bloomberg Market Concepts Certificate", year: "2020", issuer: "Bloomberg", logoSrc: bloombergLogo },
+    { name: "Discounted Cash Flow Analysis and Modeling", year: "2024", issuer: "Training The Street", logoSrc: trainingTheStreetLogo },
+    { name: "Financial Risk and Regulation (FRR)", year: "2025", issuer: "Global Association of Risk Professionals", logoSrc: garpLogo },
+    { name: "GRE General Test", year: "2024", issuer: "ETS", detail: "Score: 325", logoSrc: etsLogo },
+  ];
 
   const certificationCategories: CertificationCategory[] = ([
     {
@@ -136,17 +154,17 @@ export default function CertificationsSection() {
       title: "Data & Business Intelligence",
       caption: "Analytics, visualization, and automation",
       certifications: [
-        { name: "Google Data Analytics Professional Certificate", year: "2023", issuer: "Google", logoSrc: courseraLogo },
+        { name: "Google Data Analytics Professional Certificate", year: "2023", issuer: "Google", logoSrc: googleLogo },
         { name: "Data Visualization with Tableau", year: "2023", issuer: "UC Davis", logoSrc: courseraLogo },
         { name: "Python for Everybody Specialization", year: "2023", issuer: "University of Michigan", logoSrc: courseraLogo },
         { name: "SQL for Data Science", year: "2020", issuer: "UC Davis", logoSrc: courseraLogo },
-        { name: "Power BI Data Visualization", year: "2020", issuer: "Microsoft", logoSrc: courseraLogo },
-        { name: "IBM Data Analyst Professional Certificate", year: "2021", issuer: "IBM", logoSrc: courseraLogo },
-        { name: "Foundations: Data, Data, Everywhere", year: "2022", issuer: "Google", logoSrc: courseraLogo },
-        { name: "Ask Questions to Make Data-Driven Decisions", year: "2022", issuer: "Google", logoSrc: courseraLogo },
-        { name: "Prepare Data for Exploration", year: "2022", issuer: "Google", logoSrc: courseraLogo },
-        { name: "Process Data from Dirty to Clean", year: "2022", issuer: "Google", logoSrc: courseraLogo },
-        { name: "Analyze Data to Answer Questions", year: "2022", issuer: "Google", logoSrc: courseraLogo },
+        { name: "Power BI Data Visualization", year: "2020", issuer: "Microsoft", logoSrc: microsoftLogo },
+        { name: "IBM Data Analyst Professional Certificate", year: "2021", issuer: "IBM", logoSrc: ibmLogo },
+        { name: "Foundations: Data, Data, Everywhere", year: "2022", issuer: "Google", logoSrc: googleLogo },
+        { name: "Ask Questions to Make Data-Driven Decisions", year: "2022", issuer: "Google", logoSrc: googleLogo },
+        { name: "Prepare Data for Exploration", year: "2022", issuer: "Google", logoSrc: googleLogo },
+        { name: "Process Data from Dirty to Clean", year: "2022", issuer: "Google", logoSrc: googleLogo },
+        { name: "Analyze Data to Answer Questions", year: "2022", issuer: "Google", logoSrc: googleLogo },
         { name: "Google Analytics Certification", year: "2022", issuer: "Google", logoSrc: googleLogo },
         { name: "Microsoft Certified: Power BI Data Analyst Associate", year: "2021", issuer: "Microsoft", logoSrc: microsoftLogo },
         { name: "Microsoft Office Specialist: Excel Associate", year: "2024", issuer: "Microsoft", logoSrc: microsoftLogo },
@@ -226,53 +244,35 @@ export default function CertificationsSection() {
       ],
     },
     {
-      title: "Claude Code & Agent Skills",
-      caption: "Anthropic Academy credentials for agentic development",
+      title: "AI & Agentic Development",
+      caption: "Anthropic and OpenAI Academy credentials across Claude, Claude Code, MCP, and Codex",
       certifications: [
         { name: "Claude Code 101", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic", emphasis: true },
         { name: "Claude Code in Action", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic", emphasis: true },
-        { name: "Introduction to subagents", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
-        { name: "Introduction to agent skills", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
-      ],
-    },
-    {
-      title: "Claude Platform, API & MCP",
-      caption: "Claude engineering paths across API, MCP, and cloud deployment",
-      certifications: [
         { name: "Building with the Claude API", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic", emphasis: true },
+        { name: "Get Started with Codex", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai", emphasis: true },
+        { name: "Claude 101", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic", emphasis: true },
         { name: "Introduction to Model Context Protocol", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
         { name: "Model Context Protocol: Advanced Topics", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
+        { name: "Introduction to Subagents", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
+        { name: "Introduction to Agent Skills", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
         { name: "Claude with Amazon Bedrock", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
         { name: "Claude with Google Cloud's Vertex AI", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
-      ],
-    },
-    {
-      title: "Claude AI Fluency",
-      caption: "Claude productivity, AI fluency, education, nonprofit, and small business coursework",
-      certifications: [
-        { name: "Claude 101", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic", emphasis: true },
         { name: "AI Capabilities and Limitations", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
         { name: "AI Fluency: Framework & Foundations", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
-        { name: "AI Fluency for educators", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
-        { name: "AI Fluency for students", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
+        { name: "AI Fluency for Educators", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
+        { name: "AI Fluency for Students", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
         { name: "Teaching AI Fluency", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
-        { name: "AI Fluency for nonprofits", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
+        { name: "AI Fluency for Nonprofits", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
         { name: "AI Fluency for Small Businesses", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
         { name: "Introduction to Claude Cowork", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
-      ],
-    },
-    {
-      title: "OpenAI Codex Academy",
-      caption: "OpenAI Academy modules for coding agents and automated workflows",
-      certifications: [
-        { name: "Get started with Codex", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai", emphasis: true },
-        { name: "Try real tasks with Codex", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
-        { name: "Write better prompts for Codex", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
-        { name: "Work faster with the Codex app", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
-        { name: "Codex fundamentals", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai", emphasis: true },
-        { name: "Hands-on workshop: Practical Codex workflows", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
-        { name: "How OpenAI uses Codex", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
-        { name: "Advanced workflows and automations", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
+        { name: "Try Real Tasks with Codex", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
+        { name: "Write Better Prompts for Codex", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
+        { name: "Work Faster with the Codex App", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
+        { name: "Codex Fundamentals", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
+        { name: "Hands-On Workshop: Practical Codex Workflows", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
+        { name: "How OpenAI Uses Codex", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
+        { name: "Advanced Workflows and Automations", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
       ],
     },
     {
@@ -302,7 +302,6 @@ export default function CertificationsSection() {
     "Software & Programming",
     "Human Resources",
     "Teaching & Learning",
-    "Claude AI Fluency",
     "Graduate Admissions",
   ]);
 
@@ -353,6 +352,56 @@ export default function CertificationsSection() {
           ref={certificationItemsAnimation.ref}
           className="homepage-certifications-panel group bg-white border border-border rounded-lg p-6 transition-shadow duration-200 hover:shadow-sm sm:p-8 lg:p-10"
         >
+          <div className="mb-8 border-b border-border pb-8">
+            <h3 className="resume-certification-area-title homepage-certification-area-title">Core Credentials</h3>
+            <p className="resume-certification-area-caption homepage-certification-area-caption mt-1">
+              Flagship finance, valuation, and assessment credentials
+            </p>
+            <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {coreCredentials.map((credential) => {
+                const coreAsset = getCertificateAsset(credential.name);
+                return (
+                  <div
+                    key={`core-${credential.name}`}
+                    className={`flex items-center gap-3 rounded-lg border border-border bg-white p-4 border-l-2 border-l-primary${coreAsset ? " certificate-card-viewable cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2" : ""}`}
+                    role={coreAsset ? "button" : undefined}
+                    tabIndex={coreAsset ? 0 : undefined}
+                    aria-haspopup={coreAsset ? "dialog" : undefined}
+                    aria-label={coreAsset ? `View ${credential.name} certificate` : undefined}
+                    onMouseEnter={coreAsset ? () => preloadCertificateImage(coreAsset.image) : undefined}
+                    onFocus={coreAsset ? () => preloadCertificateImage(coreAsset.image) : undefined}
+                    onClick={coreAsset ? () => openCertificate(credential) : undefined}
+                    onKeyDown={coreAsset ? (event) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        openCertificate(credential);
+                      }
+                    } : undefined}
+                  >
+                    {credential.logoSrc ? (
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-md border border-border bg-white">
+                        <img src={credential.logoSrc} alt="" aria-hidden="true" className="h-full w-full object-contain p-1.5" />
+                      </span>
+                    ) : null}
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-sm font-semibold text-foreground">{credential.name}</p>
+                      <p className="mt-0.5 truncate text-xs text-muted-foreground">
+                        {credential.issuer} · {credential.year}
+                        {credential.detail ? ` · ${credential.detail}` : ""}
+                      </p>
+                    </div>
+                    {coreAsset ? (
+                      <span className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-primary">
+                        <Eye size={13} aria-hidden="true" />
+                        View
+                      </span>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
           <div className="resume-certification-columns homepage-certification-columns">
             {certificationColumns.map((column, columnIndex) => (
               <div
@@ -386,7 +435,10 @@ export default function CertificationsSection() {
                         </div>
 
                         <div className="resume-certification-cards homepage-certification-cards">
-                          {category.certifications.map((certification, certificationIndex) => {
+                          {(expandedCategories.has(category.title)
+                            ? category.certifications
+                            : category.certifications.slice(0, 4)
+                          ).map((certification, certificationIndex) => {
                             const certAsset = getCertificateAsset(certification.name);
                             return (
                             <div
@@ -452,6 +504,18 @@ export default function CertificationsSection() {
                             );
                           })}
                         </div>
+                        {category.certifications.length > 4 ? (
+                          <button
+                            type="button"
+                            className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-primary transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 rounded-sm"
+                            aria-expanded={expandedCategories.has(category.title)}
+                            onClick={() => toggleCategory(category.title)}
+                          >
+                            {expandedCategories.has(category.title)
+                              ? "Show fewer"
+                              : `Show all ${category.certifications.length}`}
+                          </button>
+                        ) : null}
                       </article>
                     );
                   })()
