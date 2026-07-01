@@ -101,6 +101,7 @@ export default function CertificationsSection() {
         year: certification.year,
         image: asset.image,
         alt: asset.alt,
+        logoSrc: certification.logoSrc,
       });
     }
   };

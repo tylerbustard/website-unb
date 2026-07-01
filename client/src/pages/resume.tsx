@@ -81,6 +81,7 @@ export default function Resume() {
         year: certification.year,
         image: asset.image,
         alt: asset.alt,
+        logoSrc: certification.logo,
       });
     }
   };
@@ -393,6 +394,7 @@ export default function Resume() {
                 year: entry.period,
                 image: entryAsset.image,
                 alt: entryAsset.alt,
+                logoSrc: entry.logo,
               })
             }
           >
