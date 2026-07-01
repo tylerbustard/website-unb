@@ -357,7 +357,9 @@ export default function Resume() {
   const renderResumeEntry = (
     entry: ResumeEntry,
     options?: { showSkills?: boolean; isVisible?: boolean },
-  ) => (
+  ) => {
+    const entryAsset = getCertificateAsset(entry.organization);
+    return (
     <article key={entry.id} id={entry.id} className="resume-entry">
       <div
         className={`resume-entry-header scroll-slide-up ${options?.isVisible ? "visible" : ""}`}
@@ -378,6 +380,26 @@ export default function Resume() {
         <span className="resume-entry-organization">{entry.organization}</span>
         <span className="resume-entry-meta-separator" aria-hidden="true">|</span>
         <span className="resume-entry-location">{entry.location}</span>
+        {entryAsset ? (
+          <button
+            type="button"
+            className="resume-entry-view-diploma inline-flex items-center gap-1 text-primary text-sm font-medium print:hidden"
+            aria-haspopup="dialog"
+            aria-label={`View ${entry.organization} diploma`}
+            onClick={() =>
+              setActiveCert({
+                title: entry.role,
+                issuer: entry.organization,
+                year: entry.period,
+                image: entryAsset.image,
+                alt: entryAsset.alt,
+              })
+            }
+          >
+            <Eye size={13} aria-hidden="true" />
+            View
+          </button>
+        ) : null}
       </div>
       <ul className="resume-entry-bullets">
         {entry.bullets.map((bullet, bulletIndex) => (
@@ -399,7 +421,8 @@ export default function Resume() {
         </p>
       ) : null}
     </article>
-  );
+    );
+  };
 
   // Fetch resumes to check if any exist
   const resumesQuery = useQuery({

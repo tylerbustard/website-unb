@@ -5,11 +5,12 @@ import {
   useScrollAnimation,
   useStaggeredScrollAnimation,
 } from "@/hooks/useScrollAnimation";
-import type { Ref } from "react";
+import { useState, type Ref } from "react";
 import { useCounterAnimation } from "@/hooks/use-counter-animation";
 import {
   BookOpen,
   BriefcaseBusiness,
+  Eye,
   Globe2,
   Landmark,
   Megaphone,
@@ -24,6 +25,8 @@ import {
 } from "lucide-react";
 import universityLogo from "@assets/University_of_New_Brunswick_Logo.svg_1755912478863.png";
 import nccLogo from "@assets/northeast_christian_college_logo.png";
+import { getCertificateAsset } from "@/lib/certificates";
+import { CertificateModal, type CertificateModalCert } from "@/components/certificate-modal";
 
 interface CounterStatProps {
   end: number;
@@ -64,6 +67,8 @@ export default function EducationSection() {
     threshold: 0.18,
     delay: 60,
   });
+
+  const [activeCert, setActiveCert] = useState<CertificateModalCert | null>(null);
 
   const unbEducation: EducationEntry = {
     institution: "University of New Brunswick",
@@ -269,6 +274,7 @@ export default function EducationSection() {
     const revealClass = isVisible ? "visible" : "";
     const courseworkHeadingDelay = getScrollRevealDelay("body", achievements.length + 2);
     const courseworkCopyDelay = courseworkHeadingDelay + 90;
+    const educationAsset = getCertificateAsset(education.institution);
 
     return (
       <div
@@ -308,6 +314,26 @@ export default function EducationSection() {
               >
                 {education.major}, {education.location}
               </p>
+              {educationAsset ? (
+                <button
+                  type="button"
+                  className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 rounded-sm"
+                  aria-haspopup="dialog"
+                  aria-label={`View ${education.institution} diploma`}
+                  onClick={() =>
+                    setActiveCert({
+                      title: education.degree,
+                      issuer: education.institution,
+                      year: education.year,
+                      image: educationAsset.image,
+                      alt: educationAsset.alt,
+                    })
+                  }
+                >
+                  <Eye size={14} aria-hidden="true" />
+                  View Diploma
+                </button>
+              ) : null}
             </div>
           </div>
         </div>
@@ -460,6 +486,13 @@ export default function EducationSection() {
           </div>
         </div>
       </div>
+      <CertificateModal
+        open={activeCert !== null}
+        onOpenChange={(open) => {
+          if (!open) setActiveCert(null);
+        }}
+        cert={activeCert}
+      />
     </section>
   );
 }

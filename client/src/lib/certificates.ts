@@ -38,9 +38,11 @@ export const certificateAssets: Record<string, CertificateAsset> = {
   "ai-fluency-for-nonprofits": { image: "/certificates/ai-fluency-for-nonprofits.webp", alt: "AI Fluency for nonprofits certificate from Anthropic Academy" },
   "ai-fluency-for-small-businesses": { image: "/certificates/ai-fluency-for-small-businesses.webp", alt: "AI Fluency for Small Businesses certificate from Anthropic Academy" },
   "introduction-to-claude-cowork": { image: "/certificates/introduction-to-claude-cowork.webp", alt: "Introduction to Claude Cowork certificate from Anthropic Academy" },
+  "university-of-new-brunswick": { image: "/certificates/university-of-new-brunswick.webp", alt: "University of New Brunswick diploma — Bachelor of Business Administration in Finance" },
+  "northeast-christian-college": { image: "/certificates/northeast-christian-college.webp", alt: "Northeast Christian College Certificate of Theology" },
 };
 
-/** Look up a certificate preview by the certification's display name. */
+/** Look up a certificate/diploma preview by a certification, institution, or organization display name. */
 export function getCertificateAsset(name: string): CertificateAsset | undefined {
   return certificateAssets[slugify(name)];
 }
