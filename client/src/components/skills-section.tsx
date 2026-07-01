@@ -319,7 +319,9 @@ export default function CertificationsSection() {
   );
   const certificationItemsAnimation = useStaggeredScrollAnimation(certificationRevealSequence.length + 3, {
     ...SCROLL_REVEAL_OBSERVER_OPTIONS,
-    threshold: 0.14,
+    // The panel is far taller than a phone viewport, so a high threshold can never be
+    // reached on mobile (max ratio = viewport/panel height). Keep it near zero.
+    threshold: 0.02,
     delay: 90,
     staggerDelay: 90,
     fastStaggerDelay: 55,

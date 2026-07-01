@@ -215,11 +215,11 @@ export function useStaggeredScrollAnimation(
           timeoutsRef.current.forEach(timeout => clearTimeout(timeout));
           timeoutsRef.current = [];
           
-          // Trigger staggered animation
+          // Trigger staggered animation (capped so long lists never leave late items blank)
           for (let i = 0; i < itemCount; i++) {
             const timeout = setTimeout(() => {
               setVisibleItems(prev => new Set([...Array.from(prev), i]));
-            }, adaptiveBaseDelay + (i * staggerDelay));
+            }, Math.min(adaptiveBaseDelay + (i * staggerDelay), 600));
             timeoutsRef.current.push(timeout);
           }
           
