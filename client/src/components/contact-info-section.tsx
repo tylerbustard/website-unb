@@ -128,7 +128,7 @@ export default function ContactInfoSection() {
           className={`text-center mb-12 sm:mb-16 lg:mb-20 scroll-slide-up ${headerAnimation.isVisible ? "visible" : ""}`}
         >
           <p className="section-kicker mb-4">Contact</p>
-          <h2 className="text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+          <h2 className="text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">
             Let&apos;s connect
           </h2>
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-500 sm:text-xl lg:text-2xl">

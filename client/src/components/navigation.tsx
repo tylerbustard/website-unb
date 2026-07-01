@@ -1072,7 +1072,7 @@ ${canonicalResumePdfUrl}`,
                             <div className="space-y-1">
                               <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Northeast Christian College</div>
                               <div className="text-xs text-white/50">Theology Program</div>
-                              <div className="text-xs text-white/40">Marketing</div>
+                              <div className="text-xs text-white/40">Major in Theology</div>
                             </div>
                           </button>
                         </div>
