@@ -297,14 +297,14 @@ export default function EducationSection() {
             <div className="experience-card-copy min-w-0">
               <div className="experience-card-title-row">
                 <h3 className="text-lg font-semibold text-foreground">{education.institution}</h3>
-                <div className="flex flex-col items-start gap-1 sm:items-end">
+                <div className="flex flex-col items-end gap-0.5">
                   <span className="experience-card-period text-sm font-medium text-muted-foreground">
                     {education.year}
                   </span>
                   {educationAsset ? (
                     <button
                       type="button"
-                      className="inline-flex items-center gap-1 rounded-sm text-xs font-semibold text-primary transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
+                      className="inline-flex items-center gap-1 rounded-sm text-xs font-medium text-primary transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
                       aria-haspopup="dialog"
                       aria-label={`View ${education.institution} diploma`}
                       onClick={() =>
@@ -317,7 +317,7 @@ export default function EducationSection() {
                         })
                       }
                     >
-                      <Eye size={12} aria-hidden="true" />
+                      <Eye size={13} aria-hidden="true" />
                       View Diploma
                     </button>
                   ) : null}
