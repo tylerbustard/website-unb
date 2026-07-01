@@ -69,6 +69,14 @@ export default function EducationSection() {
   });
 
   const [activeCert, setActiveCert] = useState<CertificateModalCert | null>(null);
+  const [expandedCoursework, setExpandedCoursework] = useState<Set<string>>(new Set());
+  const toggleCoursework = (institution: string) =>
+    setExpandedCoursework((prev) => {
+      const next = new Set(prev);
+      if (next.has(institution)) next.delete(institution);
+      else next.add(institution);
+      return next;
+    });
 
   const unbEducation: EducationEntry = {
     institution: "University of New Brunswick",
@@ -94,10 +102,7 @@ export default function EducationSection() {
   ];
 
   const nccAchievements = [
-    "Major in Theology with coursework across biblical studies, ministry, leadership, communication, Christian ethics, language, and practical skills",
-    "Campus and ministry exposure included weekend ministry, chapel service, student council, social committees, and annual benefit concert pathways",
-    "Built practical communication, event coordination, promotion, and leadership experience through campus initiatives",
-    "Completed applied ministry preparation through personal evangelism, preaching, prayer, teacher training, and youth worker seminar coursework",
+    "One-year theology program with applied coursework in communication, leadership, and community programming",
   ];
 
   const unbCourseCategories: CourseCategory[] = [
@@ -343,6 +348,7 @@ export default function EducationSection() {
           </div>
         </div>
 
+        {achievements.length > 0 ? (
         <div className="mb-4">
           <h4
             className={`text-sm font-semibold text-foreground mb-2 scroll-slide-up ${revealClass}`}
@@ -363,24 +369,30 @@ export default function EducationSection() {
             ))}
           </div>
         </div>
+        ) : null}
 
         <div className="mt-5 border-t border-border/50 pt-5">
-          <div className="mb-4">
+          <div className="mb-1 flex items-center justify-between gap-3">
             <h4
               className={`text-sm font-semibold text-foreground scroll-slide-up ${revealClass}`}
               style={getScrollRevealStyle(courseworkHeadingDelay)}
             >
               Coursework
             </h4>
-            <p
-              className={`mt-1 text-sm text-muted-foreground scroll-slide-up ${revealClass}`}
-              style={getScrollRevealStyle(courseworkCopyDelay)}
+            <button
+              type="button"
+              className="inline-flex items-center gap-1 rounded-sm text-xs font-medium text-primary transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
+              aria-expanded={expandedCoursework.has(education.institution)}
+              onClick={() => toggleCoursework(education.institution)}
             >
-              Academic areas arranged in the same grouped style as certifications, with every course listed directly.
-            </p>
+              {expandedCoursework.has(education.institution)
+                ? "Hide coursework"
+                : `Show coursework (${courseColumns.flat().reduce((n, c) => n + c.courses.length, 0)} courses)`}
+            </button>
           </div>
 
-          <div className="homepage-coursework-panel">
+          {expandedCoursework.has(education.institution) ? (
+          <div className="homepage-coursework-panel mt-3">
             <div className="homepage-coursework-columns">
               {courseColumns.map((column, columnIndex) => (
                 <div key={`${education.institution}-course-column-${columnIndex}`} className="homepage-coursework-column">
@@ -424,6 +436,7 @@ export default function EducationSection() {
               ))}
             </div>
           </div>
+          ) : null}
         </div>
       </div>
     );
@@ -433,7 +446,7 @@ export default function EducationSection() {
     <section
       ref={sectionAnimation.ref}
       id="education"
-      className="py-20 sm:py-28 lg:py-36 relative overflow-hidden bg-slate-50/50"
+      className="py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-slate-50/50"
     >
       <div className="container-width">
         {/* Header */}
@@ -442,7 +455,7 @@ export default function EducationSection() {
           className={`text-center mb-12 sm:mb-16 lg:mb-20 scroll-slide-up ${headerAnimation.isVisible ? 'visible' : ''}`}
         >
           <p className="section-kicker mb-4">Academic foundation</p>
-          <h2 className="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+          <h2 className="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
             Education
           </h2>
           <p className="mx-auto max-w-3xl text-lg leading-relaxed text-muted-foreground sm:text-xl lg:text-2xl">

@@ -82,7 +82,7 @@ export default function ContactSection() {
             ref={headerAnimation.ref}
             className={`text-center mb-8 sm:mb-12 lg:mb-16 scroll-slide-up ${headerAnimation.isVisible ? 'visible' : ''}`}
           >
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight">Contact</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6 tracking-tight">Contact</h2>
             <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Ready to discuss your next project or opportunity? I'd love to hear from you.
             </p>
