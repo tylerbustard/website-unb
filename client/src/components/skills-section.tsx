@@ -31,6 +31,10 @@ import pythonLogo from "@assets/python_logo.svg";
 import pmiLogo from "@assets/pmi_logo.png";
 import acueLogo from "@assets/acue_logo.png";
 import cphrLogo from "@assets/cphr_logo.png";
+import shrmLogo from "@assets/shrm_logo.png";
+import amaLogo from "@assets/ama_logo.png";
+import garpLogo from "@assets/garp_logo.png";
+import hrciLogo from "@assets/hrci_logo.png";
 
 interface Certification {
   name: string;
@@ -110,7 +114,7 @@ export default function CertificationsSection() {
         { name: "Financial & Valuation Modeling", year: "2020", issuer: "Wall Street Prep", logoSrc: wallStreetPrepLogo },
         { name: "Bloomberg Market Concepts Certificate", year: "2020", issuer: "Bloomberg", logoSrc: bloombergLogo },
         { name: "CFA Institute Investment Foundations", year: "2021", issuer: "CFA Institute", logoSrc: cfaLogo },
-        { name: "Financial Risk and Regulation (FRR)", year: "2025", issuer: "Global Association of Risk Professionals" },
+        { name: "Financial Risk and Regulation (FRR)", year: "2025", issuer: "Global Association of Risk Professionals", logoSrc: garpLogo },
       ],
     },
     {
@@ -188,7 +192,7 @@ export default function CertificationsSection() {
       caption: "Digital marketing, advertising, and inbound",
       certifications: [
         { name: "Inbound Marketing Certification", year: "2023", issuer: "HubSpot Academy", logoSrc: hubspotLogo, emphasis: true },
-        { name: "AMA PCM Digital Marketing", year: "2017", issuer: "American Marketing Association" },
+        { name: "AMA PCM Digital Marketing", year: "2017", issuer: "American Marketing Association", logoSrc: amaLogo },
         { name: "Google Ads Measurement Certification", year: "2022", issuer: "Google", logoSrc: googleLogo },
         { name: "Google Ads Search Certification", year: "2022", issuer: "Google", logoSrc: googleLogo },
       ],
@@ -197,9 +201,9 @@ export default function CertificationsSection() {
       title: "Human Resources",
       caption: "People, talent, and HR management credentials",
       certifications: [
-        { name: "SHRM Certified Professional (SHRM-CP)", year: "2015", issuer: "SHRM", emphasis: true },
+        { name: "SHRM Certified Professional (SHRM-CP)", year: "2015", issuer: "SHRM", logoSrc: shrmLogo, emphasis: true },
         { name: "CPHR Canada", year: "2023", issuer: "CPHR Canada", logoSrc: cphrLogo },
-        { name: "HRCI Professional in Human Resources – International (PHRi)", year: "", issuer: "HR Certification Institute" },
+        { name: "HRCI Professional in Human Resources – International (PHRi)", year: "", issuer: "HR Certification Institute", logoSrc: hrciLogo },
       ],
     },
     {

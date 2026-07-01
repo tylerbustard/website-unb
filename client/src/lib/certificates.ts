@@ -87,6 +87,7 @@ export const certificateAssets: Record<string, CertificateAsset> = {
   "certified-scrummaster--csm": { image: "/certificates/certified-scrummaster--csm.webp", alt: "Certified ScrumMaster (CSM) certificate from Scrum Alliance" },
   "certificate-in-effective-teaching": { image: "/certificates/certificate-in-effective-teaching.webp", alt: "Certificate in Effective Teaching certificate from Association of College and University Educators" },
   "microsoft-certified-educator": { image: "/certificates/microsoft-certified-educator.webp", alt: "Microsoft Certified Educator certificate from Microsoft" },
+  "gre-general-test": { image: "/certificates/gre-general-test.webp", alt: "GRE General Test score report from ETS" },
 };
 
 /** Look up a certificate/diploma preview by a certification, institution, or organization display name. */
