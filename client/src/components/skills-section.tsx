@@ -35,6 +35,7 @@ import shrmLogo from "@assets/shrm_logo.png";
 import amaLogo from "@assets/ama_logo.png";
 import garpLogo from "@assets/garp_logo.png";
 import hrciLogo from "@assets/hrci_logo.png";
+import scrumAllianceLogo from "@assets/scrum_alliance_logo.png";
 
 interface Certification {
   name: string;
@@ -211,7 +212,7 @@ export default function CertificationsSection() {
       caption: "Project management and agile delivery",
       certifications: [
         { name: "Certified Associate in Project Management (CAPM)", year: "2024", issuer: "Project Management Institute", logoSrc: pmiLogo, emphasis: true },
-        { name: "Certified ScrumMaster (CSM)", year: "2025", issuer: "Scrum Alliance" },
+        { name: "Certified ScrumMaster (CSM)", year: "2025", issuer: "Scrum Alliance", logoSrc: scrumAllianceLogo },
       ],
     },
     {
