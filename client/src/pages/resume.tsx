@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "wouter";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -427,12 +426,6 @@ export default function Resume() {
     </article>
     );
   };
-
-  // Fetch resumes to check if any exist
-  const resumesQuery = useQuery({
-    queryKey: ['/api/resumes/employer'],
-    staleTime: 60000, // 1 minute
-  });
 
   useEffect(() => {
     const originalTitle = document.title;

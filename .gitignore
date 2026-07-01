@@ -6,3 +6,10 @@ dist
 *.pid
 local_host_*.log
 local_host_*.pid
+
+# dev artifacts — never track
+*.log
+*.pid
+*.backup
+cookies.txt
+temp_*
