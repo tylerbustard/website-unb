@@ -73,7 +73,7 @@ export default function ContactInfoSection() {
         _template: "table",
         _captcha: "false",
         _honey: formData["bot-field"],
-        _url: "https://tylerbustard.com/#contact",
+        _url: "https://tylerbustard.ca/#contact",
       };
 
       const response = await fetch(CONTACT_FORM_ENDPOINT, {
@@ -212,7 +212,7 @@ export default function ContactInfoSection() {
                     </a>
 
                     <a
-                      href="https://tylerbustard.com"
+                      href="https://tylerbustard.ca"
                       className={`contact-detail-item scroll-slide-up ${revealClass}`}
                       target="_blank"
                       rel="noreferrer"
@@ -223,7 +223,7 @@ export default function ContactInfoSection() {
                       </span>
                       <span className="contact-detail-copy">
                         <span className="contact-detail-label">Website</span>
-                        <span className="contact-detail-value">tylerbustard.com</span>
+                        <span className="contact-detail-value">tylerbustard.ca</span>
                       </span>
                     </a>
 

@@ -15,7 +15,7 @@ export default function Navigation() {
   const canonicalResumePdfUrl =
     typeof window !== 'undefined'
       ? new URL(canonicalResumePdfPath, window.location.origin).toString()
-      : `https://tylerbustard.com${canonicalResumePdfPath}`;
+      : `https://tylerbustard.ca${canonicalResumePdfPath}`;
   const emailResumeHref = `mailto:?subject=${encodeURIComponent('Tyler Bustard Resume')}&body=${encodeURIComponent(
     `Hi,
 

@@ -439,9 +439,9 @@ export default function Resume() {
                     +1 (613) 985-1223
                   </a>
                   <span className="resume-contact-separator" aria-hidden="true" />
-                  <a href="https://tylerbustard.com" target="_blank" rel="noopener noreferrer" className="resume-header-contact-link" aria-label="Visit Tyler Bustard website">
+                  <a href="https://tylerbustard.ca" target="_blank" rel="noopener noreferrer" className="resume-header-contact-link" aria-label="Visit Tyler Bustard website">
                     <Globe size={13} />
-                    tylerbustard.com
+                    tylerbustard.ca
                   </a>
                   <span className="resume-contact-separator" aria-hidden="true" />
                   <span className="resume-header-contact-item">
