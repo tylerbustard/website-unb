@@ -1,7 +1,6 @@
-import { ArrowRight, Play, Download } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useInitialPageAnimation } from "@/hooks/useScrollAnimation";
-import { useQuery } from "@tanstack/react-query";
 import profileImage from "@assets/89BBD451-CD8B-47EB-AA2E-C39D4637B01D_1_105_c_1755896148330.jpeg";
 
 // Employment
@@ -27,14 +26,6 @@ export default function HeroSection() {
   const heroSummary =
     "CFA Level I Candidate with front-office and portfolio-operations experience across RBC, TD, BMO Private Wealth, and 73 Strings — pairing Canadian Securities Course and Bloomberg Market Concepts training with hands-on Python and SQL analytics.";
 
-  const videosQuery = useQuery({
-    queryKey: ["/api/videos"],
-    staleTime: 60000,
-  });
-
-  const videos = Array.isArray(videosQuery.data) ? (videosQuery.data as any[]) : [];
-  const activeVideo = videos.find((video) => video.isActive);
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (!element) return;
@@ -43,93 +34,6 @@ export default function HeroSection() {
       behavior: "smooth",
       block: "start",
     });
-  };
-
-  const openIntroductionVideo = () => {
-    if (!activeVideo) {
-      scrollToSection("experience");
-      return;
-    }
-
-    if (document.getElementById("video-overlay")) return;
-    const previouslyFocused = document.activeElement as HTMLElement | null;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    const overlay = document.createElement("div");
-    overlay.id = "video-overlay";
-    overlay.style.cssText = `
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(15, 23, 42, 0.88);
-      z-index: 999999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    `;
-
-    const video = document.createElement("video");
-    video.controls = true;
-    video.autoplay = true;
-    video.muted = true;
-    video.src = "/api/introduction-video";
-    video.style.cssText = `
-      max-width: min(1100px, 92vw);
-      max-height: 88vh;
-      width: 100%;
-      height: auto;
-      border-radius: 24px;
-      background: black;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
-    `;
-
-    const closeButton = document.createElement("button");
-    closeButton.type = "button";
-    closeButton.textContent = "Close";
-    closeButton.setAttribute("aria-label", "Close introduction video");
-    closeButton.style.cssText = `
-      position: absolute;
-      top: 24px;
-      right: 24px;
-      background: white;
-      color: #0f172a;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 999px;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 600;
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
-    `;
-
-    const closeOverlay = () => {
-      overlay.remove();
-      document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = previousOverflow;
-      previouslyFocused?.focus?.();
-    };
-
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        closeOverlay();
-      }
-    };
-
-    closeButton.onclick = closeOverlay;
-    overlay.addEventListener("click", (event) => {
-      if (event.target === overlay) {
-        closeOverlay();
-      }
-    });
-
-    document.addEventListener("keydown", handleEscape);
-    overlay.appendChild(video);
-    overlay.appendChild(closeButton);
-    document.body.appendChild(overlay);
-    closeButton.focus();
   };
 
   const institutionLogos = [
@@ -256,17 +160,6 @@ export default function HeroSection() {
                   >
                     Contact
                   </Button>
-                  {videos.length > 0 && (
-                    <Button
-                      variant="outline"
-                      onClick={openIntroductionVideo}
-                      className="min-h-[48px] cursor-pointer rounded-full border-slate-200 bg-white px-7 text-[0.9rem] font-semibold text-slate-900 shadow-sm transition-all duration-200 hover:bg-slate-50"
-                      data-testid="button-introduction"
-                    >
-                      <Play size={14} className="mr-2" />
-                      {activeVideo ? "Watch introduction" : "Introduction"}
-                    </Button>
-                  )}
                 </div>
 
                 {/* Proof stats — inline with copy */}
