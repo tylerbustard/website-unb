@@ -2320,9 +2320,14 @@
       filter: grayscale(1) brightness(0.5);
     }
     to {
-      opacity: 0.3;
+      opacity: 0.6;
       filter: grayscale(1) brightness(1);
     }
+  }
+
+  .hero-logo-image:hover {
+    opacity: 1;
+    filter: grayscale(0);
   }
 
   /* Respect reduced motion */
