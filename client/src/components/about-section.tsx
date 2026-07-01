@@ -26,7 +26,7 @@ import {
 import universityLogo from "@assets/University_of_New_Brunswick_Logo.svg_1755912478863.png";
 import nccLogo from "@assets/northeast_christian_college_logo.png";
 import { getCertificateAsset } from "@/lib/certificates";
-import { CertificateModal, type CertificateModalCert } from "@/components/certificate-modal";
+import { CertificateModal, preloadCertificateImage, type CertificateModalCert } from "@/components/certificate-modal";
 
 interface CounterStatProps {
   end: number;
@@ -315,6 +315,8 @@ export default function EducationSection() {
                     className="shrink-0 inline-flex items-center gap-1 whitespace-nowrap rounded-sm text-xs font-medium text-primary transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
                     aria-haspopup="dialog"
                     aria-label={`View ${education.institution} diploma`}
+                    onMouseEnter={() => preloadCertificateImage(educationAsset.image)}
+                    onFocus={() => preloadCertificateImage(educationAsset.image)}
                     onClick={() =>
                       setActiveCert({
                         title: education.degree,

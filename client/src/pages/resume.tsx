@@ -7,7 +7,7 @@ import { Mail, Phone, MapPin, Globe, Linkedin, Briefcase, GraduationCap, Award, 
 import Navigation from "@/components/navigation";
 import { slugify } from "@/lib/utils";
 import { getCertificateAsset } from "@/lib/certificates";
-import { CertificateModal, type CertificateModalCert } from "@/components/certificate-modal";
+import { CertificateModal, preloadCertificateImage, type CertificateModalCert } from "@/components/certificate-modal";
 import ScrollToTopButton from "@/components/scroll-to-top-button";
 import FooterMarketTicker from "@/components/footer-market-ticker";
 import {
@@ -387,6 +387,8 @@ export default function Resume() {
             className="ml-auto shrink-0 inline-flex items-center gap-1 whitespace-nowrap rounded-sm text-xs font-medium text-primary print:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-1"
             aria-haspopup="dialog"
             aria-label={`View ${entry.organization} diploma`}
+            onMouseEnter={() => preloadCertificateImage(entryAsset.image)}
+            onFocus={() => preloadCertificateImage(entryAsset.image)}
             onClick={() =>
               setActiveCert({
                 title: entry.role,
@@ -591,6 +593,8 @@ export default function Resume() {
                               tabIndex={certAsset ? 0 : undefined}
                               aria-haspopup={certAsset ? "dialog" : undefined}
                               aria-label={certAsset ? `View ${certification.name} certificate` : undefined}
+                              onMouseEnter={certAsset ? () => preloadCertificateImage(certAsset.image) : undefined}
+                              onFocus={certAsset ? () => preloadCertificateImage(certAsset.image) : undefined}
                               onClick={certAsset ? () => openCertificate(certification) : undefined}
                               onKeyDown={certAsset ? (event) => {
                                 if (event.key === "Enter" || event.key === " ") {
