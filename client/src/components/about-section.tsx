@@ -297,39 +297,39 @@ export default function EducationSection() {
             <div className="experience-card-copy min-w-0">
               <div className="experience-card-title-row">
                 <h3 className="text-lg font-semibold text-foreground">{education.institution}</h3>
-                <div className="flex flex-col items-end gap-0.5">
-                  <span className="experience-card-period text-sm font-medium text-muted-foreground">
-                    {education.year}
-                  </span>
-                  {educationAsset ? (
-                    <button
-                      type="button"
-                      className="inline-flex items-center gap-1 rounded-sm text-xs font-medium text-primary transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
-                      aria-haspopup="dialog"
-                      aria-label={`View ${education.institution} diploma`}
-                      onClick={() =>
-                        setActiveCert({
-                          title: education.degree,
-                          issuer: education.institution,
-                          year: education.year,
-                          image: educationAsset.image,
-                          alt: educationAsset.alt,
-                        })
-                      }
-                    >
-                      <Eye size={13} aria-hidden="true" />
-                      View Diploma
-                    </button>
-                  ) : null}
-                </div>
+                <span className="experience-card-period text-sm font-medium text-muted-foreground">
+                  {education.year}
+                </span>
               </div>
 
-              <p
-                className={`experience-card-company text-base font-medium text-primary scroll-slide-up ${revealClass}`}
-                style={getScrollRevealStyle("subheading")}
-              >
-                {education.degree}
-              </p>
+              <div className="flex items-start justify-between gap-3">
+                <p
+                  className={`experience-card-company text-base font-medium text-primary scroll-slide-up ${revealClass}`}
+                  style={getScrollRevealStyle("subheading")}
+                >
+                  {education.degree}
+                </p>
+                {educationAsset ? (
+                  <button
+                    type="button"
+                    className="shrink-0 inline-flex items-center gap-1 whitespace-nowrap rounded-sm text-xs font-medium text-primary transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
+                    aria-haspopup="dialog"
+                    aria-label={`View ${education.institution} diploma`}
+                    onClick={() =>
+                      setActiveCert({
+                        title: education.degree,
+                        issuer: education.institution,
+                        year: education.year,
+                        image: educationAsset.image,
+                        alt: educationAsset.alt,
+                      })
+                    }
+                  >
+                    <Eye size={13} aria-hidden="true" />
+                    View Diploma
+                  </button>
+                ) : null}
+              </div>
               <p
                 className={`experience-card-location text-sm text-muted-foreground scroll-slide-up ${revealClass}`}
                 style={getScrollRevealStyle("body", 0)}
