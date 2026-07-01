@@ -17,6 +17,8 @@ export interface CertificateModalCert {
   image: string;
   /** Alt text for the image. */
   alt: string;
+  /** Issuer logo shown as a branded chip in the header (optional). */
+  logoSrc?: string;
 }
 
 interface CertificateModalProps {
@@ -36,14 +38,28 @@ export function CertificateModal({ open, onOpenChange, cert }: CertificateModalP
       <DialogContent className="max-w-3xl border border-border bg-white p-0 gap-0 overflow-hidden sm:rounded-lg motion-reduce:animate-none">
         {cert ? (
           <>
-            <DialogHeader className="space-y-1 border-b border-border px-6 py-4 text-left">
-              <DialogTitle className="pr-8 text-base font-semibold text-foreground">
-                {cert.title}
-              </DialogTitle>
-              <DialogDescription className="text-sm text-muted-foreground">
-                {cert.issuer}
-                {cert.year ? ` · ${cert.year}` : ""}
-              </DialogDescription>
+            <DialogHeader className="border-b border-border px-6 py-4 text-left">
+              <div className="flex items-center gap-3 pr-8">
+                {cert.logoSrc ? (
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border bg-white">
+                    <img
+                      src={cert.logoSrc}
+                      alt=""
+                      aria-hidden="true"
+                      className="h-full w-full object-contain p-2"
+                    />
+                  </span>
+                ) : null}
+                <div className="min-w-0 space-y-1">
+                  <DialogTitle className="text-base font-semibold text-foreground">
+                    {cert.title}
+                  </DialogTitle>
+                  <DialogDescription className="text-sm text-muted-foreground">
+                    {cert.issuer}
+                    {cert.year ? ` · ${cert.year}` : ""}
+                  </DialogDescription>
+                </div>
+              </div>
             </DialogHeader>
             <div className="flex items-center justify-center px-6 py-6">
               <img

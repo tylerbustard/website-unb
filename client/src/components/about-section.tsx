@@ -322,6 +322,7 @@ export default function EducationSection() {
                         year: education.year,
                         image: educationAsset.image,
                         alt: educationAsset.alt,
+                        logoSrc: logo,
                       })
                     }
                   >
