@@ -506,7 +506,7 @@ export default function Resume() {
                   className={`resume-summary-text scroll-slide-up ${summaryAnimation.isVisible ? "visible" : ""}`}
                   style={getScrollRevealStyle("section")}
                 >
-                  Driving innovation at the intersection of finance and technology while delivering exceptional results through analytical expertise, strategic thinking, and client-focused solutions.
+                  Finance professional and CFA Level I Candidate with front-office and portfolio-operations experience at RBC, TD, BMO Private Wealth, and 73 Strings — pairing Canadian Securities Course and Bloomberg Market Concepts training with hands-on Python and SQL analytics.
                 </p>
               </section>
 
