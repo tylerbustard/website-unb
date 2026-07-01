@@ -342,13 +342,13 @@ export default function ExperienceSection() {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className={`scroll-slide-up ${summaryAnimation.visibleItems.has(0) ? 'visible' : ''}`}>
-                <CounterStat end={yearsExperience} suffix="+" label="Years Experience" className="text-sky-700" delay={0} />
+                <CounterStat end={yearsExperience} suffix="+" label="Years Experience" className="text-primary" delay={0} />
               </div>
               <div className={`scroll-slide-up ${summaryAnimation.visibleItems.has(1) ? 'visible' : ''}`}>
-                <CounterStat end={companyCount} label="Companies" className="text-emerald-700" delay={200} />
+                <CounterStat end={companyCount} label="Companies" className="text-primary" delay={200} />
               </div>
               <div className={`scroll-slide-up ${summaryAnimation.visibleItems.has(2) ? 'visible' : ''}`}>
-                <CounterStat end={industryCount} label="Industries" className="text-amber-600" delay={400} />
+                <CounterStat end={industryCount} label="Industries" className="text-primary" delay={400} />
               </div>
             </div>
           </div>

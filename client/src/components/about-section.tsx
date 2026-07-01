@@ -492,13 +492,13 @@ export default function EducationSection() {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className={`scroll-slide-up ${educationItemsAnimation.visibleItems.has(highlightsRevealStartIndex) ? 'visible' : ''}`}>
-                <CounterStat end={5} label="Academic Awards" className="text-sky-700" delay={0} />
+                <CounterStat end={5} label="Academic Awards" className="text-primary" delay={0} />
               </div>
               <div className={`scroll-slide-up ${educationItemsAnimation.visibleItems.has(highlightsRevealStartIndex + 1) ? 'visible' : ''}`}>
-                <CounterStat end={47500} prefix="$" label="in Scholarships" className="text-emerald-700" delay={200} />
+                <CounterStat end={47500} prefix="$" label="in Scholarships" className="text-primary" delay={200} />
               </div>
               <div className={`scroll-slide-up ${educationItemsAnimation.visibleItems.has(highlightsRevealStartIndex + 2) ? 'visible' : ''}`}>
-                <CounterStat end={totalCourses} label="Courses Completed" className="text-amber-600" delay={400} />
+                <CounterStat end={totalCourses} label="Courses Completed" className="text-primary" delay={400} />
               </div>
             </div>
           </div>

@@ -701,17 +701,31 @@ ${canonicalResumePdfUrl}`,
                               </div>
                             </button>
 
-                            {/* Data & Business Intelligence */}
+                            {/* Analytics & Quantitative Methods */}
                             <button 
                               onClick={() => {
-                                scrollToSection(getCertificationCategoryId('Data & Business Intelligence'));
+                                scrollToSection(getCertificationCategoryId('Analytics & Quantitative Methods'));
                                 setOpenDropdown(null);
                               }}
                               className="w-full text-left hover:bg-white/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Data & Business Intelligence</div>
-                                <div className="text-xs text-white/50">Google, Tableau, Power BI</div>
+                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Analytics & Quantitative Methods</div>
+                                <div className="text-xs text-white/50">Google, Tableau, Python</div>
+                              </div>
+                            </button>
+
+                            {/* AI Engineering & Agentic Workflows */}
+                            <button 
+                              onClick={() => {
+                                scrollToSection(getCertificationCategoryId('AI Engineering & Agentic Workflows'));
+                                setOpenDropdown(null);
+                              }}
+                              className="w-full text-left hover:bg-white/5 rounded-lg p-3 transition-all duration-200 group"
+                            >
+                              <div className="space-y-1">
+                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">AI Engineering & Agentic Workflows</div>
+                                <div className="text-xs text-white/50">Anthropic, OpenAI, Azure</div>
                               </div>
                             </button>
                           </div>

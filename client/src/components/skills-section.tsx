@@ -81,7 +81,8 @@ function CertificationCounter({ end, suffix = '', prefix = '', label, className 
 
 const parseCertificationYear = (certification: Certification) => {
   const year = Number.parseInt(certification.year, 10);
-  return Number.isFinite(year) ? year : Number.MAX_SAFE_INTEGER;
+  // Undated credentials sort after dated ones instead of jumping to the top.
+  return Number.isFinite(year) ? year : 0;
 };
 
 export default function CertificationsSection() {
@@ -489,7 +490,9 @@ export default function CertificationsSection() {
                               </div>
 
                               <div className="resume-certification-card-meta homepage-certification-card-meta">
-                                <span className="resume-certification-card-year homepage-certification-card-year">{certification.year}</span>
+                                {certification.year ? (
+                                  <span className="resume-certification-card-year homepage-certification-card-year">{certification.year}</span>
+                                ) : null}
                                 {certification.detail ? (
                                   <span className="resume-certification-card-detail homepage-certification-card-detail">{certification.detail}</span>
                                 ) : null}
@@ -533,13 +536,13 @@ export default function CertificationsSection() {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className={`scroll-slide-up ${certificationItemsAnimation.visibleItems.has(certificationRevealSequence.length) ? 'visible' : ''}`}>
-                <CertificationCounter end={totalCerts} label="Total Certifications & Courses" className="text-sky-700" delay={0} />
+                <CertificationCounter end={totalCerts} label="Total Certifications & Courses" className="text-primary" delay={0} />
               </div>
               <div className={`scroll-slide-up ${certificationItemsAnimation.visibleItems.has(certificationRevealSequence.length + 1) ? 'visible' : ''}`}>
-                <CertificationCounter end={certificationCategories.length} label="Expertise Areas" className="text-emerald-700" delay={200} />
+                <CertificationCounter end={certificationCategories.length} label="Expertise Areas" className="text-primary" delay={200} />
               </div>
               <div className={`scroll-slide-up ${certificationItemsAnimation.visibleItems.has(certificationRevealSequence.length + 2) ? 'visible' : ''}`}>
-                <CertificationCounter end={organizationCount} label="Different Organizations" className="text-amber-600" delay={400} />
+                <CertificationCounter end={organizationCount} label="Different Organizations" className="text-primary" delay={400} />
               </div>
             </div>
           </div>
@@ -684,7 +687,7 @@ export function CommunitySection() {
     <section 
       ref={communityAnimation.ref}
       id="community" 
-      className={`py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-amber-50/20 scroll-fade-in ${communityAnimation.isVisible ? 'visible' : ''}`}
+      className={`py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-slate-50/50 scroll-fade-in ${communityAnimation.isVisible ? 'visible' : ''}`}
     >
       {/* Background - inherits Apple grey from parent */}
       
@@ -815,7 +818,7 @@ export function CommunitySection() {
                   end={yearsOfService}
                   suffix="+"
                   label="Years of Service"
-                  className="text-sky-700"
+                  className="text-primary"
                   delay={0}
                 />
               </div>
@@ -824,7 +827,7 @@ export function CommunitySection() {
                   end={peopleHelped}
                   suffix="+"
                   label="People Helped"
-                  className="text-emerald-700"
+                  className="text-primary"
                   delay={200}
                 />
               </div>
@@ -832,7 +835,7 @@ export function CommunitySection() {
                 <CommunityCounter
                   end={organizationsServed}
                   label="Organizations Served"
-                  className="text-amber-600"
+                  className="text-primary"
                   delay={400}
                 />
               </div>

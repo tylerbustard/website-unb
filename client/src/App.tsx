@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Switch, Route, useLocation } from "wouter";
 import Home from "@/pages/home";
+import NotFound from "@/pages/not-found";
 import { lazy, Suspense } from "react";
 
 const Resume = lazy(() => import("@/pages/resume"));
@@ -19,7 +20,7 @@ function Router() {
         </Suspense>
       </Route>
 
-      <Route>404: Page not found</Route>
+      <Route component={NotFound} />
     </Switch>
   );
 }
