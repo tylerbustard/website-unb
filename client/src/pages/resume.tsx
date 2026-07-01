@@ -366,7 +366,31 @@ export default function Resume() {
         style={getScrollRevealStyle("cardHeader")}
       >
         <h4 className="resume-entry-title">{entry.role}</h4>
-        <span className="resume-entry-date">{entry.period}</span>
+        {entryAsset ? (
+          <span className="ml-auto inline-flex flex-col items-end gap-0.5">
+            <span className="resume-entry-date">{entry.period}</span>
+            <button
+              type="button"
+              className="inline-flex items-center gap-1 rounded-sm text-xs font-semibold text-primary print:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-1"
+              aria-haspopup="dialog"
+              aria-label={`View ${entry.organization} diploma`}
+              onClick={() =>
+                setActiveCert({
+                  title: entry.role,
+                  issuer: entry.organization,
+                  year: entry.period,
+                  image: entryAsset.image,
+                  alt: entryAsset.alt,
+                })
+              }
+            >
+              <Eye size={12} aria-hidden="true" />
+              View Diploma
+            </button>
+          </span>
+        ) : (
+          <span className="resume-entry-date">{entry.period}</span>
+        )}
       </div>
       <div
         className={`resume-entry-meta scroll-slide-up ${options?.isVisible ? "visible" : ""}`}
@@ -380,26 +404,6 @@ export default function Resume() {
         <span className="resume-entry-organization">{entry.organization}</span>
         <span className="resume-entry-meta-separator" aria-hidden="true">|</span>
         <span className="resume-entry-location">{entry.location}</span>
-        {entryAsset ? (
-          <button
-            type="button"
-            className="resume-entry-view-diploma inline-flex items-center gap-1 text-primary text-sm font-medium print:hidden"
-            aria-haspopup="dialog"
-            aria-label={`View ${entry.organization} diploma`}
-            onClick={() =>
-              setActiveCert({
-                title: entry.role,
-                issuer: entry.organization,
-                year: entry.period,
-                image: entryAsset.image,
-                alt: entryAsset.alt,
-              })
-            }
-          >
-            <Eye size={13} aria-hidden="true" />
-            View
-          </button>
-        ) : null}
       </div>
       <ul className="resume-entry-bullets">
         {entry.bullets.map((bullet, bulletIndex) => (

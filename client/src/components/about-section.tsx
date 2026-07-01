@@ -300,6 +300,26 @@ export default function EducationSection() {
                 <span className="experience-card-period text-sm font-medium text-muted-foreground">
                   {education.year}
                 </span>
+                {educationAsset ? (
+                  <button
+                    type="button"
+                    className="mt-1 inline-flex items-center gap-1 self-start rounded-sm text-xs font-semibold text-primary transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
+                    aria-haspopup="dialog"
+                    aria-label={`View ${education.institution} diploma`}
+                    onClick={() =>
+                      setActiveCert({
+                        title: education.degree,
+                        issuer: education.institution,
+                        year: education.year,
+                        image: educationAsset.image,
+                        alt: educationAsset.alt,
+                      })
+                    }
+                  >
+                    <Eye size={12} aria-hidden="true" />
+                    View Diploma
+                  </button>
+                ) : null}
               </div>
 
               <p
@@ -314,26 +334,6 @@ export default function EducationSection() {
               >
                 {education.major}, {education.location}
               </p>
-              {educationAsset ? (
-                <button
-                  type="button"
-                  className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 rounded-sm"
-                  aria-haspopup="dialog"
-                  aria-label={`View ${education.institution} diploma`}
-                  onClick={() =>
-                    setActiveCert({
-                      title: education.degree,
-                      issuer: education.institution,
-                      year: education.year,
-                      image: educationAsset.image,
-                      alt: educationAsset.alt,
-                    })
-                  }
-                >
-                  <Eye size={14} aria-hidden="true" />
-                  View Diploma
-                </button>
-              ) : null}
             </div>
           </div>
         </div>
