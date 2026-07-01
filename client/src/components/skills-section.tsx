@@ -102,6 +102,8 @@ export default function CertificationsSection() {
         { name: "Discounted Cash Flow Analysis and Modeling", year: "2024", issuer: "Training The Street", logoSrc: trainingTheStreetLogo },
         { name: "Financial & Valuation Modeling", year: "2020", issuer: "Wall Street Prep", logoSrc: wallStreetPrepLogo },
         { name: "Bloomberg Market Concepts Certificate", year: "2020", issuer: "Bloomberg", logoSrc: bloombergLogo },
+        { name: "CFA Institute Investment Foundations", year: "2021", issuer: "CFA Institute", logoSrc: cfaLogo },
+        { name: "Financial Risk and Regulation (FRR)", year: "2025", issuer: "Global Association of Risk Professionals" },
       ],
     },
     {
@@ -125,6 +127,15 @@ export default function CertificationsSection() {
         { name: "Python for Everybody Specialization", year: "2023", issuer: "University of Michigan", logoSrc: courseraLogo },
         { name: "SQL for Data Science", year: "2020", issuer: "UC Davis", logoSrc: courseraLogo },
         { name: "Power BI Data Visualization", year: "2020", issuer: "Microsoft", logoSrc: courseraLogo },
+        { name: "IBM Data Analyst Professional Certificate", year: "2021", issuer: "IBM", logoSrc: courseraLogo },
+        { name: "Foundations: Data, Data, Everywhere", year: "2022", issuer: "Google", logoSrc: courseraLogo },
+        { name: "Ask Questions to Make Data-Driven Decisions", year: "2022", issuer: "Google", logoSrc: courseraLogo },
+        { name: "Prepare Data for Exploration", year: "2022", issuer: "Google", logoSrc: courseraLogo },
+        { name: "Process Data from Dirty to Clean", year: "2022", issuer: "Google", logoSrc: courseraLogo },
+        { name: "Analyze Data to Answer Questions", year: "2022", issuer: "Google", logoSrc: courseraLogo },
+        { name: "Google Analytics Certification", year: "2022", issuer: "Google" },
+        { name: "Microsoft Certified: Power BI Data Analyst Associate", year: "2021", issuer: "Microsoft" },
+        { name: "Microsoft Office Specialist: Excel Associate", year: "2024", issuer: "Microsoft" },
       ],
     },
     {
@@ -137,6 +148,67 @@ export default function CertificationsSection() {
         { name: "Machine Learning", year: "2020", issuer: "Stanford University", logoSrc: courseraLogo },
         { name: "Inferential Statistics", year: "2020", issuer: "Duke University", logoSrc: courseraLogo },
         { name: "Excel Skills for Business", year: "2020", issuer: "Macquarie University", logoSrc: courseraLogo },
+      ],
+    },
+    {
+      title: "Cloud & AI Engineering",
+      caption: "Azure engineering, data, and AI certifications",
+      certifications: [
+        { name: "Microsoft Certified: Azure AI Engineer Associate", year: "2022", issuer: "Microsoft", emphasis: true },
+        { name: "Microsoft Certified: Azure Data Scientist Associate", year: "2021", issuer: "Microsoft" },
+        { name: "Microsoft Certified: Azure Data Engineer Associate", year: "2021", issuer: "Microsoft" },
+        { name: "Microsoft Certified: Azure Developer Associate", year: "2022", issuer: "Microsoft" },
+        { name: "Microsoft Certified: Azure AI Fundamentals", year: "2021", issuer: "Microsoft" },
+        { name: "Microsoft Certified: Azure Data Fundamentals", year: "2021", issuer: "Microsoft" },
+        { name: "Microsoft Certified: Azure Fundamentals", year: "2021", issuer: "Microsoft" },
+      ],
+    },
+    {
+      title: "Software & Programming",
+      caption: "Python programming and software development credentials",
+      certifications: [
+        { name: "PCAP: Certified Associate in Python Programming", year: "2021", issuer: "Python Institute", emphasis: true },
+        { name: "PCEP: Certified Entry-Level Python Programmer", year: "2023", issuer: "Python Institute" },
+        { name: "Programming for Everybody (Python)", year: "2021", issuer: "University of Michigan", logoSrc: courseraLogo },
+        { name: "Python Data Structures", year: "2021", issuer: "University of Michigan", logoSrc: courseraLogo },
+        { name: "Using Python to Access Web Data", year: "2022", issuer: "University of Michigan", logoSrc: courseraLogo },
+        { name: "Using Databases with Python", year: "2022", issuer: "University of Michigan", logoSrc: courseraLogo },
+        { name: "Capstone: Retrieving, Processing & Visualizing Data with Python", year: "2022", issuer: "University of Michigan", logoSrc: courseraLogo },
+      ],
+    },
+    {
+      title: "Marketing",
+      caption: "Digital marketing, advertising, and inbound",
+      certifications: [
+        { name: "Inbound Marketing Certification", year: "2023", issuer: "HubSpot Academy", emphasis: true },
+        { name: "AMA PCM Digital Marketing", year: "2017", issuer: "American Marketing Association" },
+        { name: "Google Ads Measurement Certification", year: "2022", issuer: "Google" },
+        { name: "Google Ads Search Certification", year: "2022", issuer: "Google" },
+      ],
+    },
+    {
+      title: "Human Resources",
+      caption: "People, talent, and HR management credentials",
+      certifications: [
+        { name: "SHRM Certified Professional (SHRM-CP)", year: "2015", issuer: "SHRM", emphasis: true },
+        { name: "CPHR Canada", year: "2023", issuer: "CPHR Canada" },
+        { name: "HRCI Professional in Human Resources – International (PHRi)", year: "", issuer: "HR Certification Institute" },
+      ],
+    },
+    {
+      title: "Project & Agile Management",
+      caption: "Project management and agile delivery",
+      certifications: [
+        { name: "Certified Associate in Project Management (CAPM)", year: "2024", issuer: "Project Management Institute", emphasis: true },
+        { name: "Certified ScrumMaster (CSM)", year: "2025", issuer: "Scrum Alliance" },
+      ],
+    },
+    {
+      title: "Teaching & Learning",
+      caption: "Instructional practice and educator credentials",
+      certifications: [
+        { name: "Certificate in Effective Teaching", year: "2025", issuer: "Association of College and University Educators", emphasis: true },
+        { name: "Microsoft Certified Educator", year: "2016", issuer: "Microsoft" },
       ],
     },
     {
@@ -213,8 +285,10 @@ export default function CertificationsSection() {
   const leftColumnCertificationTitles = new Set([
     "Investment & Markets",
     "Data & Business Intelligence",
-    "Claude Code & Agent Skills",
-    "OpenAI Codex Academy",
+    "Software & Programming",
+    "Human Resources",
+    "Teaching & Learning",
+    "Claude AI Fluency",
     "Graduate Admissions",
   ]);
 
