@@ -10,7 +10,7 @@ import { slugify } from "@/lib/utils";
 import { useState } from "react";
 import { Eye } from "lucide-react";
 import { getCertificateAsset } from "@/lib/certificates";
-import { CertificateModal, type CertificateModalCert } from "@/components/certificate-modal";
+import { CertificateModal, preloadCertificateImage, type CertificateModalCert } from "@/components/certificate-modal";
 import unitedWayLogo from "@assets/United-Way-Logo_1755913265895.png";
 import rbcLogo from "@assets/RBC-Logo_1755913716813.png";
 import irvingLogo from "@assets/Irving_Oil.svg_1755913265895.png";
@@ -395,6 +395,8 @@ export default function CertificationsSection() {
                               tabIndex={certAsset ? 0 : undefined}
                               aria-haspopup={certAsset ? "dialog" : undefined}
                               aria-label={certAsset ? `View ${certification.name} certificate` : undefined}
+                              onMouseEnter={certAsset ? () => preloadCertificateImage(certAsset.image) : undefined}
+                              onFocus={certAsset ? () => preloadCertificateImage(certAsset.image) : undefined}
                               onClick={certAsset ? () => openCertificate(certification) : undefined}
                               onKeyDown={certAsset ? (event) => {
                                 if (event.key === "Enter" || event.key === " ") {
