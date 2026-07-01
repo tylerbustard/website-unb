@@ -88,6 +88,7 @@ export const certificateAssets: Record<string, CertificateAsset> = {
   "certificate-in-effective-teaching": { image: "/certificates/certificate-in-effective-teaching.webp", alt: "Certificate in Effective Teaching certificate from Association of College and University Educators" },
   "microsoft-certified-educator": { image: "/certificates/microsoft-certified-educator.webp", alt: "Microsoft Certified Educator certificate from Microsoft" },
   "gre-general-test": { image: "/certificates/gre-general-test.webp", alt: "GRE General Test score report from ETS" },
+  "derivatives-fundamentals-course--dfc": { image: "/certificates/derivatives-fundamentals-course--dfc.webp", alt: "Derivatives Fundamentals Course certificate from the Canadian Securities Institute" },
 };
 
 /** Look up a certificate/diploma preview by a certification, institution, or organization display name. */

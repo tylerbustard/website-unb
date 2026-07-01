@@ -117,6 +117,7 @@ export default function CertificationsSection() {
         { name: "Bloomberg Market Concepts Certificate", year: "2020", issuer: "Bloomberg", logoSrc: bloombergLogo },
         { name: "CFA Institute Investment Foundations", year: "2021", issuer: "CFA Institute", logoSrc: cfaLogo },
         { name: "Financial Risk and Regulation (FRR)", year: "2025", issuer: "Global Association of Risk Professionals", logoSrc: garpLogo },
+        { name: "Derivatives Fundamentals Course (DFC)", year: "2025", issuer: "Canadian Securities Institute", logoSrc: csiLogo },
       ],
     },
     {
