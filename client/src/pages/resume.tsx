@@ -36,8 +36,8 @@ import courseraLogo from "@assets/Coursera_1755937682843.png";
 import mcgillLogo from "@assets/mcgill_university_logo.png";
 import seventyThreeStringsLogo from "@assets/73-strings-logo.webp";
 import roiLogo from "@assets/roi_logo_icon.png";
-import anthropicLogo from "@assets/anthropic_logo.svg";
-import openaiLogo from "@assets/openai_logo.svg";
+import anthropicLogo from "@assets/anthropic_mark.png";
+import openaiLogo from "@assets/openai_mark.png";
 import nccLogo from "@assets/northeast_christian_college_logo.png";
 
 type ResumeEntry = {
@@ -924,9 +924,9 @@ export default function Resume() {
           }
 
           .resume-entry-logo--ncc {
-            width: 17pt !important;
-            height: 7.4pt !important;
-            flex-basis: 17pt !important;
+            width: 11pt !important;
+            height: 11pt !important;
+            flex-basis: 11pt !important;
           }
 
           .resume-entry-bullets {
@@ -1080,14 +1080,9 @@ export default function Resume() {
 
           .resume-certification-card-logo-shell--anthropic,
           .resume-certification-card-logo-shell--openai {
-            width: 24pt !important;
+            width: 11pt !important;
             height: 11pt !important;
-            flex-basis: 24pt !important;
-          }
-
-          .resume-certification-card-logo-shell--openai {
-            width: 21pt !important;
-            flex-basis: 21pt !important;
+            flex-basis: 11pt !important;
           }
 
           .resume-certification-card-logo {
@@ -1191,8 +1186,8 @@ export default function Resume() {
 
           .resume-certification-cluster-logo-shell--anthropic,
           .resume-certification-cluster-logo-shell--openai {
-            width: 20pt !important;
-            flex-basis: 20pt !important;
+            width: 10pt !important;
+            flex-basis: 10pt !important;
           }
 
           .resume-certification-cards-compact {

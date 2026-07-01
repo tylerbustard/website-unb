@@ -22,8 +22,15 @@ import bloombergLogo from "@assets/bloomberg_1755923720190.png";
 import courseraLogo from "@assets/Coursera_1755937682843.png";
 import etsLogo from "@assets/ETS_1755939510188.png";
 import mcgillLogo from "@assets/mcgill_university_logo.png";
-import anthropicLogo from "@assets/anthropic_logo.svg";
-import openaiLogo from "@assets/openai_logo.svg";
+import anthropicLogo from "@assets/anthropic_mark.png";
+import openaiLogo from "@assets/openai_mark.png";
+import microsoftLogo from "@assets/microsoft_logo.svg";
+import googleLogo from "@assets/google_logo.svg";
+import hubspotLogo from "@assets/hubspot_logo.svg";
+import pythonLogo from "@assets/python_logo.svg";
+import pmiLogo from "@assets/pmi_logo.png";
+import acueLogo from "@assets/acue_logo.png";
+import cphrLogo from "@assets/cphr_logo.png";
 
 interface Certification {
   name: string;
@@ -133,9 +140,9 @@ export default function CertificationsSection() {
         { name: "Prepare Data for Exploration", year: "2022", issuer: "Google", logoSrc: courseraLogo },
         { name: "Process Data from Dirty to Clean", year: "2022", issuer: "Google", logoSrc: courseraLogo },
         { name: "Analyze Data to Answer Questions", year: "2022", issuer: "Google", logoSrc: courseraLogo },
-        { name: "Google Analytics Certification", year: "2022", issuer: "Google" },
-        { name: "Microsoft Certified: Power BI Data Analyst Associate", year: "2021", issuer: "Microsoft" },
-        { name: "Microsoft Office Specialist: Excel Associate", year: "2024", issuer: "Microsoft" },
+        { name: "Google Analytics Certification", year: "2022", issuer: "Google", logoSrc: googleLogo },
+        { name: "Microsoft Certified: Power BI Data Analyst Associate", year: "2021", issuer: "Microsoft", logoSrc: microsoftLogo },
+        { name: "Microsoft Office Specialist: Excel Associate", year: "2024", issuer: "Microsoft", logoSrc: microsoftLogo },
       ],
     },
     {
@@ -154,21 +161,21 @@ export default function CertificationsSection() {
       title: "Cloud & AI Engineering",
       caption: "Azure engineering, data, and AI certifications",
       certifications: [
-        { name: "Microsoft Certified: Azure AI Engineer Associate", year: "2022", issuer: "Microsoft", emphasis: true },
-        { name: "Microsoft Certified: Azure Data Scientist Associate", year: "2021", issuer: "Microsoft" },
-        { name: "Microsoft Certified: Azure Data Engineer Associate", year: "2021", issuer: "Microsoft" },
-        { name: "Microsoft Certified: Azure Developer Associate", year: "2022", issuer: "Microsoft" },
-        { name: "Microsoft Certified: Azure AI Fundamentals", year: "2021", issuer: "Microsoft" },
-        { name: "Microsoft Certified: Azure Data Fundamentals", year: "2021", issuer: "Microsoft" },
-        { name: "Microsoft Certified: Azure Fundamentals", year: "2021", issuer: "Microsoft" },
+        { name: "Microsoft Certified: Azure AI Engineer Associate", year: "2022", issuer: "Microsoft", logoSrc: microsoftLogo, emphasis: true },
+        { name: "Microsoft Certified: Azure Data Scientist Associate", year: "2021", issuer: "Microsoft", logoSrc: microsoftLogo },
+        { name: "Microsoft Certified: Azure Data Engineer Associate", year: "2021", issuer: "Microsoft", logoSrc: microsoftLogo },
+        { name: "Microsoft Certified: Azure Developer Associate", year: "2022", issuer: "Microsoft", logoSrc: microsoftLogo },
+        { name: "Microsoft Certified: Azure AI Fundamentals", year: "2021", issuer: "Microsoft", logoSrc: microsoftLogo },
+        { name: "Microsoft Certified: Azure Data Fundamentals", year: "2021", issuer: "Microsoft", logoSrc: microsoftLogo },
+        { name: "Microsoft Certified: Azure Fundamentals", year: "2021", issuer: "Microsoft", logoSrc: microsoftLogo },
       ],
     },
     {
       title: "Software & Programming",
       caption: "Python programming and software development credentials",
       certifications: [
-        { name: "PCAP: Certified Associate in Python Programming", year: "2021", issuer: "Python Institute", emphasis: true },
-        { name: "PCEP: Certified Entry-Level Python Programmer", year: "2023", issuer: "Python Institute" },
+        { name: "PCAP: Certified Associate in Python Programming", year: "2021", issuer: "Python Institute", logoSrc: pythonLogo, emphasis: true },
+        { name: "PCEP: Certified Entry-Level Python Programmer", year: "2023", issuer: "Python Institute", logoSrc: pythonLogo },
         { name: "Programming for Everybody (Python)", year: "2021", issuer: "University of Michigan", logoSrc: courseraLogo },
         { name: "Python Data Structures", year: "2021", issuer: "University of Michigan", logoSrc: courseraLogo },
         { name: "Using Python to Access Web Data", year: "2022", issuer: "University of Michigan", logoSrc: courseraLogo },
@@ -180,10 +187,10 @@ export default function CertificationsSection() {
       title: "Marketing",
       caption: "Digital marketing, advertising, and inbound",
       certifications: [
-        { name: "Inbound Marketing Certification", year: "2023", issuer: "HubSpot Academy", emphasis: true },
+        { name: "Inbound Marketing Certification", year: "2023", issuer: "HubSpot Academy", logoSrc: hubspotLogo, emphasis: true },
         { name: "AMA PCM Digital Marketing", year: "2017", issuer: "American Marketing Association" },
-        { name: "Google Ads Measurement Certification", year: "2022", issuer: "Google" },
-        { name: "Google Ads Search Certification", year: "2022", issuer: "Google" },
+        { name: "Google Ads Measurement Certification", year: "2022", issuer: "Google", logoSrc: googleLogo },
+        { name: "Google Ads Search Certification", year: "2022", issuer: "Google", logoSrc: googleLogo },
       ],
     },
     {
@@ -191,7 +198,7 @@ export default function CertificationsSection() {
       caption: "People, talent, and HR management credentials",
       certifications: [
         { name: "SHRM Certified Professional (SHRM-CP)", year: "2015", issuer: "SHRM", emphasis: true },
-        { name: "CPHR Canada", year: "2023", issuer: "CPHR Canada" },
+        { name: "CPHR Canada", year: "2023", issuer: "CPHR Canada", logoSrc: cphrLogo },
         { name: "HRCI Professional in Human Resources – International (PHRi)", year: "", issuer: "HR Certification Institute" },
       ],
     },
@@ -199,7 +206,7 @@ export default function CertificationsSection() {
       title: "Project & Agile Management",
       caption: "Project management and agile delivery",
       certifications: [
-        { name: "Certified Associate in Project Management (CAPM)", year: "2024", issuer: "Project Management Institute", emphasis: true },
+        { name: "Certified Associate in Project Management (CAPM)", year: "2024", issuer: "Project Management Institute", logoSrc: pmiLogo, emphasis: true },
         { name: "Certified ScrumMaster (CSM)", year: "2025", issuer: "Scrum Alliance" },
       ],
     },
@@ -207,8 +214,8 @@ export default function CertificationsSection() {
       title: "Teaching & Learning",
       caption: "Instructional practice and educator credentials",
       certifications: [
-        { name: "Certificate in Effective Teaching", year: "2025", issuer: "Association of College and University Educators", emphasis: true },
-        { name: "Microsoft Certified Educator", year: "2016", issuer: "Microsoft" },
+        { name: "Certificate in Effective Teaching", year: "2025", issuer: "Association of College and University Educators", logoSrc: acueLogo, emphasis: true },
+        { name: "Microsoft Certified Educator", year: "2016", issuer: "Microsoft", logoSrc: microsoftLogo },
       ],
     },
     {
