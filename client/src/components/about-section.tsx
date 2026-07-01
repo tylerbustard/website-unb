@@ -24,7 +24,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import universityLogo from "@assets/University_of_New_Brunswick_Logo.svg_1755912478863.png";
-import nccLogo from "@assets/northeast_christian_college_logo.png";
+import nccLogo from "@assets/ncc_logo.webp";
 import { getCertificateAsset } from "@/lib/certificates";
 import { CertificateModal, preloadCertificateImage, type CertificateModalCert } from "@/components/certificate-modal";
 

@@ -8,9 +8,9 @@ import profileImage from "@assets/89BBD451-CD8B-47EB-AA2E-C39D4637B01D_1_105_c_1
 import seventyThreeStringsLogo from "@assets/73-strings-logo.webp";
 import bmoLogo from "@assets/BMO_Logo.svg_1755913265896.png";
 import tdLogo from "@assets/Toronto-Dominion_Bank_logo.svg_1755913265896.png";
-import rbcLogo from "@assets/RBC-Logo_1755913716813.png";
+import rbcLogo from "@assets/rbc_logo.webp";
 import irvingLogo from "@assets/Irving_Oil.svg_1755913265895.png";
-import grantThorntonLogo from "@assets/Grant_Thornton_logo_1755913265895.png";
+import grantThorntonLogo from "@assets/grant_thornton_logo.webp";
 import roiLogo from "@assets/roi_logo_icon.png";
 
 // Education

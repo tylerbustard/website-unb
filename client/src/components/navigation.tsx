@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { ChevronDown, Download, Mail, Menu, Printer, X } from "lucide-react";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import profileImage from "@assets/Untitled design (1)_1755896187722.png";
+import profileImage from "@assets/nav_avatar.webp";
 import { slugify } from "@/lib/utils";
 
 export default function Navigation() {

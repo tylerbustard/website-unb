@@ -22,15 +22,15 @@ import profileImage from "@assets/89BBD451-CD8B-47EB-AA2E-C39D4637B01D_1_105_c_1
 import unbLogo from "@assets/University_of_New_Brunswick_Logo.svg_1755912478863.png";
 import bmoLogo from "@assets/BMO_Logo.svg_1755913265896.png";
 import tdLogo from "@assets/Toronto-Dominion_Bank_logo.svg_1755913265896.png";
-import rbcLogo from "@assets/RBC-Logo_1755913716813.png";
+import rbcLogo from "@assets/rbc_logo.webp";
 import unitedWayLogo from "@assets/United-Way-Logo_1755913265895.png";
 import irvingLogo from "@assets/Irving_Oil.svg_1755913265895.png";
-import grantThorntonLogo from "@assets/Grant_Thornton_logo_1755913265895.png";
+import grantThorntonLogo from "@assets/grant_thornton_logo.webp";
 import cfaLogo from "@assets/CFA_Institute_Logo_1755923720192.png";
 import trainingTheStreetLogo from "@assets/trainning the street_1755938972014.png";
 import csiLogo from "@assets/canadian securities institute_1755923720191.png";
-import wallStreetPrepLogo from "@assets/wall street prep_1755923720193.png";
-import etsLogo from "@assets/ETS_1755939510188.png";
+import wallStreetPrepLogo from "@assets/wall_street_prep_logo.webp";
+import etsLogo from "@assets/ets_logo.webp";
 import bloombergLogo from "@assets/bloomberg_1755923720190.png";
 import courseraLogo from "@assets/Coursera_1755937682843.png";
 import mcgillLogo from "@assets/mcgill_university_logo.png";
@@ -38,7 +38,7 @@ import seventyThreeStringsLogo from "@assets/73-strings-logo.webp";
 import roiLogo from "@assets/roi_logo_icon.png";
 import anthropicLogo from "@assets/anthropic_mark.png";
 import openaiLogo from "@assets/openai_mark.png";
-import nccLogo from "@assets/northeast_christian_college_logo.png";
+import nccLogo from "@assets/ncc_logo.webp";
 
 type ResumeEntry = {
   id: string;
