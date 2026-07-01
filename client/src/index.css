@@ -2289,15 +2289,22 @@
 
   .hero-logo-image {
     display: block;
-    height: 1.25rem;
     width: auto;
-    max-width: 4.5rem;
+    max-width: 5.5rem;
     object-fit: contain;
     flex: 0 0 auto;
     filter: grayscale(1);
     transition:
       opacity 200ms ease,
       filter 200ms ease;
+  }
+
+  .hero-facts-label {
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: hsl(215 13% 55%);
   }
 
   .hero-logo-image--ncc {
@@ -2319,7 +2326,7 @@
       filter: grayscale(1) brightness(0.5);
     }
     to {
-      opacity: 0.6;
+      opacity: 0.75;
       filter: grayscale(1) brightness(1);
     }
   }

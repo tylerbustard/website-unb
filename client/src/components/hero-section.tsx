@@ -36,19 +36,19 @@ export default function HeroSection() {
     });
   };
 
-  const institutionLogos = [
-    // Experience (chronological, most recent first)
-    { src: seventyThreeStringsLogo, alt: "73 Strings" },
-    { src: roiLogo, alt: "ROI" },
-    { src: bmoLogo, alt: "BMO Private Wealth" },
-    { src: tdLogo, alt: "TD Canada Trust" },
+  const institutionLogos: { src: string; alt: string; h?: number }[] = [
+    // Employers, most recognizable first
     { src: rbcLogo, alt: "Royal Bank of Canada" },
-    { src: irvingLogo, alt: "Irving Oil" },
+    { src: tdLogo, alt: "TD Canada Trust" },
+    { src: bmoLogo, alt: "BMO Private Wealth" },
+    { src: irvingLogo, alt: "Irving Oil", h: 18 },
     { src: grantThorntonLogo, alt: "Grant Thornton" },
+    { src: roiLogo, alt: "ROI" },
+    { src: seventyThreeStringsLogo, alt: "73 Strings" },
     // Credentials
-    { src: cfaLogo, alt: "CFA Institute" },
+    { src: cfaLogo, alt: "CFA Institute", h: 19 },
     { src: csiLogo, alt: "Canadian Securities Institute" },
-    { src: bloombergLogo, alt: "Bloomberg" },
+    { src: bloombergLogo, alt: "Bloomberg", h: 17 },
   ];
 
   const sections = [
@@ -88,28 +88,22 @@ export default function HeroSection() {
               <div className="hero-copy-column max-w-full sm:max-w-[42rem] lg:max-w-none">
                 <div className="hero-intro-grid mb-7 grid items-center gap-x-4 gap-y-4 [grid-template-columns:minmax(0,1fr)_clamp(5.2rem,24vw,6.15rem)] sm:mb-8 sm:[grid-template-columns:minmax(0,1fr)_clamp(7rem,19vw,9rem)] md:mb-9 md:gap-x-8 lg:mb-0 lg:block">
                   <div className="min-w-0 order-1">
+                    <p className="hero-entrance hero-entrance-1 text-[0.72rem] font-bold uppercase tracking-[0.22em] text-primary">
+                      Finance Professional — Toronto
+                    </p>
                     <h1
-                      className="hero-entrance hero-entrance-1 text-slate-950"
+                      className="hero-entrance hero-entrance-2 mt-4 text-slate-950"
                       style={{
                         fontFamily: "var(--font-display)",
                         fontSize: "clamp(2.45rem, 11vw, 5rem)",
                         lineHeight: "0.92",
-                        letterSpacing: "-0.05em",
+                        letterSpacing: "-0.045em",
+                        wordSpacing: "0.14em",
                         textWrap: "balance",
                       }}
                     >
                       Tyler Bustard
                     </h1>
-                    <p
-                      className="hero-entrance hero-entrance-2 mt-3 text-slate-500 md:mt-4"
-                      style={{
-                        fontSize: "clamp(1.15rem, 4.2vw, 1.65rem)",
-                        lineHeight: "1.14",
-                        textWrap: "balance",
-                      }}
-                    >
-                      Finance Professional · Toronto
-                    </p>
                   </div>
                   <div className="hero-entrance hero-entrance-3 order-2 justify-self-end lg:hidden">
                     <div className="hero-portrait-frame relative overflow-hidden rounded-[1.35rem] border border-slate-200/90 bg-white shadow-lg">
@@ -162,46 +156,65 @@ export default function HeroSection() {
                   </Button>
                 </div>
 
-                {/* Proof stats — inline with copy */}
-                <div className="hero-entrance hero-entrance-6 mt-8 grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5 md:gap-8 lg:mt-10">
-                  <div>
-                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-slate-600">Portfolio scale</p>
-                    <p className="mt-1.5 text-lg font-semibold tracking-tight text-slate-950 md:text-xl">$100M+</p>
-                    <p className="mt-1 text-xs text-slate-500">Client portfolios supported</p>
+                {/* Key facts — fund-fact-sheet ledger */}
+                <div className="hero-entrance hero-entrance-6 mt-9 min-w-0 lg:mt-11">
+                  <div className="flex items-baseline justify-between border-t-2 border-slate-950 pt-2.5">
+                    <span className="hero-facts-label">Key facts</span>
+                    <span className="hero-facts-label">As at 2026</span>
                   </div>
-                  <div>
-                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-slate-600">Professional track</p>
-                    <p className="mt-1.5 text-lg font-semibold tracking-tight text-slate-950 md:text-xl">CFA Level I Candidate</p>
-                    <p className="mt-1 text-xs text-slate-500">CSC · Bloomberg BMC</p>
-                  </div>
-                  <div>
-                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-slate-600">Experience</p>
-                    <p className="mt-1.5 text-lg font-semibold tracking-tight text-slate-950 md:text-xl">7 institutions</p>
-                    <p className="mt-1 text-xs text-slate-500">Incl. RBC, TD &amp; BMO Private Wealth</p>
-                  </div>
+                  <dl>
+                    <div className="grid grid-cols-[6.5rem_1fr] items-baseline gap-4 border-b border-slate-200 py-3 sm:grid-cols-[10.5rem_1fr] sm:gap-6">
+                      <dt className="hero-facts-label">Portfolio scale</dt>
+                      <dd className="text-[0.95rem] text-slate-950 sm:text-base" style={{ fontVariantNumeric: "tabular-nums" }}>
+                        <strong className="font-bold">$100M+</strong>
+                        <span className="text-slate-500"> client portfolios supported</span>
+                      </dd>
+                    </div>
+                    <div className="grid grid-cols-[6.5rem_1fr] items-baseline gap-4 border-b border-slate-200 py-3 sm:grid-cols-[10.5rem_1fr] sm:gap-6">
+                      <dt className="hero-facts-label">Professional track</dt>
+                      <dd className="text-[0.95rem] text-slate-950 sm:text-base">
+                        <strong className="font-bold text-primary">CFA Level I Candidate</strong>
+                        <span className="text-slate-500"> · CSC · Bloomberg BMC</span>
+                      </dd>
+                    </div>
+                    <div className="grid grid-cols-[6.5rem_1fr] items-baseline gap-4 border-b border-slate-200 py-3 sm:grid-cols-[10.5rem_1fr] sm:gap-6">
+                      <dt className="hero-facts-label">Experience</dt>
+                      <dd className="text-[0.95rem] text-slate-950 sm:text-base">
+                        <strong className="font-bold">RBC · TD · BMO Private Wealth · 73 Strings</strong>
+                        <span className="text-slate-500"> — wealth, banking &amp; fintech</span>
+                      </dd>
+                    </div>
+                  </dl>
                 </div>
               </div>
 
-              {/* Right: Portrait */}
+              {/* Right: Portrait plate */}
               <div className="hero-entrance hero-entrance-3 hero-portrait hidden lg:block">
-                <div className="hero-portrait-frame relative overflow-hidden rounded-2xl border border-slate-200 shadow-lg">
-                  <img
-                    src={profileImage}
-                    alt="Tyler Bustard professional headshot"
-                    className="hero-portrait-img aspect-[3/4] w-full object-cover object-top"
-                    data-testid="img-profile"
-                    loading="eager"
-                    fetchPriority="high"
-                    decoding="async"
-                  />
-                  <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-black/5" />
+                <div className="rounded-lg border border-slate-200 bg-white p-2.5 shadow-lg">
+                  <div className="relative overflow-hidden rounded-md">
+                    <img
+                      src={profileImage}
+                      alt="Tyler Bustard professional headshot"
+                      className="hero-portrait-img aspect-[3/4] w-full object-cover object-top"
+                      data-testid="img-profile"
+                      loading="eager"
+                      fetchPriority="high"
+                      decoding="async"
+                    />
+                    <div className="absolute inset-0 rounded-md ring-1 ring-inset ring-black/5" />
+                  </div>
+                  <div className="flex items-baseline justify-between px-1.5 pb-0.5 pt-2.5">
+                    <span className="hero-facts-label">Toronto, Ontario</span>
+                    <span className="hero-facts-label">2026</span>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* ── Institution logos ── */}
-            <div className="hero-entrance hero-entrance-7 hero-logo-strip mt-7 border-t border-slate-200/45 pt-5 sm:mt-8 md:mt-9 md:pt-6 lg:mt-10">
-              <div className="hero-logo-row">
+            <div className="hero-entrance hero-entrance-7 hero-logo-strip mt-7 border-t border-slate-200/60 pt-5 sm:mt-8 md:mt-9 md:pt-6 lg:mt-10">
+              <div className="flex flex-wrap items-center justify-center gap-x-7 gap-y-4 lg:justify-start">
+                <span className="hero-facts-label hero-logo-light" style={{ animationDelay: "1.05s" }}>Selected institutions</span>
                 {institutionLogos.map((logo, i) => (
                   <span key={logo.alt} className="hero-logo-entry">
                     {i === 7 && (
@@ -211,7 +224,7 @@ export default function HeroSection() {
                       src={logo.src}
                       alt={logo.alt}
                       className="hero-logo-image hero-logo-light"
-                      style={{ animationDelay: `${1.1 + i * 0.08}s` }}
+                      style={{ animationDelay: `${1.1 + i * 0.08}s`, height: `${logo.h ?? 22}px` }}
                     />
                   </span>
                 ))}
