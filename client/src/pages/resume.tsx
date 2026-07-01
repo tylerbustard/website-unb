@@ -487,6 +487,11 @@ export default function Resume() {
                     tylerbustard.ca
                   </a>
                   <span className="resume-contact-separator" aria-hidden="true" />
+                  <a href="https://www.linkedin.com/in/tyler-bustard" target="_blank" rel="noopener noreferrer" className="resume-header-contact-link" aria-label="Tyler Bustard on LinkedIn">
+                    <Linkedin size={13} />
+                    linkedin.com/in/tyler-bustard
+                  </a>
+                  <span className="resume-contact-separator" aria-hidden="true" />
                   <span className="resume-header-contact-item">
                     <MapPin size={13} />
                     Toronto, Ontario

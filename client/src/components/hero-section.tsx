@@ -1,4 +1,4 @@
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Play, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useInitialPageAnimation } from "@/hooks/useScrollAnimation";
 import { useQuery } from "@tanstack/react-query";
@@ -236,6 +236,17 @@ export default function HeroSection() {
                   >
                     View experience
                     <ArrowRight size={15} className="ml-2" />
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="min-h-[48px] cursor-pointer rounded-full border-slate-200 bg-white px-7 text-[0.9rem] font-semibold text-slate-900 shadow-sm transition-all duration-200 hover:bg-slate-50"
+                    data-testid="button-download-resume-hero"
+                  >
+                    <a href="/Tyler-Bustard-Resume.pdf" download>
+                      <Download size={14} className="mr-2" />
+                      Download resume
+                    </a>
                   </Button>
                   <Button
                     variant="outline"

@@ -818,32 +818,42 @@ ${canonicalResumePdfUrl}`,
                         >
                           <div className="space-y-3">
                             {/* Email */}
-                            <button 
-                              onClick={() => {
-                                scrollToSection('#contact');
-                                setOpenDropdown(null);
-                              }}
-                              className="w-full text-left hover:bg-white/5 rounded-lg p-3 transition-all duration-200 group"
+                            <a 
+                              href="mailto:tyler@tylerbustard.ca"
+                              onClick={() => setOpenDropdown(null)}
+                              className="block w-full text-left hover:bg-white/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
                                 <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Email</div>
-                <div className="text-xs text-white/50">tyler@tylerbustard.ca</div>
+                                <div className="text-xs text-white/50">tyler@tylerbustard.ca</div>
                               </div>
-                            </button>
+                            </a>
 
                             {/* Phone */}
-                            <button 
-                              onClick={() => {
-                                scrollToSection('#contact');
-                                setOpenDropdown(null);
-                              }}
-                              className="w-full text-left hover:bg-white/5 rounded-lg p-3 transition-all duration-200 group"
+                            <a 
+                              href="tel:+16139851223"
+                              onClick={() => setOpenDropdown(null)}
+                              className="block w-full text-left hover:bg-white/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
                                 <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Phone</div>
                                 <div className="text-xs text-white/50">(613) 985-1223</div>
                               </div>
-                            </button>
+                            </a>
+
+                            {/* LinkedIn */}
+                            <a 
+                              href="https://www.linkedin.com/in/tyler-bustard"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={() => setOpenDropdown(null)}
+                              className="block w-full text-left hover:bg-white/5 rounded-lg p-3 transition-all duration-200 group"
+                            >
+                              <div className="space-y-1">
+                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">LinkedIn</div>
+                                <div className="text-xs text-white/50">linkedin.com/in/tyler-bustard</div>
+                              </div>
+                            </a>
 
                             {/* Location */}
                             <button 
@@ -1514,32 +1524,42 @@ ${canonicalResumePdfUrl}`,
                       >
                         <div className="space-y-3">
                           {/* Email */}
-                          <button 
-                            onClick={() => {
-                              scrollToSection('#contact');
-                              setOpenDropdown(null);
-                            }}
-                            className="w-full text-left hover:bg-white/5 rounded-lg p-3 transition-all duration-200 group"
+                          <a 
+                            href="mailto:tyler@tylerbustard.ca"
+                            onClick={() => setOpenDropdown(null)}
+                            className="block w-full text-left hover:bg-white/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
                               <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Email</div>
                               <div className="text-xs text-white/50">tyler@tylerbustard.ca</div>
                             </div>
-                          </button>
+                          </a>
 
                           {/* Phone */}
-                          <button 
-                            onClick={() => {
-                              scrollToSection('#contact');
-                              setOpenDropdown(null);
-                            }}
-                            className="w-full text-left hover:bg-white/5 rounded-lg p-3 transition-all duration-200 group"
+                          <a 
+                            href="tel:+16139851223"
+                            onClick={() => setOpenDropdown(null)}
+                            className="block w-full text-left hover:bg-white/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
                               <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Phone</div>
                               <div className="text-xs text-white/50">(613) 985-1223</div>
                             </div>
-                          </button>
+                          </a>
+
+                          {/* LinkedIn */}
+                          <a 
+                            href="https://www.linkedin.com/in/tyler-bustard"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => setOpenDropdown(null)}
+                            className="block w-full text-left hover:bg-white/5 rounded-lg p-3 transition-all duration-200 group"
+                          >
+                            <div className="space-y-1">
+                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">LinkedIn</div>
+                              <div className="text-xs text-white/50">linkedin.com/in/tyler-bustard</div>
+                            </div>
+                          </a>
 
                           {/* Location */}
                           <button 
@@ -1709,21 +1729,21 @@ ${canonicalResumePdfUrl}`,
                   <>
                     <button 
                       onClick={() => {
-                        scrollToSection('#education');
-                        setIsMobileMenuOpen(false);
-                      }}
-                      className="block w-full text-left px-4 py-3 text-lg font-medium text-gray-900 hover:bg-gray-100/50 rounded-lg transition-all duration-200 active:scale-98"
-                    >
-                      Education
-                    </button>
-                    <button 
-                      onClick={() => {
                         scrollToSection('#experience');
                         setIsMobileMenuOpen(false);
                       }}
                       className="block w-full text-left px-4 py-3 text-lg font-medium text-gray-900 hover:bg-gray-100/50 rounded-lg transition-all duration-200 active:scale-98"
                     >
                       Experience
+                    </button>
+                    <button 
+                      onClick={() => {
+                        scrollToSection('#education');
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="block w-full text-left px-4 py-3 text-lg font-medium text-gray-900 hover:bg-gray-100/50 rounded-lg transition-all duration-200 active:scale-98"
+                    >
+                      Education
                     </button>
                     <button 
                       onClick={() => {
@@ -1752,6 +1772,21 @@ ${canonicalResumePdfUrl}`,
                     >
                       Contact
                     </button>
+                    <a 
+                      href="mailto:tyler@tylerbustard.ca"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block w-full text-left px-4 py-3 text-lg font-medium text-gray-900 hover:bg-gray-100/50 rounded-lg transition-colors"
+                    >
+                      Email tyler@tylerbustard.ca
+                    </a>
+                    <a 
+                      href="/Tyler-Bustard-Resume.pdf"
+                      download
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block w-full text-left px-4 py-3 text-lg font-medium text-gray-900 hover:bg-gray-100/50 rounded-lg transition-colors"
+                    >
+                      Download resume PDF
+                    </a>
                   </>
                 )}
                 
