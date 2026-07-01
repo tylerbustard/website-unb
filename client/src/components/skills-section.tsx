@@ -7,6 +7,10 @@ import {
 } from "@/hooks/useScrollAnimation";
 import { useCounterAnimation } from "@/hooks/use-counter-animation";
 import { slugify } from "@/lib/utils";
+import { useState } from "react";
+import { Eye } from "lucide-react";
+import { getCertificateAsset } from "@/lib/certificates";
+import { CertificateModal, type CertificateModalCert } from "@/components/certificate-modal";
 import unitedWayLogo from "@assets/United-Way-Logo_1755913265895.png";
 import rbcLogo from "@assets/RBC-Logo_1755913716813.png";
 import irvingLogo from "@assets/Irving_Oil.svg_1755913265895.png";
@@ -74,6 +78,20 @@ export default function CertificationsSection() {
     threshold: 0.18,
     delay: 60,
   });
+
+  const [activeCert, setActiveCert] = useState<CertificateModalCert | null>(null);
+  const openCertificate = (certification: Certification) => {
+    const asset = getCertificateAsset(certification.name);
+    if (asset) {
+      setActiveCert({
+        title: certification.name,
+        issuer: certification.issuer,
+        year: certification.year,
+        image: asset.image,
+        alt: asset.alt,
+      });
+    }
+  };
 
   const certificationCategories: CertificationCategory[] = ([
     {
@@ -278,12 +296,25 @@ export default function CertificationsSection() {
                         </div>
 
                         <div className="resume-certification-cards homepage-certification-cards">
-                          {category.certifications.map((certification, certificationIndex) => (
+                          {category.certifications.map((certification, certificationIndex) => {
+                            const certAsset = getCertificateAsset(certification.name);
+                            return (
                             <div
                               key={`${category.title}-${certification.name}`}
                               id={`cert-${slugify(certification.name)}`}
-                              className={`resume-certification-card homepage-certification-card scroll-slide-up ${revealClass}`}
-                              style={getScrollRevealStyle('body', certificationIndex)}
+                              className={`resume-certification-card homepage-certification-card scroll-slide-up ${revealClass}${certAsset ? " certificate-card-viewable focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2" : ""}`}
+                              style={certAsset ? { ...getScrollRevealStyle('body', certificationIndex), cursor: 'pointer' } : getScrollRevealStyle('body', certificationIndex)}
+                              role={certAsset ? "button" : undefined}
+                              tabIndex={certAsset ? 0 : undefined}
+                              aria-haspopup={certAsset ? "dialog" : undefined}
+                              aria-label={certAsset ? `View ${certification.name} certificate` : undefined}
+                              onClick={certAsset ? () => openCertificate(certification) : undefined}
+                              onKeyDown={certAsset ? (event) => {
+                                if (event.key === "Enter" || event.key === " ") {
+                                  event.preventDefault();
+                                  openCertificate(certification);
+                                }
+                              } : undefined}
                             >
                               <div className="resume-certification-card-brand homepage-certification-card-brand">
                                 {certification.logoSrc ? (
@@ -318,9 +349,16 @@ export default function CertificationsSection() {
                                 {certification.detail ? (
                                   <span className="resume-certification-card-detail homepage-certification-card-detail">{certification.detail}</span>
                                 ) : null}
+                                {certAsset ? (
+                                  <span className="inline-flex items-center gap-1 text-xs font-medium text-primary">
+                                    <Eye size={13} aria-hidden="true" />
+                                    View
+                                  </span>
+                                ) : null}
                               </div>
                             </div>
-                          ))}
+                            );
+                          })}
                         </div>
                       </article>
                     );
@@ -351,6 +389,13 @@ export default function CertificationsSection() {
           </div>
         </div>
       </div>
+      <CertificateModal
+        open={activeCert !== null}
+        onOpenChange={(open) => {
+          if (!open) setActiveCert(null);
+        }}
+        cert={activeCert}
+      />
     </section>
   );
 }

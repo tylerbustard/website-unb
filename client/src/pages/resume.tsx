@@ -1,11 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "wouter";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { Mail, Phone, MapPin, Globe, Linkedin, Briefcase, GraduationCap, Award, Heart, Target } from "lucide-react";
+import { Mail, Phone, MapPin, Globe, Linkedin, Briefcase, GraduationCap, Award, Heart, Target, Eye } from "lucide-react";
 import Navigation from "@/components/navigation";
 import { slugify } from "@/lib/utils";
+import { getCertificateAsset } from "@/lib/certificates";
+import { CertificateModal, type CertificateModalCert } from "@/components/certificate-modal";
 import ScrollToTopButton from "@/components/scroll-to-top-button";
 import FooterMarketTicker from "@/components/footer-market-ticker";
 import {
@@ -68,6 +70,20 @@ type ResumeCertificationArea = {
 
 export default function Resume() {
   const [location] = useLocation();
+
+  const [activeCert, setActiveCert] = useState<CertificateModalCert | null>(null);
+  const openCertificate = (certification: ResumeCertification) => {
+    const asset = getCertificateAsset(certification.name);
+    if (asset) {
+      setActiveCert({
+        title: certification.name,
+        issuer: certification.issuer,
+        year: certification.year,
+        image: asset.image,
+        alt: asset.alt,
+      });
+    }
+  };
 
   const certificationAreas: ResumeCertificationArea[] = [
     {
@@ -536,14 +552,27 @@ export default function Resume() {
                         </div>
 
                         <div className="resume-certification-cards resume-certification-cards-compact">
-                          {area.certifications.map((certification, certificationIndex) => (
+                          {area.certifications.map((certification, certificationIndex) => {
+                            const certAsset = getCertificateAsset(certification.name);
+                            return (
                             <div
                               key={`${area.title}-${certification.name}`}
                               id={`cert-${slugify(certification.name)}`}
                               className={`resume-certification-card resume-certification-card-compact scroll-slide-up ${
                                 isAreaVisible ? "visible" : ""
-                              }`}
-                              style={getScrollRevealStyle("body", certificationIndex)}
+                              }${certAsset ? " certificate-card-viewable focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2" : ""}`}
+                              style={certAsset ? { ...getScrollRevealStyle("body", certificationIndex), cursor: "pointer" } : getScrollRevealStyle("body", certificationIndex)}
+                              role={certAsset ? "button" : undefined}
+                              tabIndex={certAsset ? 0 : undefined}
+                              aria-haspopup={certAsset ? "dialog" : undefined}
+                              aria-label={certAsset ? `View ${certification.name} certificate` : undefined}
+                              onClick={certAsset ? () => openCertificate(certification) : undefined}
+                              onKeyDown={certAsset ? (event) => {
+                                if (event.key === "Enter" || event.key === " ") {
+                                  event.preventDefault();
+                                  openCertificate(certification);
+                                }
+                              } : undefined}
                             >
                               <div className="resume-certification-card-copy">
                                 <p className={`resume-certification-card-title${certification.emphasis ? " resume-certification-card-title-emphasis" : ""}`}>
@@ -556,9 +585,15 @@ export default function Resume() {
                                   ) : null}
                                 </p>
                               </div>
-                              <span className="resume-certification-card-year">{certification.year}</span>
+                              <span className={`resume-certification-card-year${certAsset ? " inline-flex items-center gap-1.5" : ""}`}>
+                                {certification.year}
+                                {certAsset ? (
+                                  <Eye size={12} className="text-primary print:hidden" aria-hidden="true" />
+                                ) : null}
+                              </span>
                             </div>
-                          ))}
+                            );
+                          })}
                         </div>
                       </article>
                     );
@@ -1190,6 +1225,13 @@ export default function Resume() {
       <footer className="site-footer-strip print:hidden">
         <FooterMarketTicker />
       </footer>
+      <CertificateModal
+        open={activeCert !== null}
+        onOpenChange={(open) => {
+          if (!open) setActiveCert(null);
+        }}
+        cert={activeCert}
+      />
     </div>
   );
 }
