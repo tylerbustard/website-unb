@@ -47,8 +47,8 @@ ${canonicalResumePdfUrl}`,
       return;
     }
 
-    const expandTimer = setTimeout(() => setNavExpanded(true), 1500);
-    const contentTimer = setTimeout(() => setShowNavContent(true), 2000);
+    const expandTimer = setTimeout(() => setNavExpanded(true), 400);
+    const contentTimer = setTimeout(() => setShowNavContent(true), 700);
     try { sessionStorage.setItem("homepageIntroPlayed", "1"); } catch (e) {}
 
     return () => {

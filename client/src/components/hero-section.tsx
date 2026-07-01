@@ -14,26 +14,18 @@ import grantThorntonLogo from "@assets/Grant_Thornton_logo_1755913265895.png";
 import roiLogo from "@assets/roi_logo_icon.png";
 
 // Education
-import unbLogo from "@assets/University_of_New_Brunswick_Logo.svg_1755912478863.png";
-import nccLogo from "@assets/northeast_christian_college_logo.png";
 
 // Certifications & Training
 import cfaLogo from "@assets/CFA_Institute_Logo_1755923720192.png";
-import trainingTheStreetLogo from "@assets/trainning the street_1755938972014.png";
 import csiLogo from "@assets/canadian securities institute_1755923720191.png";
 import bloombergLogo from "@assets/bloomberg_1755923720190.png";
-import wallStreetPrepLogo from "@assets/wall street prep_1755923720193.png";
-import courseraLogo from "@assets/Coursera_1755937682843.png";
-import etsLogo from "@assets/ETS_1755939510188.png";
 
 // Community
-import unitedWayLogo from "@assets/United-Way-Logo_1755913265895.png";
 
 export default function HeroSection() {
   const isPageLoaded = useInitialPageAnimation(400);
-  const yearsExperience = Math.max(1, new Date().getFullYear() - 2018);
   const heroSummary =
-    "Building trust at the intersection of finance, portfolio operations, and technology. Frontline client experience, rigorous financial training, and hands-on analytics supporting better decisions and stronger operating discipline.";
+    "CFA Level I Candidate with front-office and portfolio-operations experience across RBC, TD, BMO Private Wealth, and 73 Strings — pairing Canadian Securities Course and Bloomberg Market Concepts training with hands-on Python and SQL analytics.";
 
   const videosQuery = useQuery({
     queryKey: ["/api/videos"],
@@ -149,19 +141,10 @@ export default function HeroSection() {
     { src: rbcLogo, alt: "Royal Bank of Canada" },
     { src: irvingLogo, alt: "Irving Oil" },
     { src: grantThorntonLogo, alt: "Grant Thornton" },
-    // Education
-    { src: unbLogo, alt: "University of New Brunswick" },
-    { src: nccLogo, alt: "Northeast Christian College", className: "hero-logo-image--ncc" },
-    // Certifications (chronological, most recent first)
+    // Credentials
     { src: cfaLogo, alt: "CFA Institute" },
-    { src: etsLogo, alt: "ETS" },
-    { src: trainingTheStreetLogo, alt: "Training the Street" },
     { src: csiLogo, alt: "Canadian Securities Institute" },
-    { src: courseraLogo, alt: "Coursera" },
     { src: bloombergLogo, alt: "Bloomberg" },
-    { src: wallStreetPrepLogo, alt: "Wall Street Prep" },
-    // Community
-    { src: unitedWayLogo, alt: "United Way" },
   ];
 
   const sections = [
@@ -221,7 +204,7 @@ export default function HeroSection() {
                         textWrap: "balance",
                       }}
                     >
-                      Finance &amp; Technology
+                      Finance Professional · Toronto
                     </p>
                   </div>
                   <div className="hero-entrance hero-entrance-3 order-2 justify-self-end lg:hidden">
@@ -276,21 +259,21 @@ export default function HeroSection() {
                 </div>
 
                 {/* Proof stats — inline with copy */}
-                <div className="hero-entrance hero-entrance-6 mt-8 hidden gap-5 md:grid md:grid-cols-3 md:gap-8 lg:mt-10">
+                <div className="hero-entrance hero-entrance-6 mt-8 grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5 md:gap-8 lg:mt-10">
                   <div>
-                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-slate-400">Sector depth</p>
-                    <p className="mt-1.5 text-xl font-semibold tracking-tight text-slate-950">{yearsExperience}+ years</p>
-                    <p className="mt-1 text-xs text-slate-500">Wealth, banking &amp; financial operations</p>
+                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-slate-600">Portfolio scale</p>
+                    <p className="mt-1.5 text-lg font-semibold tracking-tight text-slate-950 md:text-xl">$100M+</p>
+                    <p className="mt-1 text-xs text-slate-500">Client portfolios supported</p>
                   </div>
                   <div>
-                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-slate-400">Professional track</p>
-                    <p className="mt-1.5 text-xl font-semibold tracking-tight text-slate-950">CFA Level I</p>
-                    <p className="mt-1 text-xs text-slate-500">Investment analysis &amp; valuation</p>
+                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-slate-600">Professional track</p>
+                    <p className="mt-1.5 text-lg font-semibold tracking-tight text-slate-950 md:text-xl">CFA Level I Candidate</p>
+                    <p className="mt-1 text-xs text-slate-500">CSC · Bloomberg BMC</p>
                   </div>
                   <div>
-                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-slate-400">Operating lens</p>
-                    <p className="mt-1.5 text-xl font-semibold tracking-tight text-slate-950">Portfolio ops</p>
-                    <p className="mt-1 text-xs text-slate-500">Analytics-forward execution</p>
+                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-slate-600">Experience</p>
+                    <p className="mt-1.5 text-lg font-semibold tracking-tight text-slate-950 md:text-xl">7 institutions</p>
+                    <p className="mt-1 text-xs text-slate-500">Incl. RBC, TD &amp; BMO Private Wealth</p>
                   </div>
                 </div>
               </div>
@@ -317,13 +300,13 @@ export default function HeroSection() {
               <div className="hero-logo-row">
                 {institutionLogos.map((logo, i) => (
                   <span key={logo.alt} className="hero-logo-entry">
-                    {(i === 7 || i === 9 || i === 16) && (
+                    {i === 7 && (
                       <span className="hero-logo-separator hero-logo-light hidden sm:block" style={{ animationDelay: `${1.1 + i * 0.08}s` }} />
                     )}
                     <img
                       src={logo.src}
                       alt={logo.alt}
-                      className={`hero-logo-image hero-logo-light ${logo.className ?? ""}`}
+                      className="hero-logo-image hero-logo-light"
                       style={{ animationDelay: `${1.1 + i * 0.08}s` }}
                     />
                   </span>
