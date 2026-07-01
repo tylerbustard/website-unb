@@ -75,7 +75,7 @@ export default function EducationSection() {
     location: "Saint John, New Brunswick",
     degree: "Bachelor of Business Administration",
     major: "Major in Finance",
-    year: "2016-2020",
+    year: "2016–2020",
   };
 
   const nccEducation: EducationEntry = {
@@ -83,7 +83,7 @@ export default function EducationSection() {
     location: "Fredericton, New Brunswick",
     degree: "Theology Program",
     major: "Major in Theology",
-    year: "2014-2015",
+    year: "2014–2015",
   };
 
   const unbAchievements = [
