@@ -610,7 +610,7 @@ export function CommunitySection() {
     {
       title: "Next Gen Ambassador",
       organization: "United Way",
-      period: "2020-Present",
+      period: "2020–Present",
       duration: "4+ years",
       location: "Toronto, Ontario",
       description: "",
@@ -631,7 +631,7 @@ export function CommunitySection() {
     {
       title: "Student Ambassador",
       organization: "Royal Bank of Canada",
-      period: "2019-2020",
+      period: "2019–2020",
       duration: "1 year",
       location: "Fredericton, New Brunswick",
       description: "",
