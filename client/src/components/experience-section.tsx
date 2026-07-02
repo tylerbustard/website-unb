@@ -42,7 +42,7 @@ function CounterStat({ end, suffix = '', prefix = '', label, className = '', del
 
   return (
     <div className="text-center" ref={elementRef}>
-      <div className={`text-4xl lg:text-5xl font-bold mb-3 ${className}`}>
+      <div className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 ${className}`}>
         {prefix}{count}{suffix}
       </div>
       <div className="text-muted-foreground font-medium">{label}</div>
