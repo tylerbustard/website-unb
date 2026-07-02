@@ -11,6 +11,10 @@ import grantThorntonLogo from "@assets/grant_thornton_logo.webp";
 import roiLogo from "@assets/roi_logo_icon.png";
 
 // Education
+import unbLogo from "@assets/University_of_New_Brunswick_Logo.svg_1755912478863.png";
+import nccLogo from "@assets/ncc_logo.webp";
+
+// Education
 
 // Certifications & Training
 import cfaLogo from "@assets/CFA_Institute_Logo_1755923720192.png";
@@ -25,19 +29,28 @@ export default function HeroSection() {
     "CFA Level I Candidate with front-office and portfolio-operations experience across RBC, TD, BMO Private Wealth, and 73 Strings — pairing Canadian Securities Course and Bloomberg Market Concepts training with hands-on Python and SQL analytics.";
 
 
-  const institutionLogos: { src: string; alt: string; h?: number }[] = [
-    // Employers, most recognizable first
-    { src: rbcLogo, alt: "Royal Bank of Canada" },
-    { src: tdLogo, alt: "TD Canada Trust" },
-    { src: bmoLogo, alt: "BMO Private Wealth" },
-    { src: irvingLogo, alt: "Irving Oil", h: 18 },
-    { src: grantThorntonLogo, alt: "Grant Thornton" },
-    { src: roiLogo, alt: "ROI" },
-    { src: seventyThreeStringsLogo, alt: "73 Strings" },
-    // Credentials
-    { src: cfaLogo, alt: "CFA Institute", h: 19 },
-    { src: csiLogo, alt: "Canadian Securities Institute" },
-    { src: bloombergLogo, alt: "Bloomberg", h: 17 },
+  const institutionGroups: { src: string; alt: string; h?: number }[][] = [
+    [
+      // Employers, most recognizable first
+      { src: rbcLogo, alt: "Royal Bank of Canada" },
+      { src: tdLogo, alt: "TD Canada Trust" },
+      { src: bmoLogo, alt: "BMO Private Wealth" },
+      { src: irvingLogo, alt: "Irving Oil", h: 18 },
+      { src: grantThorntonLogo, alt: "Grant Thornton" },
+      { src: roiLogo, alt: "ROI" },
+      { src: seventyThreeStringsLogo, alt: "73 Strings" },
+    ],
+    [
+      // Education
+      { src: unbLogo, alt: "University of New Brunswick", h: 24 },
+      { src: nccLogo, alt: "Northeast Christian College", h: 24 },
+    ],
+    [
+      // Credentials
+      { src: cfaLogo, alt: "CFA Institute", h: 19 },
+      { src: csiLogo, alt: "Canadian Securities Institute" },
+      { src: bloombergLogo, alt: "Bloomberg", h: 17 },
+    ],
   ];
 
   const sections = [
@@ -72,14 +85,21 @@ export default function HeroSection() {
             <div className="mt-6 border-t border-slate-200/80 pt-3">
               <p className="hero-facts-label">Selected institutions</p>
               <div className="mt-3.5 flex flex-wrap items-center gap-x-7 gap-y-3.5">
-                {institutionLogos.map((logo) => (
-                  <img
-                    key={logo.alt}
-                    src={logo.src}
-                    alt={logo.alt}
-                    className="hero2-logo"
-                    style={{ height: `${logo.h ?? 21}px` }}
-                  />
+                {institutionGroups.map((group, groupIndex) => (
+                  <div key={`logo-group-${groupIndex}`} className="flex flex-wrap items-center gap-x-7 gap-y-3.5">
+                    {groupIndex > 0 ? (
+                      <span className="hidden h-5 w-px bg-slate-300/90 sm:block" aria-hidden="true" />
+                    ) : null}
+                    {group.map((logo) => (
+                      <img
+                        key={logo.alt}
+                        src={logo.src}
+                        alt={logo.alt}
+                        className="hero2-logo"
+                        style={{ height: `${logo.h ?? 21}px` }}
+                      />
+                    ))}
+                  </div>
                 ))}
               </div>
             </div>
