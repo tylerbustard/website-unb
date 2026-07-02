@@ -611,7 +611,7 @@ ${canonicalResumePdfUrl}`,
                               <div className="space-y-1">
                                 <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Northeast Christian College</div>
                                 <div className="text-xs text-white/55">Theology Program</div>
-                                <div className="text-xs text-white/40">Marketing</div>
+                                <div className="text-xs text-white/40">Major in Theology</div>
                               </div>
                             </button>
                           </div>
@@ -669,7 +669,7 @@ ${canonicalResumePdfUrl}`,
                             >
                               <div className="space-y-1">
                               <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">GRE General Test</div>
-                                <div className="text-xs text-white/55">Educational Testing Service</div>
+                                <div className="text-xs text-white/55">ETS</div>
                               </div>
                             </button>
 
@@ -697,7 +697,7 @@ ${canonicalResumePdfUrl}`,
                             >
                               <div className="space-y-1">
                                 <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Advisory & Wealth Planning</div>
-                                <div className="text-xs text-white/55">CSI, McGill</div>
+                                <div className="text-xs text-white/55">CSI licensing &amp; planning</div>
                               </div>
                             </button>
 
@@ -711,7 +711,7 @@ ${canonicalResumePdfUrl}`,
                             >
                               <div className="space-y-1">
                                 <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Analytics & Quantitative Methods</div>
-                                <div className="text-xs text-white/55">Google, Tableau, Python</div>
+                                <div className="text-xs text-white/55">Google, Python, GRE</div>
                               </div>
                             </button>
 
@@ -725,7 +725,7 @@ ${canonicalResumePdfUrl}`,
                             >
                               <div className="space-y-1">
                                 <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">AI Engineering & Agentic Workflows</div>
-                                <div className="text-xs text-white/55">Anthropic, OpenAI, Azure</div>
+                                <div className="text-xs text-white/55">Anthropic, OpenAI</div>
                               </div>
                             </button>
                           </div>
@@ -741,7 +741,7 @@ ${canonicalResumePdfUrl}`,
                     onMouseLeave={handleDropdownLeave}
                   >
                     <button
-                      onClick={(e) => { if (window.matchMedia('(pointer: coarse)').matches || e.detail === 0) { e.preventDefault(); setOpenDropdown(openDropdown === 'community' ? null : 'community'); } else { scrollToSection('#community'); } }}
+                      onClick={(e) => { if (window.matchMedia('(pointer: coarse)').matches || e.detail === 0) { e.preventDefault(); setOpenDropdown(openDropdown === 'community' ? null : 'community'); } else { scrollToSection(getCommunityId('United Way')); } }}
                       aria-haspopup="menu"
                       aria-expanded={openDropdown === 'community'}
                       className={navSectionButtonClasses(currentSection === 'community')}
@@ -762,7 +762,7 @@ ${canonicalResumePdfUrl}`,
                             {/* Next Gen Ambassador */}
                             <button 
                               onClick={() => {
-                                scrollToSection('#community');
+                                scrollToSection(getCommunityId('Royal Bank of Canada'));
                                 setOpenDropdown(null);
                               }}
                               className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
@@ -776,7 +776,7 @@ ${canonicalResumePdfUrl}`,
                             {/* Student Ambassador */}
                             <button 
                               onClick={() => {
-                                scrollToSection('#community');
+                                scrollToSection(getCommunityId('Irving Oil Limited'));
                                 setOpenDropdown(null);
                               }}
                               className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
@@ -1438,7 +1438,7 @@ ${canonicalResumePdfUrl}`,
                     // Always go to home page, not back in history
                     window.location.href = '/';
                   }}
-                  className="lg:hidden p-2 rounded-lg hover:bg-gray-100/50 transition-all duration-200 active:scale-95"
+                  className="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-all duration-200 active:scale-95"
                   aria-label={isResumePage ? "Close resume" : "Go to home"}
                 >
                   <X size={20} />
@@ -1446,7 +1446,7 @@ ${canonicalResumePdfUrl}`,
               ) : (
                 <button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="lg:hidden p-2 rounded-lg hover:bg-gray-100/50 transition-all duration-200 active:scale-95"
+                  className="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-all duration-200 active:scale-95"
                   aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
                 >
                   {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -1469,21 +1469,22 @@ ${canonicalResumePdfUrl}`,
           <div 
             className="absolute inset-x-0 top-0 h-full overflow-y-auto animate-in slide-in-from-top duration-300"
             style={{
-              background: 'rgba(255, 255, 255, 0.98)',
-              backdropFilter: 'blur(24px) saturate(180%)',
-              WebkitBackdropFilter: 'blur(24px) saturate(180%)'
+              background: 'linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.85))',
+              backdropFilter: 'blur(28px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(28px) saturate(180%)',
+              boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.16)'
             }}
           >
             <div className="p-6 pt-20">
               {/* Close Button at top */}
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-xl font-bold text-gray-900">Menu</h2>
+                <h2 className="text-xl font-bold text-white">Menu</h2>
                 <button 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-2 rounded-lg hover:bg-gray-100/50 transition-colors"
+                  className="p-2 rounded-lg hover:bg-white/10 transition-colors"
                   aria-label="Close menu"
                 >
-                  <X size={24} className="text-gray-600" />
+                  <X size={24} className="text-white/70" />
                 </button>
               </div>
               
@@ -1496,7 +1497,7 @@ ${canonicalResumePdfUrl}`,
                         scrollToSection('#experience');
                         setIsMobileMenuOpen(false);
                       }}
-                      className="block w-full text-left px-4 py-3 text-lg font-medium text-gray-900 hover:bg-gray-100/50 rounded-lg transition-all duration-200 active:scale-98"
+                      className="block w-full text-left px-4 py-3 text-lg font-medium text-white hover:bg-white/10 rounded-lg transition-all duration-200 active:scale-98"
                     >
                       Experience
                     </button>
@@ -1505,7 +1506,7 @@ ${canonicalResumePdfUrl}`,
                         scrollToSection('#education');
                         setIsMobileMenuOpen(false);
                       }}
-                      className="block w-full text-left px-4 py-3 text-lg font-medium text-gray-900 hover:bg-gray-100/50 rounded-lg transition-all duration-200 active:scale-98"
+                      className="block w-full text-left px-4 py-3 text-lg font-medium text-white hover:bg-white/10 rounded-lg transition-all duration-200 active:scale-98"
                     >
                       Education
                     </button>
@@ -1514,7 +1515,7 @@ ${canonicalResumePdfUrl}`,
                         scrollToSection('#certifications');
                         setIsMobileMenuOpen(false);
                       }}
-                      className="block w-full text-left px-4 py-3 text-lg font-medium text-gray-900 hover:bg-gray-100/50 rounded-lg transition-all duration-200 active:scale-98"
+                      className="block w-full text-left px-4 py-3 text-lg font-medium text-white hover:bg-white/10 rounded-lg transition-all duration-200 active:scale-98"
                     >
                       Certifications
                     </button>
@@ -1523,7 +1524,7 @@ ${canonicalResumePdfUrl}`,
                         scrollToSection('#community');
                         setIsMobileMenuOpen(false);
                       }}
-                      className="block w-full text-left px-4 py-3 text-lg font-medium text-gray-900 hover:bg-gray-100/50 rounded-lg transition-colors"
+                      className="block w-full text-left px-4 py-3 text-lg font-medium text-white hover:bg-white/10 rounded-lg transition-colors"
                     >
                       Community
                     </button>
@@ -1532,14 +1533,14 @@ ${canonicalResumePdfUrl}`,
                         scrollToSection('#contact');
                         setIsMobileMenuOpen(false);
                       }}
-                      className="block w-full text-left px-4 py-3 text-lg font-medium text-gray-900 hover:bg-gray-100/50 rounded-lg transition-colors"
+                      className="block w-full text-left px-4 py-3 text-lg font-medium text-white hover:bg-white/10 rounded-lg transition-colors"
                     >
                       Contact
                     </button>
                     <a 
                       href="mailto:tyler@tylerbustard.ca"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block w-full text-left px-4 py-3 text-lg font-medium text-gray-900 hover:bg-gray-100/50 rounded-lg transition-colors"
+                      className="block w-full text-left px-4 py-3 text-lg font-medium text-white hover:bg-white/10 rounded-lg transition-colors"
                     >
                       Email tyler@tylerbustard.ca
                     </a>
@@ -1547,7 +1548,7 @@ ${canonicalResumePdfUrl}`,
                       href="/Tyler-Bustard-Resume.pdf"
                       download
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block w-full text-left px-4 py-3 text-lg font-medium text-gray-900 hover:bg-gray-100/50 rounded-lg transition-colors"
+                      className="block w-full text-left px-4 py-3 text-lg font-medium text-white hover:bg-white/10 rounded-lg transition-colors"
                     >
                       Download resume PDF
                     </a>
@@ -1568,7 +1569,7 @@ ${canonicalResumePdfUrl}`,
                     }
                     setIsMobileMenuOpen(false);
                   }}
-                  className="block w-full px-4 py-3 text-lg font-medium bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+                  className="block w-full px-4 py-3 text-lg font-medium bg-white text-slate-900 rounded-lg hover:bg-white/90 transition-colors"
                 >
                   {isResumePage ? 'Close Resume' : isUploadPage ? 'Home' : 'Resume'}
                 </button>

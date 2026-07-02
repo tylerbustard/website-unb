@@ -38,6 +38,7 @@ import roiLogo from "@assets/roi_logo_icon.png";
 import anthropicLogo from "@assets/anthropic_mark.png";
 import openaiLogo from "@assets/openai_mark.png";
 import nccLogo from "@assets/ncc_logo.webp";
+import garpLogo from "@assets/garp_logo.png";
 
 type ResumeEntry = {
   id: string;
@@ -91,6 +92,7 @@ export default function Resume() {
       caption: "CFA, valuation, and market fluency",
       certifications: [
         { name: "CFA Level I Candidate", issuer: "CFA Institute", year: "2026", logo: cfaLogo, emphasis: true },
+        { name: "Financial Risk and Regulation (FRR)", issuer: "Global Association of Risk Professionals", year: "2025", logo: garpLogo },
         { name: "Discounted Cash Flow Analysis and Modeling", issuer: "Training The Street", year: "2024", logo: trainingTheStreetLogo },
         { name: "Financial & Valuation Modeling", issuer: "Wall Street Prep", year: "2020", logo: wallStreetPrepLogo },
         { name: "Bloomberg Market Concepts Certificate", issuer: "Bloomberg", year: "2020", logo: bloombergLogo },

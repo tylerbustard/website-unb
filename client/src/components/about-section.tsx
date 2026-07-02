@@ -464,7 +464,7 @@ export default function EducationSection() {
         </div>
 
         {/* Education Cards — matches experience card pattern */}
-        <div ref={educationItemsAnimation.ref} className="space-y-6 lg:space-y-8">
+        <div ref={educationItemsAnimation.ref} className="space-y-6">
           {renderEducationCard({
             education: unbEducation,
             logo: universityLogo,

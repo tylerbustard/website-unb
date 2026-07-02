@@ -707,7 +707,7 @@
        so these render as real cards matching education/experience. Scoped to the
        homepage panel so the /resume page keeps its compact list layout. */
     border: 1px solid var(--border);
-    border-radius: 0.75rem;
+    border-radius: var(--radius);
     padding: 1.5rem;
   }
 
@@ -1063,7 +1063,7 @@
 
   /* Liquid Glass — translucent light material with specular edges */
   .glass-navbar {
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.62), rgba(15, 23, 42, 0.48));
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.66));
     border: 1px solid rgba(255, 255, 255, 0.16);
     box-shadow:
       0 0 0 0.5px rgba(15, 23, 42, 0.4),
@@ -1114,7 +1114,7 @@
   }
   
   .container-width {
-    @apply max-w-7xl mx-auto;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
   .nav-pill-shell {
@@ -1768,6 +1768,21 @@
     opacity: 1;
   }
 
+  .homepage-market-ticker-dock .market-ticker-shell {
+    position: relative;
+  }
+
+  .homepage-market-ticker-dock .market-ticker-shell::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 4.5rem;
+    background: linear-gradient(90deg, transparent, rgba(15, 23, 42, 0.9));
+    pointer-events: none;
+  }
+
   .homepage-market-ticker-dock__hide {
     display: inline-flex;
     align-items: center;
@@ -1903,15 +1918,11 @@
   @media (min-width: 1024px) {
     .contact-feature-grid {
       grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-      gap: 1.9rem;
+      gap: 1.5rem;
     }
 
     .contact-feature-card {
       padding: 1.8rem;
-    }
-
-    .contact-feature-card--form {
-      padding: 1.85rem;
     }
 
     .contact-form-grid {
@@ -2357,6 +2368,16 @@
     transition:
       opacity 200ms ease,
       filter 200ms ease;
+  }
+
+  .liquid-glass-pill {
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.82), rgba(15, 23, 42, 0.72));
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.18),
+      0 12px 32px rgba(15, 23, 42, 0.28);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
   }
 
   .hero-facts-label {

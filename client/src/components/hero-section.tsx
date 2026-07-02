@@ -67,7 +67,7 @@ export default function HeroSection() {
     >
       <div className="hero2-grain" aria-hidden="true" />
 
-      <div className="container-width relative z-10 flex w-full flex-1 flex-col justify-center px-4 pb-14 pt-20 sm:px-6">
+      <div className="container-width relative z-10 flex w-full flex-1 flex-col justify-center pb-14 pt-20">
         {/* ── Name / summary + portrait plate ── */}
         <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_260px] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_340px] xl:gap-16">
           <div className="min-w-0">
