@@ -171,7 +171,7 @@ export default function ExperienceSection() {
     company: "73 Strings",
     industry: "Fintech",
     location: "Toronto, Ontario",
-    period: "Jan 2025 – May 2026",
+    period: "2025–2026",
     duration: "1 yr 5 mos",
     achievements: [
       "Monitored daily NAV inputs and validated holdings and cash flows, supporting accurate fund valuations across 15+ portfolios",
