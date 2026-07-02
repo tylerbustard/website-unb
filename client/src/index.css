@@ -2377,7 +2377,7 @@
   .hero2-l1,
   .hero2-l2 {
     display: block;
-    font-size: clamp(3.4rem, 15.5vw, 11.5rem);
+    font-size: clamp(3rem, 12vw, 8.6rem);
   }
 
   .hero2-l2 {
