@@ -1065,7 +1065,8 @@
 
   @supports not (backdrop-filter: blur(1px)) {
     .glass-navbar,
-    .liquid-glass-panel {
+    .liquid-glass-panel,
+    .homepage-market-ticker-dock__surface {
       background: rgba(15, 23, 42, 0.96);
     }
   }
@@ -1709,13 +1710,16 @@
     gap: 0.7rem;
     min-height: 2.875rem;
     padding-inline: max(0.7rem, env(safe-area-inset-left)) max(0.7rem, env(safe-area-inset-right));
-    background: rgba(15, 23, 42, 0.65);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(0deg, rgba(15, 23, 42, 0.62), rgba(15, 23, 42, 0.48));
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
     box-shadow:
-      0 -14px 28px rgba(15, 23, 42, 0.16),
-      inset 0 1px 0 rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
+      0 0 0 0.5px rgba(15, 23, 42, 0.4),
+      0 -14px 40px rgba(15, 23, 42, 0.32),
+      0 -2px 8px rgba(15, 23, 42, 0.18),
+      inset 0 1px 1px rgba(255, 255, 255, 0.22),
+      inset 0 -1px 1px rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
     transform: translateY(115%);
     opacity: 0;
     transition:
@@ -1725,11 +1729,13 @@
   }
 
   body:has(.glass-navbar.is-scrolled) .homepage-market-ticker-dock__surface {
-    background: rgba(15, 23, 42, 0.85);
-    border-top-color: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(0deg, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.68));
+    border-top-color: rgba(255, 255, 255, 0.18);
     box-shadow:
-      0 -16px 32px rgba(15, 23, 42, 0.22),
-      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      0 0 0 0.5px rgba(15, 23, 42, 0.45),
+      0 -16px 48px rgba(15, 23, 42, 0.38),
+      0 -2px 8px rgba(15, 23, 42, 0.2),
+      inset 0 1px 1px rgba(255, 255, 255, 0.25);
   }
 
   .homepage-market-ticker-dock[data-active="true"] .homepage-market-ticker-dock__surface {
