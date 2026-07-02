@@ -358,13 +358,13 @@ export default function CertificationsSection() {
             <p className="resume-certification-area-caption homepage-certification-area-caption mt-1">
               Flagship finance, valuation, and assessment credentials
             </p>
-            <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {coreCredentials.map((credential) => {
                 const coreAsset = getCertificateAsset(credential.name);
                 return (
                   <div
                     key={`core-${credential.name}`}
-                    className={`flex items-center gap-3 rounded-lg border border-border bg-white p-4 border-l-2 border-l-primary${coreAsset ? " certificate-card-viewable cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2" : ""}`}
+                    className={`group flex flex-col rounded-lg border border-border bg-white p-5 border-t-2 border-t-primary transition-all duration-200${coreAsset ? " certificate-card-viewable cursor-pointer hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2" : ""}`}
                     role={coreAsset ? "button" : undefined}
                     tabIndex={coreAsset ? 0 : undefined}
                     aria-haspopup={coreAsset ? "dialog" : undefined}
@@ -379,24 +379,29 @@ export default function CertificationsSection() {
                       }
                     } : undefined}
                   >
-                    {credential.logoSrc ? (
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-md border border-border bg-white">
-                        <img src={credential.logoSrc} alt="" aria-hidden="true" className="h-full w-full object-contain p-1.5" />
-                      </span>
-                    ) : null}
-                    <div className="min-w-0 flex-1">
-                      <p className="truncate text-sm font-semibold text-foreground">{credential.name}</p>
-                      <p className="mt-0.5 truncate text-xs text-muted-foreground">
-                        {credential.issuer} · {credential.year}
+                    <div className="flex items-start justify-between gap-3">
+                      {credential.logoSrc ? (
+                        <span className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border bg-white">
+                          <img src={credential.logoSrc} alt="" aria-hidden="true" className="h-full w-full object-contain p-2" />
+                        </span>
+                      ) : null}
+                      <span className="hero-facts-label mt-1">{credential.year}</span>
+                    </div>
+                    <p className="mt-4 min-h-[2.6em] text-[0.99rem] font-semibold leading-snug text-foreground">
+                      {credential.name}
+                    </p>
+                    <div className="mt-2 flex items-baseline justify-between gap-3 border-t border-border/60 pt-2.5">
+                      <p className="truncate text-xs text-muted-foreground">
+                        {credential.issuer}
                         {credential.detail ? ` · ${credential.detail}` : ""}
                       </p>
+                      {coreAsset ? (
+                        <span className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-primary opacity-70 transition-opacity group-hover:opacity-100">
+                          <Eye size={13} aria-hidden="true" />
+                          View
+                        </span>
+                      ) : null}
                     </div>
-                    {coreAsset ? (
-                      <span className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-primary">
-                        <Eye size={13} aria-hidden="true" />
-                        View
-                      </span>
-                    ) : null}
                   </div>
                 );
               })}
