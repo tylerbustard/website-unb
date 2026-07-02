@@ -332,7 +332,7 @@ export default function CertificationsSection() {
     <section
       ref={sectionAnimation.ref}
       id="certifications"
-      className="py-16 sm:py-20 lg:py-24 relative overflow-hidden"
+      className="py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-slate-50/50"
     >
       <div className="container-width">
         {/* Header */}
@@ -364,7 +364,7 @@ export default function CertificationsSection() {
                 return (
                   <div
                     key={`core-${credential.name}`}
-                    className={`group flex flex-col rounded-lg border border-border bg-white p-5 shadow-sm transition-shadow duration-200${coreAsset ? " certificate-card-viewable cursor-pointer hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2" : ""}`}
+                    className={`group flex flex-col rounded-lg border border-border bg-white p-5 transition-shadow duration-200${coreAsset ? " certificate-card-viewable cursor-pointer hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2" : ""}`}
                     role={coreAsset ? "button" : undefined}
                     tabIndex={coreAsset ? 0 : undefined}
                     aria-haspopup={coreAsset ? "dialog" : undefined}
