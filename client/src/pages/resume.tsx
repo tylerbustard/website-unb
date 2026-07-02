@@ -386,7 +386,7 @@ export default function Resume() {
         {entryAsset ? (
           <button
             type="button"
-            className="ml-auto shrink-0 inline-flex items-center gap-1 whitespace-nowrap rounded-sm text-xs font-medium text-primary opacity-70 transition-opacity hover:opacity-100 print:hidden focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-1"
+            className="shrink-0 inline-flex items-center gap-1 whitespace-nowrap rounded-sm text-xs font-medium text-primary opacity-70 transition-opacity hover:opacity-100 sm:ml-auto print:hidden focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-1"
             aria-haspopup="dialog"
             aria-label={`View ${entry.organization} diploma`}
             onMouseEnter={() => preloadCertificateImage(entryAsset.image)}
@@ -575,29 +575,14 @@ export default function Resume() {
                         </div>
 
                         <div className="resume-certification-cards resume-certification-cards-compact">
-                          {area.certifications.map((certification, certificationIndex) => {
-                            const certAsset = getCertificateAsset(certification.name);
-                            return (
+                          {area.certifications.map((certification, certificationIndex) => (
                             <div
                               key={`${area.title}-${certification.name}`}
                               id={`cert-${slugify(certification.name)}`}
                               className={`resume-certification-card resume-certification-card-compact scroll-slide-up ${
                                 isAreaVisible ? "visible" : ""
-                              }${certAsset ? " certificate-card-viewable focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2" : ""}`}
-                              style={certAsset ? { ...getScrollRevealStyle("body", certificationIndex), cursor: "pointer" } : getScrollRevealStyle("body", certificationIndex)}
-                              role={certAsset ? "button" : undefined}
-                              tabIndex={certAsset ? 0 : undefined}
-                              aria-haspopup={certAsset ? "dialog" : undefined}
-                              aria-label={certAsset ? `View ${certification.name} certificate` : undefined}
-                              onMouseEnter={certAsset ? () => preloadCertificateImage(certAsset.image) : undefined}
-                              onFocus={certAsset ? () => preloadCertificateImage(certAsset.image) : undefined}
-                              onClick={certAsset ? () => openCertificate(certification) : undefined}
-                              onKeyDown={certAsset ? (event) => {
-                                if (event.key === "Enter" || event.key === " ") {
-                                  event.preventDefault();
-                                  openCertificate(certification);
-                                }
-                              } : undefined}
+                              }`}
+                              style={getScrollRevealStyle("body", certificationIndex)}
                             >
                               <div className="resume-certification-card-copy">
                                 <p className={`resume-certification-card-title${certification.emphasis ? " resume-certification-card-title-emphasis" : ""}`}>
@@ -610,15 +595,11 @@ export default function Resume() {
                                   ) : null}
                                 </p>
                               </div>
-                              <span className={`resume-certification-card-year${certAsset ? " inline-flex items-center gap-1.5" : ""}`}>
+                              <span className="resume-certification-card-year">
                                 {certification.year}
-                                {certAsset ? (
-                                  <Eye size={12} className="text-primary print:hidden" aria-hidden="true" />
-                                ) : null}
                               </span>
                             </div>
-                            );
-                          })}
+                          ))}
                         </div>
                       </article>
                     );
