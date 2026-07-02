@@ -122,7 +122,7 @@ export default function CertificationsSection() {
     { name: "Bloomberg Market Concepts Certificate", year: "2020", issuer: "Bloomberg", logoSrc: bloombergLogo },
     { name: "Discounted Cash Flow Analysis and Modeling", year: "2024", issuer: "Training The Street", logoSrc: trainingTheStreetLogo },
     { name: "Financial Risk and Regulation (FRR)", year: "2025", issuer: "Global Association of Risk Professionals", logoSrc: garpLogo },
-    { name: "GRE General Test", year: "2024", issuer: "ETS", detail: "Score: 325", logoSrc: etsLogo },
+    { name: "GRE General Test", year: "2024", issuer: "ETS", detail: "Score: 328", logoSrc: etsLogo },
   ];
 
   const certificationCategories: CertificationCategory[] = ([
@@ -284,7 +284,7 @@ export default function CertificationsSection() {
           name: "GRE General Test", 
           year: "2024", 
           issuer: "ETS", 
-          detail: "Score: 325",
+          detail: "Score: 328",
           emphasis: true,
           logoSrc: etsLogo,
         }

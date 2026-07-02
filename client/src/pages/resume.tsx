@@ -122,7 +122,7 @@ export default function Resume() {
       title: "Analytics & Quantitative Methods",
       caption: "Data, modeling, inference, and standardized assessment",
       certifications: [
-        { name: "GRE General Test", issuer: "ETS", year: "2024", logo: etsLogo, detail: "Score: 325", emphasis: true },
+        { name: "GRE General Test", issuer: "ETS", year: "2024", logo: etsLogo, detail: "Score: 328", emphasis: true },
         { name: "Econometrics: Methods & Applications", issuer: "Erasmus University", year: "2024", logo: courseraLogo },
         { name: "Google Data Analytics Professional Certificate", issuer: "Google", year: "2023", logo: googleLogo },
         { name: "Python for Everybody Specialization", issuer: "University of Michigan", year: "2023", logo: courseraLogo },
@@ -432,10 +432,55 @@ export default function Resume() {
 
   useEffect(() => {
     const originalTitle = document.title;
-    document.title = "Tyler Bustard - Resume";
+    const resumeTitle = "Tyler Bustard - Resume";
+    const resumeUrl = "https://tylerbustard.ca/resume";
+    const resumeDescription =
+      "Resume for Tyler Bustard, finance and investment banking candidate with education, experience, credentials, and community leadership.";
+    const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    const ogUrlMeta = document.querySelector<HTMLMetaElement>('meta[property="og:url"]');
+    const ogTitleMeta = document.querySelector<HTMLMetaElement>('meta[property="og:title"]');
+    const ogDescriptionMeta = document.querySelector<HTMLMetaElement>('meta[property="og:description"]');
+    const originalCanonicalHref = canonicalLink?.getAttribute("href") ?? null;
+    const originalOgUrl = ogUrlMeta?.getAttribute("content") ?? null;
+    const originalOgTitle = ogTitleMeta?.getAttribute("content") ?? null;
+    const originalOgDescription = ogDescriptionMeta?.getAttribute("content") ?? null;
+
+    document.title = resumeTitle;
+    canonicalLink?.setAttribute("href", resumeUrl);
+    ogUrlMeta?.setAttribute("content", resumeUrl);
+    ogTitleMeta?.setAttribute("content", resumeTitle);
+    ogDescriptionMeta?.setAttribute("content", resumeDescription);
 
     return () => {
       document.title = originalTitle;
+      if (canonicalLink) {
+        if (originalCanonicalHref === null) {
+          canonicalLink.removeAttribute("href");
+        } else {
+          canonicalLink.setAttribute("href", originalCanonicalHref);
+        }
+      }
+      if (ogUrlMeta) {
+        if (originalOgUrl === null) {
+          ogUrlMeta.removeAttribute("content");
+        } else {
+          ogUrlMeta.setAttribute("content", originalOgUrl);
+        }
+      }
+      if (ogTitleMeta) {
+        if (originalOgTitle === null) {
+          ogTitleMeta.removeAttribute("content");
+        } else {
+          ogTitleMeta.setAttribute("content", originalOgTitle);
+        }
+      }
+      if (ogDescriptionMeta) {
+        if (originalOgDescription === null) {
+          ogDescriptionMeta.removeAttribute("content");
+        } else {
+          ogDescriptionMeta.setAttribute("content", originalOgDescription);
+        }
+      }
     };
   }, []);
 

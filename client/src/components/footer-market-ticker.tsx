@@ -37,39 +37,71 @@ export default function FooterMarketTicker({
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (!containerRef.current) {
+    const container = containerRef.current;
+    if (!container) {
       return;
     }
 
-    const widgetShell = document.createElement("div");
-    widgetShell.className = "market-ticker-widget-shell";
+    let hasLoaded = false;
 
-    const widgetTarget = document.createElement("div");
-    widgetTarget.className = "tradingview-widget-container__widget";
+    const loadWidget = () => {
+      if (hasLoaded) {
+        return;
+      }
 
-    const script = document.createElement("script");
-    script.type = "text/javascript";
-    script.async = true;
-    script.src = TRADINGVIEW_TICKER_SCRIPT;
-    script.innerHTML = JSON.stringify({
-      symbols: marketTickerSymbols,
-      showSymbolLogo: true,
-      isTransparent: true,
-      displayMode: "adaptive",
-      colorTheme: "dark",
-      locale: "en",
-    });
+      hasLoaded = true;
 
-    widgetShell.appendChild(widgetTarget);
-    widgetShell.appendChild(script);
+      const widgetShell = document.createElement("div");
+      widgetShell.className = "market-ticker-widget-shell";
 
-    containerRef.current.innerHTML = "";
-    containerRef.current.appendChild(widgetShell);
+      const widgetTarget = document.createElement("div");
+      widgetTarget.className = "tradingview-widget-container__widget";
+
+      const script = document.createElement("script");
+      script.type = "text/javascript";
+      script.async = true;
+      script.src = TRADINGVIEW_TICKER_SCRIPT;
+      script.innerHTML = JSON.stringify({
+        symbols: marketTickerSymbols,
+        showSymbolLogo: true,
+        isTransparent: true,
+        displayMode: "adaptive",
+        colorTheme: "dark",
+        locale: "en",
+      });
+
+      widgetShell.appendChild(widgetTarget);
+      widgetShell.appendChild(script);
+
+      container.innerHTML = "";
+      container.appendChild(widgetShell);
+    };
+
+    if (!("IntersectionObserver" in window)) {
+      loadWidget();
+      return () => {
+        container.innerHTML = "";
+      };
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          loadWidget();
+          observer.disconnect();
+        }
+      },
+      {
+        rootMargin: "120px 0px",
+        threshold: 0.01,
+      },
+    );
+
+    observer.observe(container);
 
     return () => {
-      if (containerRef.current) {
-        containerRef.current.innerHTML = "";
-      }
+      observer.disconnect();
+      container.innerHTML = "";
     };
   }, []);
 
