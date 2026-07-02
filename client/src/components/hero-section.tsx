@@ -65,15 +65,16 @@ export default function HeroSection() {
           </span>
         </div>
 
-        {/* ── Name ── */}
-        <h1 className="hero2-name mt-5 uppercase sm:mt-6" style={{ fontFamily: "var(--font-display)" }}>
+        {/* ── Name / summary + portrait plate ── */}
+        <div className="mt-5 grid items-center gap-8 sm:mt-6 lg:grid-cols-[minmax(0,1fr)_260px] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_340px] xl:gap-16">
+          <div className="min-w-0">
+        <h1 className="hero2-name uppercase" style={{ fontFamily: "var(--font-display)" }}>
           <span className="hero2-clip"><span className="hero2-rise hero2-l1">Tyler</span></span>
           <span className="hero2-clip"><span className="hero2-rise hero2-rise-2 hero2-l2">Bustard</span></span>
         </h1>
 
-        {/* ── Role / summary + portrait plate ── */}
-        <div className="mt-6 grid items-start gap-8 sm:mt-7 lg:grid-cols-[minmax(0,1fr)_260px] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_340px] xl:gap-16">
-          <div className="hero2-fade hero2-fade-copy min-w-0">
+
+            <div className="hero2-fade hero2-fade-copy mt-6 min-w-0 sm:mt-7">
             <p className="hero-facts-label text-primary">Finance Professional — Toronto</p>
             <p className="mt-3 max-w-[38rem] text-[1.02rem] leading-[1.64] text-slate-600 sm:text-[1.08rem]">
               {heroSummary}
@@ -92,9 +93,10 @@ export default function HeroSection() {
                 ))}
               </div>
             </div>
+            </div>
           </div>
 
-          <div className="hero2-plate w-full max-w-[280px] rounded-lg border border-slate-200 bg-white p-2 shadow-lg lg:max-w-none xl:-mt-44">
+          <div className="hero2-plate w-full max-w-[280px] rounded-lg border border-slate-200 bg-white p-2 shadow-lg lg:max-w-none">
             <div className="relative overflow-hidden rounded-md">
               <img
                 src={profileImage}
