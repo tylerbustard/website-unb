@@ -461,7 +461,7 @@ export default function EducationSection() {
           </p>
         </div>
 
-        {/* Education Cards — matches experience card pattern */}
+        {/* Education Cards - matches experience card pattern */}
         <div ref={educationItemsAnimation.ref} className="space-y-6">
           {renderEducationCard({
             education: unbEducation,
@@ -482,7 +482,7 @@ export default function EducationSection() {
           })}
         </div>
 
-        {/* Education Highlights — matches other sections */}
+        {/* Education Highlights - matches other sections */}
         <div className="mt-12">
           <div className="bg-white border border-border rounded-lg p-8 lg:p-10">
             <h3 className="text-xl font-bold text-foreground mb-8 text-center">
