@@ -364,6 +364,7 @@ export default function CertificationsSection() {
                 return (
                   <div
                     key={`core-${credential.name}`}
+                    id={`core-cert-${slugify(credential.name)}`}
                     className={`group flex flex-col rounded-lg border border-border bg-white p-5 transition-shadow duration-200${coreAsset ? " certificate-card-viewable cursor-pointer hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2" : ""}`}
                     role={coreAsset ? "button" : undefined}
                     tabIndex={coreAsset ? 0 : undefined}

@@ -1103,296 +1103,96 @@ ${canonicalResumePdfUrl}`,
                         className="liquid-glass-panel rounded-xl p-4 transition-all duration-200 mt-1"
                        
                       >
-                        <div className="space-y-3 max-h-96 overflow-y-auto">
-                          {/* Financial Certifications */}
+                        <div className="space-y-3">
                           <button 
                             onClick={() => {
-                              scrollToSection(getCertificationId('CFA Level I Candidate'));
+                              scrollToSection('#core-cert-cfa-level-i-candidate');
                               setOpenDropdown(null);
                             }}
                             className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
                               <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">CFA Level I Candidate</div>
-                              <div className="text-xs text-white/55">CFA Institute</div>
+                              <div className="text-xs text-white/55">CFA Institute · 2026</div>
                             </div>
                           </button>
 
                           <button 
                             onClick={() => {
-                              scrollToSection(getCertificationId('Discounted Cash Flow Analysis and Modeling'));
-                              setOpenDropdown(null);
-                            }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                          >
-                            <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Discounted Cash Flow Analysis and Modeling</div>
-                              <div className="text-xs text-white/55">Training The Street</div>
-                            </div>
-                          </button>
-
-                          <button 
-                            onClick={() => {
-                              scrollToSection(getCertificationId('Financial Planning 1'));
-                              setOpenDropdown(null);
-                            }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                          >
-                            <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Financial Planning 1</div>
-                              <div className="text-xs text-white/55">Canadian Securities Institute</div>
-                            </div>
-                          </button>
-
-                          <button 
-                            onClick={() => {
-                              scrollToSection(getCertificationId('Certificate in Financial Services Advice'));
-                              setOpenDropdown(null);
-                            }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                          >
-                            <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Certificate in Financial Services Advice</div>
-                              <div className="text-xs text-white/55">Canadian Securities Institute</div>
-                            </div>
-                          </button>
-
-                          <button 
-                            onClick={() => {
-                              scrollToSection(getCertificationId('Personal Financial Service Advice'));
-                              setOpenDropdown(null);
-                            }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                          >
-                            <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Personal Financial Service Advice</div>
-                              <div className="text-xs text-white/55">Canadian Securities Institute</div>
-                            </div>
-                          </button>
-
-                          <button 
-                            onClick={() => {
-                              scrollToSection(getCertificationId('Canadian Securities Course'));
+                              scrollToSection('#core-cert-canadian-securities-course');
                               setOpenDropdown(null);
                             }}
                             className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
                               <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Canadian Securities Course</div>
-                              <div className="text-xs text-white/55">Canadian Securities Institute</div>
+                              <div className="text-xs text-white/55">Canadian Securities Institute · 2021</div>
                             </div>
                           </button>
 
                           <button 
                             onClick={() => {
-                              scrollToSection(getCertificationId('Financial & Valuation Modeling'));
+                              scrollToSection('#core-cert-bloomberg-market-concepts-certificate');
                               setOpenDropdown(null);
                             }}
                             className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Financial & Valuation Modeling</div>
-                              <div className="text-xs text-white/55">Wall Street Prep</div>
+                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Bloomberg Market Concepts</div>
+                              <div className="text-xs text-white/55">Bloomberg · 2020</div>
                             </div>
                           </button>
 
                           <button 
                             onClick={() => {
-                              scrollToSection(getCertificationId('Investment Funds in Canada'));
+                              scrollToSection('#core-cert-discounted-cash-flow-analysis-and-modeling');
                               setOpenDropdown(null);
                             }}
                             className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Investment Funds in Canada</div>
-                              <div className="text-xs text-white/55">Canadian Securities Institute</div>
+                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Discounted Cash Flow Analysis and Modeling</div>
+                              <div className="text-xs text-white/55">Training The Street · 2024</div>
                             </div>
                           </button>
 
                           <button 
                             onClick={() => {
-                              scrollToSection(getCertificationId('Bloomberg Market Concepts Certificate'));
+                              scrollToSection('#core-cert-financial-risk-and-regulation--frr');
                               setOpenDropdown(null);
                             }}
                             className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Bloomberg Market Concepts Certificate</div>
-                              <div className="text-xs text-white/55">Bloomberg</div>
+                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Financial Risk and Regulation (FRR)</div>
+                              <div className="text-xs text-white/55">GARP · 2025</div>
                             </div>
                           </button>
 
                           <button 
                             onClick={() => {
-                              scrollToSection(getCertificationId('Personal Finance Essentials'));
-                              setOpenDropdown(null);
-                            }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                          >
-                            <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Personal Finance Essentials</div>
-                              <div className="text-xs text-white/55">McGill University</div>
-                            </div>
-                          </button>
-
-                          {/* Data & Business Intelligence */}
-                          <button 
-                            onClick={() => {
-                              scrollToSection(getCertificationId('Google Data Analytics Professional Certificate'));
-                              setOpenDropdown(null);
-                            }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                          >
-                            <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Google Data Analytics Professional Certificate</div>
-                              <div className="text-xs text-white/55">Google</div>
-                            </div>
-                          </button>
-
-                          <button 
-                            onClick={() => {
-                              scrollToSection(getCertificationId('Data Visualization with Tableau'));
-                              setOpenDropdown(null);
-                            }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                          >
-                            <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Data Visualization with Tableau</div>
-                              <div className="text-xs text-white/55">UC Davis</div>
-                            </div>
-                          </button>
-
-                          <button 
-                            onClick={() => {
-                              scrollToSection(getCertificationId('Python for Everybody Specialization'));
-                              setOpenDropdown(null);
-                            }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                          >
-                            <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Python for Everybody Specialization</div>
-                              <div className="text-xs text-white/55">University of Michigan</div>
-                            </div>
-                          </button>
-
-                          <button 
-                            onClick={() => {
-                              scrollToSection(getCertificationId('Machine Learning'));
-                              setOpenDropdown(null);
-                            }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                          >
-                            <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Machine Learning</div>
-                              <div className="text-xs text-white/55">Stanford University</div>
-                            </div>
-                          </button>
-
-                          <button 
-                            onClick={() => {
-                              scrollToSection(getCertificationId('SQL for Data Science'));
-                              setOpenDropdown(null);
-                            }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                          >
-                            <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">SQL for Data Science</div>
-                              <div className="text-xs text-white/55">UC Davis</div>
-                            </div>
-                          </button>
-
-                          <button 
-                            onClick={() => {
-                              scrollToSection(getCertificationId('Power BI Data Visualization'));
-                              setOpenDropdown(null);
-                            }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                          >
-                            <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Power BI Data Visualization</div>
-                              <div className="text-xs text-white/55">Microsoft</div>
-                            </div>
-                          </button>
-
-                          {/* Mathematical & Statistical Certifications */}
-                          <button 
-                            onClick={() => {
-                              scrollToSection(getCertificationId('Econometrics: Methods & Applications'));
-                              setOpenDropdown(null);
-                            }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                          >
-                            <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Econometrics: Methods & Applications</div>
-                              <div className="text-xs text-white/55">Erasmus University</div>
-                            </div>
-                          </button>
-
-                          <button 
-                            onClick={() => {
-                              scrollToSection(getCertificationId('Matrix Algebra for Engineers'));
-                              setOpenDropdown(null);
-                            }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                          >
-                            <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Matrix Algebra for Engineers</div>
-                              <div className="text-xs text-white/55">HKUST</div>
-                            </div>
-                          </button>
-
-                          <button 
-                            onClick={() => {
-                              scrollToSection(getCertificationId('Introduction to Calculus'));
-                              setOpenDropdown(null);
-                            }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                          >
-                            <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Introduction to Calculus</div>
-                              <div className="text-xs text-white/55">University of Sydney</div>
-                            </div>
-                          </button>
-
-                          <button 
-                            onClick={() => {
-                              scrollToSection(getCertificationId('Inferential Statistics'));
-                              setOpenDropdown(null);
-                            }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                          >
-                            <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Inferential Statistics</div>
-                              <div className="text-xs text-white/55">Duke University</div>
-                            </div>
-                          </button>
-
-                          <button 
-                            onClick={() => {
-                              scrollToSection(getCertificationId('Excel Skills for Business'));
-                              setOpenDropdown(null);
-                            }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                          >
-                            <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Excel Skills for Business</div>
-                              <div className="text-xs text-white/55">Macquarie University</div>
-                            </div>
-                          </button>
-
-                          {/* Standardized Exam */}
-                          <button 
-                            onClick={() => {
-                              scrollToSection(getCertificationId('GRE General Test'));
+                              scrollToSection('#core-cert-gre-general-test');
                               setOpenDropdown(null);
                             }}
                             className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
                               <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">GRE General Test</div>
-                              <div className="text-xs text-white/55">ETS</div>
+                              <div className="text-xs text-white/55">ETS · 2024 · Score: 325</div>
                             </div>
                           </button>
+
+                          <div className="border-t border-white/10 pt-2">
+                          <button 
+                            onClick={() => {
+                              scrollToSection('#certifications');
+                              setOpenDropdown(null);
+                            }}
+                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                          >
+                            <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">All certifications →</div>
+                          </button>
+                          </div>
                         </div>
                       </div>
                     </div>
