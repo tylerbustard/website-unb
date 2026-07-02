@@ -2340,6 +2340,172 @@
     color: hsl(215 13% 55%);
   }
 
+  /* ── Hero v2: big-type editorial ─────────────────────────── */
+  .hero2 {
+    background: linear-gradient(180deg, hsl(210 40% 98%), #ffffff 78%);
+  }
+
+  .hero2-grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0.55;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/></svg>");
+  }
+
+  .hero2-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: #16a34a;
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.16);
+    animation: hero2-pulse 2.6s ease-in-out infinite;
+  }
+
+  @keyframes hero2-pulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.16); }
+    50% { box-shadow: 0 0 0 6px rgba(22, 163, 74, 0.07); }
+  }
+
+  .hero2-name {
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 0.88;
+  }
+
+  .hero2-l1,
+  .hero2-l2 {
+    display: block;
+    font-size: clamp(3.4rem, 15.5vw, 11.5rem);
+  }
+
+  .hero2-l2 {
+    color: transparent;
+    -webkit-text-stroke: 1.5px hsl(228 17% 10%);
+    transition: color 380ms ease;
+  }
+
+  .hero2-l2:hover {
+    color: hsl(215 74% 41%);
+    -webkit-text-stroke-color: hsl(215 74% 41%);
+  }
+
+  @media (max-width: 639px) {
+    .hero2-l2 {
+      color: hsl(228 17% 10%);
+      -webkit-text-stroke: 0;
+    }
+  }
+
+  /* load choreography */
+  .hero2-clip {
+    display: block;
+    overflow: hidden;
+  }
+
+  .hero2-rise {
+    transform: translateY(112%);
+  }
+
+  .hero2.is-ready .hero2-rise {
+    animation: hero2-rise 0.72s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  }
+
+  .hero2.is-ready .hero2-rise-2 {
+    animation-delay: 0.1s;
+  }
+
+  @keyframes hero2-rise {
+    to { transform: translateY(0); }
+  }
+
+  .hero2-meta,
+  .hero2-fade {
+    opacity: 0;
+  }
+
+  .hero2.is-ready .hero2-meta { animation: hero2-fade 0.5s ease-out 0.42s forwards; }
+  .hero2.is-ready .hero2-fade-copy { animation: hero2-fade 0.55s ease-out 0.5s forwards; }
+  .hero2.is-ready .hero2-fade-facts { animation: hero2-fade 0.55s ease-out 0.66s forwards; }
+  .hero2.is-ready .hero2-fade-marquee { animation: hero2-fade 0.6s ease-out 0.78s forwards; }
+
+  @keyframes hero2-fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero2-plate {
+    opacity: 0;
+    transform: rotate(5deg) translateY(28px);
+  }
+
+  .hero2.is-ready .hero2-plate {
+    animation: hero2-plate 0.7s cubic-bezier(0.22, 1.2, 0.36, 1) 0.34s forwards;
+  }
+
+  @keyframes hero2-plate {
+    60% { opacity: 1; transform: rotate(0.6deg) translateY(-4px); }
+    to { opacity: 1; transform: rotate(1.5deg) translateY(0); }
+  }
+
+  /* marquee */
+  .hero2-marquee {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 7%, black 93%, transparent);
+    mask-image: linear-gradient(90deg, transparent, black 7%, black 93%, transparent);
+  }
+
+  .hero2-track {
+    display: flex;
+    width: max-content;
+    animation: hero2-marquee 42s linear infinite;
+  }
+
+  .hero2-marquee:hover .hero2-track {
+    animation-play-state: paused;
+  }
+
+  .hero2-track-seg {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    padding-right: 64px;
+  }
+
+  .hero2-track-seg img {
+    width: auto;
+    filter: grayscale(1);
+    opacity: 0.6;
+    transition: opacity 200ms ease, filter 200ms ease;
+  }
+
+  .hero2-track-seg img:hover {
+    opacity: 1;
+    filter: grayscale(0);
+  }
+
+  @keyframes hero2-marquee {
+    to { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero2-meta,
+    .hero2-fade,
+    .hero2-plate,
+    .hero2-rise {
+      opacity: 1;
+      transform: none;
+      animation: none !important;
+    }
+    .hero2-track {
+      animation: none;
+    }
+    .hero2-dot {
+      animation: none;
+    }
+  }
+
   .hero-logo-image--ncc {
     filter: grayscale(1) !important;
   }
