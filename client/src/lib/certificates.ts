@@ -38,7 +38,7 @@ export const certificateAssets: Record<string, CertificateAsset> = {
   "ai-fluency-for-nonprofits": { image: "/certificates/ai-fluency-for-nonprofits.webp", alt: "AI Fluency for nonprofits certificate from Anthropic Academy" },
   "ai-fluency-for-small-businesses": { image: "/certificates/ai-fluency-for-small-businesses.webp", alt: "AI Fluency for Small Businesses certificate from Anthropic Academy" },
   "introduction-to-claude-cowork": { image: "/certificates/introduction-to-claude-cowork.webp", alt: "Introduction to Claude Cowork certificate from Anthropic Academy" },
-  "university-of-new-brunswick": { image: "/certificates/university-of-new-brunswick.webp", alt: "University of New Brunswick diploma — Bachelor of Business Administration in Finance" },
+  "university-of-new-brunswick": { image: "/certificates/university-of-new-brunswick.webp", alt: "University of New Brunswick diploma, Bachelor of Business Administration in Finance" },
   "northeast-christian-college": { image: "/certificates/northeast-christian-college.webp", alt: "Northeast Christian College Certificate of Theology" },
 // listed button-adds
   "data-visualization-with-tableau": { image: "/certificates/data-visualization-with-tableau.webp", alt: "Data Visualization with Tableau certificate from UC Davis" },

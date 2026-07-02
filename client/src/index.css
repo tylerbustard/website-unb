@@ -1046,7 +1046,7 @@
     }
   }
 
-  /* Liquid Glass — translucent light material with specular edges */
+  /* Liquid Glass - translucent light material with specular edges */
   .glass-navbar {
     background: linear-gradient(180deg, rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.66));
     border: 1px solid rgba(255, 255, 255, 0.16);
@@ -1081,7 +1081,7 @@
     }
   }
 
-  /* Liquid Glass — dropdown panels (dark) */
+  /* Liquid Glass - dropdown panels (dark) */
   .liquid-glass-panel {
     background: linear-gradient(180deg, rgba(15, 23, 42, 0.82), rgba(15, 23, 42, 0.72));
     border: 1px solid rgba(255, 255, 255, 0.14);
@@ -1900,7 +1900,7 @@
     text-transform: uppercase;
   }
 
-  /* Hero — portrait frame */
+  /* Hero - portrait frame */
   .hero-portrait-frame {
     box-shadow: 0 20px 50px rgba(15, 23, 42, 0.14);
   }
@@ -1958,7 +1958,7 @@
     }
   }
 
-  /* Hero aurora background — visibly animated mesh */
+  /* Hero aurora background - visibly animated mesh */
   .hero-content-shell {
     padding-left: max(clamp(1rem, 0.58rem + 1.18vw, 2.75rem), env(safe-area-inset-left));
     padding-right: max(clamp(1rem, 0.58rem + 1.18vw, 2.75rem), env(safe-area-inset-right));
@@ -2291,7 +2291,7 @@
     }
   }
 
-  /* Hero entrance animations — staggered fade-in on page load */
+  /* Hero entrance animations - staggered fade-in on page load */
   .hero-entrance {
     opacity: 0;
     transform: translateY(20px);
@@ -2317,7 +2317,7 @@
     }
   }
 
-  /* Hero logos — sequential light-up */
+  /* Hero logos - sequential light-up */
   .hero-logo-strip {
     width: 100%;
   }

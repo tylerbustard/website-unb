@@ -711,7 +711,7 @@ export function CommunitySection() {
           </p>
         </div>
 
-        {/* Community Activities — matches experience card pattern */}
+        {/* Community Activities - matches experience card pattern */}
         <div ref={communityRef} className="space-y-6">
           {communityActivities.map((activity, index) => (
             (() => {
