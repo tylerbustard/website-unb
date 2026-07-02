@@ -148,7 +148,7 @@ export default function Resume() {
     {
       id: `experience-${slugify('73 Strings')}-${slugify('Senior Associate, Portfolio Monitoring')}`,
       role: "Senior Associate, Portfolio Monitoring",
-      period: "Jan 2025 – May 2026",
+      period: "2025–2026",
       organization: "73 Strings",
       location: "Toronto, ON",
       logo: seventyThreeStringsLogo,
