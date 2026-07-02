@@ -54,7 +54,7 @@ export default function HeroSection() {
     >
       <div className="hero2-grain" aria-hidden="true" />
 
-      <div className="container-width relative z-10 flex w-full flex-1 flex-col px-4 pt-24 sm:px-6">
+      <div className="container-width relative z-10 flex w-full flex-1 flex-col justify-center px-4 pb-14 pt-20 sm:px-6">
         {/* ── Meta bar ── */}
         <div className="hero2-meta flex items-center justify-between gap-4 border-b border-slate-200/80 pb-3">
           <span className="hero-facts-label">Toronto, Canada — 43.65°N</span>
@@ -72,15 +72,29 @@ export default function HeroSection() {
         </h1>
 
         {/* ── Role / summary + portrait plate ── */}
-        <div className="mt-6 grid items-start gap-8 sm:mt-7 lg:grid-cols-[minmax(0,1fr)_250px] lg:gap-14">
+        <div className="mt-6 grid items-start gap-8 sm:mt-7 lg:grid-cols-[minmax(0,1fr)_240px] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_280px] xl:gap-16">
           <div className="hero2-fade hero2-fade-copy min-w-0">
             <p className="hero-facts-label text-primary">Finance Professional — Toronto</p>
-            <p className="mt-3 max-w-[36rem] text-[1rem] leading-[1.62] text-slate-600 sm:text-[1.04rem]">
+            <p className="mt-3 max-w-[38rem] text-[1.02rem] leading-[1.64] text-slate-600 sm:text-[1.08rem]">
               {heroSummary}
             </p>
+            <div className="mt-6 border-t border-slate-200/80 pt-3">
+              <p className="hero-facts-label">Selected institutions</p>
+              <div className="mt-3.5 flex flex-wrap items-center gap-x-7 gap-y-3.5">
+                {institutionLogos.map((logo) => (
+                  <img
+                    key={logo.alt}
+                    src={logo.src}
+                    alt={logo.alt}
+                    className="hero2-logo"
+                    style={{ height: `${logo.h ?? 21}px` }}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
 
-          <div className="hero2-plate w-full max-w-[250px] rounded-lg border border-slate-200 bg-white p-2 shadow-lg lg:-mt-24 lg:max-w-none">
+          <div className="hero2-plate w-full max-w-[250px] rounded-lg border border-slate-200 bg-white p-2 shadow-lg lg:max-w-none xl:-mt-36">
             <div className="relative overflow-hidden rounded-md">
               <img
                 src={profileImage}
@@ -97,28 +111,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* ── Institution marquee ── */}
-      <div className="hero2-fade hero2-fade-marquee relative z-10 mt-auto border-t border-slate-200/80 pb-16 pt-4">
-        <div className="container-width px-4 sm:px-6">
-          <p className="hero-facts-label">Selected institutions</p>
-        </div>
-        <div className="hero2-marquee mt-3" aria-hidden="true">
-          <div className="hero2-track">
-            {[0, 1].map((copy) => (
-              <div key={`marquee-copy-${copy}`} className="hero2-track-seg">
-                {institutionLogos.map((logo) => (
-                  <img
-                    key={`${copy}-${logo.alt}`}
-                    src={logo.src}
-                    alt={copy === 0 ? logo.alt : ""}
-                    style={{ height: `${logo.h ?? 21}px` }}
-                  />
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </section>
   );
 }

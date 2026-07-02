@@ -2377,7 +2377,7 @@
   .hero2-l1,
   .hero2-l2 {
     display: block;
-    font-size: clamp(3rem, 12vw, 8.6rem);
+    font-size: clamp(3rem, 12vw, 10rem);
   }
 
   .hero2-l2 {
@@ -2450,6 +2450,18 @@
   }
 
   /* marquee */
+  .hero2-logo {
+    width: auto;
+    filter: grayscale(1);
+    opacity: 0.62;
+    transition: opacity 200ms ease, filter 200ms ease;
+  }
+
+  .hero2-logo:hover {
+    opacity: 1;
+    filter: grayscale(0);
+  }
+
   .hero2-marquee {
     overflow: hidden;
     -webkit-mask-image: linear-gradient(90deg, transparent, black 7%, black 93%, transparent);
