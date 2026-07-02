@@ -95,9 +95,8 @@ export default function EducationSection() {
   };
 
   const unbAchievements = [
-    "Analyst and Portfolio Manager, University of New Brunswick Student Investment Fund",
+    "Student Investment Fund Analyst and Portfolio Manager, 5 Academic Awards ($47,500 in scholarships)",
     "UNB Finance Club, RBC Student Ambassador, Accredited Co-op Program",
-    "5 Academic Awards totalling $47,500 in scholarships and alumni awards for merit and leadership",
     "RBC Student Ambassador of the Month, February 2020",
   ];
 
