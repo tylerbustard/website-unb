@@ -55,18 +55,8 @@ export default function HeroSection() {
       <div className="hero2-grain" aria-hidden="true" />
 
       <div className="container-width relative z-10 flex w-full flex-1 flex-col justify-center px-4 pb-14 pt-20 sm:px-6">
-        {/* ── Meta bar ── */}
-        <div className="hero2-meta flex items-center justify-between gap-4 border-b border-slate-200/80 pb-3">
-          <span className="hero-facts-label">Toronto, Canada — 43.65°N</span>
-          <span className="hero-facts-label hidden text-primary sm:inline">CFA Level I Candidate</span>
-          <span className="hero-facts-label inline-flex items-center gap-2">
-            <span className="hero2-dot" aria-hidden="true" />
-            Open to opportunities
-          </span>
-        </div>
-
         {/* ── Name / summary + portrait plate ── */}
-        <div className="mt-5 grid items-center gap-8 sm:mt-6 lg:grid-cols-[minmax(0,1fr)_260px] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_340px] xl:gap-16">
+        <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_260px] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_340px] xl:gap-16">
           <div className="min-w-0">
         <h1 className="hero2-name uppercase" style={{ fontFamily: "var(--font-display)" }}>
           <span className="hero2-clip"><span className="hero2-rise hero2-l1">Tyler</span></span>
