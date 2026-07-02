@@ -855,19 +855,6 @@ ${canonicalResumePdfUrl}`,
                               </div>
                             </a>
 
-                            {/* LinkedIn */}
-                            <a 
-                              href="https://www.linkedin.com/in/tyler-bustard"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={() => setOpenDropdown(null)}
-                              className="block w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                            >
-                              <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">LinkedIn</div>
-                                <div className="text-xs text-white/55">linkedin.com/in/tyler-bustard</div>
-                              </div>
-                            </a>
 
                             {/* Location */}
                             <button 
@@ -1537,19 +1524,6 @@ ${canonicalResumePdfUrl}`,
                             </div>
                           </a>
 
-                          {/* LinkedIn */}
-                          <a 
-                            href="https://www.linkedin.com/in/tyler-bustard"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={() => setOpenDropdown(null)}
-                            className="block w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                          >
-                            <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">LinkedIn</div>
-                              <div className="text-xs text-white/55">linkedin.com/in/tyler-bustard</div>
-                            </div>
-                          </a>
 
                           {/* Location */}
                           <button 
