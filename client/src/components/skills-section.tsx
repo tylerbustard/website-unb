@@ -427,20 +427,14 @@ export default function CertificationsSection() {
                       >
                         <div className="resume-certification-area-header homepage-certification-area-header">
                           <div className="flex items-center justify-between gap-3">
-                            <h3
-                              className={`resume-certification-area-title homepage-certification-area-title scroll-slide-up ${revealClass}`}
-                              style={getScrollRevealStyle('cardHeader')}
-                            >
+                            <h3 className="resume-certification-area-title homepage-certification-area-title">
                               {category.title}
                             </h3>
                             <span className="rounded-full border border-border px-2 py-0.5 text-[0.66rem] font-semibold tabular-nums text-slate-500">
                               {category.certifications.length}
                             </span>
                           </div>
-                          <p
-                            className={`resume-certification-area-caption homepage-certification-area-caption scroll-slide-up ${revealClass}`}
-                            style={getScrollRevealStyle('subheading')}
-                          >
+                          <p className="resume-certification-area-caption homepage-certification-area-caption">
                             {category.caption}
                           </p>
                         </div>
@@ -455,8 +449,8 @@ export default function CertificationsSection() {
                             <div
                               key={`${category.title}-${certification.name}`}
                               id={`cert-${slugify(certification.name)}`}
-                              className={`resume-certification-card homepage-certification-card scroll-slide-up ${revealClass}${certAsset ? " certificate-card-viewable focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2" : ""}`}
-                              style={certAsset ? { ...getScrollRevealStyle('body', certificationIndex), cursor: 'pointer' } : getScrollRevealStyle('body', certificationIndex)}
+                              className={`resume-certification-card homepage-certification-card${certAsset ? " certificate-card-viewable focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2" : ""}`}
+                              style={certAsset ? { cursor: 'pointer' } : undefined}
                               role={certAsset ? "button" : undefined}
                               tabIndex={certAsset ? 0 : undefined}
                               aria-haspopup={certAsset ? "dialog" : undefined}
