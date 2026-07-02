@@ -1735,7 +1735,7 @@
     gap: 0.7rem;
     min-height: 2.875rem;
     padding-inline: max(0.7rem, env(safe-area-inset-left)) max(0.7rem, env(safe-area-inset-right));
-    background: linear-gradient(0deg, rgba(15, 23, 42, 0.62), rgba(15, 23, 42, 0.48));
+    background: linear-gradient(0deg, rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.8));
     border-top: 1px solid rgba(255, 255, 255, 0.16);
     box-shadow:
       0 0 0 0.5px rgba(15, 23, 42, 0.4),
@@ -1754,7 +1754,7 @@
   }
 
   body:has(.glass-navbar.is-scrolled) .homepage-market-ticker-dock__surface {
-    background: linear-gradient(0deg, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.68));
+    background: linear-gradient(0deg, rgba(15, 23, 42, 0.94), rgba(15, 23, 42, 0.88));
     border-top-color: rgba(255, 255, 255, 0.18);
     box-shadow:
       0 0 0 0.5px rgba(15, 23, 42, 0.45),
