@@ -704,11 +704,16 @@
   }
 
   .homepage-certifications-panel .resume-certification-column {
-    gap: 1.25rem;
+    gap: 1.5rem;
   }
 
   .homepage-certifications-panel .resume-certification-area {
-    padding-top: 0.9rem;
+    /* Override the base list-section styles (border-top only, no radius/padding)
+       so these render as real cards matching education/experience. Scoped to the
+       homepage panel so the /resume page keeps its compact list layout. */
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
   }
 
   .homepage-certifications-panel .resume-certification-area-header {
