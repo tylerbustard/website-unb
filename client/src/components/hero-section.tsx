@@ -72,7 +72,7 @@ export default function HeroSection() {
         </h1>
 
         {/* ── Role / summary + portrait plate ── */}
-        <div className="mt-6 grid items-start gap-8 sm:mt-7 lg:grid-cols-[minmax(0,1fr)_240px] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_280px] xl:gap-16">
+        <div className="mt-6 grid items-start gap-8 sm:mt-7 lg:grid-cols-[minmax(0,1fr)_260px] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_340px] xl:gap-16">
           <div className="hero2-fade hero2-fade-copy min-w-0">
             <p className="hero-facts-label text-primary">Finance Professional — Toronto</p>
             <p className="mt-3 max-w-[38rem] text-[1.02rem] leading-[1.64] text-slate-600 sm:text-[1.08rem]">
@@ -94,7 +94,7 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="hero2-plate w-full max-w-[250px] rounded-lg border border-slate-200 bg-white p-2 shadow-lg lg:max-w-none xl:-mt-36">
+          <div className="hero2-plate w-full max-w-[280px] rounded-lg border border-slate-200 bg-white p-2 shadow-lg lg:max-w-none xl:-mt-44">
             <div className="relative overflow-hidden rounded-md">
               <img
                 src={profileImage}
