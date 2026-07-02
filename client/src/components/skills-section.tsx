@@ -351,9 +351,9 @@ export default function CertificationsSection() {
 
         <div
           ref={certificationItemsAnimation.ref}
-          className="homepage-certifications-panel group bg-white border border-border rounded-lg p-6 transition-shadow duration-200 hover:shadow-sm sm:p-8 lg:p-10"
+          className="homepage-certifications-panel"
         >
-          <div className="mb-8 border-b border-border pb-8">
+          <div className="mb-10">
             <h3 className="resume-certification-area-title homepage-certification-area-title">Core Credentials</h3>
             <p className="resume-certification-area-caption homepage-certification-area-caption mt-1">
               Flagship finance, valuation, and assessment credentials
@@ -423,15 +423,20 @@ export default function CertificationsSection() {
                       <article
                         key={category.title}
                         id={`certifications-${slugify(category.title)}`}
-                        className={`resume-certification-area homepage-certification-area scroll-slide-up ${revealClass}`}
+                        className={`resume-certification-area homepage-certification-area rounded-lg border border-border bg-white p-5 transition-shadow duration-200 hover:shadow-sm scroll-slide-up ${revealClass}`}
                       >
                         <div className="resume-certification-area-header homepage-certification-area-header">
-                          <h3
-                            className={`resume-certification-area-title homepage-certification-area-title scroll-slide-up ${revealClass}`}
-                            style={getScrollRevealStyle('cardHeader')}
-                          >
-                            {category.title}
-                          </h3>
+                          <div className="flex items-center justify-between gap-3">
+                            <h3
+                              className={`resume-certification-area-title homepage-certification-area-title scroll-slide-up ${revealClass}`}
+                              style={getScrollRevealStyle('cardHeader')}
+                            >
+                              {category.title}
+                            </h3>
+                            <span className="rounded-full border border-border px-2 py-0.5 text-[0.66rem] font-semibold tabular-nums text-slate-500">
+                              {category.certifications.length}
+                            </span>
+                          </div>
                           <p
                             className={`resume-certification-area-caption homepage-certification-area-caption scroll-slide-up ${revealClass}`}
                             style={getScrollRevealStyle('subheading')}
@@ -502,7 +507,7 @@ export default function CertificationsSection() {
                                   <span className="resume-certification-card-detail homepage-certification-card-detail">{certification.detail}</span>
                                 ) : null}
                                 {certAsset ? (
-                                  <span className="inline-flex items-center gap-1 text-xs font-medium text-primary">
+                                  <span className="cert-row-view inline-flex items-center gap-1 text-xs font-medium text-primary">
                                     <Eye size={13} aria-hidden="true" />
                                     View
                                   </span>
@@ -515,7 +520,7 @@ export default function CertificationsSection() {
                         {category.certifications.length > 4 ? (
                           <button
                             type="button"
-                            className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-primary transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 rounded-sm"
+                            className="mt-4 block w-full rounded-md border border-border/80 py-1.5 text-center text-xs font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
                             aria-expanded={expandedCategories.has(category.title)}
                             onClick={() => toggleCategory(category.title)}
                           >
