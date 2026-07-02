@@ -61,175 +61,131 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="hero-layout relative overflow-hidden bg-background min-h-[88svh] pt-24 pb-8 sm:min-h-[92svh] sm:pt-28 sm:pb-10 lg:min-h-[100svh] lg:pt-32 lg:pb-14 flex flex-col justify-between"
+      className={`hero2 relative overflow-hidden bg-background ${isPageLoaded ? "is-ready" : ""}`}
     >
-      {/* Ambient hero reveal */}
-      <div
-        className={`hero-aurora hero-ambient-scene absolute inset-0 ${isPageLoaded ? "is-ready" : ""}`}
-        aria-hidden="true"
-      >
-        <span className="hero-ambient-scrim" />
-        <span className="hero-ambient-veil hero-ambient-veil--left" />
-        <span className="hero-ambient-veil hero-ambient-veil--right" />
-        <span className="hero-ambient-layer hero-ambient-layer--left">
-          <span className="hero-ambient-blob hero-ambient-blob--left" />
-        </span>
-        <span className="hero-ambient-layer hero-ambient-layer--right">
-          <span className="hero-ambient-blob hero-ambient-blob--right" />
-        </span>
+      <div className="hero2-grain" aria-hidden="true" />
+
+      <div className="container-width relative z-10 px-4 pt-28 sm:px-6 sm:pt-32 lg:pt-36">
+        {/* ── Meta bar ── */}
+        <div className="hero2-meta flex items-center justify-between gap-4 border-b border-slate-200/80 pb-3.5">
+          <span className="hero-facts-label">Toronto, Canada — 43.65°N</span>
+          <span className="hero-facts-label hidden text-primary sm:inline">CFA Level I Candidate</span>
+          <span className="hero-facts-label inline-flex items-center gap-2">
+            <span className="hero2-dot" aria-hidden="true" />
+            Open to opportunities
+          </span>
+        </div>
+
+        {/* ── Name ── */}
+        <h1 className="hero2-name mt-8 uppercase sm:mt-10" style={{ fontFamily: "var(--font-display)" }}>
+          <span className="hero2-clip"><span className="hero2-rise hero2-l1">Tyler</span></span>
+          <span className="hero2-clip"><span className="hero2-rise hero2-rise-2 hero2-l2">Bustard</span></span>
+        </h1>
+
+        {/* ── Role / summary / CTAs + portrait plate ── */}
+        <div className="mt-9 grid items-start gap-10 sm:mt-10 lg:grid-cols-[minmax(0,1fr)_330px] lg:gap-16">
+          <div className="hero2-fade hero2-fade-copy min-w-0">
+            <p className="hero-facts-label text-primary">Finance Professional — Toronto</p>
+            <p className="mt-3.5 max-w-[36rem] text-[1.02rem] leading-[1.66] text-slate-600 sm:text-[1.05rem]">
+              {heroSummary}
+            </p>
+            <div className="mt-7 flex flex-col gap-3.5 sm:flex-row sm:flex-wrap">
+              <Button
+                onClick={() => scrollToSection("experience")}
+                className="min-h-[48px] cursor-pointer rounded-full bg-slate-950 px-7 text-[0.9rem] font-semibold text-white shadow-md transition-all duration-200 hover:bg-slate-800"
+                data-testid="button-view-experience"
+              >
+                View experience
+                <ArrowRight size={15} className="ml-2" />
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="min-h-[48px] cursor-pointer rounded-full border-slate-200 bg-white px-7 text-[0.9rem] font-semibold text-slate-900 shadow-sm transition-all duration-200 hover:bg-slate-50"
+                data-testid="button-download-resume-hero"
+              >
+                <a href="/Tyler-Bustard-Resume.pdf" download>
+                  <Download size={14} className="mr-2" />
+                  Download resume
+                </a>
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => scrollToSection("contact")}
+                className="min-h-[48px] cursor-pointer rounded-full border-slate-200 bg-white px-7 text-[0.9rem] font-semibold text-slate-900 shadow-sm transition-all duration-200 hover:bg-slate-50"
+                data-testid="button-contact-hero"
+              >
+                Contact
+              </Button>
+            </div>
+          </div>
+
+          <div className="hero2-plate rounded-lg border border-slate-200 bg-white p-2.5 shadow-lg lg:-mt-24">
+            <div className="relative overflow-hidden rounded-md">
+              <img
+                src={profileImage}
+                alt="Tyler Bustard professional headshot"
+                className="aspect-[3/4] w-full object-cover object-top"
+                data-testid="img-profile"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+              />
+              <div className="absolute inset-0 rounded-md ring-1 ring-inset ring-black/5" />
+            </div>
+            <div className="flex items-baseline justify-between px-1.5 pb-0.5 pt-2.5">
+              <span className="hero-facts-label">Toronto, Ontario</span>
+              <span className="hero-facts-label">2026</span>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Key facts rule ── */}
+        <div className="hero2-fade hero2-fade-facts mt-12 border-t-2 border-slate-950 pt-4 lg:mt-14">
+          <div className="flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:gap-x-12 sm:gap-y-5">
+            <div>
+              <p className="hero-facts-label">Portfolio scale</p>
+              <p className="mt-1.5 text-[0.95rem] text-slate-950" style={{ fontVariantNumeric: "tabular-nums" }}>
+                <strong className="font-bold">$100M+</strong>
+                <span className="text-slate-500"> client portfolios supported</span>
+              </p>
+            </div>
+            <div>
+              <p className="hero-facts-label">Professional track</p>
+              <p className="mt-1.5 text-[0.95rem] text-slate-950">
+                <strong className="font-bold text-primary">CFA Level I Candidate</strong>
+                <span className="text-slate-500"> · CSC · Bloomberg BMC</span>
+              </p>
+            </div>
+            <div>
+              <p className="hero-facts-label">Experience</p>
+              <p className="mt-1.5 text-[0.95rem] text-slate-950">
+                <strong className="font-bold">RBC · TD · BMO Private Wealth · 73 Strings</strong>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="hero-content-shell relative z-10 flex-1 flex flex-col justify-center">
-        <div className="container-width">
-          <div>
-            {/* ── Primary: Name + Role + Portrait ── */}
-            <div className="hero-primary-grid grid items-center gap-10 md:gap-12 lg:grid-cols-[1fr_340px] xl:grid-cols-[1fr_400px] xl:gap-16">
-              {/* Left: Identity */}
-              <div className="hero-copy-column max-w-full sm:max-w-[42rem] lg:max-w-none">
-                <div className="hero-intro-grid mb-7 grid items-center gap-x-4 gap-y-4 [grid-template-columns:minmax(0,1fr)_clamp(5.2rem,24vw,6.15rem)] sm:mb-8 sm:[grid-template-columns:minmax(0,1fr)_clamp(7rem,19vw,9rem)] md:mb-9 md:gap-x-8 lg:mb-0 lg:block">
-                  <div className="min-w-0 order-1">
-                    <p className="hero-entrance hero-entrance-1 text-[0.72rem] font-bold uppercase tracking-[0.22em] text-primary">
-                      Finance Professional — Toronto
-                    </p>
-                    <h1
-                      className="hero-entrance hero-entrance-2 mt-4 text-slate-950"
-                      style={{
-                        fontFamily: "var(--font-display)",
-                        fontSize: "clamp(2.45rem, 11vw, 5rem)",
-                        lineHeight: "0.92",
-                        letterSpacing: "-0.045em",
-                        wordSpacing: "0.14em",
-                        textWrap: "balance",
-                      }}
-                    >
-                      Tyler Bustard
-                    </h1>
-                  </div>
-                  <div className="hero-entrance hero-entrance-3 order-2 justify-self-end lg:hidden">
-                    <div className="hero-portrait-frame relative overflow-hidden rounded-[1.35rem] border border-slate-200/90 bg-white shadow-lg">
-                      <img
-                        src={profileImage}
-                        alt="Tyler Bustard professional headshot"
-                        className="hero-portrait-img aspect-[3/4] w-full object-cover object-top"
-                        data-testid="img-profile-inline"
-                        loading="eager"
-                        fetchPriority="high"
-                        decoding="async"
-                      />
-                      <div className="absolute inset-0 rounded-[1.35rem] ring-1 ring-inset ring-black/5" />
-                    </div>
-                  </div>
-                </div>
-
-                <p className="hero-entrance hero-entrance-4 hero-summary mt-4 max-w-full text-[1.02rem] leading-[1.64] text-slate-600 sm:mt-5 sm:max-w-[38rem] sm:text-[1.06rem] md:max-w-[44rem] md:text-[1.08rem] lg:max-w-[36rem] lg:text-[1.05rem]">
-                  {heroSummary}
-                </p>
-
-                {/* Actions */}
-                <div className="hero-entrance hero-entrance-5 hero-actions mt-8 flex flex-col gap-3.5 sm:flex-row sm:flex-wrap md:gap-4 lg:flex-row">
-                  <Button
-                    onClick={() => scrollToSection("experience")}
-                    className="min-h-[48px] cursor-pointer rounded-full bg-slate-950 px-7 text-[0.9rem] font-semibold text-white shadow-md transition-all duration-200 hover:bg-slate-800"
-                    data-testid="button-view-experience"
-                  >
-                    View experience
-                    <ArrowRight size={15} className="ml-2" />
-                  </Button>
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="min-h-[48px] cursor-pointer rounded-full border-slate-200 bg-white px-7 text-[0.9rem] font-semibold text-slate-900 shadow-sm transition-all duration-200 hover:bg-slate-50"
-                    data-testid="button-download-resume-hero"
-                  >
-                    <a href="/Tyler-Bustard-Resume.pdf" download>
-                      <Download size={14} className="mr-2" />
-                      Download resume
-                    </a>
-                  </Button>
-                  <Button
-                    variant="outline"
-                    onClick={() => scrollToSection("contact")}
-                    className="min-h-[48px] cursor-pointer rounded-full border-slate-200 bg-white px-7 text-[0.9rem] font-semibold text-slate-900 shadow-sm transition-all duration-200 hover:bg-slate-50"
-                    data-testid="button-contact-hero"
-                  >
-                    Contact
-                  </Button>
-                </div>
-
-                {/* Key facts — fund-fact-sheet ledger */}
-                <div className="hero-entrance hero-entrance-6 mt-9 min-w-0 lg:mt-11">
-                  <div className="flex items-baseline justify-between border-t-2 border-slate-950 pt-2.5">
-                    <span className="hero-facts-label">Key facts</span>
-                    <span className="hero-facts-label">As at 2026</span>
-                  </div>
-                  <dl>
-                    <div className="grid grid-cols-[6.5rem_1fr] items-baseline gap-4 border-b border-slate-200 py-3 sm:grid-cols-[10.5rem_1fr] sm:gap-6">
-                      <dt className="hero-facts-label">Portfolio scale</dt>
-                      <dd className="text-[0.95rem] text-slate-950 sm:text-base" style={{ fontVariantNumeric: "tabular-nums" }}>
-                        <strong className="font-bold">$100M+</strong>
-                        <span className="text-slate-500"> client portfolios supported</span>
-                      </dd>
-                    </div>
-                    <div className="grid grid-cols-[6.5rem_1fr] items-baseline gap-4 border-b border-slate-200 py-3 sm:grid-cols-[10.5rem_1fr] sm:gap-6">
-                      <dt className="hero-facts-label">Professional track</dt>
-                      <dd className="text-[0.95rem] text-slate-950 sm:text-base">
-                        <strong className="font-bold text-primary">CFA Level I Candidate</strong>
-                        <span className="text-slate-500"> · CSC · Bloomberg BMC</span>
-                      </dd>
-                    </div>
-                    <div className="grid grid-cols-[6.5rem_1fr] items-baseline gap-4 border-b border-slate-200 py-3 sm:grid-cols-[10.5rem_1fr] sm:gap-6">
-                      <dt className="hero-facts-label">Experience</dt>
-                      <dd className="text-[0.95rem] text-slate-950 sm:text-base">
-                        <strong className="font-bold">RBC · TD · BMO Private Wealth · 73 Strings</strong>
-                        <span className="text-slate-500"> — wealth, banking &amp; fintech</span>
-                      </dd>
-                    </div>
-                  </dl>
-                </div>
-              </div>
-
-              {/* Right: Portrait plate */}
-              <div className="hero-entrance hero-entrance-3 hero-portrait hidden lg:block">
-                <div className="rounded-lg border border-slate-200 bg-white p-2.5 shadow-lg">
-                  <div className="relative overflow-hidden rounded-md">
-                    <img
-                      src={profileImage}
-                      alt="Tyler Bustard professional headshot"
-                      className="hero-portrait-img aspect-[3/4] w-full object-cover object-top"
-                      data-testid="img-profile"
-                      loading="eager"
-                      fetchPriority="high"
-                      decoding="async"
-                    />
-                    <div className="absolute inset-0 rounded-md ring-1 ring-inset ring-black/5" />
-                  </div>
-                  <div className="flex items-baseline justify-between px-1.5 pb-0.5 pt-2.5">
-                    <span className="hero-facts-label">Toronto, Ontario</span>
-                    <span className="hero-facts-label">2026</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* ── Institution logos ── */}
-            <div className="hero-entrance hero-entrance-7 hero-logo-strip mt-7 border-t border-slate-200/60 pt-5 sm:mt-8 md:mt-9 md:pt-6 lg:mt-10">
-              <div className="flex flex-wrap items-center justify-center gap-x-7 gap-y-4 lg:justify-start">
-                <span className="hero-facts-label hero-logo-light" style={{ animationDelay: "1.05s" }}>Selected institutions</span>
-                {institutionLogos.map((logo, i) => (
-                  <span key={logo.alt} className="hero-logo-entry">
-                    {i === 7 && (
-                      <span className="hero-logo-separator hero-logo-light hidden sm:block" style={{ animationDelay: `${1.1 + i * 0.08}s` }} />
-                    )}
-                    <img
-                      src={logo.src}
-                      alt={logo.alt}
-                      className="hero-logo-image hero-logo-light"
-                      style={{ animationDelay: `${1.1 + i * 0.08}s`, height: `${logo.h ?? 22}px` }}
-                    />
-                  </span>
+      {/* ── Institution marquee ── */}
+      <div className="hero2-fade hero2-fade-marquee relative z-10 mt-10 border-t border-slate-200/80 pb-8 pt-5 lg:mt-12">
+        <div className="container-width px-4 sm:px-6">
+          <p className="hero-facts-label">Selected institutions</p>
+        </div>
+        <div className="hero2-marquee mt-4" aria-hidden="true">
+          <div className="hero2-track">
+            {[0, 1].map((copy) => (
+              <div key={`marquee-copy-${copy}`} className="hero2-track-seg">
+                {institutionLogos.map((logo) => (
+                  <img
+                    key={`${copy}-${logo.alt}`}
+                    src={logo.src}
+                    alt={copy === 0 ? logo.alt : ""}
+                    style={{ height: `${logo.h ?? 21}px` }}
+                  />
                 ))}
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
