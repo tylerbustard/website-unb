@@ -385,7 +385,7 @@ export default function Resume() {
         {entryAsset ? (
           <button
             type="button"
-            className="ml-auto shrink-0 inline-flex items-center gap-1 whitespace-nowrap rounded-sm text-xs font-medium text-primary print:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-1"
+            className="ml-auto shrink-0 inline-flex items-center gap-1 whitespace-nowrap rounded-sm text-xs font-medium text-primary opacity-70 transition-opacity hover:opacity-100 print:hidden focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-1"
             aria-haspopup="dialog"
             aria-label={`View ${entry.organization} diploma`}
             onMouseEnter={() => preloadCertificateImage(entryAsset.image)}
