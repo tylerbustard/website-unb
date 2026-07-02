@@ -364,7 +364,7 @@ export default function CertificationsSection() {
                 return (
                   <div
                     key={`core-${credential.name}`}
-                    className={`group flex flex-col rounded-lg border border-border bg-white p-5 border-t-2 border-t-primary transition-all duration-200${coreAsset ? " certificate-card-viewable cursor-pointer hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2" : ""}`}
+                    className={`group flex flex-col rounded-lg border border-border bg-white p-5 transition-shadow duration-200${coreAsset ? " certificate-card-viewable cursor-pointer hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2" : ""}`}
                     role={coreAsset ? "button" : undefined}
                     tabIndex={coreAsset ? 0 : undefined}
                     aria-haspopup={coreAsset ? "dialog" : undefined}
@@ -385,7 +385,7 @@ export default function CertificationsSection() {
                           <img src={credential.logoSrc} alt="" aria-hidden="true" className="h-full w-full object-contain p-2" />
                         </span>
                       ) : null}
-                      <span className="hero-facts-label mt-1">{credential.year}</span>
+                      <span className="mt-0.5 text-sm font-medium text-muted-foreground">{credential.year}</span>
                     </div>
                     <p className="mt-4 min-h-[2.6em] text-[0.99rem] font-semibold leading-snug text-foreground">
                       {credential.name}
