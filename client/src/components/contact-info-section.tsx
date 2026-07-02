@@ -435,7 +435,7 @@ export default function ContactInfoSection() {
                   <iframe
                     src={calendlyEmbedHref}
                     title="Book time with Tyler Bustard on Calendly"
-                    loading="eager"
+                    loading="lazy"
                     className="contact-booking-iframe"
                     allow="fullscreen"
                   />

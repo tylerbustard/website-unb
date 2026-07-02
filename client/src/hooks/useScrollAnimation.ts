@@ -60,14 +60,10 @@ export function getScrollRevealStyle(
   return { transitionDelay: `${delay}ms` };
 }
 
-// Enhanced scroll animation hook with better performance and accessibility
+// Scroll animation hook with intersection-based reveal timing.
 export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
   const [isVisible, setIsVisible] = useState(false);
-  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
-  const [scrollVelocity, setScrollVelocity] = useState<'slow' | 'fast'>('slow');
   const ref = useRef<HTMLDivElement>(null);
-  const lastScrollY = useRef(0);
-  const lastScrollTime = useRef(Date.now());
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const hasTriggered = useRef(false);
 
@@ -82,36 +78,9 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
       return;
     }
 
-    // Enhanced scroll direction and velocity tracking
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const currentTime = Date.now();
-      const deltaY = Math.abs(currentScrollY - lastScrollY.current);
-      const deltaTime = currentTime - lastScrollTime.current;
-      
-      let velocity = 0;
-      if (deltaTime > 0) {
-        velocity = deltaY / deltaTime;
-        setScrollVelocity(velocity > 1 ? 'fast' : 'slow');
-      }
-      
-      setScrollDirection(currentScrollY > lastScrollY.current ? 'down' : 'up');
-      lastScrollY.current = currentScrollY;
-      lastScrollTime.current = currentTime;
-      
-      // Apply scroll velocity class to body for dynamic animations
-      document.body.classList.toggle('scroll-fast', velocity > 1);
-      document.body.classList.toggle('scroll-slow', velocity <= 1);
-    };
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && (!options.triggerOnce || !hasTriggered.current)) {
-          const baseDelay = options.delay || 0;
-          // Get current scroll velocity for adaptive timing
-          const currentVelocity = document.body.classList.contains('scroll-fast') ? 'fast' : 'slow';
-          const adaptiveDelay = currentVelocity === 'fast' ? Math.max(baseDelay * 0.4, 100) : baseDelay;
-          
           // Clear any existing timeout
           if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
@@ -120,7 +89,7 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
           timeoutRef.current = setTimeout(() => {
             setIsVisible(true);
             hasTriggered.current = true;
-          }, adaptiveDelay);
+          }, options.delay || 0);
           
           if (options.triggerOnce) {
             observer.unobserve(element);
@@ -140,11 +109,9 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
       }
     );
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
     observer.observe(element);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
       observer.unobserve(element);
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
@@ -152,7 +119,7 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
     };
   }, [options.threshold, options.rootMargin, options.triggerOnce, options.delay, options.reducedMotion]);
 
-  return { ref, isVisible, scrollDirection, scrollVelocity };
+  return { ref, isVisible };
 }
 
 export function useStaggeredScrollAnimation(
@@ -160,11 +127,7 @@ export function useStaggeredScrollAnimation(
   options: UseScrollAnimationOptions = {}
 ) {
   const [visibleItems, setVisibleItems] = useState(new Set<number>());
-  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
-  const [scrollVelocity, setScrollVelocity] = useState<'slow' | 'fast'>('slow');
   const ref = useRef<HTMLDivElement>(null);
-  const lastScrollY = useRef(0);
-  const lastScrollTime = useRef(Date.now());
   const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
   const hasTriggered = useRef(false);
 
@@ -180,36 +143,11 @@ export function useStaggeredScrollAnimation(
       return;
     }
 
-    // Enhanced scroll tracking
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const currentTime = Date.now();
-      const deltaY = Math.abs(currentScrollY - lastScrollY.current);
-      const deltaTime = currentTime - lastScrollTime.current;
-      
-      if (deltaTime > 0) {
-        const velocity = deltaY / deltaTime;
-        setScrollVelocity(velocity > 1 ? 'fast' : 'slow');
-        document.body.classList.toggle('scroll-fast', velocity > 1);
-        document.body.classList.toggle('scroll-slow', velocity <= 1);
-      }
-      
-      setScrollDirection(currentScrollY > lastScrollY.current ? 'down' : 'up');
-      lastScrollY.current = currentScrollY;
-      lastScrollTime.current = currentTime;
-    };
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && (!options.triggerOnce || !hasTriggered.current)) {
           const baseDelay = options.delay || 0;
-          // Get current scroll velocity from body classes
-          const currentVelocity = document.body.classList.contains('scroll-fast') ? 'fast' : 'slow';
-          const staggerDelay =
-            currentVelocity === 'fast'
-              ? options.fastStaggerDelay ?? 40
-              : options.staggerDelay ?? 80;
-          const adaptiveBaseDelay = currentVelocity === 'fast' ? Math.max(baseDelay * 0.4, 100) : baseDelay;
+          const staggerDelay = options.staggerDelay ?? 80;
           
           // Clear any existing timeouts
           timeoutsRef.current.forEach(timeout => clearTimeout(timeout));
@@ -219,7 +157,7 @@ export function useStaggeredScrollAnimation(
           for (let i = 0; i < itemCount; i++) {
             const timeout = setTimeout(() => {
               setVisibleItems(prev => new Set([...Array.from(prev), i]));
-            }, Math.min(adaptiveBaseDelay + (i * staggerDelay), 600));
+            }, Math.min(baseDelay + (i * staggerDelay), 600));
             timeoutsRef.current.push(timeout);
           }
           
@@ -242,18 +180,16 @@ export function useStaggeredScrollAnimation(
       }
     );
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
     observer.observe(element);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
       observer.unobserve(element);
       // Clear all timeouts on cleanup
       timeoutsRef.current.forEach(timeout => clearTimeout(timeout));
     };
   }, [itemCount, options.threshold, options.rootMargin, options.triggerOnce, options.delay, options.reducedMotion]);
 
-  return { ref, visibleItems, scrollDirection, scrollVelocity };
+  return { ref, visibleItems };
 }
 
 // Hook for initial page load animations
