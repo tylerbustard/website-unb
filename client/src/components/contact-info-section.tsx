@@ -37,7 +37,7 @@ export default function ContactInfoSection() {
   });
   const contactCardHref = "/Tyler-Bustard-Contact.vcf";
   const calendlyHref = "https://calendly.com/tyler-bustard";
-  const calendlyEmbedHref = "https://calendly.com/tyler-bustard?hide_gdpr_banner=1";
+  const calendlyEmbedHref = "https://calendly.com/tyler-bustard?hide_gdpr_banner=1&embed_domain=tylerbustard.ca&embed_type=Inline";
   const [formData, setFormData] = useState<ContactFormState>({
     name: "",
     email: "",
@@ -118,20 +118,20 @@ export default function ContactInfoSection() {
     <section
       ref={sectionAnimation.ref}
       id="contact"
-      className="relative overflow-hidden bg-white pt-20 pb-0 sm:pt-28 sm:pb-0 lg:pt-36 lg:pb-0"
+      className="relative overflow-hidden bg-white pt-16 pb-0 sm:pt-20 lg:pt-24"
     >
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
-      <div className="container-width relative pb-8 sm:pb-10 lg:pb-12">
+      <div className="container-width relative pb-16 sm:pb-20 lg:pb-24">
         <div
           ref={headerAnimation.ref}
           className={`text-center mb-12 sm:mb-16 lg:mb-20 scroll-slide-up ${headerAnimation.isVisible ? "visible" : ""}`}
         >
           <p className="section-kicker mb-4">Contact</p>
-          <h2 className="text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">
+          <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
             Let&apos;s connect
           </h2>
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-500 sm:text-xl lg:text-2xl">
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground sm:text-xl lg:text-2xl">
             A direct contact card, an on-site message form, and live scheduling in one place. Reach out the way that fits the moment best.
           </p>
         </div>
