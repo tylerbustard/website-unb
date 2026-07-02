@@ -101,7 +101,8 @@ export default function EducationSection() {
   ];
 
   const nccAchievements = [
-    "One-year theology program with applied coursework in communication, leadership, and community programming",
+    "Major in Theology with coursework across Bible, ministry, leadership, communication, ethics, and practical skills",
+    "Campus and ministry exposure included weekend ministry, chapel service, student council, social committees, and annual benefit concert pathways",
   ];
 
   const unbCourseCategories: CourseCategory[] = [
