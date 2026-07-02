@@ -5,6 +5,12 @@ import { Button } from "@/components/ui/button";
 import profileImage from "@assets/nav_avatar.webp";
 import { slugify } from "@/lib/utils";
 
+const HOMEPAGE_INTRO_TIMING = {
+  helloFadeOut: 2030,
+  expand: 2180,
+  content: 2480,
+} as const;
+
 export default function Navigation() {
   const [location] = useLocation();
   const isHomePage = location === '/';
@@ -30,11 +36,31 @@ ${canonicalResumePdfUrl}`,
   const navSectionButtonClasses = (isActive: boolean) =>
     `nav-section-button ${isActive ? 'is-active' : ''}`;
   const initialPathRef = useRef(location);
-  const shouldPlayHomepageIntro = isHomePage && initialPathRef.current === "/" && typeof window !== "undefined" && !sessionStorage.getItem("homepageIntroPlayed");
+  const [homepageIntro] = useState(() => {
+    if (initialPathRef.current !== "/" || typeof window === "undefined") {
+      return { shouldPlay: false, shouldMarkPlayed: false };
+    }
+
+    let hasPlayed = false;
+    try {
+      hasPlayed = window.sessionStorage.getItem("homepageIntroPlayed") !== null;
+    } catch {
+      return { shouldPlay: false, shouldMarkPlayed: false };
+    }
+
+    const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
+    return {
+      shouldPlay: !hasPlayed && !prefersReducedMotion,
+      shouldMarkPlayed: !hasPlayed,
+    };
+  });
+  const shouldPlayHomepageIntro = homepageIntro.shouldPlay;
+  const shouldMarkHomepageIntroPlayed = homepageIntro.shouldMarkPlayed;
   
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [navExpanded, setNavExpanded] = useState(!shouldPlayHomepageIntro);
   const [showNavContent, setShowNavContent] = useState(!shouldPlayHomepageIntro);
+  const [hideHello, setHideHello] = useState(!shouldPlayHomepageIntro);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showHomeBrandText, setShowHomeBrandText] = useState(!isHomePage);
   const mobileMenuButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -44,21 +70,29 @@ ${canonicalResumePdfUrl}`,
 
   // Dynamic Island: only play the handwritten intro on a true first homepage visit in this session
   useEffect(() => {
+    if (shouldMarkHomepageIntroPlayed && typeof window !== "undefined") {
+      try { window.sessionStorage.setItem("homepageIntroPlayed", "1"); } catch {}
+    }
+
     if (!shouldPlayHomepageIntro) {
       setNavExpanded(true);
       setShowNavContent(true);
+      setHideHello(true);
       return;
     }
 
-    const expandTimer = setTimeout(() => setNavExpanded(true), 400);
-    const contentTimer = setTimeout(() => setShowNavContent(true), 700);
-    try { sessionStorage.setItem("homepageIntroPlayed", "1"); } catch (e) {}
+    setHideHello(false);
+
+    const helloFadeTimer = setTimeout(() => setHideHello(true), HOMEPAGE_INTRO_TIMING.helloFadeOut);
+    const expandTimer = setTimeout(() => setNavExpanded(true), HOMEPAGE_INTRO_TIMING.expand);
+    const contentTimer = setTimeout(() => setShowNavContent(true), HOMEPAGE_INTRO_TIMING.content);
 
     return () => {
+      clearTimeout(helloFadeTimer);
       clearTimeout(expandTimer);
       clearTimeout(contentTimer);
     };
-  }, [shouldPlayHomepageIntro]);
+  }, [shouldMarkHomepageIntroPlayed, shouldPlayHomepageIntro]);
   const [currentSection, setCurrentSection] = useState(isHomePage ? 'hero' : '');
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -400,7 +434,7 @@ ${canonicalResumePdfUrl}`,
       >
         {/* Apple "hello" cursive handwriting - exact helloSystem SVG */}
         {!navExpanded && (
-          <div className="flex items-center justify-center h-14">
+          <div className={`nav-hello flex items-center justify-center h-14 ${hideHello ? 'is-fading' : ''}`}>
             <svg viewBox="0 0 320 180" className="h-10 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 className="nav-hello-path"
@@ -421,7 +455,7 @@ ${canonicalResumePdfUrl}`,
           <div className="nav-pill-grid grid h-14 grid-cols-[auto_1fr_auto] items-center">
 
             {/* Left side - Logo/Name */}
-            <div className={`nav-brand-slot flex min-w-0 items-center transition-opacity duration-500 ${showNavContent ? 'opacity-100' : 'opacity-0'}`}>
+            <div className={`nav-brand-slot flex min-w-0 items-center transition-opacity duration-300 ${showNavContent ? 'opacity-100' : 'opacity-0'}`}>
               {isHomePage && (
                 <button 
                   onClick={() => {
@@ -472,7 +506,7 @@ ${canonicalResumePdfUrl}`,
             </div>
 
             {/* Center - Desktop Navigation */}
-            <div className={`hidden min-w-0 lg:flex items-center justify-self-center space-x-1 transition-opacity duration-500 ${showNavContent ? 'opacity-100' : 'opacity-0'}`}>
+            <div className={`hidden min-w-0 lg:flex items-center justify-self-center space-x-1 transition-opacity duration-300 ${showNavContent ? 'opacity-100' : 'opacity-0'}`}>
 
               {/* Resume Page Navigation - With Dropdowns */}
               {isResumePage && (
@@ -1403,7 +1437,7 @@ ${canonicalResumePdfUrl}`,
 
             {/* Right side */}
             {!isSignInPage && (
-            <div className={`flex items-center justify-self-end space-x-3 transition-opacity duration-500 ${showNavContent ? 'opacity-100' : 'opacity-0'}`}>
+            <div className={`flex items-center justify-self-end space-x-3 transition-opacity duration-300 ${showNavContent ? 'opacity-100' : 'opacity-0'}`}>
               
               {/* Desktop Resume Actions - Only on Resume Page */}
               {isResumePage && (

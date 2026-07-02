@@ -1939,10 +1939,19 @@
   }
 
   /* Apple "hello" exact cursive handwriting stroke animation */
+  .nav-hello {
+    opacity: 1;
+    transition: opacity 180ms ease;
+  }
+
+  .nav-hello.is-fading {
+    opacity: 0;
+  }
+
   .nav-hello-path {
     stroke-dasharray: 1739;
     stroke-dashoffset: 1739;
-    animation: hello-draw 2.5s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+    animation: hello-draw 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
   }
 
   @keyframes hello-draw {
@@ -2407,15 +2416,18 @@
   }
 
   .hero2-name {
+    container-type: inline-size;
     font-weight: 900;
     letter-spacing: -0.04em;
     line-height: 0.88;
+    max-width: 100%;
   }
 
   .hero2-l1,
   .hero2-l2 {
     display: block;
-    font-size: clamp(3rem, 12vw, 10rem);
+    font-size: clamp(3rem, 12vw, 9.7rem);
+    font-size: clamp(3rem, min(12vw, 19.2cqi), 10rem);
   }
 
   .hero2-l2 {
