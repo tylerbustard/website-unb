@@ -39,6 +39,7 @@ import anthropicLogo from "@assets/anthropic_mark.png";
 import openaiLogo from "@assets/openai_mark.png";
 import nccLogo from "@assets/ncc_logo.webp";
 import garpLogo from "@assets/garp_logo.png";
+import googleLogo from "@assets/google_logo.svg";
 
 type ResumeEntry = {
   id: string;
@@ -121,12 +122,12 @@ export default function Resume() {
       title: "Analytics & Quantitative Methods",
       caption: "Data, modeling, inference, and standardized assessment",
       certifications: [
-        { name: "Google Data Analytics Professional Certificate", issuer: "Google", year: "2023", logo: courseraLogo },
+        { name: "GRE General Test", issuer: "ETS", year: "2024", logo: etsLogo, detail: "Score: 325", emphasis: true },
+        { name: "Econometrics: Methods & Applications", issuer: "Erasmus University", year: "2024", logo: courseraLogo },
+        { name: "Google Data Analytics Professional Certificate", issuer: "Google", year: "2023", logo: googleLogo },
         { name: "Python for Everybody Specialization", issuer: "University of Michigan", year: "2023", logo: courseraLogo },
         { name: "SQL for Data Science", issuer: "UC Davis", year: "2020", logo: courseraLogo },
         { name: "Machine Learning", issuer: "Stanford University", year: "2020", logo: courseraLogo },
-        { name: "Econometrics: Methods & Applications", issuer: "Erasmus University", year: "2024", logo: courseraLogo },
-        { name: "GRE General Test", issuer: "ETS", year: "2024", logo: etsLogo, detail: "Score: 325", emphasis: true },
       ],
     },
   ];
