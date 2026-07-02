@@ -317,7 +317,7 @@ export default function EducationSection() {
                 {educationAsset ? (
                   <button
                     type="button"
-                    className="shrink-0 inline-flex items-center gap-1 whitespace-nowrap rounded-sm text-xs font-medium text-primary transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
+                    className="shrink-0 inline-flex items-center gap-1 whitespace-nowrap rounded-sm text-xs font-medium text-primary opacity-70 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
                     aria-haspopup="dialog"
                     aria-label={`View ${education.institution} diploma`}
                     onMouseEnter={() => preloadCertificateImage(educationAsset.image)}
@@ -372,24 +372,12 @@ export default function EducationSection() {
         ) : null}
 
         <div className="mt-5 border-t border-border/50 pt-5">
-          <div className="mb-1 flex items-center justify-between gap-3">
-            <h4
-              className={`text-sm font-semibold text-foreground scroll-slide-up ${revealClass}`}
-              style={getScrollRevealStyle(courseworkHeadingDelay)}
-            >
-              Coursework
-            </h4>
-            <button
-              type="button"
-              className="inline-flex items-center gap-1 rounded-sm text-xs font-medium text-primary transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
-              aria-expanded={expandedCoursework.has(education.institution)}
-              onClick={() => toggleCoursework(education.institution)}
-            >
-              {expandedCoursework.has(education.institution)
-                ? "Hide coursework"
-                : `Show coursework (${courseColumns.flat().reduce((n, c) => n + c.courses.length, 0)} courses)`}
-            </button>
-          </div>
+          <h4
+            className={`text-sm font-semibold text-foreground scroll-slide-up ${revealClass}`}
+            style={getScrollRevealStyle(courseworkHeadingDelay)}
+          >
+            Coursework
+          </h4>
 
           {expandedCoursework.has(education.institution) ? (
           <div className="homepage-coursework-panel mt-3">
@@ -437,6 +425,16 @@ export default function EducationSection() {
             </div>
           </div>
           ) : null}
+          <button
+            type="button"
+            className="mt-4 block w-full rounded-md border border-border/80 py-1.5 text-center text-xs font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            aria-expanded={expandedCoursework.has(education.institution)}
+            onClick={() => toggleCoursework(education.institution)}
+          >
+            {expandedCoursework.has(education.institution)
+              ? "Hide coursework"
+              : `Show coursework (${courseColumns.flat().reduce((n, c) => n + c.courses.length, 0)} courses)`}
+          </button>
         </div>
       </div>
     );
