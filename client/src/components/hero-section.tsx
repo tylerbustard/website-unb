@@ -106,7 +106,7 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="hero2-plate w-full max-w-[280px] rounded-lg border border-slate-200 bg-white p-2 shadow-lg lg:max-w-none">
+          <div className="hero2-plate order-first w-full max-w-[280px] rounded-lg border border-slate-200 bg-white p-2 shadow-lg lg:order-none lg:max-w-none">
             <div className="relative overflow-hidden rounded-md">
               <img
                 src={profileImage}
