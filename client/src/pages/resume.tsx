@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { Mail, Phone, MapPin, Globe, Linkedin, Briefcase, GraduationCap, Award, Heart, Target, Eye } from "lucide-react";
+import { Mail, Phone, MapPin, Globe, Briefcase, GraduationCap, Award, Heart, Target, Eye } from "lucide-react";
 import Navigation from "@/components/navigation";
 import { slugify } from "@/lib/utils";
 import { getCertificateAsset } from "@/lib/certificates";
@@ -478,11 +478,6 @@ export default function Resume() {
                   <a href="https://tylerbustard.ca" target="_blank" rel="noopener noreferrer" className="resume-header-contact-link" aria-label="Visit Tyler Bustard website">
                     <Globe size={13} />
                     tylerbustard.ca
-                  </a>
-                  <span className="resume-contact-separator" aria-hidden="true" />
-                  <a href="https://www.linkedin.com/in/tyler-bustard" target="_blank" rel="noopener noreferrer" className="resume-header-contact-link" aria-label="Tyler Bustard on LinkedIn">
-                    <Linkedin size={13} />
-                    linkedin.com/in/tyler-bustard
                   </a>
                   <span className="resume-contact-separator" aria-hidden="true" />
                   <span className="resume-header-contact-item">
