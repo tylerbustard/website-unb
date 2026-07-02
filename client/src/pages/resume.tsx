@@ -887,6 +887,27 @@ export default function Resume() {
             gap: var(--pdf-space-2) !important;
           }
 
+          .resume-print-page-one-flow {
+            gap: var(--pdf-space-6) !important;
+          }
+
+          .resume-print-page-one-flow .resume-section-body-stack {
+            gap: var(--pdf-space-3) !important;
+          }
+
+          .resume-print-page-one-flow #experience .resume-entry-meta {
+            margin-top: var(--pdf-space-2) !important;
+          }
+
+          .resume-print-page-one-flow #experience .resume-entry-bullets {
+            margin-top: var(--pdf-space-3) !important;
+            line-height: 1.38 !important;
+          }
+
+          .resume-print-page-one-flow #experience .resume-entry-bullets li {
+            line-height: 1.38 !important;
+          }
+
           .resume-summary-text {
             font-size: 8.5pt !important;
             line-height: 1.42 !important;
