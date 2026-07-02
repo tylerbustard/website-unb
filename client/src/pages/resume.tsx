@@ -35,8 +35,6 @@ import courseraLogo from "@assets/Coursera_1755937682843.png";
 import mcgillLogo from "@assets/mcgill_university_logo.png";
 import seventyThreeStringsLogo from "@assets/73-strings-logo.webp";
 import roiLogo from "@assets/roi_logo_icon.png";
-import anthropicLogo from "@assets/anthropic_mark.png";
-import openaiLogo from "@assets/openai_mark.png";
 import nccLogo from "@assets/ncc_logo.webp";
 import garpLogo from "@assets/garp_logo.png";
 import googleLogo from "@assets/google_logo.svg";
@@ -100,33 +98,32 @@ export default function Resume() {
       ],
     },
     {
-      title: "AI Engineering & Agentic Workflows",
-      caption: "Claude, Codex, MCP, and coding-agent credentials",
-      certifications: [
-        { name: "Claude Code, Agent Skills & Subagents", issuer: "Anthropic Academy", year: "2026", logo: anthropicLogo, logoTone: "anthropic", emphasis: true },
-        { name: "Claude API, MCP, Bedrock & Vertex AI", issuer: "Anthropic Academy", year: "2026", logo: anthropicLogo, logoTone: "anthropic" },
-        { name: "Claude 101, Cowork & AI Fluency Suite", issuer: "Anthropic Academy", year: "2026", logo: anthropicLogo, logoTone: "anthropic" },
-        { name: "OpenAI Codex Workflows & Automations", issuer: "OpenAI Academy", year: "2026", logo: openaiLogo, logoTone: "openai", emphasis: true },
-      ],
-    },
-    {
       title: "Advisory & Wealth Planning",
       caption: "Licensing, suitability, and client advice",
       certifications: [
         { name: "Financial Planning 1", issuer: "Canadian Securities Institute", year: "2023", logo: csiLogo },
         { name: "Certificate in Financial Services Advice", issuer: "Canadian Securities Institute", year: "2022", logo: csiLogo },
         { name: "Canadian Securities Course", issuer: "Canadian Securities Institute", year: "2021", logo: csiLogo },
+        { name: "Investment Funds in Canada", issuer: "Canadian Securities Institute", year: "2020", logo: csiLogo },
       ],
     },
     {
-      title: "Analytics & Quantitative Methods",
-      caption: "Data, modeling, inference, and standardized assessment",
+      title: "Data & Business Intelligence",
+      caption: "Analytics, visualization, and automation",
+      certifications: [
+        { name: "Google Data Analytics Professional Certificate", issuer: "Google", year: "2023", logo: googleLogo },
+        { name: "Data Visualization with Tableau", issuer: "UC Davis", year: "2023", logo: courseraLogo },
+        { name: "Python for Everybody Specialization", issuer: "University of Michigan", year: "2023", logo: courseraLogo },
+        { name: "SQL for Data Science", issuer: "UC Davis", year: "2020", logo: courseraLogo },
+      ],
+    },
+    {
+      title: "Quantitative & Statistical Methods",
+      caption: "Modeling, inference, and mathematical foundations",
       certifications: [
         { name: "GRE General Test", issuer: "ETS", year: "2024", logo: etsLogo, detail: "Score: 328", emphasis: true },
         { name: "Econometrics: Methods & Applications", issuer: "Erasmus University", year: "2024", logo: courseraLogo },
-        { name: "Google Data Analytics Professional Certificate", issuer: "Google", year: "2023", logo: googleLogo },
-        { name: "Python for Everybody Specialization", issuer: "University of Michigan", year: "2023", logo: courseraLogo },
-        { name: "SQL for Data Science", issuer: "UC Davis", year: "2020", logo: courseraLogo },
+        { name: "Matrix Algebra for Engineers", issuer: "HKUST", year: "2024", logo: courseraLogo },
         { name: "Machine Learning", issuer: "Stanford University", year: "2020", logo: courseraLogo },
       ],
     },
@@ -156,8 +153,8 @@ export default function Resume() {
       location: "Toronto, ON",
       logo: seventyThreeStringsLogo,
       bullets: [
-        "Monitored daily NAV inputs and validated holdings and cash flows, supporting accurate fund valuations across 15+ portfolios",
-        "Investigated reconciliation exceptions and streamlined follow-up with operations, risk, and portfolio managers, cutting average resolution time by 18%",
+        "Monitored daily NAV inputs and validated holdings and cash flows, which supported accurate fund valuations across 15+ portfolios",
+        "Reviewed reconciliation workflows and investigated exceptions, reducing resolution time by 18% through streamlined communication with operations, risk, and portfolio managers",
       ],
       skills: "Portfolio Monitoring · Reconciliation · NAV Validation · SQL · Excel",
     },
@@ -169,8 +166,8 @@ export default function Resume() {
       location: "Toronto, ON",
       logo: roiLogo,
       bullets: [
-        "Analyzed and compiled public-company financial statements that fed the firm's equity research and client reporting",
-        "Partnered with product and engineering to ship AI-driven data features for client-facing analytics",
+        "Analyzed and compiled public company financial statements, cutting reporting turnaround by 13%",
+        "Collaborated with product and engineering to implement AI-driven data features, boosting adoption by 12%",
       ],
       skills: "Financial Analysis · AI Integration · Data Analytics · Python · SQL",
     },
@@ -182,8 +179,8 @@ export default function Resume() {
       location: "Toronto, ON",
       logo: bmoLogo,
       bullets: [
-        "Supported two Investment Counsellors managing over $100M in client portfolios, preparing reviews, trades, and account documentation",
-        "Managed client communications and meeting follow-ups for high-net-worth households, strengthening satisfaction and retention",
+        "Advised two Investment Counsellors managing portfolios over $100M and cut preparation time by 12%",
+        "Bolstered client communications, boosting response rates by 9%, heightening client satisfaction and retention",
       ],
       skills: "Portfolio Management · Client Relations · Financial Analysis · Excel",
     },
@@ -195,8 +192,8 @@ export default function Resume() {
       location: "Kingston, ON",
       logo: tdLogo,
       bullets: [
-        "Advised clients on lending, investment, and everyday banking through needs-based conversations",
-        "Exceeded sales targets, ranking in the top 15% of advisors in the district",
+        "Cultivated strong client relationships by assessing individual financial needs, resulting in an 11% increase in sales",
+        "Exceeded sales targets, achieving a top 15% performance ranking within the district",
       ],
       skills: "Financial Planning · Sales · Client Advisory · Product Knowledge",
     },
@@ -208,8 +205,8 @@ export default function Resume() {
       location: "Kingston, ON",
       logo: rbcLogo,
       bullets: [
-        "Advised clients on personalized banking solutions, increasing repeat transactions by 13%",
-        "Delivered needs-based advice across core products including GICs, mutual funds, and TFSAs",
+        "Strengthened client relationships by advising on personalized solutions, increased repeat transactions by 13%",
+        "Excelled in needs-based advising, boosting adoption of core products like GICs, mutual funds, and TFSAs by 8%",
       ],
       skills: "Banking Products · Financial Advisory · Client Relationship Management · Digital Banking",
     },
@@ -221,8 +218,8 @@ export default function Resume() {
       location: "Fredericton, NB",
       logo: rbcLogo,
       bullets: [
-        "Resolved escalated client issues at the front line, improving the branch's client-feedback scores",
-        "Championed RBC's online and mobile banking tools, driving branch digital-adoption gains",
+        "Resolved complex client issues, achieving a 15% boost in positive feedback scores for the branch",
+        "Promoted RBC's digital banking tools, leading to a 10% increase in online and mobile banking adoption",
       ],
       skills: "Client Service · Digital Banking · Problem Resolution · Customer Support",
     },
@@ -234,8 +231,8 @@ export default function Resume() {
       location: "Saint John, NB",
       logo: irvingLogo,
       bullets: [
-        "Conducted competitor and market analysis that informed regional pricing and promotion decisions",
-        "Built a customer-lifecycle model used to focus targeted promotions and lift engagement",
+        "Conducted competitor analysis driving insights that improved targeted marketing by 11%",
+        "Developed a Customer Lifecycle model that increased targeted promotions, boosting customer engagement by 8%",
       ],
       skills: "Market Research · Customer Analytics · Competitive Analysis · Marketing Strategy",
     },
@@ -247,8 +244,8 @@ export default function Resume() {
       location: "Saint John, NB",
       logo: grantThorntonLogo,
       bullets: [
-        "Prepared and quality-checked client financial data supporting on-time filing of 100+ personal tax returns",
-        "Standardized return-preparation steps, reducing filing errors and rework",
+        "Streamlined client financial data, boosting accuracy by 10%, ensuring timely submission of 100+ tax returns",
+        "Improved tax return preparation processes, cutting filing errors by 15%",
       ],
       skills: "Tax Preparation · Financial Analysis · Data Management · Client Service",
     },
@@ -337,9 +334,9 @@ export default function Resume() {
   });
   const certificationRevealSequence = [
     "Investment & Markets",
-    "AI Engineering & Agentic Workflows",
     "Advisory & Wealth Planning",
-    "Analytics & Quantitative Methods",
+    "Data & Business Intelligence",
+    "Quantitative & Statistical Methods",
   ];
   const certificationRevealOrder = new Map(
     certificationRevealSequence.map((title, index) => [title, index]),
@@ -556,7 +553,7 @@ export default function Resume() {
                 </h3>
                 <div className="resume-section-body resume-section-body-stack">
                   {experienceEntries.map((entry, index) =>
-                    renderResumeEntry(entry, { showSkills: true, isVisible: experienceAnimation.visibleItems.has(index) }),
+                    renderResumeEntry(entry, { isVisible: experienceAnimation.visibleItems.has(index) }),
                   )}
                 </div>
               </section>
