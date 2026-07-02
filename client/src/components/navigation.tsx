@@ -1537,21 +1537,6 @@ ${canonicalResumePdfUrl}`,
                     >
                       Contact
                     </button>
-                    <a 
-                      href="mailto:tyler@tylerbustard.ca"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="block w-full text-left px-4 py-3 text-lg font-medium text-white hover:bg-white/10 rounded-lg transition-colors"
-                    >
-                      Email tyler@tylerbustard.ca
-                    </a>
-                    <a 
-                      href="/Tyler-Bustard-Resume.pdf"
-                      download
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="block w-full text-left px-4 py-3 text-lg font-medium text-white hover:bg-white/10 rounded-lg transition-colors"
-                    >
-                      Download resume PDF
-                    </a>
                   </>
                 )}
                 
