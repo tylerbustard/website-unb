@@ -177,7 +177,7 @@ export default function ContactInfoSection() {
                         className={`contact-feature-body scroll-slide-up ${revealClass}`}
                         style={getScrollRevealStyle("body", 0)}
                       >
-                        Frontline client experience, portfolio operations, analytics, and finance-led execution across wealth, banking, and technology-focused work.
+                        McGill MBA candidate with finance, portfolio operations, banking, advisory, and analytics experience.
                       </p>
                     </div>
                   </div>

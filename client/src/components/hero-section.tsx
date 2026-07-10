@@ -12,6 +12,7 @@ import roiLogo from "@assets/roi_logo_icon.png";
 
 // Education
 import unbLogo from "@assets/University_of_New_Brunswick_Logo.svg_1755912478863.png";
+import mcgillLogo from "@assets/mcgill_university_logo.png";
 import nccLogo from "@assets/ncc_logo.webp";
 
 // Education
@@ -26,7 +27,7 @@ import bloombergLogo from "@assets/bloomberg_1755923720190.png";
 export default function HeroSection() {
   const isPageLoaded = useInitialPageAnimation(400);
   const heroSummary =
-    "CFA Level I Candidate with front-office and portfolio-operations experience across RBC, TD, BMO Private Wealth, and 73 Strings, pairing Canadian Securities Course and Bloomberg Market Concepts training with hands-on Python and SQL analytics.";
+    "McGill MBA candidate and CFA Level I Candidate with front-office and portfolio-operations experience across RBC, TD, BMO Private Wealth, and 73 Strings, pairing Canadian Securities Course and Bloomberg Market Concepts training with hands-on Python and SQL analytics.";
 
 
   const institutionGroups: { src: string; alt: string; h?: number }[][] = [
@@ -42,6 +43,7 @@ export default function HeroSection() {
     ],
     [
       // Education
+      { src: mcgillLogo, alt: "McGill University - Desautels Faculty of Management", h: 26 },
       { src: unbLogo, alt: "University of New Brunswick", h: 24 },
       { src: nccLogo, alt: "Northeast Christian College", h: 24 },
     ],
@@ -78,7 +80,7 @@ export default function HeroSection() {
 
 
             <div className="hero2-fade hero2-fade-copy mt-6 min-w-0 sm:mt-7">
-            <p className="hero-facts-label text-primary">Finance Professional</p>
+            <p className="hero-facts-label text-primary">McGill MBA Candidate</p>
             <p className="mt-3 max-w-[38rem] text-[1.02rem] leading-[1.64] text-slate-600 sm:text-[1.08rem]">
               {heroSummary}
             </p>
