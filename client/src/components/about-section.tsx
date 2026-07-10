@@ -23,6 +23,7 @@ import {
   Workflow,
   type LucideIcon,
 } from "lucide-react";
+import mcgillLogo from "@assets/mcgill_university_logo.png";
 import universityLogo from "@assets/University_of_New_Brunswick_Logo.svg_1755912478863.png";
 import nccLogo from "@assets/ncc_logo.webp";
 import { getCertificateAsset } from "@/lib/certificates";
@@ -78,6 +79,14 @@ export default function EducationSection() {
       return next;
     });
 
+  const mcgillEducation: EducationEntry = {
+    institution: "McGill University - Desautels Faculty of Management",
+    location: "Montreal, Quebec",
+    degree: "Master of Business Administration Candidate",
+    major: "MBA Internship, non-thesis program",
+    year: "2026–2028",
+  };
+
   const unbEducation: EducationEntry = {
     institution: "University of New Brunswick",
     location: "Saint John, New Brunswick",
@@ -94,6 +103,13 @@ export default function EducationSection() {
     year: "2014–2015",
   };
 
+  const mcgillAchievements = [
+    "MBA Internship, non-thesis program through McGill Desautels Faculty of Management",
+    "Graduate management focus aligned with investment analysis, portfolio operations, capital markets, and technology-enabled reporting",
+    "GRE General Test: 328 total score, including 170 Quantitative Reasoning",
+    "Recipient of a $34,000 merit-based Entrance Award from the Desautels Faculty of Management",
+  ];
+
   const unbAchievements = [
     "Student Investment Fund Analyst and Portfolio Manager, 5 Academic Awards ($47,500 in scholarships)",
     "UNB Finance Club, RBC Student Ambassador, Accredited Co-op Program",
@@ -103,6 +119,39 @@ export default function EducationSection() {
   const nccAchievements = [
     "Major in Theology with coursework across Bible, ministry, leadership, communication, ethics, and practical skills",
     "Campus and ministry exposure included weekend ministry, chapel service, student council, social committees, and annual benefit concert pathways",
+  ];
+
+  const mcgillCourseCategories: CourseCategory[] = [
+    {
+      title: "Management Core",
+      icon: BookOpen,
+      courses: ["Leadership", "Organizational Behaviour", "Strategy"],
+    },
+    {
+      title: "Finance & Accounting",
+      icon: Sigma,
+      courses: ["Financial Accounting", "Managerial Finance", "Corporate Finance"],
+    },
+    {
+      title: "Analytics & Economics",
+      icon: BriefcaseBusiness,
+      courses: ["Managerial Economics", "Statistics", "Business Analytics"],
+    },
+    {
+      title: "Markets & Commercial Strategy",
+      icon: Landmark,
+      courses: ["Marketing", "Operations Management", "Competitive Strategy"],
+    },
+    {
+      title: "Technology & Innovation",
+      icon: MonitorCog,
+      courses: ["Digital Transformation", "Data-Driven Decision Making"],
+    },
+    {
+      title: "Internship & Applied Learning",
+      icon: Workflow,
+      courses: ["MBA Internship", "Applied Consulting", "Career Development"],
+    },
   ];
 
   const unbCourseCategories: CourseCategory[] = [
@@ -213,6 +262,12 @@ export default function EducationSection() {
     ]).flat().filter(Boolean),
   ] as string[];
 
+  const mcgillLeftColumnCourseTitles = new Set([
+    "Management Core",
+    "Finance & Accounting",
+    "Technology & Innovation",
+  ]);
+
   const unbLeftColumnCourseTitles = new Set([
     "Finance",
     "Economics",
@@ -228,20 +283,27 @@ export default function EducationSection() {
     "Practical Skills",
   ]);
 
+  const mcgillCourseColumns = buildCourseColumns(mcgillCourseCategories, mcgillLeftColumnCourseTitles);
   const unbCourseColumns = buildCourseColumns(unbCourseCategories, unbLeftColumnCourseTitles);
   const nccCourseColumns = buildCourseColumns(nccCourseCategories, nccLeftColumnCourseTitles);
-  const totalCourses = [...unbCourseCategories, ...nccCourseCategories].reduce(
+  const totalCourses = [...mcgillCourseCategories, ...unbCourseCategories, ...nccCourseCategories].reduce(
     (sum, category) => sum + category.courses.length,
     0,
   );
 
+  const mcgillEducationRevealSequence = buildRevealSequence(mcgillCourseColumns);
   const unbEducationRevealSequence = buildRevealSequence(unbCourseColumns);
   const nccEducationRevealSequence = buildRevealSequence(nccCourseColumns);
-  const unbCardRevealIndex = 0;
-  const unbCourseRevealStartIndex = 1;
+  const mcgillCardRevealIndex = 0;
+  const mcgillCourseRevealStartIndex = 1;
+  const unbCardRevealIndex = mcgillCourseRevealStartIndex + mcgillEducationRevealSequence.length;
+  const unbCourseRevealStartIndex = unbCardRevealIndex + 1;
   const nccCardRevealIndex = unbCourseRevealStartIndex + unbEducationRevealSequence.length;
   const nccCourseRevealStartIndex = nccCardRevealIndex + 1;
   const highlightsRevealStartIndex = nccCourseRevealStartIndex + nccEducationRevealSequence.length;
+  const mcgillEducationRevealOrder = new Map(
+    mcgillEducationRevealSequence.map((title, index) => [title, mcgillCourseRevealStartIndex + index]),
+  );
   const unbEducationRevealOrder = new Map(
     unbEducationRevealSequence.map((title, index) => [title, unbCourseRevealStartIndex + index]),
   );
@@ -258,6 +320,7 @@ export default function EducationSection() {
 
   const renderEducationCard = ({
     education,
+    cardId,
     logo,
     logoClassName = "",
     achievements,
@@ -267,6 +330,7 @@ export default function EducationSection() {
     cardRef,
   }: {
     education: EducationEntry;
+    cardId?: string;
     logo: string;
     logoClassName?: string;
     achievements: string[];
@@ -278,12 +342,12 @@ export default function EducationSection() {
     const isVisible = educationItemsAnimation.visibleItems.has(revealIndex);
     const revealClass = isVisible ? "visible" : "";
     const courseworkHeadingDelay = getScrollRevealDelay("body", achievements.length + 2);
-    const courseworkCopyDelay = courseworkHeadingDelay + 90;
     const educationAsset = getCertificateAsset(education.institution);
 
     return (
       <div
         ref={cardRef}
+        id={cardId}
         className={`education-card-shell group bg-white border border-border rounded-lg p-6 transition-shadow duration-200 hover:shadow-sm scroll-slide-up ${revealClass}`}
       >
         <div className="experience-card-header mb-4">
@@ -464,7 +528,17 @@ export default function EducationSection() {
         {/* Education Cards - matches experience card pattern */}
         <div ref={educationItemsAnimation.ref} className="space-y-6">
           {renderEducationCard({
+            education: mcgillEducation,
+            cardId: "mcgill-education",
+            logo: mcgillLogo,
+            achievements: mcgillAchievements,
+            courseColumns: mcgillCourseColumns,
+            revealIndex: mcgillCardRevealIndex,
+            revealOrder: mcgillEducationRevealOrder,
+          })}
+          {renderEducationCard({
             education: unbEducation,
+            cardId: "unb-education",
             logo: universityLogo,
             achievements: unbAchievements,
             courseColumns: unbCourseColumns,
@@ -473,6 +547,7 @@ export default function EducationSection() {
           })}
           {renderEducationCard({
             education: nccEducation,
+            cardId: "ncc-education",
             logo: nccLogo,
             logoClassName: "experience-card-logo--ncc",
             achievements: nccAchievements,
@@ -482,21 +557,21 @@ export default function EducationSection() {
           })}
         </div>
 
-        {/* Education Highlights - matches other sections */}
+        {/* Education Highlights - combined McGill, UNB and NCC summary */}
         <div className="mt-12">
           <div className="bg-white border border-border rounded-lg p-8 lg:p-10">
             <h3 className="text-xl font-bold text-foreground mb-8 text-center">
-              Education Highlights
+              Academic Highlights
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className={`scroll-slide-up ${educationItemsAnimation.visibleItems.has(highlightsRevealStartIndex) ? 'visible' : ''}`}>
-                <CounterStat end={5} label="Academic Awards" className="text-primary" delay={0} />
+                <CounterStat end={6} label="Awards Across McGill & UNB" className="text-primary" delay={0} />
               </div>
               <div className={`scroll-slide-up ${educationItemsAnimation.visibleItems.has(highlightsRevealStartIndex + 1) ? 'visible' : ''}`}>
-                <CounterStat end={47500} prefix="$" label="in Scholarships" className="text-primary" delay={200} />
+                <CounterStat end={81500} prefix="$" label="Combined Scholarships" className="text-primary" delay={200} />
               </div>
               <div className={`scroll-slide-up ${educationItemsAnimation.visibleItems.has(highlightsRevealStartIndex + 2) ? 'visible' : ''}`}>
-                <CounterStat end={totalCourses} label="Courses Completed" className="text-primary" delay={400} />
+                <CounterStat end={totalCourses} label="Courses, Workshops & Practicums" className="text-primary" delay={400} />
               </div>
             </div>
           </div>

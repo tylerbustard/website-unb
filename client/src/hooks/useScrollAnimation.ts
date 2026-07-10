@@ -187,7 +187,15 @@ export function useStaggeredScrollAnimation(
       // Clear all timeouts on cleanup
       timeoutsRef.current.forEach(timeout => clearTimeout(timeout));
     };
-  }, [itemCount, options.threshold, options.rootMargin, options.triggerOnce, options.delay, options.reducedMotion]);
+  }, [
+    itemCount,
+    options.threshold,
+    options.rootMargin,
+    options.triggerOnce,
+    options.delay,
+    options.reducedMotion,
+    options.staggerDelay,
+  ]);
 
   return { ref, visibleItems };
 }

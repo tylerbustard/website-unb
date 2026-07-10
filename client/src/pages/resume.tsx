@@ -253,6 +253,20 @@ export default function Resume() {
 
   const educationEntries: ResumeEntry[] = [
     {
+      id: "education-mcgill-university",
+      role: "Master of Business Administration Candidate",
+      period: "2026–2028",
+      organization: "McGill University - Desautels Faculty of Management",
+      location: "Montreal, QC",
+      logo: mcgillLogo,
+      bullets: [
+        "MBA Internship, non-thesis program through McGill Desautels Faculty of Management",
+        "Graduate management focus aligned with investment analysis, portfolio operations, capital markets, and technology-enabled reporting",
+        "GRE General Test: 328 total score, including 170 Quantitative Reasoning",
+        "Recipient of a $34,000 merit-based Entrance Award from the Desautels Faculty of Management",
+      ],
+    },
+    {
       id: "education-unb",
       role: "Bachelor of Business Administration, Finance",
       period: "2016–2020",
@@ -432,7 +446,7 @@ export default function Resume() {
     const resumeTitle = "Tyler Bustard - Resume";
     const resumeUrl = "https://tylerbustard.ca/resume";
     const resumeDescription =
-      "Resume for Tyler Bustard, finance and investment banking candidate with education, experience, credentials, and community leadership.";
+      "Resume for Tyler Bustard, McGill MBA candidate with finance, banking, credentials, and community leadership experience.";
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     const ogUrlMeta = document.querySelector<HTMLMetaElement>('meta[property="og:url"]');
     const ogTitleMeta = document.querySelector<HTMLMetaElement>('meta[property="og:title"]');
@@ -539,7 +553,7 @@ export default function Resume() {
                   className={`resume-summary-text scroll-slide-up ${summaryAnimation.isVisible ? "visible" : ""}`}
                   style={getScrollRevealStyle("section")}
                 >
-                  Finance professional and CFA Level I Candidate with front-office and portfolio-operations experience at RBC, TD, BMO Private Wealth, and 73 Strings, pairing Canadian Securities Course and Bloomberg Market Concepts training with hands-on Python and SQL analytics.
+                  McGill MBA candidate with experience across portfolio monitoring, banking, advisory, and analytics, combining finance training with technology-enabled reporting and client-focused execution.
                 </p>
               </section>
 

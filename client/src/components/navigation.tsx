@@ -33,6 +33,26 @@ ${canonicalResumePdfUrl}`,
   const getCertificationId = (name: string) => `#cert-${slugify(name)}`;
   const getCertificationCategoryId = (title: string) => `#certifications-${slugify(title)}`;
   const getCommunityId = (organization: string) => `#community-${slugify(organization)}`;
+  const educationDropdownItems = [
+    {
+      title: "McGill University - Desautels Faculty of Management",
+      subtitle: "Master of Business Administration Candidate",
+      detail: "MBA Internship, non-thesis program · 2026–2028",
+      target: isResumePage ? '#education' : '#mcgill-education',
+    },
+    {
+      title: 'University of New Brunswick',
+      subtitle: 'Bachelor of Business Administration',
+      detail: 'Major in Finance · 2016–2020',
+      target: isResumePage ? '#education' : '#unb-education',
+    },
+    {
+      title: 'Northeast Christian College',
+      subtitle: 'Theology Program',
+      detail: 'Major in Theology · 2014–2015',
+      target: isResumePage ? '#education' : '#ncc-education',
+    },
+  ];
   const navSectionButtonClasses = (isActive: boolean) =>
     `nav-section-button ${isActive ? 'is-active' : ''}`;
   const initialPathRef = useRef(location);
@@ -56,7 +76,7 @@ ${canonicalResumePdfUrl}`,
   });
   const shouldPlayHomepageIntro = homepageIntro.shouldPlay;
   const shouldMarkHomepageIntroPlayed = homepageIntro.shouldMarkPlayed;
-  
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [navExpanded, setNavExpanded] = useState(!shouldPlayHomepageIntro);
   const [showNavContent, setShowNavContent] = useState(!shouldPlayHomepageIntro);
@@ -151,7 +171,7 @@ ${canonicalResumePdfUrl}`,
         }
       }
     };
-    
+
     const handleEscKey = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         if (openDropdown) {
@@ -250,10 +270,10 @@ ${canonicalResumePdfUrl}`,
   useEffect(() => {
     let rafId: number | null = null;
     let lastScrollY = 0;
-    
+
     const handleScroll = () => {
       if (rafId) return;
-      
+
       rafId = requestAnimationFrame(() => {
         const currentScrollY = window.scrollY;
         // Only update if there's a significant change
@@ -318,7 +338,7 @@ ${canonicalResumePdfUrl}`,
       // Find the section with the highest intersection ratio
       let maxRatio = 0;
       let activeSection = isHomePage ? 'hero' : 'academic-highlights';
-      
+
       Array.from(visibleSections.entries()).forEach(([sectionId, ratio]) => {
         if (ratio > maxRatio) {
           maxRatio = ratio;
@@ -330,13 +350,13 @@ ${canonicalResumePdfUrl}`,
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-    
+
     // Add a small delay to ensure sections are rendered before observing
     const setupObserver = () => {
       const sections = document.querySelectorAll('section[id]');
       sections.forEach((section) => observer.observe(section));
     };
-    
+
     // Setup immediately and also after a short delay to catch any late-rendered sections
     setupObserver();
     const delayTimer = setTimeout(setupObserver, 100);
@@ -352,7 +372,7 @@ ${canonicalResumePdfUrl}`,
   const scrollToSection = (href: string) => {
     // Close dropdown immediately for better UX
     setOpenDropdown(null);
-    
+
     // If on resume page, scroll to resume sections
     if (isResumePage) {
       const element = document.querySelector(href);
@@ -360,7 +380,7 @@ ${canonicalResumePdfUrl}`,
         const navHeight = 80;
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - navHeight;
-        
+
         // Use requestAnimationFrame for smoother scrolling
         requestAnimationFrame(() => {
           window.scrollTo({
@@ -372,19 +392,19 @@ ${canonicalResumePdfUrl}`,
       setIsMobileMenuOpen(false);
       return;
     }
-    
+
     // If not on home page, navigate to home page first
     if (!isHomePage) {
       window.location.href = href;
       return;
     }
-    
+
     const element = document.querySelector(href);
     if (element) {
       const navHeight = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - navHeight;
-      
+
       // Use requestAnimationFrame for smoother scrolling
       requestAnimationFrame(() => {
         window.scrollTo({
@@ -457,7 +477,7 @@ ${canonicalResumePdfUrl}`,
             {/* Left side - Logo/Name */}
             <div className={`nav-brand-slot flex min-w-0 items-center transition-opacity duration-300 ${showNavContent ? 'opacity-100' : 'opacity-0'}`}>
               {isHomePage && (
-                <button 
+                <button
                   onClick={() => {
                     // Use a slight delay to prevent conflict with other animations
                     setTimeout(() => {
@@ -470,9 +490,9 @@ ${canonicalResumePdfUrl}`,
                   aria-label="Tyler Bustard home"
                   className={`nav-brand-button ${showHomeBrandText ? 'is-expanded' : 'is-collapsed'} cursor-pointer`}
                 >
-                  <img 
-                    src={profileImage} 
-                    alt="Tyler Bustard" 
+                  <img
+                    src={profileImage}
+                    alt="Tyler Bustard"
                     className="w-7 h-7 rounded-lg object-cover ring-1 ring-white/20"
                   />
                   <div className={`nav-brand-text ${showHomeBrandText ? 'is-visible' : ''}`}>
@@ -483,7 +503,7 @@ ${canonicalResumePdfUrl}`,
                 </button>
               )}
               {isResumePage && (
-                <button 
+                <button
                   onClick={() => {
                     // Always go to home page, not back in history
                     window.location.href = '/';
@@ -491,9 +511,9 @@ ${canonicalResumePdfUrl}`,
                   aria-label="Tyler Bustard home"
                   className="nav-brand-button is-expanded cursor-pointer"
                 >
-                  <img 
-                    src={profileImage} 
-                    alt="Tyler Bustard" 
+                  <img
+                    src={profileImage}
+                    alt="Tyler Bustard"
                     className="w-7 h-7 rounded-lg object-cover ring-1 ring-white/20"
                   />
                   <div className="nav-brand-text is-visible">
@@ -512,7 +532,7 @@ ${canonicalResumePdfUrl}`,
               {isResumePage && (
                 <>
                   {/* Experience */}
-                  <div 
+                  <div
                     className="relative dropdown-container"
                     onMouseEnter={() => handleDropdownEnter('experience')}
                     onMouseLeave={handleDropdownLeave}
@@ -526,11 +546,11 @@ ${canonicalResumePdfUrl}`,
                       Experience
                       <ChevronDown size={14} className={`transition-transform duration-200 ${openDropdown === 'experience' ? 'rotate-180' : ''}`} />
                     </button>
-                    
+
                     {/* Experience Dropdown */}
                     {openDropdown === 'experience' && (
                       <div id="resume-experience-dropdown" className="absolute top-full left-0 -mt-1 w-80 z-[55] pt-1">
-                        <div 
+                        <div
                           className="liquid-glass-panel rounded-xl p-4 transition-all duration-200 mt-1"
                           onMouseEnter={() => handleDropdownContentEnter('experience')}
                           onMouseLeave={handleDropdownContentLeave}
@@ -565,7 +585,7 @@ ${canonicalResumePdfUrl}`,
                             </button>
 
                             {/* Portfolio Assistant */}
-                            <button 
+                            <button
                               onClick={() => {
                                 scrollToSection(getExperienceId('BMO Private Wealth', 'Portfolio Assistant'));
                                 setOpenDropdown(null);
@@ -579,7 +599,7 @@ ${canonicalResumePdfUrl}`,
                             </button>
 
                             {/* Financial Advisor */}
-                            <button 
+                            <button
                               onClick={() => {
                                 scrollToSection(getExperienceId('TD Canada Trust', 'Financial Advisor'));
                                 setOpenDropdown(null);
@@ -593,7 +613,7 @@ ${canonicalResumePdfUrl}`,
                             </button>
 
                             {/* Banking Advisor */}
-                            <button 
+                            <button
                               onClick={() => {
                                 scrollToSection(getExperienceId('Royal Bank of Canada', 'Banking Advisor'));
                                 setOpenDropdown(null);
@@ -607,7 +627,7 @@ ${canonicalResumePdfUrl}`,
                             </button>
 
                             {/* Client Advisor Intern */}
-                            <button 
+                            <button
                               onClick={() => {
                                 scrollToSection(getExperienceId('Royal Bank of Canada', 'Client Advisor Intern'));
                                 setOpenDropdown(null);
@@ -621,7 +641,7 @@ ${canonicalResumePdfUrl}`,
                             </button>
 
                             {/* Marketing Intern */}
-                            <button 
+                            <button
                               onClick={() => {
                                 scrollToSection(getExperienceId('Irving Oil Limited', 'Marketing Intern'));
                                 setOpenDropdown(null);
@@ -635,7 +655,7 @@ ${canonicalResumePdfUrl}`,
                             </button>
 
                             {/* Tax Return Intern */}
-                            <button 
+                            <button
                               onClick={() => {
                                 scrollToSection(getExperienceId('Grant Thornton LLP', 'Tax Return Intern'));
                                 setOpenDropdown(null);
@@ -677,32 +697,22 @@ ${canonicalResumePdfUrl}`,
                           onMouseLeave={handleDropdownContentLeave}
                         >
                           <div className="space-y-3">
-                            <button
-                              onClick={() => {
-                                scrollToSection('#education');
-                                setOpenDropdown(null);
-                              }}
-                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                            >
-                              <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">University of New Brunswick</div>
-                                <div className="text-xs text-white/65">Bachelor of Business Administration</div>
-                                <div className="text-xs text-white/70">Finance Major</div>
-                              </div>
-                            </button>
-                            <button
-                              onClick={() => {
-                                scrollToSection('#education');
-                                setOpenDropdown(null);
-                              }}
-                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                            >
-                              <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Northeast Christian College</div>
-                                <div className="text-xs text-white/65">Theology Program</div>
-                                <div className="text-xs text-white/70">Major in Theology</div>
-                              </div>
-                            </button>
+                            {educationDropdownItems.map((item) => (
+                              <button
+                                key={item.title}
+                                onClick={() => {
+                                  scrollToSection(item.target);
+                                  setOpenDropdown(null);
+                                }}
+                                className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              >
+                                <div className="space-y-1">
+                                  <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">{item.title}</div>
+                                  <div className="text-xs text-white/65">{item.subtitle}</div>
+                                  <div className="text-xs text-white/70">{item.detail}</div>
+                                </div>
+                              </button>
+                            ))}
                           </div>
                         </div>
                       </div>
@@ -710,7 +720,7 @@ ${canonicalResumePdfUrl}`,
                   </div>
 
                   {/* Certifications */}
-                  <div 
+                  <div
                     className="relative dropdown-container"
                     onMouseEnter={() => handleDropdownEnter('certifications')}
                     onMouseLeave={handleDropdownLeave}
@@ -724,18 +734,18 @@ ${canonicalResumePdfUrl}`,
                       Certifications
                       <ChevronDown size={14} className={`transition-transform duration-200 ${openDropdown === 'certifications' ? 'rotate-180' : ''}`} />
                     </button>
-                    
+
                     {/* Certifications Dropdown */}
                     {openDropdown === 'certifications' && (
                       <div id="resume-certifications-dropdown" className="absolute top-full left-0 -mt-1 w-80 z-[55] pt-1">
-                        <div 
+                        <div
                           className="liquid-glass-panel rounded-xl p-4 transition-all duration-200 mt-1"
                           onMouseEnter={() => handleDropdownContentEnter('certifications')}
                           onMouseLeave={handleDropdownContentLeave}
                         >
                           <div className="space-y-3">
                             {/* CFA Level I Candidate */}
-                            <button 
+                            <button
                               onClick={() => {
                                 scrollToSection(getCertificationId('CFA Level I Candidate'));
                                 setOpenDropdown(null);
@@ -749,7 +759,7 @@ ${canonicalResumePdfUrl}`,
                             </button>
 
                           {/* GRE General Test */}
-                            <button 
+                            <button
                               onClick={() => {
                                 scrollToSection(getCertificationId('GRE General Test'));
                                 setOpenDropdown(null);
@@ -763,7 +773,7 @@ ${canonicalResumePdfUrl}`,
                             </button>
 
                             {/* Investment & Markets */}
-                            <button 
+                            <button
                               onClick={() => {
                                 scrollToSection(getCertificationCategoryId('Investment & Markets'));
                                 setOpenDropdown(null);
@@ -777,7 +787,7 @@ ${canonicalResumePdfUrl}`,
                             </button>
 
                             {/* Advisory & Wealth Planning */}
-                            <button 
+                            <button
                               onClick={() => {
                                 scrollToSection(getCertificationCategoryId('Advisory & Wealth Planning'));
                                 setOpenDropdown(null);
@@ -791,7 +801,7 @@ ${canonicalResumePdfUrl}`,
                             </button>
 
                             {/* Analytics & Quantitative Methods */}
-                            <button 
+                            <button
                               onClick={() => {
                                 scrollToSection(getCertificationCategoryId('Analytics & Quantitative Methods'));
                                 setOpenDropdown(null);
@@ -805,7 +815,7 @@ ${canonicalResumePdfUrl}`,
                             </button>
 
                             {/* AI Engineering & Agentic Workflows */}
-                            <button 
+                            <button
                               onClick={() => {
                                 scrollToSection(getCertificationCategoryId('AI Engineering & Agentic Workflows'));
                                 setOpenDropdown(null);
@@ -824,7 +834,7 @@ ${canonicalResumePdfUrl}`,
                   </div>
 
                   {/* Community */}
-                  <div 
+                  <div
                     className="relative dropdown-container"
                     onMouseEnter={() => handleDropdownEnter('community')}
                     onMouseLeave={handleDropdownLeave}
@@ -838,18 +848,18 @@ ${canonicalResumePdfUrl}`,
                       Community
                       <ChevronDown size={14} className={`transition-transform duration-200 ${openDropdown === 'community' ? 'rotate-180' : ''}`} />
                     </button>
-                    
+
                     {/* Community Dropdown */}
                     {openDropdown === 'community' && (
                       <div id="resume-community-dropdown" className="absolute top-full left-0 -mt-1 w-80 z-[55] pt-1">
-                        <div 
+                        <div
                           className="liquid-glass-panel rounded-xl p-4 transition-all duration-200 mt-1"
                           onMouseEnter={() => handleDropdownEnter('community')}
                           onMouseLeave={handleDropdownLeave}
                         >
                           <div className="space-y-3">
                             {/* Next Gen Ambassador */}
-                            <button 
+                            <button
                               onClick={() => {
                                 scrollToSection(getCommunityId('United Way'));
                                 setOpenDropdown(null);
@@ -863,7 +873,7 @@ ${canonicalResumePdfUrl}`,
                             </button>
 
                             {/* Student Ambassador */}
-                            <button 
+                            <button
                               onClick={() => {
                                 scrollToSection(getCommunityId('Royal Bank of Canada'));
                                 setOpenDropdown(null);
@@ -877,7 +887,7 @@ ${canonicalResumePdfUrl}`,
                             </button>
 
                             {/* Volunteer Staff */}
-                            <button 
+                            <button
                               onClick={() => {
                                 scrollToSection(getCommunityId('Irving Oil Limited'));
                                 setOpenDropdown(null);
@@ -896,7 +906,7 @@ ${canonicalResumePdfUrl}`,
                   </div>
 
                   {/* Contact */}
-                  <div 
+                  <div
                     className="relative dropdown-container"
                     onMouseEnter={() => handleDropdownEnter('contact')}
                     onMouseLeave={handleDropdownLeave}
@@ -910,18 +920,18 @@ ${canonicalResumePdfUrl}`,
                       Contact
                       <ChevronDown size={14} className={`transition-transform duration-200 ${openDropdown === 'contact' ? 'rotate-180' : ''}`} />
                     </button>
-                    
+
                     {/* Contact Dropdown */}
                     {openDropdown === 'contact' && (
                       <div id="resume-contact-dropdown" className="absolute top-full left-0 -mt-1 w-80 z-[55] pt-1">
-                        <div 
+                        <div
                           className="liquid-glass-panel rounded-xl p-4 transition-all duration-200 mt-1"
                           onMouseEnter={() => handleDropdownEnter('contact')}
                           onMouseLeave={handleDropdownLeave}
                         >
                           <div className="space-y-3">
                             {/* Email */}
-                            <a 
+                            <a
                               href="mailto:tyler@tylerbustard.ca"
                               onClick={() => setOpenDropdown(null)}
                               className="block w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
@@ -933,7 +943,7 @@ ${canonicalResumePdfUrl}`,
                             </a>
 
                             {/* Phone */}
-                            <a 
+                            <a
                               href="tel:+16139851223"
                               onClick={() => setOpenDropdown(null)}
                               className="block w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
@@ -946,7 +956,7 @@ ${canonicalResumePdfUrl}`,
 
 
                             {/* Location */}
-                            <button 
+                            <button
                               onClick={() => {
                                 scrollToSection('#contact');
                                 setOpenDropdown(null);
@@ -972,7 +982,7 @@ ${canonicalResumePdfUrl}`,
 
               {/* Experience */}
               {isHomePage && (
-                <div 
+                <div
                   className="relative dropdown-container"
                   onMouseEnter={() => handleDropdownEnter('experience')}
                   onMouseLeave={handleDropdownLeave}
@@ -986,13 +996,13 @@ ${canonicalResumePdfUrl}`,
                     Experience
                     <ChevronDown size={14} className={`transition-transform duration-200 ${openDropdown === 'experience' ? 'rotate-180' : ''}`} />
                   </button>
-                  
+
                   {/* Experience Dropdown */}
                   {openDropdown === 'experience' && (
                     <div id="home-experience-dropdown" className="absolute top-full left-0 -mt-1 w-80 z-[55] pt-1">
-                      <div 
+                      <div
                         className="liquid-glass-panel rounded-xl p-4 transition-all duration-200 mt-1"
-                       
+
                         onMouseEnter={() => handleDropdownEnter('experience')}
                         onMouseLeave={handleDropdownLeave}
                         >
@@ -1026,7 +1036,7 @@ ${canonicalResumePdfUrl}`,
                           </button>
 
                           {/* Portfolio Assistant */}
-                          <button 
+                          <button
                             onClick={() => {
                               scrollToSection(getExperienceId('BMO Private Wealth', 'Portfolio Assistant'));
                               setOpenDropdown(null);
@@ -1038,9 +1048,9 @@ ${canonicalResumePdfUrl}`,
                               <div className="text-xs text-white/65">BMO Private Wealth</div>
                             </div>
                           </button>
-                          
+
                           {/* Financial Advisor */}
-                          <button 
+                          <button
                             onClick={() => {
                               scrollToSection(getExperienceId('TD Canada Trust', 'Financial Advisor'));
                               setOpenDropdown(null);
@@ -1052,9 +1062,9 @@ ${canonicalResumePdfUrl}`,
                               <div className="text-xs text-white/65">TD Canada Trust</div>
                             </div>
                           </button>
-                          
+
                           {/* Banking Advisor */}
-                          <button 
+                          <button
                             onClick={() => {
                               scrollToSection(getExperienceId('Royal Bank of Canada', 'Banking Advisor'));
                               setOpenDropdown(null);
@@ -1066,9 +1076,9 @@ ${canonicalResumePdfUrl}`,
                               <div className="text-xs text-white/65">Royal Bank of Canada</div>
                             </div>
                           </button>
-                          
+
                           {/* Client Advisor Intern */}
-                          <button 
+                          <button
                             onClick={() => {
                               scrollToSection(getExperienceId('Royal Bank of Canada', 'Client Advisor Intern'));
                               setOpenDropdown(null);
@@ -1080,9 +1090,9 @@ ${canonicalResumePdfUrl}`,
                               <div className="text-xs text-white/65">Royal Bank of Canada</div>
                             </div>
                           </button>
-                          
+
                           {/* Marketing Intern */}
-                          <button 
+                          <button
                             onClick={() => {
                               scrollToSection(getExperienceId('Irving Oil Limited', 'Marketing Intern'));
                               setOpenDropdown(null);
@@ -1094,9 +1104,9 @@ ${canonicalResumePdfUrl}`,
                               <div className="text-xs text-white/65">Irving Oil Limited</div>
                             </div>
                           </button>
-                          
+
                           {/* Tax Return Intern */}
-                          <button 
+                          <button
                             onClick={() => {
                               scrollToSection(getExperienceId('Grant Thornton LLP', 'Tax Return Intern'));
                               setOpenDropdown(null);
@@ -1139,26 +1149,19 @@ ${canonicalResumePdfUrl}`,
                         onMouseLeave={handleDropdownContentLeave}
                       >
                         <div className="space-y-3">
-                          <button
-                            onClick={() => { scrollToSection('#education'); setOpenDropdown(null); }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                          >
-                            <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">University of New Brunswick</div>
-                              <div className="text-xs text-white/65">Bachelor of Business Administration</div>
-                              <div className="text-xs text-white/70">Finance Major</div>
-                            </div>
-                          </button>
-                          <button
-                            onClick={() => { scrollToSection('#education'); setOpenDropdown(null); }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                          >
-                            <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Northeast Christian College</div>
-                              <div className="text-xs text-white/65">Theology Program</div>
-                              <div className="text-xs text-white/70">Major in Theology</div>
-                            </div>
-                          </button>
+                          {educationDropdownItems.map((item) => (
+                            <button
+                              key={item.title}
+                              onClick={() => { scrollToSection(item.target); setOpenDropdown(null); }}
+                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            >
+                              <div className="space-y-1">
+                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">{item.title}</div>
+                                <div className="text-xs text-white/65">{item.subtitle}</div>
+                                <div className="text-xs text-white/70">{item.detail}</div>
+                              </div>
+                            </button>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -1184,16 +1187,16 @@ ${canonicalResumePdfUrl}`,
                     Certifications
                     <ChevronDown size={14} className={`transition-transform duration-200 ${openDropdown === 'certifications' ? 'rotate-180' : ''}`} />
                   </button>
-                  
+
                   {/* Certifications Dropdown */}
                   {openDropdown === 'certifications' && (
                     <div id="home-certifications-dropdown" className="absolute top-full left-0 -mt-1 w-80 z-[55] pt-1">
-                      <div 
+                      <div
                         className="liquid-glass-panel rounded-xl p-4 transition-all duration-200 mt-1"
-                       
+
                       >
                         <div className="space-y-3">
-                          <button 
+                          <button
                             onClick={() => {
                               scrollToSection('#core-cert-cfa-level-i-candidate');
                               setOpenDropdown(null);
@@ -1206,7 +1209,7 @@ ${canonicalResumePdfUrl}`,
                             </div>
                           </button>
 
-                          <button 
+                          <button
                             onClick={() => {
                               scrollToSection('#core-cert-canadian-securities-course');
                               setOpenDropdown(null);
@@ -1219,7 +1222,7 @@ ${canonicalResumePdfUrl}`,
                             </div>
                           </button>
 
-                          <button 
+                          <button
                             onClick={() => {
                               scrollToSection('#core-cert-bloomberg-market-concepts-certificate');
                               setOpenDropdown(null);
@@ -1232,7 +1235,7 @@ ${canonicalResumePdfUrl}`,
                             </div>
                           </button>
 
-                          <button 
+                          <button
                             onClick={() => {
                               scrollToSection('#core-cert-discounted-cash-flow-analysis-and-modeling');
                               setOpenDropdown(null);
@@ -1245,7 +1248,7 @@ ${canonicalResumePdfUrl}`,
                             </div>
                           </button>
 
-                          <button 
+                          <button
                             onClick={() => {
                               scrollToSection('#core-cert-financial-risk-and-regulation--frr');
                               setOpenDropdown(null);
@@ -1258,7 +1261,7 @@ ${canonicalResumePdfUrl}`,
                             </div>
                           </button>
 
-                          <button 
+                          <button
                             onClick={() => {
                               scrollToSection('#core-cert-gre-general-test');
                               setOpenDropdown(null);
@@ -1272,7 +1275,7 @@ ${canonicalResumePdfUrl}`,
                           </button>
 
                           <div className="border-t border-white/10 pt-2">
-                          <button 
+                          <button
                             onClick={() => {
                               scrollToSection('#certifications');
                               setOpenDropdown(null);
@@ -1291,7 +1294,7 @@ ${canonicalResumePdfUrl}`,
 
               {/* Community */}
               {isHomePage && (
-                <div 
+                <div
                   className="relative dropdown-container"
                   onMouseEnter={() => handleDropdownEnter('community')}
                   onMouseLeave={handleDropdownLeave}
@@ -1305,19 +1308,19 @@ ${canonicalResumePdfUrl}`,
                     Community
                     <ChevronDown size={14} className={`transition-transform duration-200 ${openDropdown === 'community' ? 'rotate-180' : ''}`} />
                   </button>
-                  
+
                   {/* Community Dropdown */}
                   {openDropdown === 'community' && (
                     <div id="home-community-dropdown" className="absolute top-full left-0 -mt-1 w-80 z-[55] pt-1">
-                      <div 
+                      <div
                         className="liquid-glass-panel rounded-xl p-4 transition-all duration-200 mt-1"
-                       
+
                         onMouseEnter={() => handleDropdownContentEnter('community')}
                         onMouseLeave={handleDropdownContentLeave}
                       >
                         <div className="space-y-3">
                           {/* Next Gen Ambassador */}
-                          <button 
+                          <button
                             onClick={() => {
                               scrollToSection(getCommunityId('United Way'));
                               setOpenDropdown(null);
@@ -1329,9 +1332,9 @@ ${canonicalResumePdfUrl}`,
                               <div className="text-xs text-white/65">United Way</div>
                             </div>
                           </button>
-                          
+
                           {/* Student Ambassador */}
-                          <button 
+                          <button
                             onClick={() => {
                               scrollToSection(getCommunityId('Royal Bank of Canada'));
                               setOpenDropdown(null);
@@ -1345,7 +1348,7 @@ ${canonicalResumePdfUrl}`,
                           </button>
 
                           {/* Volunteer Staff */}
-                          <button 
+                          <button
                             onClick={() => {
                               scrollToSection(getCommunityId('Irving Oil Limited'));
                               setOpenDropdown(null);
@@ -1366,7 +1369,7 @@ ${canonicalResumePdfUrl}`,
 
               {/* Contact */}
               {isHomePage && (
-                <div 
+                <div
                   className="relative dropdown-container"
                   onMouseEnter={() => handleDropdownEnter('contact')}
                   onMouseLeave={handleDropdownLeave}
@@ -1380,17 +1383,17 @@ ${canonicalResumePdfUrl}`,
                     Contact
                     <ChevronDown size={14} className={`transition-transform duration-200 ${openDropdown === 'contact' ? 'rotate-180' : ''}`} />
                   </button>
-                  
+
                   {/* Contact Dropdown */}
                   {openDropdown === 'contact' && (
                     <div id="home-contact-dropdown" className="absolute top-full left-0 -mt-1 w-72 z-[55] pt-1">
-                      <div 
+                      <div
                         className="liquid-glass-panel rounded-xl p-4 transition-all duration-200 mt-1"
-                       
+
                       >
                         <div className="space-y-3">
                           {/* Email */}
-                          <a 
+                          <a
                             href="mailto:tyler@tylerbustard.ca"
                             onClick={() => setOpenDropdown(null)}
                             className="block w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
@@ -1402,7 +1405,7 @@ ${canonicalResumePdfUrl}`,
                           </a>
 
                           {/* Phone */}
-                          <a 
+                          <a
                             href="tel:+16139851223"
                             onClick={() => setOpenDropdown(null)}
                             className="block w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
@@ -1415,7 +1418,7 @@ ${canonicalResumePdfUrl}`,
 
 
                           {/* Location */}
-                          <button 
+                          <button
                             onClick={() => {
                               scrollToSection('#contact');
                               setOpenDropdown(null);
@@ -1438,7 +1441,7 @@ ${canonicalResumePdfUrl}`,
             {/* Right side */}
             {!isSignInPage && (
             <div className={`flex items-center justify-self-end space-x-3 transition-opacity duration-300 ${showNavContent ? 'opacity-100' : 'opacity-0'}`}>
-              
+
               {/* Desktop Resume Actions - Only on Resume Page */}
               {isResumePage && (
                 <div className="resume-nav-actions hidden lg:flex" aria-label="Resume actions">
@@ -1473,7 +1476,7 @@ ${canonicalResumePdfUrl}`,
 
               {/* Desktop Resume/Close Button */}
               <div className="hidden lg:block">
-                <button 
+                <button
                   onClick={() => {
                     if (isResumePage) {
                       // Always go to home page, not back in history
@@ -1519,7 +1522,7 @@ ${canonicalResumePdfUrl}`,
                   </button>
                 </div>
               )}
-              
+
               {/* Mobile Menu Button */}
               {(isResumePage || isUploadPage || isSignInPage) ? (
                 <button
@@ -1535,11 +1538,11 @@ ${canonicalResumePdfUrl}`,
               ) : (
                 <button
                   ref={mobileMenuButtonRef}
-                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
                   className="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-all duration-200 active:scale-95"
                   aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
                   aria-expanded={isMobileMenuOpen}
-                  aria-controls="mobile-navigation-menu"
+                  aria-controls="mobile-menu-panel"
                 >
                   {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
                 </button>
@@ -1554,16 +1557,16 @@ ${canonicalResumePdfUrl}`,
       {/* Mobile Menu - Clean Glass Effect */}
       {isMobileMenuOpen && !isResumePage && !isUploadPage && !isSignInPage && (
         <div className="fixed inset-0 z-[60] lg:hidden animate-in fade-in duration-200">
-          <div 
-            className="absolute inset-0 bg-black/30 backdrop-blur-sm" 
+          <div
+            className="absolute inset-0 bg-black/30 backdrop-blur-sm"
             onClick={() => setIsMobileMenuOpen(false)}
           />
-          <div 
-            id="mobile-navigation-menu"
+          <div
+            id="mobile-menu-panel"
             ref={mobileMenuDialogRef}
             role="dialog"
             aria-modal="true"
-            aria-labelledby="mobile-navigation-menu-title"
+            aria-labelledby="mobile-menu-title"
             className="absolute inset-x-0 top-0 h-full overflow-y-auto animate-in slide-in-from-top duration-300"
             style={{
               background: 'linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.85))',
@@ -1575,8 +1578,8 @@ ${canonicalResumePdfUrl}`,
             <div className="p-6 pt-20">
               {/* Close Button at top */}
               <div className="flex justify-between items-center mb-6">
-                <h2 id="mobile-navigation-menu-title" className="text-xl font-bold text-white">Menu</h2>
-                <button 
+                <h2 id="mobile-menu-title" className="text-xl font-bold text-white">Menu</h2>
+                <button
                   ref={mobileMenuCloseButtonRef}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="p-2 rounded-lg hover:bg-white/10 transition-colors"
@@ -1585,12 +1588,12 @@ ${canonicalResumePdfUrl}`,
                   <X size={24} className="text-white/70" />
                 </button>
               </div>
-              
+
               <div className="space-y-6">
                 {/* Mobile Navigation Links */}
                 {isHomePage && (
                   <>
-                    <button 
+                    <button
                       onClick={() => {
                         scrollToSection('#experience');
                         setIsMobileMenuOpen(false);
@@ -1599,7 +1602,7 @@ ${canonicalResumePdfUrl}`,
                     >
                       Experience
                     </button>
-                    <button 
+                    <button
                       onClick={() => {
                         scrollToSection('#education');
                         setIsMobileMenuOpen(false);
@@ -1608,7 +1611,7 @@ ${canonicalResumePdfUrl}`,
                     >
                       Education
                     </button>
-                    <button 
+                    <button
                       onClick={() => {
                         scrollToSection('#certifications');
                         setIsMobileMenuOpen(false);
@@ -1617,7 +1620,7 @@ ${canonicalResumePdfUrl}`,
                     >
                       Certifications
                     </button>
-                    <button 
+                    <button
                       onClick={() => {
                         scrollToSection('#community');
                         setIsMobileMenuOpen(false);
@@ -1626,7 +1629,7 @@ ${canonicalResumePdfUrl}`,
                     >
                       Community
                     </button>
-                    <button 
+                    <button
                       onClick={() => {
                         scrollToSection('#contact');
                         setIsMobileMenuOpen(false);
@@ -1637,9 +1640,9 @@ ${canonicalResumePdfUrl}`,
                     </button>
                   </>
                 )}
-                
+
                 {/* Resume Button */}
-                <button 
+                <button
                   onClick={() => {
                     if (isResumePage) {
                       // Always go to home page, not back in history
