@@ -2,7 +2,7 @@ BEGIN:VCARD
 VERSION:3.0
 FN:Tyler Bustard
 N:Bustard;Tyler;;;
-EMAIL;TYPE=INTERNET;TYPE=WORK:tyler@tylerbustard.ca
+EMAIL;TYPE=INTERNET;TYPE=WORK:tyler.bustard@mail.mcgill.ca
 TEL;TYPE=CELL;TYPE=VOICE:+1-613-985-1223
 URL:https://tylerbustard.ca
 ADR;TYPE=WORK:;;;Toronto;Ontario;;Canada

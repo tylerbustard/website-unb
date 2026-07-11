@@ -18,7 +18,7 @@ type ContactFormState = {
   "bot-field": string;
 };
 
-const CONTACT_FORM_ENDPOINT = "https://formsubmit.co/ajax/tyler@tylerbustard.ca";
+const CONTACT_FORM_ENDPOINT = "https://formsubmit.co/ajax/tyler.bustard@mail.mcgill.ca";
 
 export default function ContactInfoSection() {
   const { toast } = useToast();
@@ -184,7 +184,7 @@ export default function ContactInfoSection() {
 
                   <div className="contact-detail-list">
                     <a
-                      href="mailto:tyler@tylerbustard.ca"
+                      href="mailto:tyler.bustard@mail.mcgill.ca"
                       className={`contact-detail-item scroll-slide-up ${revealClass}`}
                       style={getScrollRevealStyle("body", 1)}
                     >
@@ -193,7 +193,9 @@ export default function ContactInfoSection() {
                       </span>
                       <span className="contact-detail-copy">
                         <span className="contact-detail-label">Email</span>
-                        <span className="contact-detail-value">tyler@tylerbustard.ca</span>
+                        <span className="contact-detail-value">
+                          tyler.bustard@<wbr />mail.mcgill.ca
+                        </span>
                       </span>
                     </a>
 
