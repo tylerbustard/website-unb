@@ -932,13 +932,13 @@ ${canonicalResumePdfUrl}`,
                           <div className="space-y-3">
                             {/* Email */}
                             <a
-                              href="mailto:tyler@tylerbustard.ca"
+                              href="mailto:tyler.bustard@mail.mcgill.ca"
                               onClick={() => setOpenDropdown(null)}
                               className="block w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
                                 <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Email</div>
-                                <div className="text-xs text-white/65">tyler@tylerbustard.ca</div>
+                                <div className="text-xs text-white/65">tyler.bustard@mail.mcgill.ca</div>
                               </div>
                             </a>
 
@@ -1394,13 +1394,13 @@ ${canonicalResumePdfUrl}`,
                         <div className="space-y-3">
                           {/* Email */}
                           <a
-                            href="mailto:tyler@tylerbustard.ca"
+                            href="mailto:tyler.bustard@mail.mcgill.ca"
                             onClick={() => setOpenDropdown(null)}
                             className="block w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
                               <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Email</div>
-                              <div className="text-xs text-white/65">tyler@tylerbustard.ca</div>
+                              <div className="text-xs text-white/65">tyler.bustard@mail.mcgill.ca</div>
                             </div>
                           </a>
 
