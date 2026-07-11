@@ -107,7 +107,7 @@ export default function EducationSection() {
     "MBA Internship, non-thesis program through McGill Desautels Faculty of Management",
     "Graduate management focus aligned with investment analysis, portfolio operations, capital markets, and technology-enabled reporting",
     "GRE General Test: 328 total score, including 170 Quantitative Reasoning",
-    "Recipient of a $34,000 merit-based Entrance Award from the Desautels Faculty of Management",
+    "Recipient of a $38,000 merit-based Entrance Award from the Desautels Faculty of Management",
   ];
 
   const unbAchievements = [
@@ -568,7 +568,7 @@ export default function EducationSection() {
                 <CounterStat end={6} label="Awards Across McGill & UNB" className="text-primary" delay={0} />
               </div>
               <div className={`scroll-slide-up ${educationItemsAnimation.visibleItems.has(highlightsRevealStartIndex + 1) ? 'visible' : ''}`}>
-                <CounterStat end={81500} prefix="$" label="Combined Scholarships" className="text-primary" delay={200} />
+                <CounterStat end={85500} prefix="$" label="Combined Scholarships" className="text-primary" delay={200} />
               </div>
               <div className={`scroll-slide-up ${educationItemsAnimation.visibleItems.has(highlightsRevealStartIndex + 2) ? 'visible' : ''}`}>
                 <CounterStat end={totalCourses} label="Courses, Workshops & Practicums" className="text-primary" delay={400} />
