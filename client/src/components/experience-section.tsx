@@ -18,6 +18,7 @@ import seventyThreeStringsLogo from "@assets/73-strings-logo.webp";
 interface Experience {
   title: string;
   company: string;
+  websiteUrl: string;
   industry: string;
   location: string;
   period: string;
@@ -62,13 +63,14 @@ export default function ExperienceSection() {
     {
       title: "Equity Analyst",
       company: "ROI",
+      websiteUrl: "https://www.getroi.app",
       industry: "Fintech",
-      location: "Toronto, Ontario",
+      location: "Toronto, ON",
       period: "2023–2025",
       duration: "2+ years",
       achievements: [
-        "Analyzed and compiled public-company financial statements that fed the firm's equity research and client reporting",
-        "Partnered with product and engineering to ship AI-driven data features for client-facing analytics",
+        "Analyzed and compiled public company financial statements, cutting reporting turnaround by 13%",
+        "Collaborated with product and engineering to implement AI-driven data features, boosting adoption by 12%",
       ],
       technologies: ["Financial Analysis", "AI Integration", "Data Analytics", "Python", "SQL"],
       logoSrc: roiLogo,
@@ -77,13 +79,14 @@ export default function ExperienceSection() {
     {
       title: "Portfolio Assistant",
       company: "BMO Private Wealth",
+      websiteUrl: "https://www.bmo.com/en-ca/main/privatewealth/",
       industry: "Financial Services",
-      location: "Toronto, Ontario",
+      location: "Toronto, ON",
       period: "2022–2023",
       duration: "1 year",
       achievements: [
-        "Supported two Investment Counsellors managing over $100M in client portfolios, preparing reviews, trades, and account documentation",
-        "Managed client communications and meeting follow-ups for high-net-worth households, strengthening satisfaction and retention",
+        "Advised two Investment Counsellors managing portfolios over $100M and cut preparation time by 12%",
+        "Strengthened client communication workflows, lifting response rates by 9%",
       ],
       technologies: ["Portfolio Management", "Client Relations", "Financial Analysis", "Excel"],
       logoSrc: bmoLogo,
@@ -92,13 +95,14 @@ export default function ExperienceSection() {
     {
       title: "Financial Advisor",
       company: "TD Canada Trust",
+      websiteUrl: "https://www.td.com/ca/en/personal-banking",
       industry: "Financial Services",
-      location: "Kingston, Ontario",
+      location: "Kingston, ON",
       period: "2021–2022",
       duration: "1 year",
       achievements: [
-        "Advised clients on lending, investment, and everyday banking through needs-based conversations",
-        "Exceeded sales targets, ranking in the top 15% of advisors in the district",
+        "Cultivated strong client relationships by assessing individual financial needs, resulting in an 11% increase in sales",
+        "Exceeded sales targets, achieving a top 15% performance ranking within the district",
       ],
       technologies: ["Financial Planning", "Sales", "Client Advisory", "Product Knowledge"],
       logoSrc: tdLogo,
@@ -107,13 +111,14 @@ export default function ExperienceSection() {
     {
       title: "Banking Advisor",
       company: "Royal Bank of Canada",
+      websiteUrl: "https://www.rbc.com/",
       industry: "Financial Services",
-      location: "Kingston, Ontario",
+      location: "Kingston, ON",
       period: "2020–2021",
       duration: "1 year",
       achievements: [
-        "Advised clients on personalized banking solutions, increasing repeat transactions by 13%",
-        "Delivered needs-based advice across core products including GICs, mutual funds, and TFSAs",
+        "Strengthened client relationships by advising on personalized solutions, increased repeat transactions by 13%",
+        "Excelled in needs-based advising, boosting adoption of core products like GICs, mutual funds, and TFSAs by 8%",
       ],
       technologies: ["Banking Products", "Financial Advisory", "Client Relationship Management", "Digital Banking"],
       logoSrc: rbcLogo,
@@ -122,13 +127,14 @@ export default function ExperienceSection() {
     {
       title: "Client Advisor Intern",
       company: "Royal Bank of Canada",
+      websiteUrl: "https://www.rbc.com/",
       industry: "Financial Services",
-      location: "Fredericton, New Brunswick",
+      location: "Fredericton, NB",
       period: "2019–2020",
       duration: "1 year",
       achievements: [
-        "Resolved escalated client issues at the front line, improving the branch's client-feedback scores",
-        "Championed RBC's online and mobile banking tools, driving branch digital-adoption gains",
+        "Resolved complex client issues, achieving a 15% boost in positive feedback scores for the branch",
+        "Promoted RBC's digital banking tools, leading to a 10% increase in online and mobile banking adoption",
       ],
       technologies: ["Client Service", "Digital Banking", "Problem Resolution", "Customer Support"],
       logoSrc: rbcLogo,
@@ -137,13 +143,14 @@ export default function ExperienceSection() {
     {
       title: "Marketing Intern",
       company: "Irving Oil Limited",
+      websiteUrl: "https://www.irvingoil.com/en-CA",
       industry: "Energy",
-      location: "Saint John, New Brunswick",
+      location: "Saint John, NB",
       period: "2018",
       duration: "4 months",
       achievements: [
-        "Conducted competitor and market analysis that informed regional pricing and promotion decisions",
-        "Built a customer-lifecycle model used to focus targeted promotions and lift engagement",
+        "Conducted competitor analysis driving insights that improved targeted marketing by 11%",
+        "Developed a Customer Lifecycle model that increased targeted promotions, boosting customer engagement by 8%",
       ],
       technologies: ["Market Research", "Customer Analytics", "Competitive Analysis", "Marketing Strategy"],
       logoSrc: irvingLogo,
@@ -152,13 +159,14 @@ export default function ExperienceSection() {
     {
       title: "Tax Return Intern",
       company: "Grant Thornton LLP",
+      websiteUrl: "https://www.doanegrantthornton.ca/",
       industry: "Professional Services",
-      location: "Saint John, New Brunswick",
+      location: "Saint John, NB",
       period: "2018",
       duration: "5 months",
       achievements: [
-        "Prepared and quality-checked client financial data supporting on-time filing of 100+ personal tax returns",
-        "Standardized return-preparation steps, reducing filing errors and rework",
+        "Streamlined client financial data, boosting accuracy by 10%, ensuring timely submission of 100+ tax returns",
+        "Improved tax return preparation processes, cutting filing errors by 15%",
       ],
       technologies: ["Tax Preparation", "Financial Analysis", "Data Management", "Client Service"],
       logoSrc: grantThorntonLogo,
@@ -169,13 +177,14 @@ export default function ExperienceSection() {
   const seventyThreeStringsExperience: Experience = {
     title: "Senior Associate, Portfolio Monitoring",
     company: "73 Strings",
+    websiteUrl: "https://www.73strings.com/",
     industry: "Fintech",
-    location: "Toronto, Ontario",
+    location: "Toronto, ON",
     period: "2025–2026",
     duration: "1 yr 5 mos",
     achievements: [
-      "Monitored daily NAV inputs and validated holdings and cash flows, supporting accurate fund valuations across 15+ portfolios",
-      "Investigated reconciliation exceptions and streamlined follow-up with operations, risk, and portfolio managers, cutting average resolution time by 18%",
+      "Validated daily NAV inputs, holdings, and cash flows supporting accurate fund valuations across 15+ portfolios",
+      "Resolved reconciliation exceptions with operations, risk, and portfolio managers, cutting resolution time by 18%",
     ],
     technologies: ["Portfolio Monitoring", "Reconciliation", "NAV Validation", "SQL", "Excel"],
     logoSrc: seventyThreeStringsLogo,
@@ -272,7 +281,14 @@ export default function ExperienceSection() {
                             className={`experience-card-company text-base font-medium text-primary scroll-slide-up ${revealClass}`}
                             style={getScrollRevealStyle('subheading')}
                           >
-                            {exp.company}
+                            <a
+                              href={exp.websiteUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`Visit ${exp.company} website`}
+                            >
+                              {exp.company}
+                            </a>
                           </p>
                           <p
                             className={`experience-card-location text-sm text-muted-foreground scroll-slide-up ${revealClass}`}
