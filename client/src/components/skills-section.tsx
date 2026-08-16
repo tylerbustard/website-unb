@@ -21,22 +21,8 @@ import trainingTheStreetLogo from "@assets/trainning the street_1755938972014.pn
 import bloombergLogo from "@assets/bloomberg_1755923720190.png";
 import courseraLogo from "@assets/Coursera_1755937682843.png";
 import etsLogo from "@assets/ets_logo.webp";
-import mcgillLogo from "@assets/mcgill_university_logo.png";
 import anthropicLogo from "@assets/anthropic_mark.png";
-import openaiLogo from "@assets/openai_mark.png";
-import microsoftLogo from "@assets/microsoft_logo.svg";
 import googleLogo from "@assets/google_logo.svg";
-import hubspotLogo from "@assets/hubspot_logo.svg";
-import pythonLogo from "@assets/python_logo.svg";
-import pmiLogo from "@assets/pmi_logo.png";
-import acueLogo from "@assets/acue_logo.png";
-import cphrLogo from "@assets/cphr_logo.png";
-import shrmLogo from "@assets/shrm_logo.png";
-import amaLogo from "@assets/ama_logo.png";
-import garpLogo from "@assets/garp_logo.png";
-import hrciLogo from "@assets/hrci_logo.png";
-import scrumAllianceLogo from "@assets/scrum_alliance_logo.png";
-import ibmLogo from "@assets/ibm_logo.svg";
 
 interface Certification {
   name: string;
@@ -79,12 +65,6 @@ function CertificationCounter({ end, suffix = '', prefix = '', label, className 
   );
 }
 
-const parseCertificationYear = (certification: Certification) => {
-  const year = Number.parseInt(certification.year, 10);
-  // Undated credentials sort after dated ones instead of jumping to the top.
-  return Number.isFinite(year) ? year : 0;
-};
-
 export default function CertificationsSection() {
   const sectionAnimation = useScrollAnimation(SCROLL_REVEAL_OBSERVER_OPTIONS);
   const headerAnimation = useScrollAnimation({
@@ -118,14 +98,14 @@ export default function CertificationsSection() {
 
   const coreCredentials: Certification[] = [
     { name: "CFA Level I Candidate", year: "2026", issuer: "CFA Institute", logoSrc: cfaLogo },
-    { name: "Canadian Securities Course", year: "2021", issuer: "Canadian Securities Institute", logoSrc: csiLogo },
-    { name: "Bloomberg Market Concepts Certificate", year: "2020", issuer: "Bloomberg", logoSrc: bloombergLogo },
     { name: "Discounted Cash Flow Analysis and Modeling", year: "2024", issuer: "Training The Street", logoSrc: trainingTheStreetLogo },
-    { name: "Financial Risk and Regulation (FRR)", year: "2025", issuer: "Global Association of Risk Professionals", logoSrc: garpLogo },
-    { name: "GRE General Test", year: "2024", issuer: "ETS", detail: "Score: 328", logoSrc: etsLogo },
+    { name: "Canadian Securities Course", year: "2021", issuer: "Canadian Securities Institute", logoSrc: csiLogo },
+    { name: "Bloomberg Market Concepts", year: "2019", issuer: "Bloomberg", logoSrc: bloombergLogo },
+    { name: "GRE General Test", year: "2024", issuer: "ETS", detail: "328 total; 170 Quantitative", logoSrc: etsLogo },
+    { name: "AI Fluency: Framework and Foundations", year: "2026", issuer: "Anthropic", logoSrc: anthropicLogo },
   ];
 
-  const certificationCategories: CertificationCategory[] = ([
+  const certificationCategories: CertificationCategory[] = [
     {
       title: "Investment & Markets",
       caption: "CFA, valuation, and market fluency",
@@ -133,10 +113,7 @@ export default function CertificationsSection() {
         { name: "CFA Level I Candidate", year: "2026", issuer: "CFA Institute", emphasis: true, logoSrc: cfaLogo },
         { name: "Discounted Cash Flow Analysis and Modeling", year: "2024", issuer: "Training The Street", logoSrc: trainingTheStreetLogo },
         { name: "Financial & Valuation Modeling", year: "2020", issuer: "Wall Street Prep", logoSrc: wallStreetPrepLogo },
-        { name: "Bloomberg Market Concepts Certificate", year: "2020", issuer: "Bloomberg", logoSrc: bloombergLogo },
-        { name: "CFA Institute Investment Foundations", year: "2021", issuer: "CFA Institute", logoSrc: cfaLogo },
-        { name: "Financial Risk and Regulation (FRR)", year: "2025", issuer: "Global Association of Risk Professionals", logoSrc: garpLogo },
-        { name: "Derivatives Fundamentals Course (DFC)", year: "2025", issuer: "Canadian Securities Institute", logoSrc: csiLogo },
+        { name: "Bloomberg Market Concepts", year: "2019", issuer: "Bloomberg", logoSrc: bloombergLogo },
       ],
     },
     {
@@ -148,162 +125,37 @@ export default function CertificationsSection() {
         { name: "Canadian Securities Course", year: "2021", issuer: "Canadian Securities Institute", logoSrc: csiLogo },
         { name: "Personal Financial Service Advice", year: "2021", issuer: "Canadian Securities Institute", logoSrc: csiLogo },
         { name: "Investment Funds in Canada", year: "2020", issuer: "Canadian Securities Institute", logoSrc: csiLogo },
-        { name: "Personal Finance Essentials", year: "2020", issuer: "McGill University", logoSrc: mcgillLogo },
-      ],
-    },
-    {
-      title: "Data & Business Intelligence",
-      caption: "Analytics, visualization, and automation",
-      certifications: [
-        { name: "Google Data Analytics Professional Certificate", year: "2023", issuer: "Google", logoSrc: googleLogo },
-        { name: "Data Visualization with Tableau", year: "2023", issuer: "UC Davis", logoSrc: courseraLogo },
-        { name: "Python for Everybody Specialization", year: "2023", issuer: "University of Michigan", logoSrc: courseraLogo },
-        { name: "SQL for Data Science", year: "2020", issuer: "UC Davis", logoSrc: courseraLogo },
-        { name: "Power BI Data Visualization", year: "2020", issuer: "Microsoft", logoSrc: microsoftLogo },
-        { name: "IBM Data Analyst Professional Certificate", year: "2021", issuer: "IBM", logoSrc: ibmLogo },
-        { name: "Foundations: Data, Data, Everywhere", year: "2022", issuer: "Google", logoSrc: googleLogo },
-        { name: "Ask Questions to Make Data-Driven Decisions", year: "2022", issuer: "Google", logoSrc: googleLogo },
-        { name: "Prepare Data for Exploration", year: "2022", issuer: "Google", logoSrc: googleLogo },
-        { name: "Process Data from Dirty to Clean", year: "2022", issuer: "Google", logoSrc: googleLogo },
-        { name: "Analyze Data to Answer Questions", year: "2022", issuer: "Google", logoSrc: googleLogo },
-        { name: "Google Analytics Certification", year: "2022", issuer: "Google", logoSrc: googleLogo },
-        { name: "Microsoft Certified: Power BI Data Analyst Associate", year: "2021", issuer: "Microsoft", logoSrc: microsoftLogo },
-        { name: "Microsoft Office Specialist: Excel Associate", year: "2024", issuer: "Microsoft", logoSrc: microsoftLogo },
       ],
     },
     {
       title: "Quantitative & Statistical Methods",
       caption: "Modeling, inference, and mathematical foundations",
       certifications: [
-        { name: "Econometrics: Methods & Applications", year: "2024", issuer: "Erasmus University", logoSrc: courseraLogo },
+        { name: "GRE General Test", year: "2024", issuer: "ETS", detail: "328 total; 170 Quantitative", logoSrc: etsLogo },
         { name: "Matrix Algebra for Engineers", year: "2024", issuer: "HKUST", logoSrc: courseraLogo },
         { name: "Introduction to Calculus", year: "2023", issuer: "University of Sydney", logoSrc: courseraLogo },
+        { name: "Inferential Statistics", year: "2023", issuer: "Duke University", logoSrc: courseraLogo },
+        { name: "Econometrics: Methods and Applications", year: "2022", issuer: "Erasmus University Rotterdam", logoSrc: courseraLogo },
         { name: "Machine Learning", year: "2020", issuer: "Stanford University", logoSrc: courseraLogo },
-        { name: "Inferential Statistics", year: "2020", issuer: "Duke University", logoSrc: courseraLogo },
         { name: "Excel Skills for Business", year: "2020", issuer: "Macquarie University", logoSrc: courseraLogo },
       ],
     },
     {
-      title: "Cloud & AI Engineering",
-      caption: "Azure engineering, data, and AI certifications",
+      title: "Data & Business Intelligence",
+      caption: "Analytics, visualization, and automation",
       certifications: [
-        { name: "Microsoft Certified: Azure AI Engineer Associate", year: "2022", issuer: "Microsoft", logoSrc: microsoftLogo, emphasis: true },
-        { name: "Microsoft Certified: Azure Data Scientist Associate", year: "2021", issuer: "Microsoft", logoSrc: microsoftLogo },
-        { name: "Microsoft Certified: Azure Data Engineer Associate", year: "2021", issuer: "Microsoft", logoSrc: microsoftLogo },
-        { name: "Microsoft Certified: Azure Developer Associate", year: "2022", issuer: "Microsoft", logoSrc: microsoftLogo },
-        { name: "Microsoft Certified: Azure AI Fundamentals", year: "2021", issuer: "Microsoft", logoSrc: microsoftLogo },
-        { name: "Microsoft Certified: Azure Data Fundamentals", year: "2021", issuer: "Microsoft", logoSrc: microsoftLogo },
-        { name: "Microsoft Certified: Azure Fundamentals", year: "2021", issuer: "Microsoft", logoSrc: microsoftLogo },
+        { name: "AI Fluency: Framework and Foundations", year: "2026", issuer: "Anthropic", logoSrc: anthropicLogo },
+        { name: "Data Visualization with Tableau", year: "2023", issuer: "UC Davis", logoSrc: courseraLogo },
+        { name: "Learn SQL Basics for Data Science", year: "2023", issuer: "UC Davis", detail: "4-course specialization", logoSrc: courseraLogo },
+        { name: "Python for Everybody Specialization", year: "2022", issuer: "University of Michigan", detail: "5-course specialization", logoSrc: courseraLogo },
+        { name: "Google Data Analytics Professional Certificate", year: "2021", issuer: "Google", detail: "8-course Professional Certificate", logoSrc: googleLogo },
       ],
     },
-    {
-      title: "Software & Programming",
-      caption: "Python programming and software development credentials",
-      certifications: [
-        { name: "PCAP: Certified Associate in Python Programming", year: "2021", issuer: "Python Institute", logoSrc: pythonLogo, emphasis: true },
-        { name: "PCEP: Certified Entry-Level Python Programmer", year: "2023", issuer: "Python Institute", logoSrc: pythonLogo },
-        { name: "Programming for Everybody (Python)", year: "2021", issuer: "University of Michigan", logoSrc: courseraLogo },
-        { name: "Python Data Structures", year: "2021", issuer: "University of Michigan", logoSrc: courseraLogo },
-        { name: "Using Python to Access Web Data", year: "2022", issuer: "University of Michigan", logoSrc: courseraLogo },
-        { name: "Using Databases with Python", year: "2022", issuer: "University of Michigan", logoSrc: courseraLogo },
-        { name: "Capstone: Retrieving, Processing & Visualizing Data with Python", year: "2022", issuer: "University of Michigan", logoSrc: courseraLogo },
-      ],
-    },
-    {
-      title: "Marketing",
-      caption: "Digital marketing, advertising, and inbound",
-      certifications: [
-        { name: "Inbound Marketing Certification", year: "2023", issuer: "HubSpot Academy", logoSrc: hubspotLogo, emphasis: true },
-        { name: "AMA PCM Digital Marketing", year: "2017", issuer: "American Marketing Association", logoSrc: amaLogo },
-        { name: "Google Ads Measurement Certification", year: "2022", issuer: "Google", logoSrc: googleLogo },
-        { name: "Google Ads Search Certification", year: "2022", issuer: "Google", logoSrc: googleLogo },
-      ],
-    },
-    {
-      title: "Human Resources",
-      caption: "People, talent, and HR management credentials",
-      certifications: [
-        { name: "SHRM Certified Professional (SHRM-CP)", year: "2015", issuer: "SHRM", logoSrc: shrmLogo, emphasis: true },
-        { name: "CPHR Canada", year: "2023", issuer: "CPHR Canada", logoSrc: cphrLogo },
-        { name: "HRCI Professional in Human Resources – International (PHRi)", year: "", issuer: "HR Certification Institute", logoSrc: hrciLogo },
-      ],
-    },
-    {
-      title: "Project & Agile Management",
-      caption: "Project management and agile delivery",
-      certifications: [
-        { name: "Certified Associate in Project Management (CAPM)", year: "2024", issuer: "Project Management Institute", logoSrc: pmiLogo, emphasis: true },
-        { name: "Certified ScrumMaster (CSM)", year: "2025", issuer: "Scrum Alliance", logoSrc: scrumAllianceLogo },
-      ],
-    },
-    {
-      title: "Teaching & Learning",
-      caption: "Instructional practice and educator credentials",
-      certifications: [
-        { name: "Certificate in Effective Teaching", year: "2025", issuer: "Association of College and University Educators", logoSrc: acueLogo, emphasis: true },
-        { name: "Microsoft Certified Educator", year: "2016", issuer: "Microsoft", logoSrc: microsoftLogo },
-      ],
-    },
-    {
-      title: "AI & Agentic Development",
-      caption: "Anthropic and OpenAI Academy credentials across Claude, Claude Code, MCP, and Codex",
-      certifications: [
-        { name: "Claude Code 101", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic", emphasis: true },
-        { name: "Claude Code in Action", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic", emphasis: true },
-        { name: "Building with the Claude API", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic", emphasis: true },
-        { name: "Get Started with Codex", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai", emphasis: true },
-        { name: "Claude 101", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic", emphasis: true },
-        { name: "Introduction to Model Context Protocol", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
-        { name: "Model Context Protocol: Advanced Topics", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
-        { name: "Introduction to Subagents", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
-        { name: "Introduction to Agent Skills", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
-        { name: "Claude with Amazon Bedrock", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
-        { name: "Claude with Google Cloud's Vertex AI", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
-        { name: "AI Capabilities and Limitations", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
-        { name: "AI Fluency: Framework & Foundations", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
-        { name: "AI Fluency for Educators", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
-        { name: "AI Fluency for Students", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
-        { name: "Teaching AI Fluency", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
-        { name: "AI Fluency for Nonprofits", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
-        { name: "AI Fluency for Small Businesses", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
-        { name: "Introduction to Claude Cowork", year: "2026", issuer: "Anthropic Academy", logoSrc: anthropicLogo, logoTone: "anthropic" },
-        { name: "Try Real Tasks with Codex", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
-        { name: "Write Better Prompts for Codex", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
-        { name: "Work Faster with the Codex App", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
-        { name: "Codex Fundamentals", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
-        { name: "Hands-On Workshop: Practical Codex Workflows", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
-        { name: "How OpenAI Uses Codex", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
-        { name: "Advanced Workflows and Automations", year: "2026", issuer: "OpenAI Academy", logoSrc: openaiLogo, logoTone: "openai" },
-      ],
-    },
-    {
-      title: "Graduate Admissions",
-      caption: "Standardized assessment",
-      certifications: [
-        { 
-          name: "GRE General Test", 
-          year: "2024", 
-          issuer: "ETS", 
-          detail: "Score: 328",
-          emphasis: true,
-          logoSrc: etsLogo,
-        }
-      ],
-    },
-  ] satisfies CertificationCategory[]).map((category): CertificationCategory => ({
-    ...category,
-    certifications: [...category.certifications].sort(
-      (left, right) => parseCertificationYear(right) - parseCertificationYear(left),
-    ),
-  }));
+  ];
 
   const leftColumnCertificationTitles = new Set([
     "Investment & Markets",
-    "Data & Business Intelligence",
-    "Software & Programming",
-    "Human Resources",
-    "Teaching & Learning",
-    "Graduate Admissions",
+    "Quantitative & Statistical Methods",
   ]);
 
   const certificationColumns = [
@@ -568,6 +420,7 @@ export default function CertificationsSection() {
 interface CommunityActivity {
   title: string;
   organization: string;
+  websiteUrl: string;
   period: string;
   duration: string;
   location: string;
@@ -618,13 +471,14 @@ export function CommunitySection() {
     {
       title: "Next Gen Ambassador",
       organization: "United Way",
+      websiteUrl: "https://www.unitedwaygt.org/",
       period: "2020–Present",
-      duration: "4+ years",
-      location: "Toronto, Ontario",
+      duration: "6+ years",
+      location: "Toronto, ON",
       description: "",
       achievements: [
-        "Led implementation of fundraising strategies achieving 20% increase in funds raised over three years",
-        "Spearheaded engagement initiatives resulting in 15% rise in participation and awareness within workplace community",
+        "Led a fundraising strategy that raised 20% more funds over three years",
+        "Drove engagement initiatives that raised workplace participation and awareness 15%",
       ],
       skills: [
         "Fundraising Strategy",
@@ -639,13 +493,14 @@ export function CommunitySection() {
     {
       title: "Student Ambassador",
       organization: "Royal Bank of Canada",
+      websiteUrl: "https://www.rbc.com/",
       period: "2019–2020",
       duration: "1 year",
-      location: "Fredericton, New Brunswick",
+      location: "Fredericton, NB",
       description: "",
       achievements: [
-        "Organized and executed campus-wide events resulting in 25% increase in student engagement and awareness",
-        "Developed targeted outreach strategy achieving 30% increase in student participation in RBC-sponsored events",
+        "Organized campus-wide events that raised student engagement and awareness 25%",
+        "Built targeted outreach that raised student participation in RBC events 30%",
       ],
       skills: [
         "Event Management",
@@ -660,13 +515,14 @@ export function CommunitySection() {
     {
       title: "Volunteer Staff",
       organization: "Irving Oil Limited",
+      websiteUrl: "https://www.irvingoil.com/en-CA",
       period: "2018",
       duration: "Seasonal",
-      location: "Saint John, New Brunswick",
+      location: "Saint John, NB",
       description: "",
       achievements: [
-        "Successfully organized and executed engaging activities for over 100 children ensuring safe and enjoyable experience",
-        "Demonstrated leadership through collaboration with fellow volunteers for well-coordinated event execution",
+        "Ran activities for over 100 children and kept the event safe and enjoyable",
+        "Coordinated with fellow volunteers to keep the event running smoothly",
       ],
       skills: [
         "Youth Engagement",
@@ -754,7 +610,14 @@ export function CommunitySection() {
                           className={`experience-card-company text-base font-medium text-primary scroll-slide-up ${revealClass}`}
                           style={getScrollRevealStyle('subheading')}
                         >
-                          {activity.organization}
+                          <a
+                            href={activity.websiteUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`Visit ${activity.organization} website`}
+                          >
+                            {activity.organization}
+                          </a>
                         </p>
                         <p
                           className={`experience-card-location text-sm text-muted-foreground scroll-slide-up ${revealClass}`}

@@ -16,7 +16,6 @@ export default function Navigation() {
   const isHomePage = location === '/';
   const isResumePage = location === '/resume';
   const isUploadPage = location === '/upload';
-  const isSignInPage = location === '/sign-in';
   const canonicalResumePdfPath = '/Tyler-Bustard-Resume.pdf';
   const canonicalResumePdfUrl =
     typeof window !== 'undefined'
@@ -35,22 +34,16 @@ ${canonicalResumePdfUrl}`,
   const getCommunityId = (organization: string) => `#community-${slugify(organization)}`;
   const educationDropdownItems = [
     {
-      title: "McGill University - Desautels Faculty of Management",
+      title: "McGill University | Desautels Faculty of Management",
       subtitle: "Master of Business Administration Candidate",
-      detail: "MBA Internship, non-thesis program · 2026–2028",
+      detail: "MBA Internship stream · 2026–2028",
       target: isResumePage ? '#education' : '#mcgill-education',
     },
     {
       title: 'University of New Brunswick',
-      subtitle: 'Bachelor of Business Administration',
-      detail: 'Major in Finance · 2016–2020',
+      subtitle: 'Bachelor of Business Administration, Finance',
+      detail: 'Cooperative Education Program · 2016–2020',
       target: isResumePage ? '#education' : '#unb-education',
-    },
-    {
-      title: 'Northeast Christian College',
-      subtitle: 'Theology Program',
-      detail: 'Major in Theology · 2014–2015',
-      target: isResumePage ? '#education' : '#ncc-education',
     },
   ];
   const navSectionButtonClasses = (isActive: boolean) =>
@@ -310,7 +303,7 @@ ${canonicalResumePdfUrl}`,
 
 
   useEffect(() => {
-    if (!isHomePage && !isResumePage && !isUploadPage && !isSignInPage) {
+    if (!isHomePage && !isResumePage && !isUploadPage) {
       setCurrentSection('');
       return;
     }
@@ -367,28 +360,51 @@ ${canonicalResumePdfUrl}`,
       sections.forEach((section) => observer.unobserve(section));
       visibleSections.clear();
     };
-  }, [isHomePage, isResumePage, isUploadPage, isSignInPage]);
+  }, [isHomePage, isResumePage, isUploadPage]);
 
   const scrollToSection = (href: string) => {
     // Close dropdown immediately for better UX
     setOpenDropdown(null);
 
-    // If on resume page, scroll to resume sections
+    // The resume pages are rendered in the document flow so navigation and
+    // resume content share the browser's single scrollbar.
     if (isResumePage) {
-      const element = document.querySelector(href);
-      if (element) {
-        const navHeight = 80;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+      const section = href.includes('education')
+        ? 'education'
+        : href.includes('experience')
+          ? 'experience'
+          : href.includes('cert')
+            ? 'certifications'
+            : href.includes('community')
+              ? 'community'
+              : 'contact';
+      const page = section === 'certifications'
+        || section === 'community'
+        || href.includes('marketing-intern')
+        || href.includes('tax-return-intern')
+        ? 2
+        : 1;
+      const resumePage = document.querySelector<HTMLElement>(`[data-resume-page="${page}"]`);
 
-        // Use requestAnimationFrame for smoother scrolling
+      if (resumePage) {
+        const navHeight = 96;
+        const offsetPosition = resumePage.getBoundingClientRect().top
+          + window.pageYOffset
+          - navHeight;
+        const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          ? 'auto'
+          : 'smooth';
+
+        resumePage.focus({ preventScroll: true });
         requestAnimationFrame(() => {
           window.scrollTo({
             top: offsetPosition,
-            behavior: 'smooth'
+            behavior,
           });
         });
       }
+
+      setCurrentSection(section);
       setIsMobileMenuOpen(false);
       return;
     }
@@ -531,6 +547,52 @@ ${canonicalResumePdfUrl}`,
               {/* Resume Page Navigation - With Dropdowns */}
               {isResumePage && (
                 <>
+                  {/* Education */}
+                  <div
+                    className="relative dropdown-container"
+                    onMouseEnter={() => handleDropdownEnter('education')}
+                    onMouseLeave={handleDropdownLeave}
+                  >
+                    <button
+                      onClick={(e) => { if (window.matchMedia('(pointer: coarse)').matches || e.detail === 0) { e.preventDefault(); setOpenDropdown(openDropdown === 'education' ? null : 'education'); } else { scrollToSection('#education'); } }}
+                      aria-expanded={openDropdown === 'education'}
+                      aria-controls="resume-education-dropdown"
+                      className={navSectionButtonClasses(currentSection === 'education')}
+                    >
+                      Education
+                      <ChevronDown size={14} className={`transition-transform duration-200 ${openDropdown === 'education' ? 'rotate-180' : ''}`} />
+                    </button>
+
+                    {openDropdown === 'education' && (
+                      <div id="resume-education-dropdown" className="absolute top-full left-0 -mt-1 w-80 z-[55] pt-1">
+                        <div
+                          className="liquid-glass-panel rounded-xl p-4 transition-all duration-200 mt-1"
+                          onMouseEnter={() => handleDropdownContentEnter('education')}
+                          onMouseLeave={handleDropdownContentLeave}
+                        >
+                          <div className="space-y-3">
+                            {educationDropdownItems.map((item) => (
+                              <button
+                                key={item.title}
+                                onClick={() => {
+                                  scrollToSection(item.target);
+                                  setOpenDropdown(null);
+                                }}
+                                className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              >
+                                <div className="space-y-1">
+                                  <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">{item.title}</div>
+                                  <div className="text-xs text-white/65">{item.subtitle}</div>
+                                  <div className="text-xs text-white/70">{item.detail}</div>
+                                </div>
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
                   {/* Experience */}
                   <div
                     className="relative dropdown-container"
@@ -673,52 +735,6 @@ ${canonicalResumePdfUrl}`,
                     )}
                   </div>
 
-                  {/* Education */}
-                  <div
-                    className="relative dropdown-container"
-                    onMouseEnter={() => handleDropdownEnter('education')}
-                    onMouseLeave={handleDropdownLeave}
-                  >
-                    <button
-                      onClick={(e) => { if (window.matchMedia('(pointer: coarse)').matches || e.detail === 0) { e.preventDefault(); setOpenDropdown(openDropdown === 'education' ? null : 'education'); } else { scrollToSection('#education'); } }}
-                      aria-expanded={openDropdown === 'education'}
-                      aria-controls="resume-education-dropdown"
-                      className={navSectionButtonClasses(currentSection === 'education')}
-                    >
-                      Education
-                      <ChevronDown size={14} className={`transition-transform duration-200 ${openDropdown === 'education' ? 'rotate-180' : ''}`} />
-                    </button>
-
-                    {openDropdown === 'education' && (
-                      <div id="resume-education-dropdown" className="absolute top-full left-0 -mt-1 w-80 z-[55] pt-1">
-                        <div
-                          className="liquid-glass-panel rounded-xl p-4 transition-all duration-200 mt-1"
-                          onMouseEnter={() => handleDropdownContentEnter('education')}
-                          onMouseLeave={handleDropdownContentLeave}
-                        >
-                          <div className="space-y-3">
-                            {educationDropdownItems.map((item) => (
-                              <button
-                                key={item.title}
-                                onClick={() => {
-                                  scrollToSection(item.target);
-                                  setOpenDropdown(null);
-                                }}
-                                className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                              >
-                                <div className="space-y-1">
-                                  <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">{item.title}</div>
-                                  <div className="text-xs text-white/65">{item.subtitle}</div>
-                                  <div className="text-xs text-white/70">{item.detail}</div>
-                                </div>
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
                   {/* Certifications */}
                   <div
                     className="relative dropdown-container"
@@ -800,31 +816,31 @@ ${canonicalResumePdfUrl}`,
                               </div>
                             </button>
 
-                            {/* Analytics & Quantitative Methods */}
+                            {/* Quantitative & Statistical Methods */}
                             <button
                               onClick={() => {
-                                scrollToSection(getCertificationCategoryId('Analytics & Quantitative Methods'));
+                                scrollToSection(getCertificationCategoryId('Quantitative & Statistical Methods'));
                                 setOpenDropdown(null);
                               }}
                               className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Analytics & Quantitative Methods</div>
-                                <div className="text-xs text-white/65">Google, Python, GRE</div>
+                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Quantitative &amp; Statistical Methods</div>
+                                <div className="text-xs text-white/65">Modeling, inference, and mathematical foundations</div>
                               </div>
                             </button>
 
-                            {/* AI Engineering & Agentic Workflows */}
+                            {/* Data & Business Intelligence */}
                             <button
                               onClick={() => {
-                                scrollToSection(getCertificationCategoryId('AI Engineering & Agentic Workflows'));
+                                scrollToSection(getCertificationCategoryId('Data & Business Intelligence'));
                                 setOpenDropdown(null);
                               }}
                               className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">AI Engineering & Agentic Workflows</div>
-                                <div className="text-xs text-white/65">Anthropic, OpenAI</div>
+                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Data &amp; Business Intelligence</div>
+                                <div className="text-xs text-white/65">Analytics, visualization, and automation</div>
                               </div>
                             </button>
                           </div>
@@ -965,7 +981,7 @@ ${canonicalResumePdfUrl}`,
                             >
                               <div className="space-y-1">
                                 <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Location</div>
-                                <div className="text-xs text-white/65">Toronto, Ontario</div>
+                                <div className="text-xs text-white/65">Montreal, Canada</div>
                               </div>
                             </button>
                           </div>
@@ -978,7 +994,49 @@ ${canonicalResumePdfUrl}`,
 
               {/* Home Page Navigation - With Dropdowns */}
 
-              {/* Experience appears first (chronological - most recent) */}
+              {/* Education */}
+              {isHomePage && (
+                <div
+                  className="relative dropdown-container"
+                  onMouseEnter={() => handleDropdownEnter('education')}
+                  onMouseLeave={handleDropdownLeave}
+                >
+                  <button
+                    onClick={(e) => { if (window.matchMedia('(pointer: coarse)').matches || e.detail === 0) { e.preventDefault(); setOpenDropdown(openDropdown === 'education' ? null : 'education'); } else { scrollToSection('#education'); } }}
+                    aria-expanded={openDropdown === 'education'}
+                    aria-controls="home-education-dropdown"
+                    className={navSectionButtonClasses(currentSection === 'education')}
+                  >
+                    Education
+                    <ChevronDown size={14} className={`transition-transform duration-200 ${openDropdown === 'education' ? 'rotate-180' : ''}`} />
+                  </button>
+                  {openDropdown === 'education' && (
+                    <div id="home-education-dropdown" className="absolute top-full left-0 -mt-1 w-80 z-[55] pt-1">
+                      <div
+                        className="liquid-glass-panel rounded-xl p-4 transition-all duration-200 mt-1"
+                        onMouseEnter={() => handleDropdownContentEnter('education')}
+                        onMouseLeave={handleDropdownContentLeave}
+                      >
+                        <div className="space-y-3">
+                          {educationDropdownItems.map((item) => (
+                            <button
+                              key={item.title}
+                              onClick={() => { scrollToSection(item.target); setOpenDropdown(null); }}
+                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            >
+                              <div className="space-y-1">
+                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">{item.title}</div>
+                                <div className="text-xs text-white/65">{item.subtitle}</div>
+                                <div className="text-xs text-white/70">{item.detail}</div>
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
 
               {/* Experience */}
               {isHomePage && (
@@ -1125,50 +1183,6 @@ ${canonicalResumePdfUrl}`,
                 </div>
               )}
 
-              {/* Education */}
-              {isHomePage && (
-                <div
-                  className="relative dropdown-container"
-                  onMouseEnter={() => handleDropdownEnter('education')}
-                  onMouseLeave={handleDropdownLeave}
-                >
-                  <button
-                    onClick={(e) => { if (window.matchMedia('(pointer: coarse)').matches || e.detail === 0) { e.preventDefault(); setOpenDropdown(openDropdown === 'education' ? null : 'education'); } else { scrollToSection('#education'); } }}
-                    aria-expanded={openDropdown === 'education'}
-                    aria-controls="home-education-dropdown"
-                    className={navSectionButtonClasses(currentSection === 'education')}
-                  >
-                    Education
-                    <ChevronDown size={14} className={`transition-transform duration-200 ${openDropdown === 'education' ? 'rotate-180' : ''}`} />
-                  </button>
-                  {openDropdown === 'education' && (
-                    <div id="home-education-dropdown" className="absolute top-full left-0 -mt-1 w-80 z-[55] pt-1">
-                      <div
-                        className="liquid-glass-panel rounded-xl p-4 transition-all duration-200 mt-1"
-                        onMouseEnter={() => handleDropdownContentEnter('education')}
-                        onMouseLeave={handleDropdownContentLeave}
-                      >
-                        <div className="space-y-3">
-                          {educationDropdownItems.map((item) => (
-                            <button
-                              key={item.title}
-                              onClick={() => { scrollToSection(item.target); setOpenDropdown(null); }}
-                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
-                            >
-                              <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">{item.title}</div>
-                                <div className="text-xs text-white/65">{item.subtitle}</div>
-                                <div className="text-xs text-white/70">{item.detail}</div>
-                              </div>
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
-
               {/* Certifications */}
               {isHomePage && (
                 <div
@@ -1224,14 +1238,14 @@ ${canonicalResumePdfUrl}`,
 
                           <button
                             onClick={() => {
-                              scrollToSection('#core-cert-bloomberg-market-concepts-certificate');
+                              scrollToSection('#core-cert-bloomberg-market-concepts');
                               setOpenDropdown(null);
                             }}
                             className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
                               <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Bloomberg Market Concepts</div>
-                              <div className="text-xs text-white/65">Bloomberg · 2020</div>
+                              <div className="text-xs text-white/65">Bloomberg · 2019</div>
                             </div>
                           </button>
 
@@ -1250,14 +1264,14 @@ ${canonicalResumePdfUrl}`,
 
                           <button
                             onClick={() => {
-                              scrollToSection('#core-cert-financial-risk-and-regulation--frr');
+                              scrollToSection('#core-cert-ai-fluency--framework-and-foundations');
                               setOpenDropdown(null);
                             }}
                             className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Financial Risk and Regulation (FRR)</div>
-                              <div className="text-xs text-white/65">GARP · 2025</div>
+                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">AI Fluency: Framework and Foundations</div>
+                              <div className="text-xs text-white/65">Anthropic · 2026</div>
                             </div>
                           </button>
 
@@ -1270,7 +1284,7 @@ ${canonicalResumePdfUrl}`,
                           >
                             <div className="space-y-1">
                               <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">GRE General Test</div>
-                              <div className="text-xs text-white/65">ETS · 2024 · Score: 328</div>
+                              <div className="text-xs text-white/65">ETS · 2024 · 328 total; 170 Quantitative</div>
                             </div>
                           </button>
 
@@ -1427,7 +1441,7 @@ ${canonicalResumePdfUrl}`,
                           >
                             <div className="space-y-1">
                               <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Location</div>
-                              <div className="text-xs text-white/65">Toronto, Ontario</div>
+                              <div className="text-xs text-white/65">Montreal, Canada</div>
                             </div>
                           </button>
                         </div>
@@ -1439,7 +1453,6 @@ ${canonicalResumePdfUrl}`,
             </div>
 
             {/* Right side */}
-            {!isSignInPage && (
             <div className={`flex items-center justify-self-end space-x-3 transition-opacity duration-300 ${showNavContent ? 'opacity-100' : 'opacity-0'}`}>
 
               {/* Desktop Resume Actions - Only on Resume Page */}
@@ -1481,8 +1494,8 @@ ${canonicalResumePdfUrl}`,
                     if (isResumePage) {
                       // Always go to home page, not back in history
                       window.location.href = '/';
-                    } else if (isUploadPage || isSignInPage) {
-                      // Go to home page for upload-resume and sign-in pages
+                    } else if (isUploadPage) {
+                      // Go to home page for the upload-resume page
                       window.location.href = '/';
                       } else {
                       window.location.href = '/resume';
@@ -1524,7 +1537,7 @@ ${canonicalResumePdfUrl}`,
               )}
 
               {/* Mobile Menu Button */}
-              {(isResumePage || isUploadPage || isSignInPage) ? (
+              {(isResumePage || isUploadPage) ? (
                 <button
                   onClick={() => {
                     // Always go to home page, not back in history
@@ -1548,14 +1561,13 @@ ${canonicalResumePdfUrl}`,
                 </button>
               )}
             </div>
-            )}
           </div>
         </div>
         )}
       </nav>
 
       {/* Mobile Menu - Clean Glass Effect */}
-      {isMobileMenuOpen && !isResumePage && !isUploadPage && !isSignInPage && (
+      {isMobileMenuOpen && !isResumePage && !isUploadPage && (
         <div className="fixed inset-0 z-[60] lg:hidden animate-in fade-in duration-200">
           <div
             className="absolute inset-0 bg-black/30 backdrop-blur-sm"
@@ -1595,21 +1607,21 @@ ${canonicalResumePdfUrl}`,
                   <>
                     <button
                       onClick={() => {
-                        scrollToSection('#experience');
-                        setIsMobileMenuOpen(false);
-                      }}
-                      className="block w-full text-left px-4 py-3 text-lg font-medium text-white hover:bg-white/10 rounded-lg transition-all duration-200 active:scale-98"
-                    >
-                      Experience
-                    </button>
-                    <button
-                      onClick={() => {
                         scrollToSection('#education');
                         setIsMobileMenuOpen(false);
                       }}
                       className="block w-full text-left px-4 py-3 text-lg font-medium text-white hover:bg-white/10 rounded-lg transition-all duration-200 active:scale-98"
                     >
                       Education
+                    </button>
+                    <button
+                      onClick={() => {
+                        scrollToSection('#experience');
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="block w-full text-left px-4 py-3 text-lg font-medium text-white hover:bg-white/10 rounded-lg transition-all duration-200 active:scale-98"
+                    >
+                      Experience
                     </button>
                     <button
                       onClick={() => {
@@ -1647,8 +1659,8 @@ ${canonicalResumePdfUrl}`,
                     if (isResumePage) {
                       // Always go to home page, not back in history
                       window.location.href = '/';
-                    } else if (isUploadPage || isSignInPage) {
-                      // Go to home page for upload-resume and sign-in pages
+                    } else if (isUploadPage) {
+                      // Go to home page for the upload-resume page
                       window.location.href = '/';
                       } else {
                       window.location.href = '/resume';

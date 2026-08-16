@@ -25,7 +25,6 @@ import {
 } from "lucide-react";
 import mcgillLogo from "@assets/mcgill_university_logo.png";
 import universityLogo from "@assets/University_of_New_Brunswick_Logo.svg_1755912478863.png";
-import nccLogo from "@assets/ncc_logo.webp";
 import { getCertificateAsset } from "@/lib/certificates";
 import { CertificateModal, preloadCertificateImage, type CertificateModalCert } from "@/components/certificate-modal";
 
@@ -53,6 +52,7 @@ function CounterStat({ end, suffix = '', prefix = '', label, className = '', del
 
 type EducationEntry = {
   institution: string;
+  websiteUrl: string;
   location: string;
   degree: string;
   major: string;
@@ -80,45 +80,31 @@ export default function EducationSection() {
     });
 
   const mcgillEducation: EducationEntry = {
-    institution: "McGill University - Desautels Faculty of Management",
-    location: "Montreal, Quebec",
+    institution: "McGill University | Desautels Faculty of Management",
+    websiteUrl: "https://www.mcgill.ca/desautels/",
+    location: "Montreal, QC",
     degree: "Master of Business Administration Candidate",
-    major: "MBA Internship, non-thesis program",
+    major: "MBA Internship stream",
     year: "2026–2028",
   };
 
   const unbEducation: EducationEntry = {
     institution: "University of New Brunswick",
-    location: "Saint John, New Brunswick",
+    websiteUrl: "https://www.unb.ca/",
+    location: "Saint John, NB",
     degree: "Bachelor of Business Administration",
-    major: "Major in Finance",
+    major: "Finance",
     year: "2016–2020",
   };
 
-  const nccEducation: EducationEntry = {
-    institution: "Northeast Christian College",
-    location: "Fredericton, New Brunswick",
-    degree: "Theology Program",
-    major: "Major in Theology",
-    year: "2014–2015",
-  };
-
   const mcgillAchievements = [
-    "MBA Internship, non-thesis program through McGill Desautels Faculty of Management",
-    "Graduate management focus aligned with investment analysis, portfolio operations, capital markets, and technology-enabled reporting",
-    "GRE General Test: 328 total score, including 170 Quantitative Reasoning",
-    "Recipient of a $38,000 merit-based Entrance Award from the Desautels Faculty of Management",
+    "$38,000 merit-based Entrance Award from the Desautels Faculty of Management",
+    "Enrolled in the MBA Internship stream, pairing graduate coursework with a management internship",
   ];
 
   const unbAchievements = [
-    "Student Investment Fund Analyst and Portfolio Manager, 5 Academic Awards ($47,500 in scholarships)",
-    "UNB Finance Club, RBC Student Ambassador, Accredited Co-op Program",
-    "RBC Student Ambassador of the Month, February 2020",
-  ];
-
-  const nccAchievements = [
-    "Major in Theology with coursework across Bible, ministry, leadership, communication, ethics, and practical skills",
-    "Campus and ministry exposure included weekend ministry, chapel service, student council, social committees, and annual benefit concert pathways",
+    "5 Academic Awards totalling $47,500 in scholarships",
+    "Cooperative Education Program, UNB Finance Club, and Student Investment Fund Portfolio Manager",
   ];
 
   const mcgillCourseCategories: CourseCategory[] = [
@@ -217,39 +203,6 @@ export default function EducationSection() {
     },
   ];
 
-  const nccCourseCategories: CourseCategory[] = [
-    {
-      title: "Biblical Studies",
-      icon: BookOpen,
-      courses: ["Old Testament Survey", "New Testament Survey", "Bible Doctrine", "Bible Study Methods", "Bible Geography", "Hermeneutics"],
-    },
-    {
-      title: "Ministry & Evangelism",
-      icon: Landmark,
-      courses: ["Missiology", "Personal Evangelism", "Personal Ministry", "Preaching", "Prayer", "Evangelism", "Teacher Training", "Youth Worker Seminar"],
-    },
-    {
-      title: "Leadership & Community",
-      icon: Globe2,
-      courses: ["Leadership", "Social Science", "Men's Ministry", "Women's Ministry"],
-    },
-    {
-      title: "Communication & Music",
-      icon: MessagesSquare,
-      courses: ["English", "Chorale", "Playing By Ear I", "Year Book"],
-    },
-    {
-      title: "Practical Skills",
-      icon: MonitorCog,
-      courses: ["Personal Finance", "Microsoft Excel", "Time Management", "Marketing & Promotion"],
-    },
-    {
-      title: "Language & Ethics",
-      icon: Scale,
-      courses: ["Elementary Greek", "Christian Ethics"],
-    },
-  ];
-
   const buildCourseColumns = (categories: CourseCategory[], leftColumnTitles: Set<string>) => [
     categories.filter((category) => leftColumnTitles.has(category.title)),
     categories.filter((category) => !leftColumnTitles.has(category.title)),
@@ -277,38 +230,25 @@ export default function EducationSection() {
     "Liberal Arts",
   ]);
 
-  const nccLeftColumnCourseTitles = new Set([
-    "Biblical Studies",
-    "Leadership & Community",
-    "Practical Skills",
-  ]);
-
   const mcgillCourseColumns = buildCourseColumns(mcgillCourseCategories, mcgillLeftColumnCourseTitles);
   const unbCourseColumns = buildCourseColumns(unbCourseCategories, unbLeftColumnCourseTitles);
-  const nccCourseColumns = buildCourseColumns(nccCourseCategories, nccLeftColumnCourseTitles);
-  const totalCourses = [...mcgillCourseCategories, ...unbCourseCategories, ...nccCourseCategories].reduce(
+  const totalCourses = [...mcgillCourseCategories, ...unbCourseCategories].reduce(
     (sum, category) => sum + category.courses.length,
     0,
   );
 
   const mcgillEducationRevealSequence = buildRevealSequence(mcgillCourseColumns);
   const unbEducationRevealSequence = buildRevealSequence(unbCourseColumns);
-  const nccEducationRevealSequence = buildRevealSequence(nccCourseColumns);
   const mcgillCardRevealIndex = 0;
   const mcgillCourseRevealStartIndex = 1;
   const unbCardRevealIndex = mcgillCourseRevealStartIndex + mcgillEducationRevealSequence.length;
   const unbCourseRevealStartIndex = unbCardRevealIndex + 1;
-  const nccCardRevealIndex = unbCourseRevealStartIndex + unbEducationRevealSequence.length;
-  const nccCourseRevealStartIndex = nccCardRevealIndex + 1;
-  const highlightsRevealStartIndex = nccCourseRevealStartIndex + nccEducationRevealSequence.length;
+  const highlightsRevealStartIndex = unbCourseRevealStartIndex + unbEducationRevealSequence.length;
   const mcgillEducationRevealOrder = new Map(
     mcgillEducationRevealSequence.map((title, index) => [title, mcgillCourseRevealStartIndex + index]),
   );
   const unbEducationRevealOrder = new Map(
     unbEducationRevealSequence.map((title, index) => [title, unbCourseRevealStartIndex + index]),
-  );
-  const nccEducationRevealOrder = new Map(
-    nccEducationRevealSequence.map((title, index) => [title, nccCourseRevealStartIndex + index]),
   );
   const educationItemsAnimation = useStaggeredScrollAnimation(highlightsRevealStartIndex + 3, {
     ...SCROLL_REVEAL_OBSERVER_OPTIONS,
@@ -365,7 +305,16 @@ export default function EducationSection() {
 
             <div className="experience-card-copy min-w-0">
               <div className="experience-card-title-row">
-                <h3 className="text-lg font-semibold text-foreground">{education.institution}</h3>
+                <h3 className="text-lg font-semibold text-foreground">
+                  <a
+                    href={education.websiteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Visit ${education.institution} website`}
+                  >
+                    {education.institution}
+                  </a>
+                </h3>
                 <span className="experience-card-period text-sm font-medium text-muted-foreground">
                   {education.year}
                 </span>
@@ -521,7 +470,7 @@ export default function EducationSection() {
             Education
           </h2>
           <p className="mx-auto max-w-3xl text-lg leading-relaxed text-muted-foreground sm:text-xl lg:text-2xl">
-            Strategic business foundation with finance, marketing, and practical leadership coursework
+            MBA Internship stream and a finance-focused business foundation
           </p>
         </div>
 
@@ -545,19 +494,9 @@ export default function EducationSection() {
             revealIndex: unbCardRevealIndex,
             revealOrder: unbEducationRevealOrder,
           })}
-          {renderEducationCard({
-            education: nccEducation,
-            cardId: "ncc-education",
-            logo: nccLogo,
-            logoClassName: "experience-card-logo--ncc",
-            achievements: nccAchievements,
-            courseColumns: nccCourseColumns,
-            revealIndex: nccCardRevealIndex,
-            revealOrder: nccEducationRevealOrder,
-          })}
         </div>
 
-        {/* Education Highlights - combined McGill, UNB and NCC summary */}
+        {/* Education Highlights - combined McGill and UNB summary */}
         <div className="mt-12">
           <div className="bg-white border border-border rounded-lg p-8 lg:p-10">
             <h3 className="text-xl font-bold text-foreground mb-8 text-center">

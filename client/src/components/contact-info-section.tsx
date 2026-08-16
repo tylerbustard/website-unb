@@ -177,7 +177,7 @@ export default function ContactInfoSection() {
                         className={`contact-feature-body scroll-slide-up ${revealClass}`}
                         style={getScrollRevealStyle("body", 0)}
                       >
-                        McGill MBA candidate with finance, portfolio operations, banking, advisory, and analytics experience.
+                        Finance and data-focused candidate targeting financial intelligence roles across investment research, portfolio monitoring, and AI-enabled analysis.
                       </p>
                     </div>
                   </div>
@@ -238,7 +238,7 @@ export default function ContactInfoSection() {
                       </span>
                       <span className="contact-detail-copy">
                         <span className="contact-detail-label">Location</span>
-                        <span className="contact-detail-value">Toronto, Ontario</span>
+                        <span className="contact-detail-value">Montreal, Canada</span>
                       </span>
                     </div>
                   </div>

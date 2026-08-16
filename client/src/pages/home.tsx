@@ -16,8 +16,8 @@ export default function Home() {
       <Navigation />
       <main id="main-content">
         <HeroSection />
-        <ExperienceSection />
         <EducationSection />
+        <ExperienceSection />
         <CertificationsSection />
         <CommunitySection />
         <ContactInfoSection />

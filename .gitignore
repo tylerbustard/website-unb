@@ -2,7 +2,15 @@ node_modules
 dist
 .netlify
 tmp
-uploads
 *.log
 *.pid
 .DS_Store
+netlify/functions/_data/
+playwright-report/
+test-results/
+*.har
+*.jsonl
+*.ndjson
+*.sqlite*
+*.db
+deno.lock
