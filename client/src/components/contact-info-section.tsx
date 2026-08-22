@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin, Globe, Download, CalendarDays, ExternalLink, LoaderCircle, Send, CheckCircle2 } from "lucide-react";
+import { Mail, Phone, MapPin, Globe, Linkedin, Download, CalendarDays, ExternalLink, LoaderCircle, Send, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import {
   SCROLL_REVEAL_OBSERVER_OPTIONS,
@@ -229,9 +229,25 @@ export default function ContactInfoSection() {
                       </span>
                     </a>
 
+                    <a
+                      href="https://www.linkedin.com/in/tylerbustard/"
+                      className={`contact-detail-item scroll-slide-up ${revealClass}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={getScrollRevealStyle("body", 4)}
+                    >
+                      <span className="contact-detail-icon" aria-hidden="true">
+                        <Linkedin size={16} />
+                      </span>
+                      <span className="contact-detail-copy">
+                        <span className="contact-detail-label">LinkedIn</span>
+                        <span className="contact-detail-value">/in/tylerbustard</span>
+                      </span>
+                    </a>
+
                     <div
                       className={`contact-detail-item scroll-slide-up ${revealClass}`}
-                      style={getScrollRevealStyle("body", 4)}
+                      style={getScrollRevealStyle("body", 5)}
                     >
                       <span className="contact-detail-icon" aria-hidden="true">
                         <MapPin size={16} />
@@ -245,7 +261,7 @@ export default function ContactInfoSection() {
 
                   <div
                     className={`contact-card-footer scroll-slide-up ${revealClass}`}
-                    style={getScrollRevealStyle("dense", 4)}
+                    style={getScrollRevealStyle("dense", 5)}
                   >
                     <a
                       href={contactCardHref}

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ChevronDown, Download, Mail, Menu, Printer, X } from "lucide-react";
+import { ChevronDown, Download, ExternalLink, Mail, Menu, Printer, X } from "lucide-react";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import profileImage from "@assets/nav_avatar.webp";
@@ -970,6 +970,20 @@ ${canonicalResumePdfUrl}`,
                               </div>
                             </a>
 
+                            {/* LinkedIn */}
+                            <a
+                              href="https://www.linkedin.com/in/tylerbustard/"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={() => setOpenDropdown(null)}
+                              className="block w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            >
+                              <div className="space-y-1">
+                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">LinkedIn</div>
+                                <div className="text-xs text-white/65">linkedin.com/in/tylerbustard</div>
+                              </div>
+                            </a>
+
 
                             {/* Location */}
                             <button
@@ -1430,6 +1444,20 @@ ${canonicalResumePdfUrl}`,
                             </div>
                           </a>
 
+                          {/* LinkedIn */}
+                          <a
+                            href="https://www.linkedin.com/in/tylerbustard/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => setOpenDropdown(null)}
+                            className="block w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                          >
+                            <div className="space-y-1">
+                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">LinkedIn</div>
+                              <div className="text-xs text-white/65">linkedin.com/in/tylerbustard</div>
+                            </div>
+                          </a>
+
 
                           {/* Location */}
                           <button
@@ -1650,6 +1678,18 @@ ${canonicalResumePdfUrl}`,
                     >
                       Contact
                     </button>
+                    <a
+                      href="https://www.linkedin.com/in/tylerbustard/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block w-full text-left px-4 py-3 text-lg font-medium text-white hover:bg-white/10 rounded-lg transition-colors"
+                    >
+                      <span className="inline-flex items-center gap-2">
+                        LinkedIn
+                        <ExternalLink size={16} aria-hidden="true" />
+                      </span>
+                    </a>
                   </>
                 )}
 
