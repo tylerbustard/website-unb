@@ -23,7 +23,6 @@ import {
   Workflow,
   type LucideIcon,
 } from "lucide-react";
-import mcgillLogo from "@assets/mcgill_university_logo.png";
 import universityLogo from "@assets/University_of_New_Brunswick_Logo.svg_1755912478863.png";
 import { getCertificateAsset } from "@/lib/certificates";
 import { CertificateModal, preloadCertificateImage, type CertificateModalCert } from "@/components/certificate-modal";
@@ -79,15 +78,6 @@ export default function EducationSection() {
       return next;
     });
 
-  const mcgillEducation: EducationEntry = {
-    institution: "McGill University | Desautels Faculty of Management",
-    websiteUrl: "https://www.mcgill.ca/desautels/",
-    location: "Montreal, QC",
-    degree: "Master of Business Administration Candidate",
-    major: "MBA Internship stream",
-    year: "2026–2028",
-  };
-
   const unbEducation: EducationEntry = {
     institution: "University of New Brunswick",
     websiteUrl: "https://www.unb.ca/",
@@ -97,47 +87,9 @@ export default function EducationSection() {
     year: "2016–2020",
   };
 
-  const mcgillAchievements = [
-    "$38,000 merit-based Entrance Award from the Desautels Faculty of Management",
-    "Enrolled in the MBA Internship stream, pairing graduate coursework with a management internship",
-  ];
-
   const unbAchievements = [
     "5 Academic Awards totalling $47,500 in scholarships",
     "Cooperative Education Program, UNB Finance Club, and Student Investment Fund Portfolio Manager",
-  ];
-
-  const mcgillCourseCategories: CourseCategory[] = [
-    {
-      title: "Management Core",
-      icon: BookOpen,
-      courses: ["Leadership", "Organizational Behaviour", "Strategy"],
-    },
-    {
-      title: "Finance & Accounting",
-      icon: Sigma,
-      courses: ["Financial Accounting", "Managerial Finance", "Corporate Finance"],
-    },
-    {
-      title: "Analytics & Economics",
-      icon: BriefcaseBusiness,
-      courses: ["Managerial Economics", "Statistics", "Business Analytics"],
-    },
-    {
-      title: "Markets & Commercial Strategy",
-      icon: Landmark,
-      courses: ["Marketing", "Operations Management", "Competitive Strategy"],
-    },
-    {
-      title: "Technology & Innovation",
-      icon: MonitorCog,
-      courses: ["Digital Transformation", "Data-Driven Decision Making"],
-    },
-    {
-      title: "Internship & Applied Learning",
-      icon: Workflow,
-      courses: ["MBA Internship", "Applied Consulting", "Career Development"],
-    },
   ];
 
   const unbCourseCategories: CourseCategory[] = [
@@ -215,12 +167,6 @@ export default function EducationSection() {
     ]).flat().filter(Boolean),
   ] as string[];
 
-  const mcgillLeftColumnCourseTitles = new Set([
-    "Management Core",
-    "Finance & Accounting",
-    "Technology & Innovation",
-  ]);
-
   const unbLeftColumnCourseTitles = new Set([
     "Finance",
     "Economics",
@@ -230,23 +176,16 @@ export default function EducationSection() {
     "Liberal Arts",
   ]);
 
-  const mcgillCourseColumns = buildCourseColumns(mcgillCourseCategories, mcgillLeftColumnCourseTitles);
   const unbCourseColumns = buildCourseColumns(unbCourseCategories, unbLeftColumnCourseTitles);
-  const totalCourses = [...mcgillCourseCategories, ...unbCourseCategories].reduce(
+  const totalCourses = unbCourseCategories.reduce(
     (sum, category) => sum + category.courses.length,
     0,
   );
 
-  const mcgillEducationRevealSequence = buildRevealSequence(mcgillCourseColumns);
   const unbEducationRevealSequence = buildRevealSequence(unbCourseColumns);
-  const mcgillCardRevealIndex = 0;
-  const mcgillCourseRevealStartIndex = 1;
-  const unbCardRevealIndex = mcgillCourseRevealStartIndex + mcgillEducationRevealSequence.length;
+  const unbCardRevealIndex = 0;
   const unbCourseRevealStartIndex = unbCardRevealIndex + 1;
   const highlightsRevealStartIndex = unbCourseRevealStartIndex + unbEducationRevealSequence.length;
-  const mcgillEducationRevealOrder = new Map(
-    mcgillEducationRevealSequence.map((title, index) => [title, mcgillCourseRevealStartIndex + index]),
-  );
   const unbEducationRevealOrder = new Map(
     unbEducationRevealSequence.map((title, index) => [title, unbCourseRevealStartIndex + index]),
   );
@@ -470,21 +409,12 @@ export default function EducationSection() {
             Education
           </h2>
           <p className="mx-auto max-w-3xl text-lg leading-relaxed text-muted-foreground sm:text-xl lg:text-2xl">
-            MBA Internship stream and a finance-focused business foundation
+            Strategic business foundation with finance, marketing, and practical leadership coursework
           </p>
         </div>
 
         {/* Education Cards - matches experience card pattern */}
         <div ref={educationItemsAnimation.ref} className="space-y-6">
-          {renderEducationCard({
-            education: mcgillEducation,
-            cardId: "mcgill-education",
-            logo: mcgillLogo,
-            achievements: mcgillAchievements,
-            courseColumns: mcgillCourseColumns,
-            revealIndex: mcgillCardRevealIndex,
-            revealOrder: mcgillEducationRevealOrder,
-          })}
           {renderEducationCard({
             education: unbEducation,
             cardId: "unb-education",
@@ -496,7 +426,7 @@ export default function EducationSection() {
           })}
         </div>
 
-        {/* Education Highlights - combined McGill and UNB summary */}
+        {/* Education Highlights - UNB summary */}
         <div className="mt-12">
           <div className="bg-white border border-border rounded-lg p-8 lg:p-10">
             <h3 className="text-xl font-bold text-foreground mb-8 text-center">
@@ -504,13 +434,13 @@ export default function EducationSection() {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className={`scroll-slide-up ${educationItemsAnimation.visibleItems.has(highlightsRevealStartIndex) ? 'visible' : ''}`}>
-                <CounterStat end={6} label="Awards Across McGill & UNB" className="text-primary" delay={0} />
+                <CounterStat end={5} label="Academic Awards" className="text-primary" delay={0} />
               </div>
               <div className={`scroll-slide-up ${educationItemsAnimation.visibleItems.has(highlightsRevealStartIndex + 1) ? 'visible' : ''}`}>
-                <CounterStat end={85500} prefix="$" label="Combined Scholarships" className="text-primary" delay={200} />
+                <CounterStat end={47500} prefix="$" label="in Scholarships" className="text-primary" delay={200} />
               </div>
               <div className={`scroll-slide-up ${educationItemsAnimation.visibleItems.has(highlightsRevealStartIndex + 2) ? 'visible' : ''}`}>
-                <CounterStat end={totalCourses} label="Courses, Workshops & Practicums" className="text-primary" delay={400} />
+                <CounterStat end={totalCourses} label="Courses Completed" className="text-primary" delay={400} />
               </div>
             </div>
           </div>

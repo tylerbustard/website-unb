@@ -8,12 +8,7 @@ const RESUME_PAGES = [
   {
     number: 1,
     src: "/resume-pages/Tyler-Bustard-Resume-page-1.webp",
-    alt: "Tyler Bustard resume, page 1 of 2",
-  },
-  {
-    number: 2,
-    src: "/resume-pages/Tyler-Bustard-Resume-page-2.webp",
-    alt: "Tyler Bustard resume, page 2 of 2",
+    alt: "Tyler Bustard resume",
   },
 ] as const;
 
@@ -23,7 +18,7 @@ export default function Resume() {
     const resumeTitle = "Tyler Bustard - Resume";
     const resumeUrl = "https://tylerbustard.ca/resume";
     const resumeDescription =
-      "Resume for Tyler Bustard, a finance and data-focused McGill MBA candidate.";
+      "Resume for Tyler Bustard, a finance and data-focused candidate.";
     const canonicalLink = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     const descriptionMeta = document.querySelector<HTMLMetaElement>('meta[name="description"]');
     const ogUrlMeta = document.querySelector<HTMLMetaElement>('meta[property="og:url"]');
@@ -104,7 +99,7 @@ export default function Resume() {
               Tyler Bustard Resume
             </h1>
             <p id="resume-document-description" className="sr-only">
-              Two-page resume. Use the navigation actions to download, email, or print the original PDF.
+              One-page resume. Use the navigation actions to download, email, or print the original PDF.
             </p>
 
             {RESUME_PAGES.map((page, index) => (

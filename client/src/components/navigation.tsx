@@ -34,12 +34,6 @@ ${canonicalResumePdfUrl}`,
   const getCommunityId = (organization: string) => `#community-${slugify(organization)}`;
   const educationDropdownItems = [
     {
-      title: "McGill University | Desautels Faculty of Management",
-      subtitle: "Master of Business Administration Candidate",
-      detail: "MBA Internship stream · 2026–2028",
-      target: isResumePage ? '#education' : '#mcgill-education',
-    },
-    {
       title: 'University of New Brunswick',
       subtitle: 'Bachelor of Business Administration, Finance',
       detail: 'Cooperative Education Program · 2016–2020',
@@ -948,13 +942,13 @@ ${canonicalResumePdfUrl}`,
                           <div className="space-y-3">
                             {/* Email */}
                             <a
-                              href="mailto:tyler.bustard@mail.mcgill.ca"
+                              href="mailto:tbustard@unb.ca"
                               onClick={() => setOpenDropdown(null)}
                               className="block w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
                                 <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Email</div>
-                                <div className="text-xs text-white/65">tyler.bustard@mail.mcgill.ca</div>
+                                <div className="text-xs text-white/65">tbustard@unb.ca</div>
                               </div>
                             </a>
 
@@ -995,7 +989,7 @@ ${canonicalResumePdfUrl}`,
                             >
                               <div className="space-y-1">
                                 <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Location</div>
-                                <div className="text-xs text-white/65">Montreal, Canada</div>
+                                <div className="text-xs text-white/65">New Brunswick, Canada</div>
                               </div>
                             </button>
                           </div>
@@ -1422,13 +1416,13 @@ ${canonicalResumePdfUrl}`,
                         <div className="space-y-3">
                           {/* Email */}
                           <a
-                            href="mailto:tyler.bustard@mail.mcgill.ca"
+                            href="mailto:tbustard@unb.ca"
                             onClick={() => setOpenDropdown(null)}
                             className="block w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
                               <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Email</div>
-                              <div className="text-xs text-white/65">tyler.bustard@mail.mcgill.ca</div>
+                              <div className="text-xs text-white/65">tbustard@unb.ca</div>
                             </div>
                           </a>
 
@@ -1469,7 +1463,7 @@ ${canonicalResumePdfUrl}`,
                           >
                             <div className="space-y-1">
                               <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Location</div>
-                              <div className="text-xs text-white/65">Montreal, Canada</div>
+                              <div className="text-xs text-white/65">New Brunswick, Canada</div>
                             </div>
                           </button>
                         </div>

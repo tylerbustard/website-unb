@@ -1,11 +1,11 @@
-# Tyler Bustard - McGill MBA profile
+# Tyler Bustard - finance and technology profile
 
 This is the sole public portfolio source for `tylerbustard.ca`.
 
 Key characteristics:
-- contact identity uses `tyler.bustard@mail.mcgill.ca`
+- contact identity uses `tbustard@unb.ca`
 - canonical/public hostname is `https://tylerbustard.ca`
-- education order is McGill first, then UNB
+- education shows UNB
 - search indexing is allowed through robots and page metadata
 
 Routes:

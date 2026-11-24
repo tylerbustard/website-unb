@@ -66,7 +66,6 @@ const baselineTree = new Map(
 const allowedNewPublicPaths = new Set([
   "client/public/404.html",
   "client/public/resume-pages/Tyler-Bustard-Resume-page-1.webp",
-  "client/public/resume-pages/Tyler-Bustard-Resume-page-2.webp",
 ]);
 assert.deepEqual(
   regularFiles.filter((file) => file.startsWith("client/public/") && !baselineTree.has(file) && !allowedNewPublicPaths.has(file)),
@@ -74,9 +73,9 @@ assert.deepEqual(
 );
 
 const allowedChangedBinaryHashes = new Map([
-  ["client/public/Tyler-Bustard-Resume.pdf", "e8e0be40827a92a270cf6b69838d4d2d53a0fc2cbb6a389baa86a9a78278121a"],
-  ["client/public/resume-pages/Tyler-Bustard-Resume-page-1.webp", "d84df68839b9b355cc242619322c9235d8b0488d17c9507ee0b76ba84934d247"],
-  ["client/public/resume-pages/Tyler-Bustard-Resume-page-2.webp", "f2ba60f40f7766d309b02f2fc9691ac4aca861dd2af9519d33788d5844f13794"],
+  ["client/public/Tyler-Bustard-Resume.pdf", "767eb2779dcf9484f1f454f260ee9f05126e6114520d949ddba13159e23eaa55"],
+  ["client/public/resume-pages/Tyler-Bustard-Resume-page-1.webp", "81f25c78bb03b80ddfc4d5b0f209d67734f4f8195e919e53feb55c9fb21c5f92"],
+  ["client/public/og-card.jpg", "f3f6b8da2e49d73bdcde6d77a2aee9dab47a0694c488911d2204862def94067b"],
 ]);
 const unexpectedBinaries = [];
 for (const file of regularFiles) {
@@ -169,7 +168,7 @@ assert.doesNotMatch(
   /(?:api[_-]?key|access[_-]?token|auth[_-]?token|client[_-]?secret|password|private[_-]?key|secret)\s*[:=]\s*["']?[A-Za-z0-9+/_=-]{12,}/iu,
 );
 
-const allowedPublicEmails = new Set(["name@example.com", "tyler.bustard@mail.mcgill.ca"]);
+const allowedPublicEmails = new Set(["name@example.com", "tbustard@unb.ca"]);
 const emails = new Set(candidateText.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/giu) ?? []);
 assert.deepEqual([...emails].filter((email) => !allowedPublicEmails.has(email.toLowerCase())), []);
 

@@ -12,7 +12,6 @@ import roiLogo from "@assets/roi_logo_icon.png";
 
 // Education
 import unbLogo from "@assets/University_of_New_Brunswick_Logo.svg_1755912478863.png";
-import mcgillLogo from "@assets/mcgill_university_logo.png";
 
 // Education
 
@@ -42,7 +41,6 @@ export default function HeroSection() {
     ],
     [
       // Education
-      { src: mcgillLogo, alt: "McGill University | Desautels Faculty of Management", h: 26 },
       { src: unbLogo, alt: "University of New Brunswick", h: 24 },
     ],
     [
