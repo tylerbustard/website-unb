@@ -66,7 +66,7 @@ export default function FooterMarketTicker({
         showSymbolLogo: true,
         isTransparent: true,
         displayMode: "adaptive",
-        colorTheme: "dark",
+        colorTheme: "light",
         locale: "en",
       });
 

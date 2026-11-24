@@ -1130,55 +1130,99 @@
     }
   }
 
-  /* Liquid Glass - translucent light material with specular edges */
+  /* Liquid Glass - clear light material: translucent fill, specular rim, soft top sheen */
   .glass-navbar {
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.66));
-    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: rgb(15, 23, 42);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.36));
+    border: 1px solid rgba(255, 255, 255, 0.5);
     box-shadow:
-      0 0 0 0.5px rgba(15, 23, 42, 0.4),
-      0 12px 40px rgba(15, 23, 42, 0.32),
-      0 2px 8px rgba(15, 23, 42, 0.18),
-      inset 0 1px 1px rgba(255, 255, 255, 0.22),
-      inset 0 -1px 1px rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(28px) saturate(180%);
-    -webkit-backdrop-filter: blur(28px) saturate(180%);
+      0 0 0 0.5px rgba(15, 23, 42, 0.07),
+      0 12px 32px rgba(15, 23, 42, 0.1),
+      0 2px 6px rgba(15, 23, 42, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(22px) saturate(190%) brightness(1.05);
+    -webkit-backdrop-filter: blur(22px) saturate(190%) brightness(1.05);
     border-radius: 100vw;
     margin: 0.75rem 2rem 0;
     transform: translateZ(0);
+    isolation: isolate;
   }
 
   .glass-navbar.is-scrolled {
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.68));
-    border-color: rgba(255, 255, 255, 0.18);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.5));
+    border-color: rgba(255, 255, 255, 0.6);
     box-shadow:
-      0 0 0 0.5px rgba(15, 23, 42, 0.45),
-      0 16px 48px rgba(15, 23, 42, 0.38),
-      0 2px 8px rgba(15, 23, 42, 0.2),
-      inset 0 1px 1px rgba(255, 255, 255, 0.25);
+      0 0 0 0.5px rgba(15, 23, 42, 0.08),
+      0 16px 40px rgba(15, 23, 42, 0.12),
+      0 2px 8px rgba(15, 23, 42, 0.07),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.3);
   }
 
-  @supports not (backdrop-filter: blur(1px)) {
+  /* Liquid Glass - dropdown panels. They sit inside the bar's own backdrop, so browsers
+     cannot blur the page behind them; keep them near-opaque frosted glass. */
+  .liquid-glass-panel {
+    position: relative;
+    isolation: isolate;
+    color: rgb(15, 23, 42);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95));
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow:
+      0 0 0 0.5px rgba(15, 23, 42, 0.08),
+      0 18px 48px rgba(15, 23, 42, 0.14),
+      0 2px 10px rgba(15, 23, 42, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(24px) saturate(190%) brightness(1.04);
+    -webkit-backdrop-filter: blur(24px) saturate(190%) brightness(1.04);
+  }
+
+  /* Specular rim: bright top-left and bottom-right edges, drawn over the 1px border */
+  .glass-navbar::before,
+  .liquid-glass-panel::before,
+  .liquid-glass-pill::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 255, 255, 0.3) 28%,
+      rgba(255, 255, 255, 0.06) 55%,
+      rgba(255, 255, 255, 0.6) 100%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Soft sheen across the top half, kept beneath the content */
+  .glass-navbar::after,
+  .liquid-glass-panel::after,
+  .liquid-glass-pill::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.12) 46%, rgba(255, 255, 255, 0) 72%);
+    pointer-events: none;
+  }
+
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
     .glass-navbar,
     .liquid-glass-panel,
+    .liquid-glass-pill,
+    .site-footer-strip,
     .homepage-market-ticker-dock__surface {
-      background: rgba(15, 23, 42, 0.96);
+      background: rgba(255, 255, 255, 0.97);
     }
   }
 
-  /* Liquid Glass - dropdown panels (dark) */
-  .liquid-glass-panel {
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.82), rgba(15, 23, 42, 0.72));
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    box-shadow:
-      0 0 0 0.5px rgba(15, 23, 42, 0.45),
-      0 18px 50px rgba(15, 23, 42, 0.42),
-      0 2px 10px rgba(15, 23, 42, 0.2),
-      inset 0 1px 1px rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(28px) saturate(180%);
-    -webkit-backdrop-filter: blur(28px) saturate(180%);
-  }
-
-  
   .container-width {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
@@ -1251,7 +1295,7 @@
     font-size: 0.75rem;
     font-weight: 500;
     line-height: 1;
-    color: rgba(255, 255, 255, 0.68);
+    color: rgba(15, 23, 42, 0.66);
     background: transparent;
     transition:
       color 220ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -1261,23 +1305,28 @@
 
   .nav-section-button:hover,
   .nav-section-button:focus-visible {
-    color: rgba(255, 255, 255, 0.98);
-    background: rgba(255, 255, 255, 0.12);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    color: rgba(15, 23, 42, 0.96);
+    background: rgba(255, 255, 255, 0.55);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      0 1px 2px rgba(15, 23, 42, 0.08);
   }
 
   .nav-section-button:focus-visible {
     outline: none;
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.18),
-      0 0 0 2px rgba(255, 255, 255, 0.8);
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      0 0 0 2px rgba(37, 99, 235, 0.55);
   }
 
   .nav-section-button.is-active {
-    color: rgba(255, 255, 255, 1);
+    color: rgb(15, 23, 42);
     font-weight: 600;
-    background: rgba(255, 255, 255, 0.16);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 1),
+      0 1px 3px rgba(15, 23, 42, 0.12),
+      0 0 0 0.5px rgba(15, 23, 42, 0.06);
   }
 
   .resume-nav-actions {
@@ -1295,9 +1344,9 @@
     height: 2.35rem;
     padding-inline: 0.65rem;
     border-radius: 9999px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.08);
-    color: rgba(255, 255, 255, 0.84);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    background: rgba(255, 255, 255, 0.5);
+    color: rgba(15, 23, 42, 0.76);
     overflow: hidden;
     white-space: nowrap;
     text-decoration: none;
@@ -1313,48 +1362,48 @@
   .resume-nav-action svg {
     display: block;
     flex: 0 0 auto;
-    color: rgba(255, 255, 255, 0.84);
+    color: rgba(15, 23, 42, 0.76);
     transition: color 220ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .resume-nav-action:hover,
   .resume-nav-action:focus-visible {
-    background: rgba(255, 255, 255, 0.14);
-    border-color: rgba(255, 255, 255, 0.22);
-    color: rgba(255, 255, 255, 0.98);
+    background: rgba(255, 255, 255, 0.88);
+    border-color: rgba(15, 23, 42, 0.14);
+    color: rgba(15, 23, 42, 0.98);
     gap: 0.55rem;
     transform: translateY(-1px);
   }
 
   .resume-nav-action:hover svg,
   .resume-nav-action:focus-visible svg {
-    color: rgba(255, 255, 255, 0.98);
+    color: rgba(15, 23, 42, 0.98);
   }
 
   .resume-nav-action:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.18);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.5);
   }
 
   .resume-nav-action-primary {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.12);
-    color: rgba(255, 255, 255, 0.84);
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(15, 23, 42, 0.1);
+    color: rgba(15, 23, 42, 0.76);
   }
 
   .resume-nav-action-primary:hover,
   .resume-nav-action-primary:focus-visible {
-    background: rgba(255, 255, 255, 0.16);
-    color: rgba(255, 255, 255, 0.98);
+    background: rgba(255, 255, 255, 0.88);
+    color: rgba(15, 23, 42, 0.98);
   }
 
   .resume-nav-action-primary svg {
-    color: rgba(255, 255, 255, 0.84);
+    color: rgba(15, 23, 42, 0.76);
   }
 
   .resume-nav-action-primary:hover svg,
   .resume-nav-action-primary:focus-visible svg {
-    color: rgba(255, 255, 255, 0.98);
+    color: rgba(15, 23, 42, 0.98);
   }
 
   .resume-nav-action-label {
@@ -1395,9 +1444,9 @@
     padding: 0;
     margin: 0;
     border-radius: 9999px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: rgba(255, 255, 255, 0.08);
-    color: rgba(255, 255, 255, 0.84);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    background: rgba(255, 255, 255, 0.5);
+    color: rgba(15, 23, 42, 0.76);
     text-decoration: none;
     cursor: pointer;
     transition:
@@ -1410,7 +1459,7 @@
   .resume-nav-action-mobile svg {
     display: block;
     flex: 0 0 auto;
-    color: rgba(255, 255, 255, 0.84);
+    color: rgba(15, 23, 42, 0.76);
   }
 
   .resume-nav-action-mobile:active {
@@ -1418,8 +1467,8 @@
   }
 
   .resume-nav-action-mobile-primary {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(15, 23, 42, 0.1);
   }
 
   .skip-link {
@@ -1776,23 +1825,24 @@
     height: 2.875rem;
     display: flex;
     align-items: center;
-    background: linear-gradient(0deg, rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.8));
-    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.66), rgba(255, 255, 255, 0.46));
+    border-top: 1px solid rgba(255, 255, 255, 0.85);
     box-shadow:
-      0 0 0 0.5px rgba(15, 23, 42, 0.4),
-      0 -14px 40px rgba(15, 23, 42, 0.32),
-      inset 0 1px 1px rgba(255, 255, 255, 0.22);
-    backdrop-filter: blur(28px) saturate(180%);
-    -webkit-backdrop-filter: blur(28px) saturate(180%);
+      0 -1px 0 rgba(15, 23, 42, 0.06),
+      0 -12px 32px rgba(15, 23, 42, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(22px) saturate(190%) brightness(1.04);
+    -webkit-backdrop-filter: blur(22px) saturate(190%) brightness(1.04);
     overflow: hidden;
   }
 
   body:has(.glass-navbar.is-scrolled) .site-footer-strip {
-    background: rgba(15, 23, 42, 0.85);
-    border-top-color: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.56));
+    border-top-color: rgba(255, 255, 255, 0.9);
     box-shadow:
-      0 -10px 28px rgba(0, 0, 0, 0.18),
-      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      0 -1px 0 rgba(15, 23, 42, 0.07),
+      0 -10px 28px rgba(15, 23, 42, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95);
   }
 
   .homepage-market-ticker-dock {
@@ -1809,16 +1859,15 @@
     gap: 0.7rem;
     min-height: 2.875rem;
     padding-inline: max(0.7rem, env(safe-area-inset-left)) max(0.7rem, env(safe-area-inset-right));
-    background: linear-gradient(0deg, rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.8));
-    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.68), rgba(255, 255, 255, 0.48));
+    border-top: 1px solid rgba(255, 255, 255, 0.85);
     box-shadow:
-      0 0 0 0.5px rgba(15, 23, 42, 0.4),
-      0 -14px 40px rgba(15, 23, 42, 0.32),
-      0 -2px 8px rgba(15, 23, 42, 0.18),
-      inset 0 1px 1px rgba(255, 255, 255, 0.22),
-      inset 0 -1px 1px rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(28px) saturate(180%);
-    -webkit-backdrop-filter: blur(28px) saturate(180%);
+      0 -1px 0 rgba(15, 23, 42, 0.07),
+      0 -14px 36px rgba(15, 23, 42, 0.1),
+      0 -2px 8px rgba(15, 23, 42, 0.05),
+      inset 0 1px 0 rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(22px) saturate(190%) brightness(1.04);
+    -webkit-backdrop-filter: blur(22px) saturate(190%) brightness(1.04);
     transform: translateY(115%);
     opacity: 0;
     transition:
@@ -1828,13 +1877,13 @@
   }
 
   body:has(.glass-navbar.is-scrolled) .homepage-market-ticker-dock__surface {
-    background: linear-gradient(0deg, rgba(15, 23, 42, 0.94), rgba(15, 23, 42, 0.88));
-    border-top-color: rgba(255, 255, 255, 0.18);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0.58));
+    border-top-color: rgba(255, 255, 255, 0.9);
     box-shadow:
-      0 0 0 0.5px rgba(15, 23, 42, 0.45),
-      0 -16px 48px rgba(15, 23, 42, 0.38),
-      0 -2px 8px rgba(15, 23, 42, 0.2),
-      inset 0 1px 1px rgba(255, 255, 255, 0.25);
+      0 -1px 0 rgba(15, 23, 42, 0.08),
+      0 -16px 40px rgba(15, 23, 42, 0.11),
+      0 -2px 8px rgba(15, 23, 42, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95);
   }
 
   .homepage-market-ticker-dock[data-active="true"] .homepage-market-ticker-dock__surface {
@@ -1853,7 +1902,7 @@
     top: 0;
     bottom: 0;
     width: 4.5rem;
-    background: linear-gradient(90deg, transparent, rgba(15, 23, 42, 0.9));
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.72));
     pointer-events: none;
   }
 
@@ -1863,10 +1912,11 @@
     gap: 0.4rem;
     min-height: 2.1rem;
     padding: 0 0.9rem;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(15, 23, 42, 0.1);
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.08);
-    color: rgba(255, 255, 255, 0.88);
+    background: rgba(255, 255, 255, 0.6);
+    color: rgba(15, 23, 42, 0.8);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
     font-size: 0.8rem;
     font-weight: 600;
     line-height: 1;
@@ -1878,14 +1928,14 @@
 
   .homepage-market-ticker-dock__hide:hover,
   .homepage-market-ticker-dock__hide:focus-visible {
-    background: rgba(255, 255, 255, 0.14);
-    border-color: rgba(255, 255, 255, 0.18);
-    color: rgba(255, 255, 255, 1);
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(15, 23, 42, 0.16);
+    color: rgb(15, 23, 42);
   }
 
   .homepage-market-ticker-dock__hide:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.14);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.45);
   }
 
   .market-ticker-shell {
@@ -2454,13 +2504,16 @@
   }
 
   .liquid-glass-pill {
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.82), rgba(15, 23, 42, 0.72));
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    isolation: isolate;
+    color: rgb(15, 23, 42);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.4));
+    border: 1px solid rgba(255, 255, 255, 0.55);
     box-shadow:
-      inset 0 1px 1px rgba(255, 255, 255, 0.18),
-      0 12px 32px rgba(15, 23, 42, 0.28);
-    backdrop-filter: blur(28px) saturate(180%);
-    -webkit-backdrop-filter: blur(28px) saturate(180%);
+      0 0 0 0.5px rgba(15, 23, 42, 0.07),
+      0 12px 30px rgba(15, 23, 42, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(22px) saturate(190%) brightness(1.04);
+    -webkit-backdrop-filter: blur(22px) saturate(190%) brightness(1.04);
   }
 
   .hero-facts-label {

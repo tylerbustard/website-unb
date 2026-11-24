@@ -74,7 +74,7 @@ export default function ScrollToTopButton({
     >
       <div className={`${compact ? "px-3 py-3" : "px-3 py-3 sm:px-4 sm:py-3"} flex items-center`}>
         {!compact && (
-          <span className="mr-3 hidden text-sm font-medium text-white/90 sm:inline">
+          <span className="mr-3 hidden text-sm font-medium text-slate-700 sm:inline">
             Back to top
           </span>
         )}

@@ -469,7 +469,7 @@ ${canonicalResumePdfUrl}`,
               <path
                 className="nav-hello-path"
                 d="M 26.816767,36.748271 C 43.203424,67.240957 66.474145,0.31812069 55.270041,32.476855 32.265545,98.505836 29.893572,143.91569 29.893572,143.91569 c 0,0 4.58505,-70.596115 33.845596,-70.596115 29.260591,0 -7.777127,69.109905 17.759383,71.339255 C 107.03503,146.88818 149.25942,78.527398 122.65893,77.041175 96.058441,75.554951 85.096643,140.94325 120.74129,143.1726 156.38598,145.40195 207.35821,31.603066 175.96961,28.630598 144.581,25.65813 143.41473,139.457 175.33529,142.42948 c 31.92063,2.97247 85.36058,-115.66477 52.90796,-117.894121 -32.45261,-2.229351 -35.74697,113.798871 -2.23032,114.541991 21.28041,-1.48624 17.21663,-66.50088 44.88117,-65.014637 39.70208,3.309454 20.43206,76.844967 -7.41485,67.623637 -21.30785,-7.62146 -19.59447,-69.101693 7.53806,-67.61545 19.64913,2.562291 33.14886,28.34421 39.03973,9.71025"
-                stroke="white"
+                stroke="#0f172a"
                 strokeWidth="6"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -503,10 +503,10 @@ ${canonicalResumePdfUrl}`,
                   <img
                     src={profileImage}
                     alt="Tyler Bustard"
-                    className="w-7 h-7 rounded-lg object-cover ring-1 ring-white/20"
+                    className="w-7 h-7 rounded-lg object-cover ring-1 ring-slate-900/10"
                   />
                   <div className={`nav-brand-text ${showHomeBrandText ? 'is-visible' : ''}`}>
-                    <span className="text-sm tracking-tight text-white" style={{ fontFamily: "var(--font-display)" }}>
+                    <span className="text-sm tracking-tight text-slate-900" style={{ fontFamily: "var(--font-display)" }}>
                       <span className="font-bold">Tyler Bustard</span>
                     </span>
                   </div>
@@ -524,10 +524,10 @@ ${canonicalResumePdfUrl}`,
                   <img
                     src={profileImage}
                     alt="Tyler Bustard"
-                    className="w-7 h-7 rounded-lg object-cover ring-1 ring-white/20"
+                    className="w-7 h-7 rounded-lg object-cover ring-1 ring-slate-900/10"
                   />
                   <div className="nav-brand-text is-visible">
-                    <span className="text-sm tracking-tight text-white" style={{ fontFamily: "var(--font-display)" }}>
+                    <span className="text-sm tracking-tight text-slate-900" style={{ fontFamily: "var(--font-display)" }}>
                       <span className="font-bold">Tyler Bustard</span>
                     </span>
                   </div>
@@ -572,12 +572,12 @@ ${canonicalResumePdfUrl}`,
                                   scrollToSection(item.target);
                                   setOpenDropdown(null);
                                 }}
-                                className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                                className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                               >
                                 <div className="space-y-1">
-                                  <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">{item.title}</div>
-                                  <div className="text-xs text-white/65">{item.subtitle}</div>
-                                  <div className="text-xs text-white/70">{item.detail}</div>
+                                  <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">{item.title}</div>
+                                  <div className="text-xs text-slate-600">{item.subtitle}</div>
+                                  <div className="text-xs text-slate-600">{item.detail}</div>
                                 </div>
                               </button>
                             ))}
@@ -618,11 +618,11 @@ ${canonicalResumePdfUrl}`,
                                 scrollToSection(getExperienceId('73 Strings', 'Senior Associate, Portfolio Monitoring'));
                                 setOpenDropdown(null);
                               }}
-                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Senior Associate, Portfolio Monitoring</div>
-                                <div className="text-xs text-white/65">73 Strings</div>
+                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Senior Associate, Portfolio Monitoring</div>
+                                <div className="text-xs text-slate-600">73 Strings</div>
                               </div>
                             </button>
 
@@ -632,11 +632,11 @@ ${canonicalResumePdfUrl}`,
                                 scrollToSection(getExperienceId('ROI', 'Equity Analyst'));
                                 setOpenDropdown(null);
                               }}
-                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Equity Analyst</div>
-                                <div className="text-xs text-white/65">ROI</div>
+                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Equity Analyst</div>
+                                <div className="text-xs text-slate-600">ROI</div>
                               </div>
                             </button>
 
@@ -646,11 +646,11 @@ ${canonicalResumePdfUrl}`,
                                 scrollToSection(getExperienceId('BMO Private Wealth', 'Portfolio Assistant'));
                                 setOpenDropdown(null);
                               }}
-                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Portfolio Assistant</div>
-                                <div className="text-xs text-white/65">BMO Private Wealth</div>
+                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Portfolio Assistant</div>
+                                <div className="text-xs text-slate-600">BMO Private Wealth</div>
                               </div>
                             </button>
 
@@ -660,11 +660,11 @@ ${canonicalResumePdfUrl}`,
                                 scrollToSection(getExperienceId('TD Canada Trust', 'Financial Advisor'));
                                 setOpenDropdown(null);
                               }}
-                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Financial Advisor</div>
-                                <div className="text-xs text-white/65">TD Canada Trust</div>
+                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Financial Advisor</div>
+                                <div className="text-xs text-slate-600">TD Canada Trust</div>
                               </div>
                             </button>
 
@@ -674,11 +674,11 @@ ${canonicalResumePdfUrl}`,
                                 scrollToSection(getExperienceId('Royal Bank of Canada', 'Banking Advisor'));
                                 setOpenDropdown(null);
                               }}
-                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Banking Advisor</div>
-                                <div className="text-xs text-white/65">Royal Bank of Canada</div>
+                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Banking Advisor</div>
+                                <div className="text-xs text-slate-600">Royal Bank of Canada</div>
                               </div>
                             </button>
 
@@ -688,11 +688,11 @@ ${canonicalResumePdfUrl}`,
                                 scrollToSection(getExperienceId('Royal Bank of Canada', 'Client Advisor Intern'));
                                 setOpenDropdown(null);
                               }}
-                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Client Advisor Intern</div>
-                                <div className="text-xs text-white/65">Royal Bank of Canada</div>
+                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Client Advisor Intern</div>
+                                <div className="text-xs text-slate-600">Royal Bank of Canada</div>
                               </div>
                             </button>
 
@@ -702,11 +702,11 @@ ${canonicalResumePdfUrl}`,
                                 scrollToSection(getExperienceId('Irving Oil Limited', 'Marketing Intern'));
                                 setOpenDropdown(null);
                               }}
-                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Marketing Intern</div>
-                                <div className="text-xs text-white/65">Irving Oil Limited</div>
+                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Marketing Intern</div>
+                                <div className="text-xs text-slate-600">Irving Oil Limited</div>
                               </div>
                             </button>
 
@@ -716,11 +716,11 @@ ${canonicalResumePdfUrl}`,
                                 scrollToSection(getExperienceId('Grant Thornton LLP', 'Tax Return Intern'));
                                 setOpenDropdown(null);
                               }}
-                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Tax Return Intern</div>
-                                <div className="text-xs text-white/65">Grant Thornton LLP</div>
+                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Tax Return Intern</div>
+                                <div className="text-xs text-slate-600">Grant Thornton LLP</div>
                               </div>
                             </button>
                           </div>
@@ -760,11 +760,11 @@ ${canonicalResumePdfUrl}`,
                                 scrollToSection(getCertificationId('CFA Level I Candidate'));
                                 setOpenDropdown(null);
                               }}
-                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">CFA Level I Candidate</div>
-                                <div className="text-xs text-white/65">CFA Institute</div>
+                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">CFA Level I Candidate</div>
+                                <div className="text-xs text-slate-600">CFA Institute</div>
                               </div>
                             </button>
 
@@ -774,11 +774,11 @@ ${canonicalResumePdfUrl}`,
                                 scrollToSection(getCertificationId('GRE General Test'));
                                 setOpenDropdown(null);
                               }}
-                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">GRE General Test</div>
-                                <div className="text-xs text-white/65">ETS</div>
+                              <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">GRE General Test</div>
+                                <div className="text-xs text-slate-600">ETS</div>
                               </div>
                             </button>
 
@@ -788,11 +788,11 @@ ${canonicalResumePdfUrl}`,
                                 scrollToSection(getCertificationCategoryId('Investment & Markets'));
                                 setOpenDropdown(null);
                               }}
-                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Investment & Markets</div>
-                                <div className="text-xs text-white/65">CFA, valuation, Bloomberg</div>
+                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Investment & Markets</div>
+                                <div className="text-xs text-slate-600">CFA, valuation, Bloomberg</div>
                               </div>
                             </button>
 
@@ -802,11 +802,11 @@ ${canonicalResumePdfUrl}`,
                                 scrollToSection(getCertificationCategoryId('Advisory & Wealth Planning'));
                                 setOpenDropdown(null);
                               }}
-                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Advisory & Wealth Planning</div>
-                                <div className="text-xs text-white/65">CSI licensing &amp; planning</div>
+                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Advisory & Wealth Planning</div>
+                                <div className="text-xs text-slate-600">CSI licensing &amp; planning</div>
                               </div>
                             </button>
 
@@ -816,11 +816,11 @@ ${canonicalResumePdfUrl}`,
                                 scrollToSection(getCertificationCategoryId('Quantitative & Statistical Methods'));
                                 setOpenDropdown(null);
                               }}
-                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Quantitative &amp; Statistical Methods</div>
-                                <div className="text-xs text-white/65">Modeling, inference, and mathematical foundations</div>
+                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Quantitative &amp; Statistical Methods</div>
+                                <div className="text-xs text-slate-600">Modeling, inference, and mathematical foundations</div>
                               </div>
                             </button>
 
@@ -830,11 +830,11 @@ ${canonicalResumePdfUrl}`,
                                 scrollToSection(getCertificationCategoryId('Data & Business Intelligence'));
                                 setOpenDropdown(null);
                               }}
-                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Data &amp; Business Intelligence</div>
-                                <div className="text-xs text-white/65">Analytics, visualization, and automation</div>
+                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Data &amp; Business Intelligence</div>
+                                <div className="text-xs text-slate-600">Analytics, visualization, and automation</div>
                               </div>
                             </button>
                           </div>
@@ -874,11 +874,11 @@ ${canonicalResumePdfUrl}`,
                                 scrollToSection(getCommunityId('United Way'));
                                 setOpenDropdown(null);
                               }}
-                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Next Gen Ambassador</div>
-                                <div className="text-xs text-white/65">United Way</div>
+                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Next Gen Ambassador</div>
+                                <div className="text-xs text-slate-600">United Way</div>
                               </div>
                             </button>
 
@@ -888,11 +888,11 @@ ${canonicalResumePdfUrl}`,
                                 scrollToSection(getCommunityId('Royal Bank of Canada'));
                                 setOpenDropdown(null);
                               }}
-                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Student Ambassador</div>
-                                <div className="text-xs text-white/65">Royal Bank of Canada</div>
+                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Student Ambassador</div>
+                                <div className="text-xs text-slate-600">Royal Bank of Canada</div>
                               </div>
                             </button>
 
@@ -902,11 +902,11 @@ ${canonicalResumePdfUrl}`,
                                 scrollToSection(getCommunityId('Irving Oil Limited'));
                                 setOpenDropdown(null);
                               }}
-                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Volunteer Staff</div>
-                                <div className="text-xs text-white/65">Irving Oil Limited</div>
+                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Volunteer Staff</div>
+                                <div className="text-xs text-slate-600">Irving Oil Limited</div>
                               </div>
                             </button>
                           </div>
@@ -944,11 +944,11 @@ ${canonicalResumePdfUrl}`,
                             <a
                               href="mailto:tbustard@unb.ca"
                               onClick={() => setOpenDropdown(null)}
-                              className="block w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              className="block w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Email</div>
-                                <div className="text-xs text-white/65">tbustard@unb.ca</div>
+                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Email</div>
+                                <div className="text-xs text-slate-600">tbustard@unb.ca</div>
                               </div>
                             </a>
 
@@ -956,11 +956,11 @@ ${canonicalResumePdfUrl}`,
                             <a
                               href="tel:+16139851223"
                               onClick={() => setOpenDropdown(null)}
-                              className="block w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              className="block w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Phone</div>
-                                <div className="text-xs text-white/65">(613) 985-1223</div>
+                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Phone</div>
+                                <div className="text-xs text-slate-600">(613) 985-1223</div>
                               </div>
                             </a>
 
@@ -970,11 +970,11 @@ ${canonicalResumePdfUrl}`,
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={() => setOpenDropdown(null)}
-                              className="block w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              className="block w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">LinkedIn</div>
-                                <div className="text-xs text-white/65">linkedin.com/in/tylerbustard</div>
+                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">LinkedIn</div>
+                                <div className="text-xs text-slate-600">linkedin.com/in/tylerbustard</div>
                               </div>
                             </a>
 
@@ -985,11 +985,11 @@ ${canonicalResumePdfUrl}`,
                                 scrollToSection('#contact');
                                 setOpenDropdown(null);
                               }}
-                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Location</div>
-                                <div className="text-xs text-white/65">New Brunswick, Canada</div>
+                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Location</div>
+                                <div className="text-xs text-slate-600">New Brunswick, Canada</div>
                               </div>
                             </button>
                           </div>
@@ -1030,12 +1030,12 @@ ${canonicalResumePdfUrl}`,
                             <button
                               key={item.title}
                               onClick={() => { scrollToSection(item.target); setOpenDropdown(null); }}
-                              className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                              className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                             >
                               <div className="space-y-1">
-                                <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">{item.title}</div>
-                                <div className="text-xs text-white/65">{item.subtitle}</div>
-                                <div className="text-xs text-white/70">{item.detail}</div>
+                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">{item.title}</div>
+                                <div className="text-xs text-slate-600">{item.subtitle}</div>
+                                <div className="text-xs text-slate-600">{item.detail}</div>
                               </div>
                             </button>
                           ))}
@@ -1079,11 +1079,11 @@ ${canonicalResumePdfUrl}`,
                               scrollToSection(getExperienceId('73 Strings', 'Senior Associate, Portfolio Monitoring'));
                               setOpenDropdown(null);
                             }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Senior Associate, Portfolio Monitoring</div>
-                              <div className="text-xs text-white/65">73 Strings</div>
+                              <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Senior Associate, Portfolio Monitoring</div>
+                              <div className="text-xs text-slate-600">73 Strings</div>
                             </div>
                           </button>
 
@@ -1093,11 +1093,11 @@ ${canonicalResumePdfUrl}`,
                               scrollToSection(getExperienceId('ROI', 'Equity Analyst'));
                               setOpenDropdown(null);
                             }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Equity Analyst</div>
-                              <div className="text-xs text-white/65">ROI</div>
+                              <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Equity Analyst</div>
+                              <div className="text-xs text-slate-600">ROI</div>
                             </div>
                           </button>
 
@@ -1107,11 +1107,11 @@ ${canonicalResumePdfUrl}`,
                               scrollToSection(getExperienceId('BMO Private Wealth', 'Portfolio Assistant'));
                               setOpenDropdown(null);
                             }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Portfolio Assistant</div>
-                              <div className="text-xs text-white/65">BMO Private Wealth</div>
+                              <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Portfolio Assistant</div>
+                              <div className="text-xs text-slate-600">BMO Private Wealth</div>
                             </div>
                           </button>
 
@@ -1121,11 +1121,11 @@ ${canonicalResumePdfUrl}`,
                               scrollToSection(getExperienceId('TD Canada Trust', 'Financial Advisor'));
                               setOpenDropdown(null);
                             }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Financial Advisor</div>
-                              <div className="text-xs text-white/65">TD Canada Trust</div>
+                              <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Financial Advisor</div>
+                              <div className="text-xs text-slate-600">TD Canada Trust</div>
                             </div>
                           </button>
 
@@ -1135,11 +1135,11 @@ ${canonicalResumePdfUrl}`,
                               scrollToSection(getExperienceId('Royal Bank of Canada', 'Banking Advisor'));
                               setOpenDropdown(null);
                             }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Banking Advisor</div>
-                              <div className="text-xs text-white/65">Royal Bank of Canada</div>
+                              <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Banking Advisor</div>
+                              <div className="text-xs text-slate-600">Royal Bank of Canada</div>
                             </div>
                           </button>
 
@@ -1149,11 +1149,11 @@ ${canonicalResumePdfUrl}`,
                               scrollToSection(getExperienceId('Royal Bank of Canada', 'Client Advisor Intern'));
                               setOpenDropdown(null);
                             }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Client Advisor Intern</div>
-                              <div className="text-xs text-white/65">Royal Bank of Canada</div>
+                              <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Client Advisor Intern</div>
+                              <div className="text-xs text-slate-600">Royal Bank of Canada</div>
                             </div>
                           </button>
 
@@ -1163,11 +1163,11 @@ ${canonicalResumePdfUrl}`,
                               scrollToSection(getExperienceId('Irving Oil Limited', 'Marketing Intern'));
                               setOpenDropdown(null);
                             }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Marketing Intern</div>
-                              <div className="text-xs text-white/65">Irving Oil Limited</div>
+                              <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Marketing Intern</div>
+                              <div className="text-xs text-slate-600">Irving Oil Limited</div>
                             </div>
                           </button>
 
@@ -1177,11 +1177,11 @@ ${canonicalResumePdfUrl}`,
                               scrollToSection(getExperienceId('Grant Thornton LLP', 'Tax Return Intern'));
                               setOpenDropdown(null);
                             }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Tax Return Intern</div>
-                              <div className="text-xs text-white/65">Grant Thornton LLP</div>
+                              <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Tax Return Intern</div>
+                              <div className="text-xs text-slate-600">Grant Thornton LLP</div>
                             </div>
                           </button>
                         </div>
@@ -1223,11 +1223,11 @@ ${canonicalResumePdfUrl}`,
                               scrollToSection('#core-cert-cfa-level-i-candidate');
                               setOpenDropdown(null);
                             }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">CFA Level I Candidate</div>
-                              <div className="text-xs text-white/65">CFA Institute · 2026</div>
+                              <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">CFA Level I Candidate</div>
+                              <div className="text-xs text-slate-600">CFA Institute · 2026</div>
                             </div>
                           </button>
 
@@ -1236,11 +1236,11 @@ ${canonicalResumePdfUrl}`,
                               scrollToSection('#core-cert-canadian-securities-course');
                               setOpenDropdown(null);
                             }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Canadian Securities Course</div>
-                              <div className="text-xs text-white/65">Canadian Securities Institute · 2021</div>
+                              <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Canadian Securities Course</div>
+                              <div className="text-xs text-slate-600">Canadian Securities Institute · 2021</div>
                             </div>
                           </button>
 
@@ -1249,11 +1249,11 @@ ${canonicalResumePdfUrl}`,
                               scrollToSection('#core-cert-bloomberg-market-concepts');
                               setOpenDropdown(null);
                             }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Bloomberg Market Concepts</div>
-                              <div className="text-xs text-white/65">Bloomberg · 2019</div>
+                              <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Bloomberg Market Concepts</div>
+                              <div className="text-xs text-slate-600">Bloomberg · 2019</div>
                             </div>
                           </button>
 
@@ -1262,11 +1262,11 @@ ${canonicalResumePdfUrl}`,
                               scrollToSection('#core-cert-discounted-cash-flow-analysis-and-modeling');
                               setOpenDropdown(null);
                             }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Discounted Cash Flow Analysis and Modeling</div>
-                              <div className="text-xs text-white/65">Training The Street · 2024</div>
+                              <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Discounted Cash Flow Analysis and Modeling</div>
+                              <div className="text-xs text-slate-600">Training The Street · 2024</div>
                             </div>
                           </button>
 
@@ -1275,11 +1275,11 @@ ${canonicalResumePdfUrl}`,
                               scrollToSection('#core-cert-ai-fluency--framework-and-foundations');
                               setOpenDropdown(null);
                             }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">AI Fluency: Framework and Foundations</div>
-                              <div className="text-xs text-white/65">Anthropic · 2026</div>
+                              <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">AI Fluency: Framework and Foundations</div>
+                              <div className="text-xs text-slate-600">Anthropic · 2026</div>
                             </div>
                           </button>
 
@@ -1288,23 +1288,23 @@ ${canonicalResumePdfUrl}`,
                               scrollToSection('#core-cert-gre-general-test');
                               setOpenDropdown(null);
                             }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">GRE General Test</div>
-                              <div className="text-xs text-white/65">ETS · 2024 · 328 total; 170 Quantitative</div>
+                              <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">GRE General Test</div>
+                              <div className="text-xs text-slate-600">ETS · 2024 · 328 total; 170 Quantitative</div>
                             </div>
                           </button>
 
-                          <div className="border-t border-white/10 pt-2">
+                          <div className="border-t border-slate-900/10 pt-2">
                           <button
                             onClick={() => {
                               scrollToSection('#certifications');
                               setOpenDropdown(null);
                             }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                           >
-                            <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">All certifications →</div>
+                            <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">All certifications →</div>
                           </button>
                           </div>
                         </div>
@@ -1347,11 +1347,11 @@ ${canonicalResumePdfUrl}`,
                               scrollToSection(getCommunityId('United Way'));
                               setOpenDropdown(null);
                             }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Next Gen Ambassador</div>
-                              <div className="text-xs text-white/65">United Way</div>
+                              <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Next Gen Ambassador</div>
+                              <div className="text-xs text-slate-600">United Way</div>
                             </div>
                           </button>
 
@@ -1361,11 +1361,11 @@ ${canonicalResumePdfUrl}`,
                               scrollToSection(getCommunityId('Royal Bank of Canada'));
                               setOpenDropdown(null);
                             }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Student Ambassador</div>
-                              <div className="text-xs text-white/65">Royal Bank of Canada</div>
+                              <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Student Ambassador</div>
+                              <div className="text-xs text-slate-600">Royal Bank of Canada</div>
                             </div>
                           </button>
 
@@ -1375,11 +1375,11 @@ ${canonicalResumePdfUrl}`,
                               scrollToSection(getCommunityId('Irving Oil Limited'));
                               setOpenDropdown(null);
                             }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Volunteer Staff</div>
-                              <div className="text-xs text-white/65">Irving Oil Limited</div>
+                              <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Volunteer Staff</div>
+                              <div className="text-xs text-slate-600">Irving Oil Limited</div>
                             </div>
                           </button>
                         </div>
@@ -1418,11 +1418,11 @@ ${canonicalResumePdfUrl}`,
                           <a
                             href="mailto:tbustard@unb.ca"
                             onClick={() => setOpenDropdown(null)}
-                            className="block w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            className="block w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Email</div>
-                              <div className="text-xs text-white/65">tbustard@unb.ca</div>
+                              <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Email</div>
+                              <div className="text-xs text-slate-600">tbustard@unb.ca</div>
                             </div>
                           </a>
 
@@ -1430,11 +1430,11 @@ ${canonicalResumePdfUrl}`,
                           <a
                             href="tel:+16139851223"
                             onClick={() => setOpenDropdown(null)}
-                            className="block w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            className="block w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Phone</div>
-                              <div className="text-xs text-white/65">(613) 985-1223</div>
+                              <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Phone</div>
+                              <div className="text-xs text-slate-600">(613) 985-1223</div>
                             </div>
                           </a>
 
@@ -1444,11 +1444,11 @@ ${canonicalResumePdfUrl}`,
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={() => setOpenDropdown(null)}
-                            className="block w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            className="block w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">LinkedIn</div>
-                              <div className="text-xs text-white/65">linkedin.com/in/tylerbustard</div>
+                              <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">LinkedIn</div>
+                              <div className="text-xs text-slate-600">linkedin.com/in/tylerbustard</div>
                             </div>
                           </a>
 
@@ -1459,11 +1459,11 @@ ${canonicalResumePdfUrl}`,
                               scrollToSection('#contact');
                               setOpenDropdown(null);
                             }}
-                            className="w-full text-left hover:bg-white/10 rounded-lg p-3 transition-all duration-200 group"
+                            className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
                           >
                             <div className="space-y-1">
-                              <div className="text-sm font-bold text-white group-hover:text-blue-400 transition-colors duration-200">Location</div>
-                              <div className="text-xs text-white/65">New Brunswick, Canada</div>
+                              <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">Location</div>
+                              <div className="text-xs text-slate-600">New Brunswick, Canada</div>
                             </div>
                           </button>
                         </div>
@@ -1523,7 +1523,7 @@ ${canonicalResumePdfUrl}`,
                       window.location.href = '/resume';
                     }
                   }}
-                  className="px-4 py-1.5 text-xs font-medium rounded-full bg-white text-slate-950 hover:bg-white/90 transition-all duration-200"
+                  className="px-4 py-1.5 text-xs font-medium rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-all duration-200"
                 >
                   {isResumePage ? 'Close' : isUploadPage ? 'Home' : 'Resume'}
                 </button>
@@ -1565,7 +1565,7 @@ ${canonicalResumePdfUrl}`,
                     // Always go to home page, not back in history
                     window.location.href = '/';
                   }}
-                  className="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-all duration-200 active:scale-95"
+                  className="lg:hidden p-2 rounded-lg hover:bg-slate-900/5 transition-all duration-200 active:scale-95"
                   aria-label={isResumePage ? "Close resume" : "Go to home"}
                 >
                   <X size={20} />
@@ -1574,7 +1574,7 @@ ${canonicalResumePdfUrl}`,
                 <button
                   ref={mobileMenuButtonRef}
                   onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
-                  className="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-all duration-200 active:scale-95"
+                  className="lg:hidden p-2 rounded-lg hover:bg-slate-900/5 transition-all duration-200 active:scale-95"
                   aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
                   aria-expanded={isMobileMenuOpen}
                   aria-controls="mobile-menu-panel"
@@ -1603,23 +1603,23 @@ ${canonicalResumePdfUrl}`,
             aria-labelledby="mobile-menu-title"
             className="absolute inset-x-0 top-0 h-full overflow-y-auto animate-in slide-in-from-top duration-300"
             style={{
-              background: 'linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.85))',
-              backdropFilter: 'blur(28px) saturate(180%)',
-              WebkitBackdropFilter: 'blur(28px) saturate(180%)',
-              boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.16)'
+              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.72))',
+              backdropFilter: 'blur(28px) saturate(190%) brightness(1.04)',
+              WebkitBackdropFilter: 'blur(28px) saturate(190%) brightness(1.04)',
+              boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.95)'
             }}
           >
             <div className="p-6 pt-20">
               {/* Close Button at top */}
               <div className="flex justify-between items-center mb-6">
-                <h2 id="mobile-menu-title" className="text-xl font-bold text-white">Menu</h2>
+                <h2 id="mobile-menu-title" className="text-xl font-bold text-slate-900">Menu</h2>
                 <button
                   ref={mobileMenuCloseButtonRef}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+                  className="p-2 rounded-lg hover:bg-slate-900/5 transition-colors"
                   aria-label="Close menu"
                 >
-                  <X size={24} className="text-white/70" />
+                  <X size={24} className="text-slate-600" />
                 </button>
               </div>
 
@@ -1632,7 +1632,7 @@ ${canonicalResumePdfUrl}`,
                         scrollToSection('#education');
                         setIsMobileMenuOpen(false);
                       }}
-                      className="block w-full text-left px-4 py-3 text-lg font-medium text-white hover:bg-white/10 rounded-lg transition-all duration-200 active:scale-98"
+                      className="block w-full text-left px-4 py-3 text-lg font-medium text-slate-900 hover:bg-slate-900/5 rounded-lg transition-all duration-200 active:scale-98"
                     >
                       Education
                     </button>
@@ -1641,7 +1641,7 @@ ${canonicalResumePdfUrl}`,
                         scrollToSection('#experience');
                         setIsMobileMenuOpen(false);
                       }}
-                      className="block w-full text-left px-4 py-3 text-lg font-medium text-white hover:bg-white/10 rounded-lg transition-all duration-200 active:scale-98"
+                      className="block w-full text-left px-4 py-3 text-lg font-medium text-slate-900 hover:bg-slate-900/5 rounded-lg transition-all duration-200 active:scale-98"
                     >
                       Experience
                     </button>
@@ -1650,7 +1650,7 @@ ${canonicalResumePdfUrl}`,
                         scrollToSection('#certifications');
                         setIsMobileMenuOpen(false);
                       }}
-                      className="block w-full text-left px-4 py-3 text-lg font-medium text-white hover:bg-white/10 rounded-lg transition-all duration-200 active:scale-98"
+                      className="block w-full text-left px-4 py-3 text-lg font-medium text-slate-900 hover:bg-slate-900/5 rounded-lg transition-all duration-200 active:scale-98"
                     >
                       Certifications
                     </button>
@@ -1659,7 +1659,7 @@ ${canonicalResumePdfUrl}`,
                         scrollToSection('#community');
                         setIsMobileMenuOpen(false);
                       }}
-                      className="block w-full text-left px-4 py-3 text-lg font-medium text-white hover:bg-white/10 rounded-lg transition-colors"
+                      className="block w-full text-left px-4 py-3 text-lg font-medium text-slate-900 hover:bg-slate-900/5 rounded-lg transition-colors"
                     >
                       Community
                     </button>
@@ -1668,7 +1668,7 @@ ${canonicalResumePdfUrl}`,
                         scrollToSection('#contact');
                         setIsMobileMenuOpen(false);
                       }}
-                      className="block w-full text-left px-4 py-3 text-lg font-medium text-white hover:bg-white/10 rounded-lg transition-colors"
+                      className="block w-full text-left px-4 py-3 text-lg font-medium text-slate-900 hover:bg-slate-900/5 rounded-lg transition-colors"
                     >
                       Contact
                     </button>
@@ -1677,7 +1677,7 @@ ${canonicalResumePdfUrl}`,
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block w-full text-left px-4 py-3 text-lg font-medium text-white hover:bg-white/10 rounded-lg transition-colors"
+                      className="block w-full text-left px-4 py-3 text-lg font-medium text-slate-900 hover:bg-slate-900/5 rounded-lg transition-colors"
                     >
                       <span className="inline-flex items-center gap-2">
                         LinkedIn
@@ -1701,7 +1701,7 @@ ${canonicalResumePdfUrl}`,
                     }
                     setIsMobileMenuOpen(false);
                   }}
-                  className="block w-full px-4 py-3 text-lg font-medium bg-white text-slate-900 rounded-lg hover:bg-white/90 transition-colors"
+                  className="block w-full px-4 py-3 text-lg font-medium bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors"
                 >
                   {isResumePage ? 'Close Resume' : isUploadPage ? 'Home' : 'Resume'}
                 </button>
