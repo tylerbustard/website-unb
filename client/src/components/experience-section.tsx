@@ -8,6 +8,7 @@ import {
 import { useRef, type RefObject } from "react";
 import { useCounterAnimation } from "@/hooks/use-counter-animation";
 import BmoSpotlight from "@/components/bmo-spotlight";
+import IrvingSpotlight from "@/components/irving-spotlight";
 import RbcSpotlight from "@/components/rbc-spotlight";
 import RoiSpotlight from "@/components/roi-spotlight";
 import SeventyThreeStringsSpotlight from "@/components/seventy-three-strings-spotlight";
@@ -37,7 +38,7 @@ interface Experience {
   spotlight?: SpotlightKey;
 }
 
-type SpotlightKey = "73-strings" | "roi" | "bmo" | "td" | "rbc-advisor" | "rbc-intern";
+type SpotlightKey = "73-strings" | "roi" | "bmo" | "td" | "rbc-advisor" | "rbc-intern" | "irving";
 
 interface CounterStatProps {
   end: number;
@@ -69,6 +70,7 @@ export default function ExperienceSection() {
     td: useRef<HTMLDivElement>(null),
     "rbc-advisor": useRef<HTMLDivElement>(null),
     "rbc-intern": useRef<HTMLDivElement>(null),
+    irving: useRef<HTMLDivElement>(null),
   };
   const sectionAnimation = useScrollAnimation(SCROLL_REVEAL_OBSERVER_OPTIONS);
   const headerAnimation = useScrollAnimation({
@@ -178,6 +180,7 @@ export default function ExperienceSection() {
       technologies: ["Market Research", "Customer Analytics", "Competitive Analysis", "Marketing Strategy"],
       logoSrc: irvingLogo,
       color: "#FF6B35",
+      spotlight: "irving",
     },
     {
       title: "Tax Return Intern",
@@ -377,7 +380,9 @@ export default function ExperienceSection() {
                         className={`experience-card-spotlight scroll-slide-up ${revealClass}`}
                         style={getScrollRevealStyle(chipStartDelay + exp.technologies.length * 65 + 60)}
                       >
-                        {exp.spotlight === "rbc-advisor" || exp.spotlight === "rbc-intern" ? (
+                        {exp.spotlight === "irving" ? (
+                          <IrvingSpotlight originRef={spotlightRefs.irving} logoSrc={exp.logoSrc} />
+                        ) : exp.spotlight === "rbc-advisor" || exp.spotlight === "rbc-intern" ? (
                           <RbcSpotlight
                             originRef={spotlightRefs[exp.spotlight]}
                             logoSrc={exp.logoSrc}

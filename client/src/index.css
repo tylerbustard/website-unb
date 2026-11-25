@@ -9201,3 +9201,818 @@ html.role-spotlight-open body {
     opacity: 1;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Irving Oil theme: white pages, slate headings, Irving red pill      */
+/* buttons, the logo's blue and red, and a deep navy band              */
+/* ------------------------------------------------------------------ */
+
+.role-spotlight--irving {
+  --irv-red: rgb(186, 12, 47);
+  --irv-red-hover: rgb(152, 9, 38);
+  --irv-red-tint: rgb(252, 238, 241);
+  --irv-blue: rgb(30, 68, 160);
+  --irv-navy: rgb(20, 27, 77);
+  --irv-slate: rgb(51, 63, 72);
+  --irv-ink: rgb(51, 51, 51);
+  --irv-grey: rgb(104, 112, 120);
+  --irv-line: rgb(226, 228, 232);
+  --irv-mist: rgb(244, 246, 249);
+  --irv-gutter: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .role-spotlight--irving {
+    --irv-gutter: 3.5rem;
+  }
+}
+
+.role-spotlight--irving .role-spotlight-panel {
+  --role-spotlight-surface: rgb(255, 255, 255);
+  --role-spotlight-tile: rgba(255, 255, 255, 0);
+  --role-spotlight-title-color: rgb(51, 63, 72);
+  background: #fff;
+  color: var(--irv-ink);
+}
+
+/* The navy band scrolls straight under the edge; the close button has its own border. */
+.role-spotlight--irving .role-spotlight-panel::before {
+  display: none;
+}
+
+.role-spotlight--irving .role-spotlight-close {
+  background: #fff;
+  box-shadow:
+    0 2px 10px rgba(20, 27, 77, 0.14),
+    inset 0 0 0 1px var(--irv-line);
+  color: var(--irv-slate);
+}
+
+.role-spotlight--irving .role-spotlight-close:hover {
+  background: var(--irv-red);
+  color: #fff;
+}
+
+.role-spotlight--irving .role-spotlight-close:focus-visible {
+  outline-color: var(--irv-red);
+}
+
+.role-spotlight--irving .role-spotlight-scroll {
+  container-type: inline-size;
+  scrollbar-color: rgba(20, 27, 77, 0.3) transparent;
+}
+
+.role-spotlight--irving .role-spotlight-header {
+  gap: 1.25rem;
+}
+
+.role-spotlight--irving .role-spotlight-logo-tile {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+}
+
+.role-spotlight--irving .role-spotlight-logo {
+  width: 4.5rem;
+  height: 2.75rem;
+}
+
+.role-spotlight--irving .role-spotlight-heading {
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--irv-line);
+}
+
+.role-spotlight--irving .role-spotlight-title {
+  color: var(--irv-slate);
+}
+
+.role-spotlight--irving .role-spotlight-meta {
+  color: var(--irv-grey);
+}
+
+/* Type */
+.irv-eyebrow {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--irv-red);
+}
+
+.irv-eyebrow.is-light {
+  color: rgb(255, 168, 182);
+}
+
+.irv-display {
+  margin: 0.75rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.6vw, 3.25rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--irv-slate);
+  text-wrap: balance;
+}
+
+.irv-heading {
+  max-width: 26ch;
+  margin: 0.6rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.2vw, 2.375rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--irv-slate);
+  text-wrap: balance;
+}
+
+.irv-heading.is-light {
+  color: #fff;
+}
+
+.irv-lede,
+.irv-section-lede {
+  max-width: 34rem;
+  margin: 1.25rem 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--irv-ink);
+  text-wrap: pretty;
+}
+
+.irv-section-lede {
+  max-width: 40rem;
+  margin-top: 1rem;
+  color: var(--irv-grey);
+}
+
+/* Hero */
+.irv-hero {
+  display: grid;
+  gap: 2.5rem;
+  padding-top: 2.75rem;
+}
+
+@media (min-width: 900px) {
+  .irv-hero {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: center;
+    padding-top: 3.25rem;
+  }
+}
+
+.irv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.irv-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.875rem;
+  padding: 0.7rem 1.6rem;
+  border: 1px solid var(--irv-red);
+  border-radius: 999px;
+  background: var(--irv-red);
+  color: #fff;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.irv-button:hover {
+  border-color: var(--irv-red-hover);
+  background: var(--irv-red-hover);
+}
+
+.irv-button-outline {
+  background: #fff;
+  color: var(--irv-red);
+}
+
+.irv-button-outline:hover {
+  background: var(--irv-red-tint);
+  color: var(--irv-red-hover);
+}
+
+.irv-button:focus-visible,
+.irv-link:focus-visible {
+  outline: 2px solid var(--irv-red);
+  outline-offset: 3px;
+}
+
+/* Hero visual: the customer lifecycle loop */
+.irv-hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.irv-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 24rem;
+  padding: 1rem 0.5rem 0.5rem;
+}
+
+.irv-loop {
+  position: relative;
+  width: min(17rem, 76vw);
+  aspect-ratio: 1;
+}
+
+.irv-loop-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.irv-loop-ring circle {
+  fill: none;
+  stroke: var(--irv-line);
+  stroke-width: 3;
+  stroke-dasharray: 2 6;
+  stroke-linecap: round;
+}
+
+.irv-orbit {
+  position: absolute;
+  inset: 0;
+  animation: irv-spin 8s linear infinite;
+}
+
+.irv-orbit-dot {
+  position: absolute;
+  top: 11%;
+  left: 50%;
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: 999px;
+  background: var(--irv-red);
+  box-shadow: 0 0 0 5px rgba(186, 12, 47, 0.18);
+  transform: translate(-50%, -50%);
+}
+
+@keyframes irv-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.irv-node {
+  position: absolute;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+}
+
+.irv-node-0 {
+  top: 11%;
+  left: 50%;
+}
+
+.irv-node-1 {
+  top: 50%;
+  left: 89%;
+}
+
+.irv-node-2 {
+  top: 89%;
+  left: 50%;
+}
+
+.irv-node-3 {
+  top: 50%;
+  left: 11%;
+}
+
+.irv-node-label {
+  display: block;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--irv-line);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 4px 12px -6px rgba(20, 27, 77, 0.3);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--irv-slate);
+  animation: irv-node 8s ease infinite;
+  animation-delay: calc(var(--i) * 2s);
+}
+
+@keyframes irv-node {
+  0%,
+  14% {
+    border-color: var(--irv-red);
+    background: var(--irv-red);
+    color: #fff;
+  }
+  24%,
+  100% {
+    border-color: var(--irv-line);
+    background: #fff;
+    color: var(--irv-slate);
+  }
+}
+
+.irv-loop-centre {
+  position: absolute;
+  inset: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  border-radius: 999px;
+  background: var(--irv-mist);
+  text-align: center;
+}
+
+.irv-loop-kicker {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--irv-grey);
+}
+
+.irv-loop-value {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--irv-blue);
+}
+
+.irv-loop-note {
+  font-size: 0.8125rem;
+  color: var(--irv-slate);
+}
+
+.irv-scan {
+  position: relative;
+  display: grid;
+  gap: 0.5rem;
+  width: 14rem;
+  margin: -0.75rem 0 0 auto;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow:
+    0 14px 34px -16px rgba(20, 27, 77, 0.45),
+    0 0 0 1px rgba(20, 27, 77, 0.06);
+}
+
+.irv-scan-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--irv-slate);
+}
+
+.irv-scan-row {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.6875rem;
+  color: var(--irv-grey);
+}
+
+.irv-scan-row.is-mine {
+  font-weight: 600;
+  color: var(--irv-slate);
+}
+
+.irv-scan-track {
+  height: 0.45rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--irv-mist);
+}
+
+.irv-scan-track i {
+  display: block;
+  width: var(--w);
+  height: 100%;
+  border-radius: inherit;
+  background: rgb(170, 180, 196);
+  transform-origin: left;
+  animation: irv-bar 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i) * 120ms + 600ms);
+}
+
+.irv-scan-row.is-mine .irv-scan-track i {
+  background: var(--irv-red);
+}
+
+@keyframes irv-bar {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+.irv-scan-foot {
+  margin-top: 0.15rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--irv-red);
+}
+
+/* Navy band */
+.irv-band {
+  margin-top: 4rem;
+  margin-inline: calc((100% - 100cqw) / 2);
+  padding: 4rem 0;
+  background: var(--irv-navy);
+  color: #fff;
+}
+
+@media (min-width: 900px) {
+  .irv-band {
+    margin-top: 5rem;
+    padding: 4.75rem 0;
+  }
+}
+
+.irv-band-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--irv-gutter);
+}
+
+.irv-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem 1rem;
+  margin: 2.25rem 0 0;
+}
+
+@media (min-width: 900px) {
+  .irv-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.irv-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding-top: 1rem;
+  border-top: 3px solid var(--irv-red);
+}
+
+.irv-stat-value {
+  order: -1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.2vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.irv-stat-label {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.irv-band-note {
+  max-width: 44rem;
+  margin: 2rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* Sections */
+.irv-section {
+  margin-top: 4.5rem;
+}
+
+@media (min-width: 900px) {
+  .irv-section {
+    margin-top: 5.5rem;
+  }
+}
+
+.irv-role {
+  scroll-margin-top: 1.5rem;
+}
+
+/* Workflow */
+.irv-flow {
+  position: relative;
+  margin-top: 2.5rem;
+}
+
+.irv-flow-track {
+  position: absolute;
+  top: 1.25rem;
+  bottom: 1.25rem;
+  left: 1.125rem;
+  width: 2px;
+  overflow: hidden;
+  background: var(--irv-line);
+}
+
+.irv-flow-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--irv-blue), var(--irv-red));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1500ms cubic-bezier(0.32, 0.72, 0, 1) 200ms;
+}
+
+.irv-flow.is-active .irv-flow-fill {
+  transform: scaleY(1);
+}
+
+.irv-flow-steps {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0 0 0 3.5rem;
+  list-style: none;
+}
+
+.irv-flow-step {
+  position: relative;
+  opacity: 0.3;
+  transform: translateY(14px);
+  transition:
+    opacity 700ms ease,
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--step-index, 0) * 240ms + 300ms);
+}
+
+.irv-flow.is-active .irv-flow-step {
+  opacity: 1;
+  transform: none;
+}
+
+.irv-flow-node {
+  position: absolute;
+  top: 0.85rem;
+  left: -3.5rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.375rem;
+  height: 2.375rem;
+  border: 2px solid var(--irv-line);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--irv-grey);
+  transition:
+    background-color 500ms ease,
+    border-color 500ms ease,
+    color 500ms ease;
+  transition-delay: calc(var(--step-index, 0) * 240ms + 380ms);
+}
+
+.irv-flow.is-active .irv-flow-node {
+  border-color: var(--irv-blue);
+  background: var(--irv-blue);
+  color: #fff;
+}
+
+.irv-flow.is-active .irv-flow-step:last-child .irv-flow-node {
+  border-color: var(--irv-red);
+  background: var(--irv-red);
+}
+
+.irv-flow-card {
+  height: 100%;
+  padding: 1.35rem 1.5rem 1.5rem;
+  border: 1px solid var(--irv-line);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.irv-flow-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--irv-slate);
+}
+
+.irv-flow-body {
+  margin: 0.5rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--irv-ink);
+  text-wrap: pretty;
+}
+
+@media (max-width: 899px) {
+  /* Stop the vertical line at the last node. */
+  .irv-flow-step:last-child::before {
+    content: "";
+    position: absolute;
+    top: 2.5rem;
+    bottom: -1.5rem;
+    left: -3.5rem;
+    width: 2.375rem;
+    background: #fff;
+  }
+}
+
+@media (min-width: 900px) {
+  /* Runs from the first node's centre to the last node's centre. */
+  .irv-flow-track {
+    top: 1.125rem;
+    right: auto;
+    bottom: auto;
+    left: 1.1875rem;
+    width: calc(66.667% + 0.667rem);
+    height: 2px;
+  }
+
+  .irv-flow-fill {
+    background: linear-gradient(90deg, var(--irv-blue), var(--irv-red));
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .irv-flow.is-active .irv-flow-fill {
+    transform: scaleX(1);
+  }
+
+  .irv-flow-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 3.5rem 0 0;
+  }
+
+  .irv-flow-node {
+    top: -3.5rem;
+    left: 0;
+  }
+}
+
+/* My results */
+.irv-results {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 2rem 0 0;
+}
+
+.irv-result {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.25rem 1.25rem 1.35rem;
+  border-radius: 12px;
+  background: var(--irv-mist);
+}
+
+.irv-result-value {
+  order: -1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4.6vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--irv-red);
+}
+
+.irv-result-label {
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--irv-ink);
+}
+
+/* Programs */
+.irv-programs {
+  display: grid;
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .irv-programs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.irv-programs > li {
+  display: flex;
+}
+
+.irv-program {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  width: 100%;
+  padding: 1.4rem 1.4rem 1.5rem;
+  border: 1px solid var(--irv-line);
+  border-top: 4px solid var(--irv-blue);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.irv-program-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--irv-blue);
+}
+
+.irv-program-body {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--irv-ink);
+}
+
+/* Toolkit and footer */
+.irv-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.irv-chip {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--irv-line);
+  border-radius: 999px;
+  font-size: 0.9375rem;
+  color: var(--irv-slate);
+}
+
+.irv-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--irv-line);
+  font-size: 0.8125rem;
+  color: var(--irv-grey);
+}
+
+.irv-footer p {
+  max-width: 40rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.irv-link {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--irv-red);
+  text-decoration: none;
+}
+
+.irv-link:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .irv-flow-step,
+  .irv-flow-node,
+  .irv-flow-fill {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .irv-orbit,
+  .irv-node-label,
+  .irv-scan-track i {
+    animation: none !important;
+  }
+
+  /* A still loop: the dot rests on Engage. */
+  .irv-orbit {
+    transform: rotate(0.5turn);
+  }
+}
