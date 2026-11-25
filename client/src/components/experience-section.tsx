@@ -7,6 +7,7 @@ import {
 } from "@/hooks/useScrollAnimation";
 import { useRef, type RefObject } from "react";
 import { useCounterAnimation } from "@/hooks/use-counter-animation";
+import BmoSpotlight from "@/components/bmo-spotlight";
 import RoiSpotlight from "@/components/roi-spotlight";
 import SeventyThreeStringsSpotlight from "@/components/seventy-three-strings-spotlight";
 import { slugify } from "@/lib/utils";
@@ -34,7 +35,7 @@ interface Experience {
   spotlight?: SpotlightKey;
 }
 
-type SpotlightKey = "73-strings" | "roi";
+type SpotlightKey = "73-strings" | "roi" | "bmo";
 
 interface CounterStatProps {
   end: number;
@@ -62,6 +63,7 @@ export default function ExperienceSection() {
   const spotlightRefs: Record<SpotlightKey, RefObject<HTMLDivElement>> = {
     "73-strings": useRef<HTMLDivElement>(null),
     roi: useRef<HTMLDivElement>(null),
+    bmo: useRef<HTMLDivElement>(null),
   };
   const sectionAnimation = useScrollAnimation(SCROLL_REVEAL_OBSERVER_OPTIONS);
   const headerAnimation = useScrollAnimation({
@@ -103,6 +105,7 @@ export default function ExperienceSection() {
       technologies: ["Portfolio Management", "Client Relations", "Financial Analysis", "Excel"],
       logoSrc: bmoLogo,
       color: "#005EB8",
+      spotlight: "bmo",
     },
     {
       title: "Financial Advisor",
@@ -366,7 +369,9 @@ export default function ExperienceSection() {
                         className={`experience-card-spotlight scroll-slide-up ${revealClass}`}
                         style={getScrollRevealStyle(chipStartDelay + exp.technologies.length * 65 + 60)}
                       >
-                        {exp.spotlight === "roi" ? (
+                        {exp.spotlight === "bmo" ? (
+                          <BmoSpotlight originRef={spotlightRefs.bmo} logoSrc={exp.logoSrc} />
+                        ) : exp.spotlight === "roi" ? (
                           <RoiSpotlight originRef={spotlightRefs.roi} logoSrc={exp.logoSrc} />
                         ) : (
                           <SeventyThreeStringsSpotlight originRef={spotlightRefs["73-strings"]} logoSrc={exp.logoSrc} />

@@ -77,6 +77,7 @@ const allowedChangedBinaryHashes = new Map([
   ["client/public/resume-pages/Tyler-Bustard-Resume-page-1.webp", "81f25c78bb03b80ddfc4d5b0f209d67734f4f8195e919e53feb55c9fb21c5f92"],
   ["client/public/og-card.jpg", "f3f6b8da2e49d73bdcde6d77a2aee9dab47a0694c488911d2204862def94067b"],
   ["client/src/assets/fonts/archivo-latin-900-normal.woff2", "e915040a27c5310623be7ae57b6e4c508e8800206dcc37abe99984510e74a66d"],
+  ["client/src/assets/fonts/heebo-latin-wght-normal.woff2", "50dae2e12dae22c920388023e35aaebcd1e1d27bbe915c83d64210377e083e60"],
   ["attached_assets/73strings-clients/alvarez-marsal.png", "6046260ca0ddc65af6b5ff46f127d7a477695e1ac93f88e235659360935db450"],
   ["attached_assets/73strings-clients/balderton.png", "b64305b208f46a0ac13790e5494cbb236100b91723b45892f4a6750cf98196ea"],
   ["attached_assets/73strings-clients/berkshire-partners.png", "4ee1d726d89b7f2f8099ac400d45f787ce220147655286dcfc2e183bd3bf4210"],
