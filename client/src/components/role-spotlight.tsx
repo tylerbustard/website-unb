@@ -119,10 +119,19 @@ interface SpotlightCountUpProps {
   suffix?: string;
   delay?: number;
   duration?: number;
+  /** Decimal places to show while counting (e.g. 1 for $3.6M). */
+  decimals?: number;
 }
 
 /** Counts up to `to` the first time it is revealed. */
-export function SpotlightCountUp({ to, prefix = "", suffix = "", delay = 0, duration = 1500 }: SpotlightCountUpProps) {
+export function SpotlightCountUp({
+  to,
+  prefix = "",
+  suffix = "",
+  delay = 0,
+  duration = 1500,
+  decimals = 0,
+}: SpotlightCountUpProps) {
   const { revealed, scrollRoot, reducedMotion } = useContext(SpotlightContext);
   const { ref, inView } = useInView(revealed, scrollRoot);
   const [value, setValue] = useState(reducedMotion ? to : 0);
@@ -144,23 +153,24 @@ export function SpotlightCountUp({ to, prefix = "", suffix = "", delay = 0, dura
       }
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 4);
-      setValue(Math.round(to * eased));
+      const factor = 10 ** decimals;
+      setValue(Math.round(to * eased * factor) / factor);
       if (progress < 1) frame = requestAnimationFrame(tick);
     };
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, [delay, duration, inView, reducedMotion, revealed, to]);
+  }, [decimals, delay, duration, inView, reducedMotion, revealed, to]);
 
   return (
     <span ref={ref as unknown as RefObject<HTMLSpanElement>} className="role-spotlight-count">
       <span aria-hidden="true">
         {prefix}
-        {value}
+        {value.toFixed(decimals)}
         {suffix}
       </span>
       <span className="sr-only">
         {prefix}
-        {to}
+        {to.toFixed(decimals)}
         {suffix}
       </span>
     </span>

@@ -5,8 +5,9 @@ import {
   useScrollAnimation,
   useStaggeredScrollAnimation,
 } from "@/hooks/useScrollAnimation";
-import { useRef } from "react";
+import { useRef, type RefObject } from "react";
 import { useCounterAnimation } from "@/hooks/use-counter-animation";
+import RoiSpotlight from "@/components/roi-spotlight";
 import SeventyThreeStringsSpotlight from "@/components/seventy-three-strings-spotlight";
 import { slugify } from "@/lib/utils";
 import bmoLogo from "@assets/BMO_Logo.svg_1755913265896.png";
@@ -29,9 +30,11 @@ interface Experience {
   technologies: string[];
   logoSrc: string;
   color: string;
-  /** Shows the "Inside the role" expansion on this card. */
-  spotlight?: boolean;
+  /** Shows that company's "Inside the role" expansion on this card. */
+  spotlight?: SpotlightKey;
 }
+
+type SpotlightKey = "73-strings" | "roi";
 
 interface CounterStatProps {
   end: number;
@@ -56,7 +59,10 @@ function CounterStat({ end, suffix = '', prefix = '', label, className = '', del
 }
 
 export default function ExperienceSection() {
-  const spotlightCardRef = useRef<HTMLDivElement>(null);
+  const spotlightRefs: Record<SpotlightKey, RefObject<HTMLDivElement>> = {
+    "73-strings": useRef<HTMLDivElement>(null),
+    roi: useRef<HTMLDivElement>(null),
+  };
   const sectionAnimation = useScrollAnimation(SCROLL_REVEAL_OBSERVER_OPTIONS);
   const headerAnimation = useScrollAnimation({
     ...SCROLL_REVEAL_OBSERVER_OPTIONS,
@@ -80,6 +86,7 @@ export default function ExperienceSection() {
       technologies: ["Financial Analysis", "AI Integration", "Data Analytics", "Python", "SQL"],
       logoSrc: roiLogo,
       color: "#00A97F",
+      spotlight: "roi",
     },
     {
       title: "Portfolio Assistant",
@@ -194,7 +201,7 @@ export default function ExperienceSection() {
     technologies: ["Portfolio Monitoring", "Reconciliation", "NAV Validation", "SQL", "Excel"],
     logoSrc: seventyThreeStringsLogo,
     color: "#1e5ba8",
-    spotlight: true,
+    spotlight: "73-strings",
   };
 
   const experiences: Experience[] = [seventyThreeStringsExperience, ...baseExperiences];
@@ -261,7 +268,7 @@ export default function ExperienceSection() {
                   className={`experience-card-shell scroll-slide-up ${revealClass}`}
                 >
                   <div
-                    ref={exp.spotlight ? spotlightCardRef : undefined}
+                    ref={exp.spotlight ? spotlightRefs[exp.spotlight] : undefined}
                     className="experience-card-surface group bg-white border border-border rounded-lg p-6 transition-shadow duration-200 hover:shadow-sm"
                   >
                     {/* Header */}
@@ -359,7 +366,11 @@ export default function ExperienceSection() {
                         className={`experience-card-spotlight scroll-slide-up ${revealClass}`}
                         style={getScrollRevealStyle(chipStartDelay + exp.technologies.length * 65 + 60)}
                       >
-                        <SeventyThreeStringsSpotlight originRef={spotlightCardRef} logoSrc={exp.logoSrc} />
+                        {exp.spotlight === "roi" ? (
+                          <RoiSpotlight originRef={spotlightRefs.roi} logoSrc={exp.logoSrc} />
+                        ) : (
+                          <SeventyThreeStringsSpotlight originRef={spotlightRefs["73-strings"]} logoSrc={exp.logoSrc} />
+                        )}
                       </div>
                     ) : null}
                   </div>
