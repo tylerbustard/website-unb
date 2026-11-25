@@ -19,7 +19,8 @@ import { cn } from "@/lib/utils";
  * An Apple-style "+" trigger that morphs an experience card into an immersive
  * overlay. The card's shape grows into the panel (clip-path), its logo and
  * title fly into the panel header (FLIP), the surface shifts from white to
- * black, and the content cascades in as it scrolls into view.
+ * the theme's surface colour, and the content cascades in as it scrolls into
+ * view.
  */
 
 type Phase = "closed" | "opening" | "open" | "closing";
@@ -182,6 +183,13 @@ interface RoleSpotlightProps {
   meta: string;
   triggerLabel: string;
   triggerHint: string;
+  /**
+   * Theme class for the overlay. A theme can set --role-spotlight-surface,
+   * --role-spotlight-tile, --role-spotlight-logo-filter and
+   * --role-spotlight-title-color on .role-spotlight-panel; the morph animates
+   * from the card's look to those values.
+   */
+  className?: string;
   children: ReactNode;
 }
 
@@ -201,6 +209,7 @@ export function RoleSpotlight({
   meta,
   triggerLabel,
   triggerHint,
+  className,
   children,
 }: RoleSpotlightProps) {
   const [phase, setPhase] = useState<Phase>("closed");
@@ -286,9 +295,14 @@ export function RoleSpotlight({
       const options: KeyframeAnimationOptions = { duration, easing: EASE, fill: "both" };
       const originRect = origin.getBoundingClientRect();
       const panelRect = panel.getBoundingClientRect();
+      const panelStyle = getComputedStyle(panel);
+      const themeValue = (name: string, fallback: string) => panelStyle.getPropertyValue(name).trim() || fallback;
       const originRadius = Number.parseFloat(getComputedStyle(origin).borderTopLeftRadius) || 18;
-      const panelRadius =
-        Number.parseFloat(getComputedStyle(panel).getPropertyValue("--role-spotlight-radius")) || 0;
+      const panelRadius = Number.parseFloat(panelStyle.getPropertyValue("--role-spotlight-radius")) || 0;
+      const surface = themeValue("--role-spotlight-surface", "rgb(0, 0, 0)");
+      const tileColor = themeValue("--role-spotlight-tile", "rgb(255, 255, 255)");
+      const logoFilter = themeValue("--role-spotlight-logo-filter", "none");
+      const titleColor = themeValue("--role-spotlight-title-color", "rgb(245, 245, 247)");
 
       const cardShape = `inset(${originRect.top - panelRect.top}px ${panelRect.right - originRect.right}px ${
         panelRect.bottom - originRect.bottom
@@ -299,7 +313,7 @@ export function RoleSpotlight({
         { offset: 0, clipPath: cardShape, backgroundColor: "rgba(255, 255, 255, 0)" },
         { offset: 0.12, backgroundColor: "rgb(255, 255, 255)" },
         { offset: 0.4, backgroundColor: "rgb(255, 255, 255)" },
-        { offset: 1, clipPath: panelShape, backgroundColor: "rgb(0, 0, 0)" },
+        { offset: 1, clipPath: panelShape, backgroundColor: surface },
       ];
       const backdropFrames: Keyframe[] = [{ opacity: 0 }, { opacity: 1 }];
 
@@ -322,9 +336,14 @@ export function RoleSpotlight({
         const from = drawnBox(source);
         const to = drawnBox(target);
         if (from.width === 0 || to.width === 0) return null;
+        // A theme can recolour the mark as it lands (e.g. the brand colour turning white).
+        const filters = logoFilter !== "none" ? [{ filter: "none" }, { filter: logoFilter }] : [{}, {}];
         return [
-          { transform: `translate(${from.x - to.x}px, ${from.y - to.y}px) scale(${from.width / to.width})` },
-          { transform: "translate(0px, 0px) scale(1)" },
+          {
+            transform: `translate(${from.x - to.x}px, ${from.y - to.y}px) scale(${from.width / to.width})`,
+            ...filters[0],
+          },
+          { transform: "translate(0px, 0px) scale(1)", ...filters[1] },
         ] as Keyframe[];
       };
 
@@ -342,7 +361,7 @@ export function RoleSpotlight({
             transform: `translate(${from.left - to.left}px, ${from.top - to.top}px) scale(${fromSize / toSize})`,
             color: getComputedStyle(titleSource).color,
           },
-          { transform: "translate(0px, 0px) scale(1)", color: "rgb(245, 245, 247)" },
+          { transform: "translate(0px, 0px) scale(1)", color: titleColor },
         ];
       }
       const logoFrames = flyFrames(logoSource, logoRef.current);
@@ -368,7 +387,7 @@ export function RoleSpotlight({
       if (logoFrames && logoRef.current) animations.push(logoRef.current.animate(ordered(logoFrames), options));
       if (tile && logoFrames) {
         animations.push(
-          tile.animate(ordered([{ backgroundColor: "rgba(255, 255, 255, 0)" }, { backgroundColor: "rgb(255, 255, 255)" }]), options),
+          tile.animate(ordered([{ backgroundColor: "rgba(255, 255, 255, 0)" }, { backgroundColor: tileColor }]), options),
         );
       }
       if (titleFrames && titleRef.current) animations.push(titleRef.current.animate(ordered(titleFrames), options));
@@ -450,7 +469,7 @@ export function RoleSpotlight({
     isOpen && typeof document !== "undefined"
       ? createPortal(
           <SpotlightContext.Provider value={{ revealed, scrollRoot, reducedMotion }}>
-            <div className={cn("role-spotlight", revealed && "is-revealed", `is-${phase}`)}>
+            <div className={cn("role-spotlight", className, revealed && "is-revealed", `is-${phase}`)}>
               <div ref={backdropRef} className="role-spotlight-backdrop" onClick={closeSpotlight} aria-hidden="true" />
               <div
                 ref={panelRef}

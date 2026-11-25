@@ -77,6 +77,19 @@ const allowedChangedBinaryHashes = new Map([
   ["client/public/resume-pages/Tyler-Bustard-Resume-page-1.webp", "81f25c78bb03b80ddfc4d5b0f209d67734f4f8195e919e53feb55c9fb21c5f92"],
   ["client/public/og-card.jpg", "f3f6b8da2e49d73bdcde6d77a2aee9dab47a0694c488911d2204862def94067b"],
   ["client/src/assets/fonts/archivo-latin-900-normal.woff2", "e915040a27c5310623be7ae57b6e4c508e8800206dcc37abe99984510e74a66d"],
+  ["attached_assets/73strings-clients/alvarez-marsal.png", "6046260ca0ddc65af6b5ff46f127d7a477695e1ac93f88e235659360935db450"],
+  ["attached_assets/73strings-clients/balderton.png", "b64305b208f46a0ac13790e5494cbb236100b91723b45892f4a6750cf98196ea"],
+  ["attached_assets/73strings-clients/berkshire-partners.png", "4ee1d726d89b7f2f8099ac400d45f787ce220147655286dcfc2e183bd3bf4210"],
+  ["attached_assets/73strings-clients/blackstone.png", "7e79839fdc24b47da4649b77ec16a8d267e13bc69ed1b78692b43a6425cdf2cd"],
+  ["attached_assets/73strings-clients/bridgepoint.png", "f67ca124ed3a50b032b10b4ead9f464488bd83919fc7ea0abbe1fc1ee2bc4861"],
+  ["attached_assets/73strings-clients/bsq.png", "ac7f8b91a0d1782bde783de1f96ba32d9ab35ff73c09cd2a1751971243a3c3ff"],
+  ["attached_assets/73strings-clients/cohnreznick.png", "03e7b035fe8d354fa1078d8063bdc7d816f36d80d624ef378fbc20b671d452e1"],
+  ["attached_assets/73strings-clients/eurazeo.png", "6a495c38467b55e0378c1327423320d18885caf80a2636d6612791da704c1c0a"],
+  ["attached_assets/73strings-clients/gbl.png", "7082ec736d4258fd7edcf769d65953aab81b06e98844166c3c5c6da52f9ee88b"],
+  ["attached_assets/73strings-clients/hamilton-lane.png", "31bf8683bc6beab48a61133c14304d09d36e9b754744ea52b4953fe00cf4fe0f"],
+  ["attached_assets/73strings-clients/investec.png", "f7b0ce62e34f23f35801a94fdf732bc2e0111305558f589eb0037460ad22e9a5"],
+  ["attached_assets/73strings-clients/sofina.png", "67ef03884fac55ecc7f7c41877f11f0c72e604b4e2a14d3accd7a720f4ee44d3"],
+  ["attached_assets/73strings-clients/waystone.png", "58a51038bb968e2d1030285f2e03509bddf08eb9017ad0e83da5a7d18d1c22a1"],
 ]);
 const unexpectedBinaries = [];
 for (const file of regularFiles) {
