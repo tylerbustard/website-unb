@@ -17,6 +17,8 @@ import CsiSpotlight from "@/components/csi-spotlight";
 import BbgSpotlight from "@/components/bbg-spotlight";
 import EtsSpotlight from "@/components/ets-spotlight";
 import AifSpotlight from "@/components/aif-spotlight";
+import CategorySpotlight from "@/components/category-spotlight";
+import { categoryKeyByTitle, categoryPanels, type CategoryKey } from "@/components/category-panels";
 import unitedWayLogo from "@assets/United-Way-Logo_1755913265895.png";
 import rbcLogo from "@assets/rbc_logo.webp";
 import irvingLogo from "@assets/Irving_Oil.svg_1755913265895.png";
@@ -92,6 +94,12 @@ export default function CertificationsSection() {
     bbg: useRef<HTMLDivElement>(null),
     ets: useRef<HTMLDivElement>(null),
     aif: useRef<HTMLDivElement>(null),
+  };
+  const categorySpotlightRefs: Record<CategoryKey, RefObject<HTMLElement>> = {
+    invest: useRef<HTMLElement>(null),
+    advisory: useRef<HTMLElement>(null),
+    quant: useRef<HTMLElement>(null),
+    data: useRef<HTMLElement>(null),
   };
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
   const toggleCategory = (title: string) =>
@@ -365,16 +373,21 @@ export default function CertificationsSection() {
                   (() => {
                     const isCategoryVisible = certificationItemsAnimation.visibleItems.has(certificationRevealOrder.get(category.title) ?? -1);
                     const revealClass = isCategoryVisible ? 'visible' : '';
+                    const categoryKey = categoryKeyByTitle[category.title];
 
                     return (
                       <article
                         key={category.title}
+                        ref={categoryKey ? categorySpotlightRefs[categoryKey] : undefined}
                         id={`certifications-${slugify(category.title)}`}
                         className={`resume-certification-area homepage-certification-area rounded-lg border border-border bg-white p-5 transition-shadow duration-200 hover:shadow-sm scroll-slide-up ${revealClass}`}
                       >
                         <div className="resume-certification-area-header homepage-certification-area-header">
                           <div className="flex items-center justify-between gap-3">
-                            <h3 className="resume-certification-area-title homepage-certification-area-title">
+                            <h3
+                              className="resume-certification-area-title homepage-certification-area-title"
+                              data-spotlight-source="title"
+                            >
                               {category.title}
                             </h3>
                             <span className="rounded-full border border-border px-2 py-0.5 text-[0.66rem] font-semibold tabular-nums text-slate-500">
@@ -469,6 +482,14 @@ export default function CertificationsSection() {
                               ? "Show fewer"
                               : `Show all ${category.certifications.length}`}
                           </button>
+                        ) : null}
+                        {categoryKey ? (
+                          <div className={`experience-card-spotlight category-spotlight ${revealClass}`}>
+                            <CategorySpotlight
+                              originRef={categorySpotlightRefs[categoryKey]}
+                              config={categoryPanels[categoryKey]}
+                            />
+                          </div>
                         ) : null}
                       </article>
                     );

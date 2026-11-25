@@ -143,15 +143,17 @@ export function CredCards({ cards }: { cards: CredCard[] }) {
   );
 }
 
-export function CredFooter({ note, href, linkLabel }: { note: string; href: string; linkLabel: string }) {
+export function CredFooter({ note, href, linkLabel }: { note: string; href?: string; linkLabel?: string }) {
   return (
     <SpotlightReveal>
       <footer className="cred-footer">
         <p>{note}</p>
-        <a href={href} target="_blank" rel="noopener noreferrer" className="cred-link">
-          {linkLabel}
-          <span aria-hidden="true"> ›</span>
-        </a>
+        {href && linkLabel ? (
+          <a href={href} target="_blank" rel="noopener noreferrer" className="cred-link">
+            {linkLabel}
+            <span aria-hidden="true"> ›</span>
+          </a>
+        ) : null}
       </footer>
     </SpotlightReveal>
   );
