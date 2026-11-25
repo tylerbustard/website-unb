@@ -21,6 +21,12 @@ import unbLogo from "@assets/University_of_New_Brunswick_Logo.svg_1755912478863.
 import cfaLogo from "@assets/CFA_Institute_Logo_1755923720192.png";
 import csiLogo from "@assets/canadian securities institute_1755923720191.png";
 import bloombergLogo from "@assets/bloomberg_1755923720190.png";
+import trainingTheStreetLogo from "@assets/trainning the street_1755938972014.png";
+import wallStreetPrepLogo from "@assets/wall_street_prep_logo.webp";
+import etsLogo from "@assets/ets_logo.webp";
+import googleLogo from "@assets/google_logo.svg";
+import anthropicLogo from "@assets/anthropic_mark.png";
+import courseraLogo from "@assets/Coursera_1755937682843.png";
 
 // Community
 
@@ -66,6 +72,12 @@ export default function HeroSection() {
       { src: cfaLogo, alt: "CFA Institute", h: 19 },
       { src: csiLogo, alt: "Canadian Securities Institute" },
       { src: bloombergLogo, alt: "Bloomberg", h: 17 },
+      { src: trainingTheStreetLogo, alt: "Training The Street", h: 19 },
+      { src: wallStreetPrepLogo, alt: "Wall Street Prep", h: 22 },
+      { src: etsLogo, alt: "ETS", h: 20 },
+      { src: googleLogo, alt: "Google", h: 19 },
+      { src: anthropicLogo, alt: "Anthropic", h: 17 },
+      { src: courseraLogo, alt: "Coursera", h: 21 },
     ],
   ];
 
@@ -122,20 +134,25 @@ export default function HeroSection() {
             </dl>
             <div className="mt-5">
               <p className="hero-facts-label">Selected institutions</p>
-              <div className="mt-3.5 flex flex-wrap items-center gap-x-7 gap-y-3.5">
-                {institutionGroups.map((group, groupIndex) => (
-                  <div key={`logo-group-${groupIndex}`} className="flex flex-wrap items-center gap-x-7 gap-y-3.5">
-                    {groupIndex > 0 ? (
-                      <span className="hidden h-5 w-px bg-slate-300/90 sm:block" aria-hidden="true" />
-                    ) : null}
-                    {group.map((logo) => (
-                      <img
-                        key={logo.alt}
-                        src={logo.src}
-                        alt={logo.alt}
-                        className="hero2-logo"
-                        style={{ height: `${logo.h ?? 21}px` }}
-                      />
+              {/* Two rows: employers, then the university and certification issuers. */}
+              <div className="mt-3.5 flex flex-col gap-3.5">
+                {[[institutionGroups[0]], [institutionGroups[1], institutionGroups[2]]].map((row, rowIndex) => (
+                  <div key={`logo-row-${rowIndex}`} className="flex flex-wrap items-center gap-x-7 gap-y-3.5">
+                    {row.map((group, groupIndex) => (
+                      <Fragment key={`logo-group-${rowIndex}-${groupIndex}`}>
+                        {groupIndex > 0 ? (
+                          <span className="hidden h-5 w-px bg-slate-300/90 sm:block" aria-hidden="true" />
+                        ) : null}
+                        {group.map((logo) => (
+                          <img
+                            key={logo.alt}
+                            src={logo.src}
+                            alt={logo.alt}
+                            className="hero2-logo"
+                            style={{ height: `${logo.h ?? 21}px` }}
+                          />
+                        ))}
+                      </Fragment>
                     ))}
                   </div>
                 ))}
