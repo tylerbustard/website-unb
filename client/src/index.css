@@ -8346,3 +8346,858 @@ html.role-spotlight-open body {
     opacity: 1;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* RBC theme: RBC blue header and hero with white type and RBC yellow  */
+/* highlights, yellow primary buttons, then white and light grey       */
+/* sections with RBC blue headings                                     */
+/* ------------------------------------------------------------------ */
+
+.role-spotlight--rbc {
+  --rbc-blue: rgb(0, 106, 195);
+  --rbc-blue-deep: rgb(0, 51, 133);
+  --rbc-navy: rgb(0, 33, 92);
+  --rbc-yellow: rgb(254, 223, 1);
+  --rbc-ink: rgb(37, 37, 37);
+  --rbc-grey: rgb(88, 88, 88);
+  --rbc-line: rgb(222, 223, 224);
+  --rbc-mist: rgb(245, 247, 249);
+  --rbc-gutter: 1.25rem;
+  --rbc-inner-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .role-spotlight--rbc {
+    --rbc-gutter: 3.5rem;
+    --rbc-inner-bottom: 3.5rem;
+  }
+}
+
+.role-spotlight--rbc .role-spotlight-panel {
+  --role-spotlight-surface: rgb(0, 51, 133);
+  --role-spotlight-title-color: rgb(255, 255, 255);
+  background: var(--rbc-blue-deep);
+  color: #fff;
+}
+
+/* RBC's blue gradient fades in behind the hero once the panel has grown. */
+.role-spotlight--rbc .role-spotlight-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(90% 70% at 85% 10%, rgba(0, 106, 195, 0.9) 0%, rgba(0, 106, 195, 0) 60%),
+    linear-gradient(125deg, var(--rbc-navy) 0%, var(--rbc-blue-deep) 50%, rgb(0, 84, 170) 100%);
+  opacity: 0;
+  transition: opacity 700ms ease;
+}
+
+.role-spotlight--rbc.is-revealed .role-spotlight-panel::after {
+  opacity: 1;
+}
+
+.role-spotlight--rbc .role-spotlight-panel::before {
+  display: none;
+}
+
+.role-spotlight--rbc .role-spotlight-close {
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 33, 92, 0.25);
+  color: var(--rbc-blue);
+}
+
+.role-spotlight--rbc .role-spotlight-close:hover {
+  background: var(--rbc-yellow);
+  color: var(--rbc-ink);
+}
+
+.role-spotlight--rbc .role-spotlight-close:focus-visible {
+  outline-color: var(--rbc-yellow);
+}
+
+/* Lets the white body and grey band size themselves to the panel (100cqw). */
+.role-spotlight--rbc .role-spotlight-scroll {
+  container-type: inline-size;
+  scrollbar-color: rgba(0, 33, 92, 0.35) transparent;
+}
+
+.role-spotlight--rbc .role-spotlight-logo-tile {
+  border-radius: 6px;
+}
+
+.role-spotlight--rbc .role-spotlight-title {
+  font-weight: 500;
+  color: #fff;
+}
+
+.role-spotlight--rbc .role-spotlight-meta {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* Hero on RBC blue */
+.rbc-hero {
+  display: grid;
+  gap: 2.5rem;
+  padding: 2.75rem 0 3.5rem;
+}
+
+@media (min-width: 900px) {
+  .rbc-hero {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    align-items: center;
+    gap: 2.5rem;
+    padding: 3.25rem 0 4.5rem;
+  }
+}
+
+.rbc-tag {
+  display: inline-block;
+  margin: 0;
+  padding: 0.3rem 0.55rem;
+  background: var(--rbc-yellow);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rbc-ink);
+}
+
+.rbc-display {
+  margin: 1rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.6vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: #fff;
+  text-wrap: balance;
+}
+
+.rbc-highlight {
+  color: var(--rbc-yellow);
+}
+
+.rbc-lede {
+  max-width: 34rem;
+  margin: 1.25rem 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.86);
+  text-wrap: pretty;
+}
+
+.rbc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.rbc-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.875rem;
+  padding: 0.7rem 1.5rem;
+  border: 1px solid var(--rbc-yellow);
+  border-radius: 2px;
+  background: var(--rbc-yellow);
+  color: var(--rbc-ink);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.rbc-button:hover {
+  border-color: #fff;
+  background: #fff;
+}
+
+.rbc-button-ghost {
+  border-color: rgba(255, 255, 255, 0.85);
+  background: transparent;
+  color: #fff;
+}
+
+.rbc-button-ghost:hover {
+  color: var(--rbc-blue);
+}
+
+.rbc-button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+/* Hero visual */
+.rbc-hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.rbc-stage {
+  position: relative;
+  width: 100%;
+  max-width: 24rem;
+  padding: 3.75rem 1rem 4.25rem;
+}
+
+.rbc-card {
+  position: relative;
+  border-radius: 6px;
+  background: #fff;
+  color: var(--rbc-ink);
+  box-shadow: 0 24px 50px -20px rgba(0, 20, 60, 0.6);
+  overflow: hidden;
+}
+
+.rbc-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.95rem 1.1rem;
+  border-bottom: 3px solid var(--rbc-yellow);
+  background: var(--rbc-blue);
+  color: #fff;
+}
+
+.rbc-card-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.rbc-card-chip {
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  font-size: 0.6875rem;
+  font-weight: 600;
+}
+
+.rbc-card-list {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 1rem 1.1rem 1.15rem;
+  list-style: none;
+  font-size: 0.875rem;
+}
+
+.rbc-card-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.rbc-check {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 1.125rem;
+  height: 1.125rem;
+  border: 1.5px solid var(--rbc-line);
+  border-radius: 999px;
+  color: #fff;
+  animation: rbc-check 380ms ease both;
+  animation-delay: calc(var(--i) * 340ms + 700ms);
+}
+
+.rbc-check svg {
+  width: 0.625rem;
+  height: 0.625rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  animation: rbc-check-mark 260ms ease both;
+  animation-delay: calc(var(--i) * 340ms + 800ms);
+}
+
+@keyframes rbc-check {
+  to {
+    border-color: var(--rbc-blue);
+    background: var(--rbc-blue);
+  }
+}
+
+@keyframes rbc-check-mark {
+  to {
+    opacity: 1;
+  }
+}
+
+.rbc-float {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  max-width: 11rem;
+  padding: 0.7rem 0.9rem;
+  border-left: 3px solid var(--rbc-yellow);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--rbc-ink);
+  box-shadow: 0 14px 30px -14px rgba(0, 20, 60, 0.6);
+}
+
+.rbc-float-value {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--rbc-blue);
+}
+
+.rbc-float-label {
+  font-size: 0.6875rem;
+  line-height: 1.3;
+  color: var(--rbc-grey);
+}
+
+.rbc-float-a {
+  top: 0.25rem;
+  right: 0;
+  animation: rbc-float 7s ease-in-out infinite alternate;
+}
+
+.rbc-float-b {
+  bottom: 0.25rem;
+  left: 0;
+  animation: rbc-float 8s ease-in-out -2s infinite alternate-reverse;
+}
+
+@keyframes rbc-float {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-6px);
+  }
+}
+
+/* White body that runs to the bottom of the panel */
+.rbc-body {
+  margin-inline: calc((100% - 100cqw) / 2);
+  margin-bottom: calc(var(--rbc-inner-bottom) * -1);
+  padding-bottom: var(--rbc-inner-bottom);
+  background: #fff;
+  color: var(--rbc-ink);
+}
+
+.rbc-body-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--rbc-gutter);
+}
+
+.rbc-section {
+  padding-top: 4.5rem;
+}
+
+.rbc-section-first {
+  padding-top: 3.75rem;
+}
+
+@media (min-width: 900px) {
+  .rbc-section {
+    padding-top: 5.5rem;
+  }
+
+  .rbc-section-first {
+    padding-top: 4.5rem;
+  }
+}
+
+.rbc-role {
+  scroll-margin-top: -2.5rem;
+}
+
+.rbc-eyebrow {
+  margin: 0;
+  padding-left: 0.6rem;
+  border-left: 3px solid var(--rbc-yellow);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--rbc-blue);
+}
+
+.rbc-heading {
+  max-width: 26ch;
+  margin: 0.75rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.2vw, 2.375rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--rbc-blue);
+  text-wrap: balance;
+}
+
+.rbc-section-lede {
+  max-width: 40rem;
+  margin: 1rem 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--rbc-grey);
+  text-wrap: pretty;
+}
+
+/* Focus cards */
+.rbc-focus {
+  display: grid;
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .rbc-focus {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.rbc-focus > li {
+  display: flex;
+}
+
+.rbc-focus-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  width: 100%;
+  padding: 1.4rem 1.4rem 1.5rem;
+  border-bottom: 3px solid var(--rbc-yellow);
+  border-radius: 4px 4px 0 0;
+  background: var(--rbc-mist);
+}
+
+.rbc-focus-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--rbc-blue);
+}
+
+.rbc-focus-body {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--rbc-ink);
+}
+
+/* Workflow */
+.rbc-flow {
+  position: relative;
+  margin-top: 2.5rem;
+}
+
+.rbc-flow-track {
+  position: absolute;
+  top: 1.25rem;
+  bottom: 1.25rem;
+  left: 1.125rem;
+  width: 2px;
+  overflow: hidden;
+  background: var(--rbc-line);
+}
+
+.rbc-flow-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--rbc-blue);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1500ms cubic-bezier(0.32, 0.72, 0, 1) 200ms;
+}
+
+.rbc-flow.is-active .rbc-flow-fill {
+  transform: scaleY(1);
+}
+
+.rbc-flow-steps {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0 0 0 3.5rem;
+  list-style: none;
+}
+
+.rbc-flow-step {
+  position: relative;
+  opacity: 0.3;
+  transform: translateY(14px);
+  transition:
+    opacity 700ms ease,
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--step-index, 0) * 240ms + 300ms);
+}
+
+.rbc-flow.is-active .rbc-flow-step {
+  opacity: 1;
+  transform: none;
+}
+
+.rbc-flow-node {
+  position: absolute;
+  top: 0.85rem;
+  left: -3.5rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.375rem;
+  height: 2.375rem;
+  border: 2px solid var(--rbc-line);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--rbc-grey);
+  transition:
+    background-color 500ms ease,
+    border-color 500ms ease,
+    color 500ms ease,
+    box-shadow 500ms ease;
+  transition-delay: calc(var(--step-index, 0) * 240ms + 380ms);
+}
+
+.rbc-flow.is-active .rbc-flow-node {
+  border-color: var(--rbc-blue);
+  background: var(--rbc-blue);
+  box-shadow: 0 0 0 4px var(--rbc-yellow);
+  color: #fff;
+}
+
+.rbc-flow-card {
+  height: 100%;
+  padding: 1.35rem 1.5rem 1.5rem;
+  border: 1px solid var(--rbc-line);
+  border-radius: 4px;
+  background: #fff;
+}
+
+.rbc-flow-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--rbc-blue);
+}
+
+.rbc-flow-body {
+  margin: 0.5rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--rbc-ink);
+  text-wrap: pretty;
+}
+
+@media (max-width: 899px) {
+  /* Stop the vertical line at the last node. */
+  .rbc-flow-step:last-child::before {
+    content: "";
+    position: absolute;
+    top: 2.5rem;
+    bottom: -1.5rem;
+    left: -3.5rem;
+    width: 2.375rem;
+    background: #fff;
+  }
+}
+
+@media (min-width: 900px) {
+  /* Runs from the first node's centre to the last node's centre. */
+  .rbc-flow-track {
+    top: 1.125rem;
+    right: auto;
+    bottom: auto;
+    left: 1.1875rem;
+    width: calc(66.667% + 0.667rem);
+    height: 2px;
+  }
+
+  .rbc-flow-fill {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .rbc-flow.is-active .rbc-flow-fill {
+    transform: scaleX(1);
+  }
+
+  .rbc-flow-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 3.5rem 0 0;
+  }
+
+  .rbc-flow-node {
+    top: -3.5rem;
+    left: 0;
+  }
+}
+
+/* My results */
+.rbc-results {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 2rem 0 0;
+}
+
+.rbc-result {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.25rem 0 0;
+  border-top: 3px solid var(--rbc-yellow);
+}
+
+.rbc-result-value {
+  order: -1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4.6vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--rbc-blue);
+}
+
+.rbc-result-label {
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--rbc-ink);
+}
+
+/* RBC at a glance */
+.rbc-band {
+  margin-top: 4.5rem;
+  margin-inline: calc((100% - 100cqw) / 2);
+  padding: 4rem 0;
+  background: var(--rbc-mist);
+}
+
+@media (min-width: 900px) {
+  .rbc-band {
+    margin-top: 5.5rem;
+    padding: 4.75rem 0;
+  }
+}
+
+.rbc-band-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--rbc-gutter);
+}
+
+.rbc-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem 1rem;
+  margin: 2rem 0 0;
+}
+
+@media (min-width: 900px) {
+  .rbc-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.rbc-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.rbc-stat-value {
+  order: -1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.875rem, 3.3vw, 2.375rem);
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--rbc-blue);
+}
+
+.rbc-stat-label {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--rbc-grey);
+}
+
+.rbc-award {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2.25rem;
+  padding: 1.25rem 1.4rem;
+  border-left: 4px solid var(--rbc-yellow);
+  border-radius: 4px;
+  background: #fff;
+}
+
+.rbc-award-mark {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  background: var(--rbc-blue);
+  color: var(--rbc-yellow);
+}
+
+.rbc-award-mark svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.rbc-award-title {
+  display: block;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--rbc-blue);
+}
+
+.rbc-award-source {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.875rem;
+  color: var(--rbc-grey);
+}
+
+.rbc-products {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-top: 1.75rem;
+}
+
+.rbc-products-label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--rbc-ink);
+}
+
+.rbc-products ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rbc-products li {
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--rbc-line);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.875rem;
+  color: var(--rbc-blue);
+}
+
+/* Toolkit and footer */
+.rbc-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rbc-chip {
+  padding: 0.5rem 0.95rem;
+  border: 1px solid var(--rbc-line);
+  border-radius: 999px;
+  font-size: 0.9375rem;
+  color: var(--rbc-ink);
+}
+
+.rbc-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rbc-line);
+  font-size: 0.8125rem;
+  color: var(--rbc-grey);
+}
+
+.rbc-footer p {
+  max-width: 40rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.rbc-link {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--rbc-blue);
+  text-decoration: none;
+}
+
+.rbc-link:hover {
+  text-decoration: underline;
+}
+
+.rbc-link:focus-visible {
+  outline: 2px solid var(--rbc-blue);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rbc-flow-step,
+  .rbc-flow-node,
+  .rbc-flow-fill {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .rbc-check,
+  .rbc-check svg,
+  .rbc-float {
+    animation: none !important;
+  }
+
+  .role-spotlight--rbc .role-spotlight-panel::after {
+    transition: none;
+  }
+
+  /* Show the finished checklist. */
+  .rbc-check {
+    border-color: var(--rbc-blue);
+    background: var(--rbc-blue);
+  }
+
+  .rbc-check svg {
+    opacity: 1;
+  }
+}

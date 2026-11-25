@@ -8,6 +8,7 @@ import {
 import { useRef, type RefObject } from "react";
 import { useCounterAnimation } from "@/hooks/use-counter-animation";
 import BmoSpotlight from "@/components/bmo-spotlight";
+import RbcSpotlight from "@/components/rbc-spotlight";
 import RoiSpotlight from "@/components/roi-spotlight";
 import SeventyThreeStringsSpotlight from "@/components/seventy-three-strings-spotlight";
 import TdSpotlight from "@/components/td-spotlight";
@@ -36,7 +37,7 @@ interface Experience {
   spotlight?: SpotlightKey;
 }
 
-type SpotlightKey = "73-strings" | "roi" | "bmo" | "td";
+type SpotlightKey = "73-strings" | "roi" | "bmo" | "td" | "rbc-advisor" | "rbc-intern";
 
 interface CounterStatProps {
   end: number;
@@ -66,6 +67,8 @@ export default function ExperienceSection() {
     roi: useRef<HTMLDivElement>(null),
     bmo: useRef<HTMLDivElement>(null),
     td: useRef<HTMLDivElement>(null),
+    "rbc-advisor": useRef<HTMLDivElement>(null),
+    "rbc-intern": useRef<HTMLDivElement>(null),
   };
   const sectionAnimation = useScrollAnimation(SCROLL_REVEAL_OBSERVER_OPTIONS);
   const headerAnimation = useScrollAnimation({
@@ -141,6 +144,7 @@ export default function ExperienceSection() {
       technologies: ["Banking Products", "Financial Advisory", "Client Relationship Management", "Digital Banking"],
       logoSrc: rbcLogo,
       color: "#005DAA",
+      spotlight: "rbc-advisor",
     },
     {
       title: "Client Advisor Intern",
@@ -157,6 +161,7 @@ export default function ExperienceSection() {
       technologies: ["Client Service", "Digital Banking", "Problem Resolution", "Customer Support"],
       logoSrc: rbcLogo,
       color: "#005DAA",
+      spotlight: "rbc-intern",
     },
     {
       title: "Marketing Intern",
@@ -372,7 +377,13 @@ export default function ExperienceSection() {
                         className={`experience-card-spotlight scroll-slide-up ${revealClass}`}
                         style={getScrollRevealStyle(chipStartDelay + exp.technologies.length * 65 + 60)}
                       >
-                        {exp.spotlight === "td" ? (
+                        {exp.spotlight === "rbc-advisor" || exp.spotlight === "rbc-intern" ? (
+                          <RbcSpotlight
+                            originRef={spotlightRefs[exp.spotlight]}
+                            logoSrc={exp.logoSrc}
+                            role={exp.spotlight === "rbc-advisor" ? "advisor" : "intern"}
+                          />
+                        ) : exp.spotlight === "td" ? (
                           <TdSpotlight originRef={spotlightRefs.td} logoSrc={exp.logoSrc} />
                         ) : exp.spotlight === "bmo" ? (
                           <BmoSpotlight originRef={spotlightRefs.bmo} logoSrc={exp.logoSrc} />
