@@ -15866,3 +15866,982 @@ html.role-spotlight-open body {
     animation: none !important;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Shared credential panel parts (GRE, AI Fluency and the category     */
+/* panels). A theme sets the --cred-* colours on its .role-spotlight-- */
+/* class and adds its own hero visual and sections.                    */
+/* ------------------------------------------------------------------ */
+
+.role-spotlight--cred {
+  --cred-gutter: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .role-spotlight--cred {
+    --cred-gutter: 3.5rem;
+  }
+}
+
+.role-spotlight--cred .role-spotlight-panel {
+  background: var(--cred-surface);
+  color: var(--cred-body);
+}
+
+/* Lets the full-bleed band size itself to the panel (100cqw). */
+.role-spotlight--cred .role-spotlight-scroll {
+  container-type: inline-size;
+}
+
+.role-spotlight--cred .role-spotlight-header {
+  gap: 1.25rem;
+}
+
+.role-spotlight--cred .role-spotlight-logo-tile {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+}
+
+.role-spotlight--cred .role-spotlight-heading {
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--cred-line);
+}
+
+.role-spotlight--cred .role-spotlight-title {
+  color: var(--cred-ink);
+}
+
+.role-spotlight--cred .role-spotlight-meta {
+  color: var(--cred-soft);
+  text-wrap: balance;
+}
+
+.cred-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cred-accent);
+}
+
+.cred-display {
+  margin: 0.8rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.6vw, 3.25rem);
+  font-weight: var(--cred-display-weight, 700);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--cred-ink);
+  text-wrap: balance;
+}
+
+.cred-heading {
+  max-width: 24ch;
+  margin: 0.65rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.2vw, 2.375rem);
+  font-weight: var(--cred-heading-weight, 700);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--cred-ink);
+  text-wrap: balance;
+}
+
+.cred-lede,
+.cred-section-lede {
+  max-width: 34rem;
+  margin: 1.25rem 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--cred-body);
+  text-wrap: pretty;
+}
+
+.cred-section-lede {
+  max-width: 40rem;
+  margin-top: 1rem;
+}
+
+/* Hero */
+.cred-hero {
+  display: grid;
+  gap: 2.5rem;
+  padding-top: 2.75rem;
+}
+
+@media (min-width: 900px) {
+  .cred-hero {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: center;
+    padding-top: 3.25rem;
+  }
+}
+
+.cred-hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.cred-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.cred-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.65rem 1.3rem;
+  border: 1px solid var(--cred-accent);
+  border-radius: var(--cred-button-radius, 6px);
+  background: var(--cred-accent);
+  color: var(--cred-accent-ink);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.cred-button:hover {
+  border-color: var(--cred-accent-deep);
+  background: var(--cred-accent-deep);
+}
+
+.cred-button-outline {
+  border-color: var(--cred-outline, var(--cred-ink));
+  background: transparent;
+  color: var(--cred-ink);
+}
+
+.cred-button-outline:hover {
+  border-color: var(--cred-ink);
+  background: var(--cred-tint);
+}
+
+.cred-button:focus-visible,
+.cred-link:focus-visible {
+  outline: 2px solid var(--cred-accent);
+  outline-offset: 3px;
+}
+
+/* Full-bleed band */
+.cred-band {
+  margin-top: 4rem;
+  margin-inline: calc((100% - 100cqw) / 2);
+  padding: 4rem 0;
+  background: var(--cred-band-bg);
+  color: var(--cred-band-body);
+}
+
+@media (min-width: 900px) {
+  .cred-band {
+    margin-top: 5rem;
+    padding: 4.75rem 0;
+  }
+}
+
+.cred-band-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--cred-gutter);
+}
+
+.cred-band .cred-eyebrow {
+  color: var(--cred-band-accent);
+}
+
+.cred-band .cred-heading {
+  color: var(--cred-band-ink);
+}
+
+.cred-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 2.25rem 0 0;
+}
+
+@media (min-width: 900px) {
+  .cred-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.cred-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1.2rem 1.2rem 1.3rem;
+  border: 1px solid var(--cred-band-line);
+  border-radius: var(--cred-radius, 8px);
+  background: var(--cred-band-raised);
+}
+
+.cred-stat-value {
+  order: -1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.125rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--cred-band-accent);
+}
+
+.cred-stat-label {
+  font-size: 0.875rem;
+  line-height: 1.35;
+  color: var(--cred-band-body);
+}
+
+.cred-band-note {
+  max-width: 44rem;
+  margin: 2rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--cred-band-body);
+}
+
+/* Sections */
+.cred-section {
+  margin-top: 4.5rem;
+}
+
+@media (min-width: 900px) {
+  .cred-section {
+    margin-top: 5.5rem;
+  }
+}
+
+.cred-anchor {
+  scroll-margin-top: 1.5rem;
+}
+
+/* Workflow: a vertical line on phones, a horizontal line from 900px */
+.cred-flow {
+  position: relative;
+  margin-top: 2.5rem;
+}
+
+.cred-flow-track {
+  position: absolute;
+  top: 1.25rem;
+  bottom: 1.25rem;
+  left: 1.125rem;
+  width: 2px;
+  overflow: hidden;
+  background: var(--cred-line);
+}
+
+.cred-flow-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--cred-accent), var(--cred-done));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1500ms cubic-bezier(0.32, 0.72, 0, 1) 200ms;
+}
+
+.cred-flow.is-active .cred-flow-fill {
+  transform: scaleY(1);
+}
+
+.cred-flow-steps {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0 0 0 3.5rem;
+  list-style: none;
+}
+
+.cred-flow-step {
+  position: relative;
+  opacity: 0.3;
+  transform: translateY(14px);
+  transition:
+    opacity 700ms ease,
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--step-index, 0) * 240ms + 300ms);
+}
+
+.cred-flow.is-active .cred-flow-step {
+  opacity: 1;
+  transform: none;
+}
+
+.cred-flow-node {
+  position: absolute;
+  top: 0.85rem;
+  left: -3.5rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.375rem;
+  height: 2.375rem;
+  border: 2px solid var(--cred-node-line, var(--cred-line));
+  border-radius: 999px;
+  background: var(--cred-surface);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--cred-soft);
+  transition:
+    background-color 500ms ease,
+    border-color 500ms ease,
+    color 500ms ease;
+  transition-delay: calc(var(--step-index, 0) * 240ms + 380ms);
+}
+
+.cred-flow.is-active .cred-flow-node {
+  border-color: var(--cred-accent);
+  background: var(--cred-accent);
+  color: var(--cred-accent-ink);
+}
+
+.cred-flow.is-active .cred-flow-step:last-child .cred-flow-node {
+  border-color: var(--cred-done);
+  background: var(--cred-done);
+  color: var(--cred-done-ink);
+}
+
+.cred-flow-card {
+  height: 100%;
+  padding: 1.35rem 1.5rem 1.5rem;
+  border: 1px solid var(--cred-line);
+  border-radius: var(--cred-radius, 8px);
+  background: var(--cred-raised);
+}
+
+.cred-flow-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--cred-ink);
+}
+
+.cred-flow-body {
+  margin: 0.5rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--cred-body);
+  text-wrap: pretty;
+}
+
+@media (max-width: 899px) {
+  /* Stop the vertical line at the last node. */
+  .cred-flow-step:last-child::before {
+    content: "";
+    position: absolute;
+    top: 2.5rem;
+    bottom: -1.5rem;
+    left: -3.5rem;
+    width: 2.375rem;
+    background: var(--cred-surface);
+  }
+}
+
+@media (min-width: 900px) {
+  /* Runs from the first node's centre to the last node's centre. */
+  .cred-flow-track {
+    top: 1.125rem;
+    right: auto;
+    bottom: auto;
+    left: 1.1875rem;
+    width: calc(66.667% + 0.667rem);
+    height: 2px;
+  }
+
+  .cred-flow-fill {
+    background: linear-gradient(90deg, var(--cred-accent), var(--cred-done));
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .cred-flow.is-active .cred-flow-fill {
+    transform: scaleX(1);
+  }
+
+  .cred-flow-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 3.5rem 0 0;
+  }
+
+  .cred-flow-node {
+    top: -3.5rem;
+    left: 0;
+  }
+}
+
+/* Figures: rows on phones, three columns from 640px */
+.cred-results {
+  display: grid;
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+}
+
+.cred-result {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--cred-result-line, transparent);
+  border-radius: var(--cred-radius, 8px);
+  background: var(--cred-mist);
+}
+
+.cred-result-value {
+  order: -1;
+  flex: 0 0 auto;
+  min-width: 6.25rem;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 2.125rem;
+  font-weight: var(--cred-value-weight, 700);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--cred-value, var(--cred-accent));
+}
+
+.cred-result-label {
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--cred-body);
+}
+
+@media (min-width: 640px) {
+  .cred-results {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .cred-result {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.45rem;
+    padding: 1.25rem 1.25rem 1.35rem;
+  }
+
+  .cred-result-value {
+    flex: none;
+    font-size: clamp(2.25rem, 4.4vw, 3.25rem);
+  }
+}
+
+.cred-done {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 1.5rem 0 0;
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--cred-ink);
+  text-wrap: pretty;
+}
+
+.cred-done-check {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 999px;
+  background: var(--cred-done);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--cred-done-ink);
+}
+
+/* Cards */
+.cred-cards {
+  display: grid;
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .cred-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.cred-cards > li {
+  display: flex;
+}
+
+.cred-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  width: 100%;
+  padding: 1.35rem 1.4rem 1.5rem;
+  border: 1px solid var(--cred-line);
+  border-top: 3px solid var(--cred-accent);
+  border-radius: var(--cred-radius, 8px);
+  background: var(--cred-raised);
+}
+
+.cred-card-title {
+  font-family: var(--font-display);
+  font-size: 1.1875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--cred-ink);
+}
+
+.cred-card-body {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--cred-body);
+}
+
+/* Footer */
+.cred-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--cred-line);
+  font-size: 0.8125rem;
+  color: var(--cred-soft);
+}
+
+.cred-footer p {
+  max-width: 40rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.cred-link {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--cred-link, var(--cred-accent));
+  text-decoration: none;
+}
+
+.cred-link:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cred-flow-step,
+  .cred-flow-node,
+  .cred-flow-fill {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* GRE theme: cream pages, deep plum type and bands, lavender          */
+/* highlights behind headlines, square orange buttons, after ets.org   */
+/* ------------------------------------------------------------------ */
+
+.role-spotlight--ets {
+  --ets-plum: rgb(56, 0, 46);
+  --ets-cream: rgb(255, 251, 234);
+  --ets-orange: rgb(214, 57, 0);
+  --ets-lavender: rgb(214, 169, 255);
+  --ets-lavender-soft: rgb(241, 228, 255);
+  --cred-surface: rgb(255, 251, 234);
+  --cred-ink: rgb(56, 0, 46);
+  --cred-body: rgb(78, 52, 72);
+  --cred-soft: rgb(112, 88, 106);
+  --cred-line: rgba(56, 0, 46, 0.14);
+  --cred-raised: rgb(255, 255, 255);
+  --cred-mist: rgb(244, 234, 230);
+  --cred-tint: rgba(56, 0, 46, 0.06);
+  --cred-accent: rgb(214, 57, 0);
+  --cred-accent-deep: rgb(176, 46, 0);
+  --cred-accent-ink: rgb(255, 251, 234);
+  --cred-done: rgb(56, 0, 46);
+  --cred-done-ink: rgb(255, 251, 234);
+  --cred-band-bg: rgb(56, 0, 46);
+  --cred-band-ink: rgb(255, 251, 234);
+  --cred-band-body: rgba(255, 251, 234, 0.84);
+  --cred-band-raised: rgba(255, 255, 255, 0.06);
+  --cred-band-line: rgba(255, 251, 234, 0.16);
+  --cred-band-accent: rgb(214, 169, 255);
+  --cred-button-radius: 0;
+  --cred-radius: 4px;
+}
+
+.role-spotlight--ets .role-spotlight-panel {
+  --role-spotlight-surface: rgb(255, 251, 234);
+  --role-spotlight-tile: rgba(255, 255, 255, 0);
+  --role-spotlight-title-color: rgb(56, 0, 46);
+}
+
+.role-spotlight--ets .role-spotlight-panel::before {
+  display: none;
+}
+
+.role-spotlight--ets .role-spotlight-close {
+  background: var(--ets-cream);
+  box-shadow:
+    0 2px 10px rgba(56, 0, 46, 0.14),
+    inset 0 0 0 1px var(--cred-line);
+  color: var(--ets-plum);
+}
+
+.role-spotlight--ets .role-spotlight-close:hover {
+  background: var(--ets-orange);
+  color: var(--ets-cream);
+}
+
+.role-spotlight--ets .role-spotlight-close:focus-visible {
+  outline-color: var(--ets-orange);
+}
+
+.role-spotlight--ets .role-spotlight-scroll {
+  scrollbar-color: rgba(56, 0, 46, 0.3) transparent;
+}
+
+.role-spotlight--ets .role-spotlight-logo {
+  width: 3.5rem;
+  height: 2.6rem;
+}
+
+/* Plum sentence-case labels led by the GRE's orange arrow. */
+.role-spotlight--ets .cred-eyebrow {
+  gap: 0.45rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ets-plum);
+}
+
+.role-spotlight--ets .cred-eyebrow::before {
+  content: "";
+  flex: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  background: var(--ets-orange);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 5l13 13M19 7v12H7' fill='none' stroke='black' stroke-width='3.2'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 5l13 13M19 7v12H7' fill='none' stroke='black' stroke-width='3.2'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.role-spotlight--ets .cred-band .cred-eyebrow {
+  color: var(--ets-cream);
+}
+
+/* Lavender blocks behind each line, as in the GRE's headlines. */
+.ets-mark {
+  padding: 0 0.08em;
+  background: var(--ets-lavender);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Hero visual: my three scores on their scales */
+.ets-report {
+  width: 100%;
+  max-width: 26rem;
+  overflow: hidden;
+  border: 1px solid var(--cred-line);
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 30px 60px -34px rgba(56, 0, 46, 0.45);
+}
+
+.ets-report-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1.15rem;
+  background: var(--ets-plum);
+  color: var(--ets-cream);
+}
+
+.ets-report-title {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.ets-report-title small,
+.ets-report-total small {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 251, 234, 0.75);
+}
+
+.ets-report-total {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: var(--font-display);
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ets-lavender);
+}
+
+.ets-scales {
+  display: grid;
+  gap: 1.2rem;
+  margin: 0;
+  padding: 1.15rem 1.15rem 1.3rem;
+  list-style: none;
+}
+
+.ets-scale {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    "name name score"
+    "track track track"
+    "min pct max";
+  align-items: center;
+  gap: 0.4rem 0.5rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 500ms ease,
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i) * 140ms + 250ms);
+}
+
+.ets-report.is-active .ets-scale {
+  opacity: 1;
+  transform: none;
+}
+
+.ets-scale-name {
+  grid-area: name;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--ets-plum);
+}
+
+.ets-scale-score {
+  grid-area: score;
+  justify-self: end;
+  min-width: 2.75rem;
+  padding: 0.25rem 0.45rem;
+  border-radius: 2px;
+  background: var(--ets-orange);
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+  color: var(--ets-cream);
+  opacity: 0;
+  transform: scale(0.6);
+  transition:
+    opacity 300ms ease,
+    transform 450ms cubic-bezier(0.2, 1.4, 0.4, 1);
+  transition-delay: calc(var(--i) * 140ms + 1250ms);
+}
+
+.ets-report.is-active .ets-scale-score {
+  opacity: 1;
+  transform: none;
+}
+
+.ets-scale-track {
+  grid-area: track;
+  position: relative;
+  display: block;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--ets-lavender-soft);
+}
+
+.ets-scale-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--pos);
+  border-radius: inherit;
+  background: var(--ets-lavender);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1000ms cubic-bezier(0.32, 0.72, 0, 1);
+  transition-delay: calc(var(--i) * 140ms + 350ms);
+}
+
+.ets-scale-marker {
+  position: absolute;
+  top: -0.35rem;
+  bottom: -0.35rem;
+  left: 0;
+  width: 3px;
+  margin-left: -1.5px;
+  border-radius: 2px;
+  background: var(--ets-plum);
+  transition: left 1000ms cubic-bezier(0.32, 0.72, 0, 1);
+  transition-delay: calc(var(--i) * 140ms + 350ms);
+}
+
+/* Keeps the marker inside the track at the top of the scale. */
+.ets-scale.is-top .ets-scale-marker {
+  margin-left: -3px;
+}
+
+.ets-report.is-active .ets-scale-fill {
+  transform: none;
+}
+
+.ets-report.is-active .ets-scale-marker {
+  left: var(--pos);
+}
+
+.ets-scale-min,
+.ets-scale-max,
+.ets-scale-pct {
+  font-size: 0.6875rem;
+  line-height: 1.2;
+  color: var(--cred-soft);
+}
+
+.ets-scale-min {
+  grid-area: min;
+}
+
+.ets-scale-pct {
+  grid-area: pct;
+  justify-self: center;
+  font-weight: 600;
+  color: var(--ets-plum);
+}
+
+.ets-scale-max {
+  grid-area: max;
+  justify-self: end;
+}
+
+.ets-scale.is-top .ets-scale-max {
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: var(--ets-lavender);
+  font-weight: 700;
+  color: var(--ets-plum);
+}
+
+/* Percentile bars */
+.ets-pcts {
+  margin-top: 2rem;
+}
+
+.ets-pct-list {
+  display: grid;
+  gap: 1.35rem;
+  margin: 0;
+  padding: 1.5rem 1.5rem 1.6rem;
+  border: 1px solid var(--cred-line);
+  border-radius: 4px;
+  background: #fff;
+  list-style: none;
+}
+
+.ets-pct {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "name value"
+    "track track";
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+}
+
+.ets-pct-name {
+  grid-area: name;
+  font-size: 0.9375rem;
+  color: var(--cred-body);
+}
+
+.ets-pct-name b {
+  margin-left: 0.25rem;
+  font-weight: 700;
+  color: var(--ets-plum);
+}
+
+.ets-pct-value {
+  grid-area: value;
+  font-size: 0.9375rem;
+  white-space: nowrap;
+  color: var(--cred-soft);
+}
+
+.ets-pct-value .role-spotlight-count {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ets-orange);
+}
+
+.ets-pct-track {
+  grid-area: track;
+  display: block;
+  height: 0.875rem;
+  overflow: hidden;
+  background: var(--cred-mist);
+}
+
+.ets-pct-track i {
+  display: block;
+  width: var(--w);
+  height: 100%;
+  background: linear-gradient(90deg, var(--ets-lavender), var(--ets-plum));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1100ms cubic-bezier(0.32, 0.72, 0, 1);
+  transition-delay: calc(var(--i) * 140ms + 250ms);
+}
+
+.ets-pcts.is-active .ets-pct-track i {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ets-scale,
+  .ets-scale-score,
+  .ets-scale-fill,
+  .ets-pct-track i {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .ets-scale-marker {
+    left: var(--pos) !important;
+    transition: none !important;
+  }
+}

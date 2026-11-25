@@ -15,6 +15,7 @@ import CfaSpotlight from "@/components/cfa-spotlight";
 import TtsSpotlight from "@/components/tts-spotlight";
 import CsiSpotlight from "@/components/csi-spotlight";
 import BbgSpotlight from "@/components/bbg-spotlight";
+import EtsSpotlight from "@/components/ets-spotlight";
 import unitedWayLogo from "@assets/United-Way-Logo_1755913265895.png";
 import rbcLogo from "@assets/rbc_logo.webp";
 import irvingLogo from "@assets/Irving_Oil.svg_1755913265895.png";
@@ -30,7 +31,7 @@ import anthropicLogo from "@assets/anthropic_mark.png";
 import googleLogo from "@assets/google_logo.svg";
 
 /** Core credentials that open an "Inside the credential" panel. */
-type CoreSpotlightKey = "cfa" | "tts" | "csi" | "bbg";
+type CoreSpotlightKey = "cfa" | "tts" | "csi" | "bbg" | "ets";
 
 interface Certification {
   name: string;
@@ -88,6 +89,7 @@ export default function CertificationsSection() {
     tts: useRef<HTMLDivElement>(null),
     csi: useRef<HTMLDivElement>(null),
     bbg: useRef<HTMLDivElement>(null),
+    ets: useRef<HTMLDivElement>(null),
   };
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
   const toggleCategory = (title: string) =>
@@ -116,7 +118,7 @@ export default function CertificationsSection() {
     { name: "Discounted Cash Flow Analysis and Modeling", year: "2024", issuer: "Training The Street", logoSrc: trainingTheStreetLogo, spotlight: "tts" },
     { name: "Canadian Securities Course", year: "2021", issuer: "Canadian Securities Institute", logoSrc: csiLogo, spotlight: "csi" },
     { name: "Bloomberg Market Concepts", year: "2019", issuer: "Bloomberg", logoSrc: bloombergLogo, spotlight: "bbg" },
-    { name: "GRE General Test", year: "2024", issuer: "ETS", detail: "328 total; 170 Quantitative", logoSrc: etsLogo },
+    { name: "GRE General Test", year: "2024", issuer: "ETS", detail: "328 total; 170 Quantitative", logoSrc: etsLogo, spotlight: "ets" },
     { name: "AI Fluency: Framework and Foundations", year: "2026", issuer: "Anthropic", logoSrc: anthropicLogo },
   ];
 
@@ -196,6 +198,8 @@ export default function CertificationsSection() {
       case "bbg":
         // The panel draws the wordmark white on black, so it needs the transparent version.
         return <BbgSpotlight originRef={coreSpotlightRefs.bbg} logoSrc={bloombergWordmark} />;
+      case "ets":
+        return <EtsSpotlight originRef={coreSpotlightRefs.ets} logoSrc={credential.logoSrc ?? etsLogo} />;
     }
   };
   const certificationItemsAnimation = useStaggeredScrollAnimation(certificationRevealSequence.length + 3, {
