@@ -5,7 +5,7 @@ import {
   useScrollAnimation,
   useStaggeredScrollAnimation,
 } from "@/hooks/useScrollAnimation";
-import { useState, type Ref } from "react";
+import { useRef, useState, type ReactNode, type Ref } from "react";
 import { useCounterAnimation } from "@/hooks/use-counter-animation";
 import {
   BookOpen,
@@ -26,6 +26,7 @@ import {
 import universityLogo from "@assets/University_of_New_Brunswick_Logo.svg_1755912478863.png";
 import { getCertificateAsset } from "@/lib/certificates";
 import { CertificateModal, preloadCertificateImage, type CertificateModalCert } from "@/components/certificate-modal";
+import UnbSpotlight from "@/components/unb-spotlight";
 
 interface CounterStatProps {
   end: number;
@@ -69,6 +70,7 @@ export default function EducationSection() {
   });
 
   const [activeCert, setActiveCert] = useState<CertificateModalCert | null>(null);
+  const unbCardRef = useRef<HTMLDivElement>(null);
   const [expandedCoursework, setExpandedCoursework] = useState<Set<string>>(new Set());
   const toggleCoursework = (institution: string) =>
     setExpandedCoursework((prev) => {
@@ -207,6 +209,7 @@ export default function EducationSection() {
     revealIndex,
     revealOrder,
     cardRef,
+    spotlight,
   }: {
     education: EducationEntry;
     cardId?: string;
@@ -217,6 +220,7 @@ export default function EducationSection() {
     revealIndex: number;
     revealOrder: Map<string, number>;
     cardRef?: Ref<HTMLDivElement>;
+    spotlight?: ReactNode;
   }) => {
     const isVisible = educationItemsAnimation.visibleItems.has(revealIndex);
     const revealClass = isVisible ? "visible" : "";
@@ -239,12 +243,13 @@ export default function EducationSection() {
                 src={logo}
                 alt={`${education.institution} Logo`}
                 className={`experience-card-logo ${logoClassName}`}
+                data-spotlight-source="logo"
               />
             </div>
 
             <div className="experience-card-copy min-w-0">
               <div className="experience-card-title-row">
-                <h3 className="text-lg font-semibold text-foreground">
+                <h3 className="text-lg font-semibold text-foreground" data-spotlight-source="title">
                   <a
                     href={education.websiteUrl}
                     target="_blank"
@@ -388,6 +393,15 @@ export default function EducationSection() {
               : `Show coursework (${courseColumns.flat().reduce((n, c) => n + c.courses.length, 0)} courses)`}
           </button>
         </div>
+
+        {spotlight ? (
+          <div
+            className={`experience-card-spotlight scroll-slide-up ${revealClass}`}
+            style={getScrollRevealStyle(courseworkHeadingDelay + 120)}
+          >
+            {spotlight}
+          </div>
+        ) : null}
       </div>
     );
   };
@@ -423,6 +437,10 @@ export default function EducationSection() {
             courseColumns: unbCourseColumns,
             revealIndex: unbCardRevealIndex,
             revealOrder: unbEducationRevealOrder,
+            cardRef: unbCardRef,
+            spotlight: (
+              <UnbSpotlight originRef={unbCardRef} logoSrc={universityLogo} courseAreas={unbCourseCategories} />
+            ),
           })}
         </div>
 
