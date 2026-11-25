@@ -12,6 +12,7 @@ import { Eye } from "lucide-react";
 import { getCertificateAsset } from "@/lib/certificates";
 import { CertificateModal, preloadCertificateImage, type CertificateModalCert } from "@/components/certificate-modal";
 import CfaSpotlight from "@/components/cfa-spotlight";
+import TtsSpotlight from "@/components/tts-spotlight";
 import unitedWayLogo from "@assets/United-Way-Logo_1755913265895.png";
 import rbcLogo from "@assets/rbc_logo.webp";
 import irvingLogo from "@assets/Irving_Oil.svg_1755913265895.png";
@@ -26,7 +27,7 @@ import anthropicLogo from "@assets/anthropic_mark.png";
 import googleLogo from "@assets/google_logo.svg";
 
 /** Core credentials that open an "Inside the credential" panel. */
-type CoreSpotlightKey = "cfa";
+type CoreSpotlightKey = "cfa" | "tts";
 
 interface Certification {
   name: string;
@@ -81,6 +82,7 @@ export default function CertificationsSection() {
   const [activeCert, setActiveCert] = useState<CertificateModalCert | null>(null);
   const coreSpotlightRefs: Record<CoreSpotlightKey, RefObject<HTMLDivElement>> = {
     cfa: useRef<HTMLDivElement>(null),
+    tts: useRef<HTMLDivElement>(null),
   };
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
   const toggleCategory = (title: string) =>
@@ -106,7 +108,7 @@ export default function CertificationsSection() {
 
   const coreCredentials: Certification[] = [
     { name: "CFA Level I Candidate", year: "2026", issuer: "CFA Institute", logoSrc: cfaLogo, spotlight: "cfa" },
-    { name: "Discounted Cash Flow Analysis and Modeling", year: "2024", issuer: "Training The Street", logoSrc: trainingTheStreetLogo },
+    { name: "Discounted Cash Flow Analysis and Modeling", year: "2024", issuer: "Training The Street", logoSrc: trainingTheStreetLogo, spotlight: "tts" },
     { name: "Canadian Securities Course", year: "2021", issuer: "Canadian Securities Institute", logoSrc: csiLogo },
     { name: "Bloomberg Market Concepts", year: "2019", issuer: "Bloomberg", logoSrc: bloombergLogo },
     { name: "GRE General Test", year: "2024", issuer: "ETS", detail: "328 total; 170 Quantitative", logoSrc: etsLogo },
@@ -182,6 +184,8 @@ export default function CertificationsSection() {
     switch (key) {
       case "cfa":
         return <CfaSpotlight originRef={coreSpotlightRefs.cfa} logoSrc={credential.logoSrc ?? cfaLogo} />;
+      case "tts":
+        return <TtsSpotlight originRef={coreSpotlightRefs.tts} logoSrc={credential.logoSrc ?? trainingTheStreetLogo} />;
     }
   };
   const certificationItemsAnimation = useStaggeredScrollAnimation(certificationRevealSequence.length + 3, {

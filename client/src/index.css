@@ -12805,3 +12805,933 @@ html.role-spotlight-open body {
     animation: none !important;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Training The Street theme: white and light grey pages with bold     */
+/* headings, TTS green buttons with small rounded corners, a charcoal  */
+/* band, and the green of the TTS logo                                 */
+/* ------------------------------------------------------------------ */
+
+.role-spotlight--tts {
+  --tts-green: rgb(3, 128, 8);
+  --tts-green-deep: rgb(2, 98, 6);
+  --tts-green-bright: rgb(18, 205, 72);
+  --tts-green-tint: rgb(232, 245, 233);
+  --tts-charcoal: rgb(36, 36, 36);
+  --tts-ink: rgb(36, 36, 36);
+  --tts-grey: rgb(84, 89, 95);
+  --tts-line: rgb(226, 228, 224);
+  --tts-mist: rgb(244, 245, 242);
+  --tts-teal: rgb(49, 133, 156);
+  --tts-amber: rgb(255, 180, 0);
+  --tts-gutter: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .role-spotlight--tts {
+    --tts-gutter: 3.5rem;
+  }
+}
+
+.role-spotlight--tts .role-spotlight-panel {
+  --role-spotlight-surface: rgb(255, 255, 255);
+  --role-spotlight-tile: rgba(255, 255, 255, 0);
+  --role-spotlight-title-color: rgb(36, 36, 36);
+  background: #fff;
+  color: var(--tts-ink);
+}
+
+/* The charcoal and grey bands scroll straight under the edge; the close button has its own border. */
+.role-spotlight--tts .role-spotlight-panel::before {
+  display: none;
+}
+
+.role-spotlight--tts .role-spotlight-close {
+  background: #fff;
+  box-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.14),
+    inset 0 0 0 1px var(--tts-line);
+  color: var(--tts-ink);
+}
+
+.role-spotlight--tts .role-spotlight-close:hover {
+  background: var(--tts-green);
+  color: #fff;
+}
+
+.role-spotlight--tts .role-spotlight-close:focus-visible {
+  outline-color: var(--tts-green);
+}
+
+.role-spotlight--tts .role-spotlight-scroll {
+  container-type: inline-size;
+  scrollbar-color: rgba(36, 36, 36, 0.3) transparent;
+}
+
+.role-spotlight--tts .role-spotlight-header {
+  gap: 1.25rem;
+}
+
+.role-spotlight--tts .role-spotlight-logo-tile {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+}
+
+.role-spotlight--tts .role-spotlight-logo {
+  width: 4.25rem;
+  height: 2rem;
+}
+
+.role-spotlight--tts .role-spotlight-heading {
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--tts-line);
+}
+
+.role-spotlight--tts .role-spotlight-title {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--tts-ink);
+}
+
+.role-spotlight--tts .role-spotlight-meta {
+  color: var(--tts-grey);
+}
+
+/* Type: bold headings, after Montserrat on trainingthestreet.com */
+.tts-eyebrow {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tts-green);
+}
+
+.tts-eyebrow.is-light {
+  color: var(--tts-green-bright);
+}
+
+.tts-display {
+  margin: 0.75rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.6vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--tts-ink);
+  text-wrap: balance;
+}
+
+.tts-heading {
+  max-width: 26ch;
+  margin: 0.6rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.2vw, 2.375rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--tts-ink);
+  text-wrap: balance;
+}
+
+.tts-heading.is-light {
+  color: #fff;
+}
+
+.tts-lede,
+.tts-section-lede {
+  max-width: 34rem;
+  margin: 1.25rem 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--tts-ink);
+  text-wrap: pretty;
+}
+
+.tts-section-lede {
+  max-width: 40rem;
+  margin-top: 1rem;
+  color: var(--tts-grey);
+}
+
+/* Hero */
+.tts-hero {
+  display: grid;
+  gap: 2.5rem;
+  padding-top: 2.75rem;
+}
+
+@media (min-width: 900px) {
+  .tts-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    padding-top: 3.25rem;
+  }
+}
+
+.tts-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.tts-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.875rem;
+  padding: 0.75rem 1.35rem;
+  border: 1px solid var(--tts-green);
+  border-radius: 8px;
+  background: var(--tts-green);
+  color: #fff;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.tts-button:hover {
+  border-color: var(--tts-green-deep);
+  background: var(--tts-green-deep);
+}
+
+.tts-button-outline {
+  border-color: var(--tts-charcoal);
+  background: #fff;
+  color: var(--tts-charcoal);
+}
+
+.tts-button-outline:hover {
+  border-color: var(--tts-charcoal);
+  background: var(--tts-charcoal);
+  color: #fff;
+}
+
+.tts-button:focus-visible,
+.tts-link:focus-visible {
+  outline: 2px solid var(--tts-green);
+  outline-offset: 3px;
+}
+
+/* Hero visual: a DCF model as a spreadsheet card */
+.tts-hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.tts-stage {
+  position: relative;
+  width: 100%;
+  max-width: 25rem;
+  padding: 0.5rem 0 3rem;
+}
+
+.tts-model {
+  overflow: hidden;
+  border: 1px solid var(--tts-line);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 24px 48px -28px rgba(0, 0, 0, 0.45);
+}
+
+.tts-model-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.9rem;
+  background: var(--tts-charcoal);
+}
+
+.tts-model-dots {
+  display: inline-flex;
+  gap: 0.3rem;
+}
+
+.tts-model-dots i {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.tts-model-dots i:first-child {
+  background: var(--tts-green-bright);
+}
+
+.tts-model-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+}
+
+.tts-formula {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.9rem;
+  border-bottom: 1px solid var(--tts-line);
+  background: var(--tts-mist);
+}
+
+.tts-fx {
+  font-size: 0.75rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--tts-grey);
+}
+
+.tts-formula code {
+  overflow: hidden;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--tts-ink);
+}
+
+.tts-chart {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  align-items: end;
+  gap: 0.55rem;
+  height: 11rem;
+  padding: 1rem 1rem 0.5rem;
+}
+
+.tts-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  height: 100%;
+}
+
+.tts-col-plot {
+  position: relative;
+  flex: 1;
+  width: 100%;
+}
+
+.tts-col-fcf,
+.tts-col-pv,
+.tts-col-ev {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 4px 4px 0 0;
+}
+
+/* Each year's projected cash flow grows in, then its present value shrinks below it. */
+.tts-col-fcf {
+  height: var(--fcf);
+  border: 1px dashed rgba(3, 128, 8, 0.45);
+  background: var(--tts-green-tint);
+  transform-origin: bottom;
+  animation: tts-grow 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i) * 110ms + 350ms);
+}
+
+.tts-col-pv {
+  height: var(--pv);
+  background: var(--tts-green);
+  animation: tts-discount 900ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  animation-delay: calc(var(--i) * 110ms + 1250ms);
+}
+
+.tts-col.is-terminal .tts-col-pv {
+  background: var(--tts-teal);
+}
+
+.tts-col-ev {
+  height: 100%;
+  background: linear-gradient(180deg, var(--tts-green-bright), var(--tts-green));
+  transform-origin: bottom;
+  animation: tts-grow 800ms cubic-bezier(0.16, 1, 0.3, 1) 2300ms both;
+}
+
+.tts-col-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--tts-grey);
+}
+
+.tts-col.is-ev .tts-col-label {
+  color: var(--tts-green);
+}
+
+@keyframes tts-grow {
+  from {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes tts-discount {
+  from {
+    height: var(--fcf);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+}
+
+/* Right-aligned so the certificate badge can overlap the card's left corner. */
+.tts-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.4rem 1rem;
+  padding: 0.25rem 1rem 1.5rem;
+  font-size: 0.6875rem;
+  color: var(--tts-grey);
+}
+
+.tts-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.tts-legend i {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 2px;
+}
+
+.tts-legend i.is-fcf {
+  border: 1px dashed rgba(3, 128, 8, 0.45);
+  background: var(--tts-green-tint);
+}
+
+.tts-legend i.is-pv {
+  background: var(--tts-green);
+}
+
+.tts-badge {
+  position: absolute;
+  bottom: 0;
+  left: -0.5rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 0.7rem 1rem 0.75rem;
+  border-radius: 10px;
+  background: var(--tts-green);
+  box-shadow: 0 18px 36px -18px rgba(3, 128, 8, 0.75);
+  color: #fff;
+  animation: tts-float 6s ease-in-out infinite;
+}
+
+.tts-badge-kicker {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tts-badge-value {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+@keyframes tts-float {
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Charcoal band */
+.tts-band {
+  position: relative;
+  overflow: hidden;
+  margin-top: 4rem;
+  margin-inline: calc((100% - 100cqw) / 2);
+  padding: 4rem 0;
+  background: var(--tts-charcoal);
+  color: #fff;
+}
+
+@media (min-width: 900px) {
+  .tts-band {
+    margin-top: 5rem;
+    padding: 4.75rem 0;
+  }
+}
+
+/* Faint spreadsheet gridlines fading in toward the right, with one selected cell. */
+.tts-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 5rem 1.75rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent 45%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 45%, #000 100%);
+  pointer-events: none;
+}
+
+.tts-band::after {
+  content: "";
+  position: absolute;
+  top: 3.5rem;
+  left: 45rem;
+  width: calc(5rem + 1px);
+  height: calc(1.75rem + 1px);
+  border: 2px solid var(--tts-green-bright);
+  box-shadow: 4px 4px 0 -2px var(--tts-green-bright);
+  pointer-events: none;
+}
+
+@media (max-width: 899px) {
+  .tts-band::after {
+    display: none;
+  }
+}
+
+.tts-band-inner {
+  position: relative;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--tts-gutter);
+}
+
+.tts-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem 1rem;
+  margin: 2.25rem 0 0;
+}
+
+@media (min-width: 900px) {
+  .tts-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.tts-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding-top: 1rem;
+  border-top: 3px solid var(--tts-green-bright);
+}
+
+.tts-stat-value {
+  order: -1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.tts-stat-label {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.tts-band-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-top: 2rem;
+}
+
+.tts-band-note {
+  max-width: 34rem;
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.tts-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.875rem;
+  color: #fff;
+}
+
+.tts-stars {
+  letter-spacing: 0.1em;
+  color: var(--tts-amber);
+}
+
+/* Sections */
+.tts-section {
+  margin-top: 4.5rem;
+}
+
+@media (min-width: 900px) {
+  .tts-section {
+    margin-top: 5.5rem;
+  }
+}
+
+.tts-model-section {
+  scroll-margin-top: 1.5rem;
+}
+
+/* Workflow */
+.tts-flow {
+  position: relative;
+  margin-top: 2.5rem;
+}
+
+.tts-flow-track {
+  position: absolute;
+  top: 1.25rem;
+  bottom: 1.25rem;
+  left: 1.125rem;
+  width: 2px;
+  overflow: hidden;
+  background: var(--tts-line);
+}
+
+.tts-flow-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--tts-green-bright), var(--tts-green));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1500ms cubic-bezier(0.32, 0.72, 0, 1) 200ms;
+}
+
+.tts-flow.is-active .tts-flow-fill {
+  transform: scaleY(1);
+}
+
+.tts-flow-steps {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0 0 0 3.5rem;
+  list-style: none;
+}
+
+.tts-flow-step {
+  position: relative;
+  opacity: 0.3;
+  transform: translateY(14px);
+  transition:
+    opacity 700ms ease,
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--step-index, 0) * 240ms + 300ms);
+}
+
+.tts-flow.is-active .tts-flow-step {
+  opacity: 1;
+  transform: none;
+}
+
+.tts-flow-node {
+  position: absolute;
+  top: 0.85rem;
+  left: -3.5rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.375rem;
+  height: 2.375rem;
+  border: 2px solid var(--tts-line);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--tts-grey);
+  transition:
+    background-color 500ms ease,
+    border-color 500ms ease,
+    color 500ms ease;
+  transition-delay: calc(var(--step-index, 0) * 240ms + 380ms);
+}
+
+.tts-flow.is-active .tts-flow-node {
+  border-color: var(--tts-green);
+  background: var(--tts-green);
+  color: #fff;
+}
+
+.tts-flow.is-active .tts-flow-step:last-child .tts-flow-node {
+  border-color: var(--tts-charcoal);
+  background: var(--tts-charcoal);
+}
+
+.tts-flow-card {
+  height: 100%;
+  padding: 1.35rem 1.5rem 1.5rem;
+  border: 1px solid var(--tts-line);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.tts-flow-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--tts-ink);
+}
+
+.tts-flow-body {
+  margin: 0.5rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--tts-ink);
+  text-wrap: pretty;
+}
+
+@media (max-width: 899px) {
+  /* Stop the vertical line at the last node. */
+  .tts-flow-step:last-child::before {
+    content: "";
+    position: absolute;
+    top: 2.5rem;
+    bottom: -1.5rem;
+    left: -3.5rem;
+    width: 2.375rem;
+    background: #fff;
+  }
+}
+
+@media (min-width: 900px) {
+  /* Runs from the first node's centre to the last node's centre. */
+  .tts-flow-track {
+    top: 1.125rem;
+    right: auto;
+    bottom: auto;
+    left: 1.1875rem;
+    width: calc(66.667% + 0.667rem);
+    height: 2px;
+  }
+
+  .tts-flow-fill {
+    background: linear-gradient(90deg, var(--tts-green-bright), var(--tts-green));
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .tts-flow.is-active .tts-flow-fill {
+    transform: scaleX(1);
+  }
+
+  .tts-flow-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 3.5rem 0 0;
+  }
+
+  .tts-flow-node {
+    top: -3.5rem;
+    left: 0;
+  }
+}
+
+/* My certificate, with the double green border of the real one */
+.tts-cert {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  max-width: 40rem;
+  margin: 2.5rem auto 0;
+  padding: 2.25rem 1.75rem 2rem;
+  border: 4px solid var(--tts-green);
+  border-radius: 4px;
+  background: #fff;
+  box-shadow:
+    inset 0 0 0 6px #fff,
+    inset 0 0 0 8px var(--tts-green);
+  text-align: center;
+}
+
+.tts-cert-kicker {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.6vw, 1.625rem);
+  font-weight: 700;
+  color: var(--tts-green);
+}
+
+.tts-cert-name {
+  margin-top: 0.35rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400;
+  color: rgb(86, 98, 96);
+}
+
+.tts-cert-course {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--tts-ink);
+}
+
+.tts-cert-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 2rem;
+  margin: 1rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--tts-line);
+}
+
+.tts-cert-meta div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.tts-cert-meta dt {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tts-grey);
+}
+
+.tts-cert-meta dd {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--tts-ink);
+}
+
+/* How Training The Street teaches, on a light grey band */
+.tts-formats {
+  margin-top: 4.5rem;
+  margin-inline: calc((100% - 100cqw) / 2);
+  padding: 4rem 0;
+  background: var(--tts-mist);
+}
+
+@media (min-width: 900px) {
+  .tts-formats {
+    margin-top: 5.5rem;
+    padding: 4.75rem 0;
+  }
+}
+
+.tts-formats-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--tts-gutter);
+}
+
+.tts-cards {
+  display: grid;
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .tts-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.tts-cards > li {
+  display: flex;
+}
+
+.tts-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  width: 100%;
+  padding: 1.4rem 1.5rem 1.5rem;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.tts-card-title {
+  font-family: var(--font-display);
+  font-size: 1.1875rem;
+  font-weight: 700;
+  color: var(--tts-green);
+}
+
+.tts-card-body {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--tts-ink);
+}
+
+/* Footer */
+.tts-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--tts-line);
+  font-size: 0.8125rem;
+  color: var(--tts-grey);
+}
+
+.tts-footer p {
+  max-width: 40rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.tts-link {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--tts-green);
+  text-decoration: none;
+}
+
+.tts-link:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tts-flow-step,
+  .tts-flow-node,
+  .tts-flow-fill {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* The finished model: every bar at its final height, and a still badge. */
+  .tts-col-fcf,
+  .tts-col-pv,
+  .tts-col-ev,
+  .tts-badge {
+    animation: none !important;
+  }
+}
