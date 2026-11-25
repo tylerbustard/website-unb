@@ -1,28 +1,12 @@
 import {
   SCROLL_REVEAL_OBSERVER_OPTIONS,
-  getScrollRevealDelay,
   getScrollRevealStyle,
   useScrollAnimation,
   useStaggeredScrollAnimation,
 } from "@/hooks/useScrollAnimation";
 import { useRef, useState, type ReactNode, type Ref } from "react";
 import { useCounterAnimation } from "@/hooks/use-counter-animation";
-import {
-  BookOpen,
-  BriefcaseBusiness,
-  Eye,
-  Globe2,
-  Landmark,
-  Megaphone,
-  MessagesSquare,
-  MonitorCog,
-  ReceiptText,
-  Scale,
-  Sigma,
-  TrendingUp,
-  Workflow,
-  type LucideIcon,
-} from "lucide-react";
+import { Eye } from "lucide-react";
 import universityLogo from "@assets/University_of_New_Brunswick_Logo.svg_1755912478863.png";
 import { getCertificateAsset } from "@/lib/certificates";
 import { CertificateModal, preloadCertificateImage, type CertificateModalCert } from "@/components/certificate-modal";
@@ -59,7 +43,7 @@ type EducationEntry = {
   year: string;
 };
 
-type CourseCategory = { title: string; icon: LucideIcon; courses: string[] };
+type CourseCategory = { title: string; courses: string[] };
 
 export default function EducationSection() {
   const sectionAnimation = useScrollAnimation(SCROLL_REVEAL_OBSERVER_OPTIONS);
@@ -71,14 +55,6 @@ export default function EducationSection() {
 
   const [activeCert, setActiveCert] = useState<CertificateModalCert | null>(null);
   const unbCardRef = useRef<HTMLDivElement>(null);
-  const [expandedCoursework, setExpandedCoursework] = useState<Set<string>>(new Set());
-  const toggleCoursework = (institution: string) =>
-    setExpandedCoursework((prev) => {
-      const next = new Set(prev);
-      if (next.has(institution)) next.delete(institution);
-      else next.add(institution);
-      return next;
-    });
 
   const unbEducation: EducationEntry = {
     institution: "University of New Brunswick",
@@ -97,100 +73,61 @@ export default function EducationSection() {
   const unbCourseCategories: CourseCategory[] = [
     {
       title: "Finance",
-      icon: Landmark,
       courses: ["Managerial Finance", "Corporate Finance", "Financial Markets & Institutions", "Theory of Finance", "International Financial Management", "Student Investment Fund I"],
     },
     {
       title: "Quantitative & Statistics",
-      icon: Sigma,
       courses: ["Business Decision Analysis (I & II)", "Management Science", "Advanced Statistics for Business", "Introduction to Calculus I", "Mathematics for Business"],
     },
     {
       title: "Economics",
-      icon: TrendingUp,
       courses: ["Introductory Microeconomics", "Introductory Macroeconomics", "Contemporary Issues in the Canadian Economy", "Intermediate Microeconomics"],
     },
     {
       title: "Accounting",
-      icon: ReceiptText,
       courses: ["Accounting for Managers I", "Accounting Lab", "Intermediate Accounting I"],
     },
     {
       title: "Operations & Strategy",
-      icon: Workflow,
       courses: ["Competitive Strategy", "Operations Management I"],
     },
     {
       title: "Marketing",
-      icon: Megaphone,
       courses: ["Principles of Marketing", "Marketing Management"],
     },
     {
       title: "Information Systems",
-      icon: MonitorCog,
       courses: ["Introduction to Management Information Systems", "Introduction to Computer Programming I (Java)"],
     },
     {
       title: "Law & Ethics",
-      icon: Scale,
       courses: ["Business Ethics", "Business Law"],
     },
     {
       title: "Communications",
-      icon: MessagesSquare,
       courses: ["Business Communications (I & II)", "Communicating in French I"],
     },
     {
       title: "Political Science",
-      icon: Globe2,
       courses: ["Intro to Canadian Politics", "Global Political Studies", "Politics of Globalization"],
     },
     {
       title: "Liberal Arts",
-      icon: BookOpen,
       courses: ["Introduction to Logic, Reasoning & Critical Thinking", "History of Communication"],
     },
     {
       title: "Professional Development",
-      icon: BriefcaseBusiness,
       courses: ["Introduction to Organizational Behaviour", "Everything I Need to Know in First Year"],
     },
   ];
 
-  const buildCourseColumns = (categories: CourseCategory[], leftColumnTitles: Set<string>) => [
-    categories.filter((category) => leftColumnTitles.has(category.title)),
-    categories.filter((category) => !leftColumnTitles.has(category.title)),
-  ];
-
-  const buildRevealSequence = (columns: CourseCategory[][]) => [
-    ...Array.from({ length: Math.max(columns[0].length, columns[1].length) }, (_, rowIndex) => [
-      columns[0][rowIndex]?.title,
-      columns[1][rowIndex]?.title,
-    ]).flat().filter(Boolean),
-  ] as string[];
-
-  const unbLeftColumnCourseTitles = new Set([
-    "Finance",
-    "Economics",
-    "Operations & Strategy",
-    "Information Systems",
-    "Communications",
-    "Liberal Arts",
-  ]);
-
-  const unbCourseColumns = buildCourseColumns(unbCourseCategories, unbLeftColumnCourseTitles);
   const totalCourses = unbCourseCategories.reduce(
     (sum, category) => sum + category.courses.length,
     0,
   );
 
-  const unbEducationRevealSequence = buildRevealSequence(unbCourseColumns);
   const unbCardRevealIndex = 0;
-  const unbCourseRevealStartIndex = unbCardRevealIndex + 1;
-  const highlightsRevealStartIndex = unbCourseRevealStartIndex + unbEducationRevealSequence.length;
-  const unbEducationRevealOrder = new Map(
-    unbEducationRevealSequence.map((title, index) => [title, unbCourseRevealStartIndex + index]),
-  );
+  const highlightsRevealStartIndex = unbCardRevealIndex + 1;
   const educationItemsAnimation = useStaggeredScrollAnimation(highlightsRevealStartIndex + 3, {
     ...SCROLL_REVEAL_OBSERVER_OPTIONS,
     threshold: 0.02,
@@ -205,9 +142,7 @@ export default function EducationSection() {
     logo,
     logoClassName = "",
     achievements,
-    courseColumns,
     revealIndex,
-    revealOrder,
     cardRef,
     spotlight,
   }: {
@@ -216,15 +151,12 @@ export default function EducationSection() {
     logo: string;
     logoClassName?: string;
     achievements: string[];
-    courseColumns: CourseCategory[][];
     revealIndex: number;
-    revealOrder: Map<string, number>;
     cardRef?: Ref<HTMLDivElement>;
     spotlight?: ReactNode;
   }) => {
     const isVisible = educationItemsAnimation.visibleItems.has(revealIndex);
     const revealClass = isVisible ? "visible" : "";
-    const courseworkHeadingDelay = getScrollRevealDelay("body", achievements.length + 2);
     const educationAsset = getCertificateAsset(education.institution);
 
     return (
@@ -306,7 +238,7 @@ export default function EducationSection() {
         </div>
 
         {achievements.length > 0 ? (
-        <div className="mb-4">
+        <div>
           <h4
             className={`text-sm font-semibold text-foreground mb-2 scroll-slide-up ${revealClass}`}
             style={getScrollRevealStyle("body", 1)}
@@ -328,76 +260,10 @@ export default function EducationSection() {
         </div>
         ) : null}
 
-        <div className="mt-5 border-t border-border/50 pt-5">
-          <h4
-            className={`text-sm font-semibold text-foreground scroll-slide-up ${revealClass}`}
-            style={getScrollRevealStyle(courseworkHeadingDelay)}
-          >
-            Coursework
-          </h4>
-
-          {expandedCoursework.has(education.institution) ? (
-          <div className="homepage-coursework-panel mt-3">
-            <div className="homepage-coursework-columns">
-              {courseColumns.map((column, columnIndex) => (
-                <div key={`${education.institution}-course-column-${columnIndex}`} className="homepage-coursework-column">
-                  {column.map((category) => {
-                    const Icon = category.icon;
-                    const isCategoryVisible = educationItemsAnimation.visibleItems.has(revealOrder.get(category.title) ?? -1);
-                    const categoryRevealClass = isCategoryVisible ? "visible" : "";
-
-                    return (
-                      <article
-                        key={`${education.institution}-${category.title}`}
-                        className={`homepage-coursework-area scroll-slide-up ${categoryRevealClass}`}
-                      >
-                        <div className="homepage-coursework-area-header">
-                          <div
-                            className={`homepage-coursework-area-heading scroll-slide-up ${categoryRevealClass}`}
-                            style={getScrollRevealStyle("cardHeader")}
-                          >
-                            <span className="homepage-coursework-area-icon" aria-hidden="true">
-                              <Icon size={15} strokeWidth={1.9} />
-                            </span>
-                            <h5 className="homepage-coursework-area-title">{category.title}</h5>
-                          </div>
-                        </div>
-
-                        <ul className="homepage-coursework-list">
-                          {category.courses.map((course, courseIndex) => (
-                            <li
-                              key={`${category.title}-${course}`}
-                              className={`homepage-coursework-item scroll-slide-up ${categoryRevealClass}`}
-                              style={getScrollRevealStyle("body", courseIndex)}
-                            >
-                              {course}
-                            </li>
-                          ))}
-                        </ul>
-                      </article>
-                    );
-                  })}
-                </div>
-              ))}
-            </div>
-          </div>
-          ) : null}
-          <button
-            type="button"
-            className="mt-4 block w-full rounded-md border border-border/80 py-1.5 text-center text-xs font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
-            aria-expanded={expandedCoursework.has(education.institution)}
-            onClick={() => toggleCoursework(education.institution)}
-          >
-            {expandedCoursework.has(education.institution)
-              ? "Hide coursework"
-              : `Show coursework (${courseColumns.flat().reduce((n, c) => n + c.courses.length, 0)} courses)`}
-          </button>
-        </div>
-
         {spotlight ? (
           <div
             className={`experience-card-spotlight scroll-slide-up ${revealClass}`}
-            style={getScrollRevealStyle(courseworkHeadingDelay + 120)}
+            style={getScrollRevealStyle("body", achievements.length + 2)}
           >
             {spotlight}
           </div>
@@ -434,9 +300,7 @@ export default function EducationSection() {
             cardId: "unb-education",
             logo: universityLogo,
             achievements: unbAchievements,
-            courseColumns: unbCourseColumns,
             revealIndex: unbCardRevealIndex,
-            revealOrder: unbEducationRevealOrder,
             cardRef: unbCardRef,
             spotlight: (
               <UnbSpotlight originRef={unbCardRef} logoSrc={universityLogo} courseAreas={unbCourseCategories} />

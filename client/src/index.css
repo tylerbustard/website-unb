@@ -923,88 +923,6 @@
     line-height: 1.24;
   }
 
-  .homepage-coursework-panel {
-    border: 1px solid rgba(210, 210, 215, 0.88);
-    border-radius: 0.9rem;
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.985), rgba(245, 245, 247, 0.94));
-    padding: 1rem;
-  }
-
-  .homepage-coursework-columns {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0 1.5rem;
-  }
-
-  .homepage-coursework-column {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .homepage-coursework-area {
-    border-top: 1px solid rgba(210, 210, 215, 0.98);
-    padding-top: 0.8rem;
-  }
-
-  .homepage-coursework-area-header {
-    margin-bottom: 0.55rem;
-  }
-
-  .homepage-coursework-area-heading {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.48rem;
-  }
-
-  .homepage-coursework-area-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.35rem;
-    height: 1.35rem;
-    border-radius: 9999px;
-    color: #515154;
-    background: rgba(232, 232, 237, 0.96);
-    border: 1px solid rgba(210, 210, 215, 0.96);
-    flex: 0 0 auto;
-  }
-
-  .homepage-coursework-area-title {
-    margin: 0;
-    color: #424245;
-    font-family: var(--font-display);
-    font-size: 0.9375rem;
-    font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    text-transform: none;
-  }
-
-  .homepage-coursework-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 0.38rem;
-  }
-
-  .homepage-coursework-item {
-    margin: 0;
-    padding-top: 0.38rem;
-    border-top: 1px solid rgba(210, 210, 215, 0.72);
-    color: #1d1d1f;
-    font-size: 0.92rem;
-    line-height: 1.38;
-    letter-spacing: -0.017em;
-  }
-
-  .homepage-coursework-item:first-child {
-    border-top: none;
-    padding-top: 0;
-  }
-
   @media (max-width: 640px) {
     .resume-header-top {
       grid-template-columns: 1fr;
@@ -1098,37 +1016,6 @@
 
     .homepage-certifications-panel .resume-certification-card-issuer {
       font-size: 0.8rem;
-    }
-
-    .homepage-coursework-panel {
-      padding: 0.85rem;
-    }
-
-    .homepage-coursework-columns {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-
-    .homepage-coursework-column {
-      gap: 0.92rem;
-    }
-
-    .homepage-coursework-area {
-      padding-top: 0.72rem;
-    }
-
-    .homepage-coursework-area-header {
-      margin-bottom: 0.5rem;
-    }
-
-    .homepage-coursework-area-title {
-      font-size: 0.8rem;
-      letter-spacing: 0.13em;
-    }
-
-    .homepage-coursework-item {
-      font-size: 0.88rem;
-      line-height: 1.34;
     }
   }
 
