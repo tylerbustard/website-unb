@@ -14,6 +14,7 @@ import { CertificateModal, preloadCertificateImage, type CertificateModalCert } 
 import CfaSpotlight from "@/components/cfa-spotlight";
 import TtsSpotlight from "@/components/tts-spotlight";
 import CsiSpotlight from "@/components/csi-spotlight";
+import BbgSpotlight from "@/components/bbg-spotlight";
 import unitedWayLogo from "@assets/United-Way-Logo_1755913265895.png";
 import rbcLogo from "@assets/rbc_logo.webp";
 import irvingLogo from "@assets/Irving_Oil.svg_1755913265895.png";
@@ -22,13 +23,14 @@ import csiLogo from "@assets/canadian securities institute_1755923720191.png";
 import wallStreetPrepLogo from "@assets/wall_street_prep_logo.webp";
 import trainingTheStreetLogo from "@assets/trainning the street_1755938972014.png";
 import bloombergLogo from "@assets/bloomberg_1755923720190.png";
+import bloombergWordmark from "@assets/bloomberg-wordmark.png";
 import courseraLogo from "@assets/Coursera_1755937682843.png";
 import etsLogo from "@assets/ets_logo.webp";
 import anthropicLogo from "@assets/anthropic_mark.png";
 import googleLogo from "@assets/google_logo.svg";
 
 /** Core credentials that open an "Inside the credential" panel. */
-type CoreSpotlightKey = "cfa" | "tts" | "csi";
+type CoreSpotlightKey = "cfa" | "tts" | "csi" | "bbg";
 
 interface Certification {
   name: string;
@@ -85,6 +87,7 @@ export default function CertificationsSection() {
     cfa: useRef<HTMLDivElement>(null),
     tts: useRef<HTMLDivElement>(null),
     csi: useRef<HTMLDivElement>(null),
+    bbg: useRef<HTMLDivElement>(null),
   };
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
   const toggleCategory = (title: string) =>
@@ -112,7 +115,7 @@ export default function CertificationsSection() {
     { name: "CFA Level I Candidate", year: "2026", issuer: "CFA Institute", logoSrc: cfaLogo, spotlight: "cfa" },
     { name: "Discounted Cash Flow Analysis and Modeling", year: "2024", issuer: "Training The Street", logoSrc: trainingTheStreetLogo, spotlight: "tts" },
     { name: "Canadian Securities Course", year: "2021", issuer: "Canadian Securities Institute", logoSrc: csiLogo, spotlight: "csi" },
-    { name: "Bloomberg Market Concepts", year: "2019", issuer: "Bloomberg", logoSrc: bloombergLogo },
+    { name: "Bloomberg Market Concepts", year: "2019", issuer: "Bloomberg", logoSrc: bloombergLogo, spotlight: "bbg" },
     { name: "GRE General Test", year: "2024", issuer: "ETS", detail: "328 total; 170 Quantitative", logoSrc: etsLogo },
     { name: "AI Fluency: Framework and Foundations", year: "2026", issuer: "Anthropic", logoSrc: anthropicLogo },
   ];
@@ -190,6 +193,9 @@ export default function CertificationsSection() {
         return <TtsSpotlight originRef={coreSpotlightRefs.tts} logoSrc={credential.logoSrc ?? trainingTheStreetLogo} />;
       case "csi":
         return <CsiSpotlight originRef={coreSpotlightRefs.csi} logoSrc={credential.logoSrc ?? csiLogo} />;
+      case "bbg":
+        // The panel draws the wordmark white on black, so it needs the transparent version.
+        return <BbgSpotlight originRef={coreSpotlightRefs.bbg} logoSrc={bloombergWordmark} />;
     }
   };
   const certificationItemsAnimation = useStaggeredScrollAnimation(certificationRevealSequence.length + 3, {

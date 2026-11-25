@@ -14667,3 +14667,1202 @@ html.role-spotlight-open body {
     animation: none !important;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Bloomberg theme: black Terminal screens with amber monospace type,  */
+/* the green GO key, bold white headings, and the BMC certificate's    */
+/* gold light and dotted course badges                                 */
+/* ------------------------------------------------------------------ */
+
+.role-spotlight--bbg {
+  --bbg-screen: rgb(12, 12, 12);
+  --bbg-raised: rgb(18, 18, 18);
+  --bbg-bar: rgb(26, 26, 26);
+  --bbg-amber: rgb(245, 178, 56);
+  --bbg-amber-light: rgb(255, 202, 110);
+  --bbg-go: rgb(36, 168, 90);
+  --bbg-go-shade: rgb(18, 110, 56);
+  --bbg-go-text: rgb(92, 214, 140);
+  --bbg-body: rgb(190, 190, 190);
+  --bbg-soft: rgb(150, 150, 150);
+  --bbg-line: rgba(255, 255, 255, 0.14);
+  --bbg-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --bbg-gutter: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .role-spotlight--bbg {
+    --bbg-gutter: 3.5rem;
+  }
+}
+
+.role-spotlight--bbg .role-spotlight-panel {
+  --role-spotlight-surface: rgb(0, 0, 0);
+  --role-spotlight-tile: rgba(255, 255, 255, 0);
+  --role-spotlight-logo-filter: brightness(0) invert(1);
+  --role-spotlight-title-color: rgb(255, 255, 255);
+  background: #000;
+  color: var(--bbg-body);
+}
+
+.role-spotlight--bbg .role-spotlight-close {
+  background: rgba(0, 0, 0, 0.66);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+
+.role-spotlight--bbg .role-spotlight-close:hover {
+  background: var(--bbg-amber);
+  color: #000;
+}
+
+.role-spotlight--bbg .role-spotlight-close:focus-visible {
+  outline-color: var(--bbg-amber);
+}
+
+/* Lets the full-bleed band size itself to the panel (100cqw). */
+.role-spotlight--bbg .role-spotlight-scroll {
+  container-type: inline-size;
+  scrollbar-color: rgba(255, 255, 255, 0.24) transparent;
+}
+
+.role-spotlight--bbg .role-spotlight-header {
+  gap: 1.25rem;
+}
+
+.role-spotlight--bbg .role-spotlight-logo-tile {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+}
+
+/* The black wordmark, drawn white. */
+.role-spotlight--bbg .role-spotlight-logo {
+  width: 6.5rem;
+  height: 1.25rem;
+  filter: brightness(0) invert(1);
+}
+
+@media (min-width: 768px) {
+  .role-spotlight--bbg .role-spotlight-logo {
+    width: 8.5rem;
+    height: 1.625rem;
+  }
+}
+
+.role-spotlight--bbg .role-spotlight-heading {
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--bbg-line);
+}
+
+.role-spotlight--bbg .role-spotlight-title {
+  color: #fff;
+}
+
+.role-spotlight--bbg .role-spotlight-meta {
+  color: var(--bbg-soft);
+  text-wrap: balance;
+}
+
+/* Type: bold white headings, amber monospace labels */
+.bbg-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0;
+  font-family: var(--bbg-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bbg-amber);
+}
+
+/* A block cursor, as on the Terminal's command line. */
+.bbg-eyebrow::before {
+  content: "";
+  flex: none;
+  width: 0.5rem;
+  height: 0.875rem;
+  background: var(--bbg-amber);
+}
+
+.bbg-display {
+  margin: 0.85rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.6vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  color: #fff;
+  text-wrap: balance;
+}
+
+.bbg-heading {
+  max-width: 24ch;
+  margin: 0.7rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.2vw, 2.375rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: #fff;
+  text-wrap: balance;
+}
+
+.bbg-lede,
+.bbg-section-lede {
+  max-width: 34rem;
+  margin: 1.25rem 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--bbg-body);
+  text-wrap: pretty;
+}
+
+.bbg-section-lede {
+  max-width: 40rem;
+  margin-top: 1rem;
+}
+
+/* Hero */
+.bbg-hero {
+  display: grid;
+  gap: 2.5rem;
+  padding-top: 2.75rem;
+}
+
+@media (min-width: 900px) {
+  .bbg-hero {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: center;
+    padding-top: 3.25rem;
+  }
+}
+
+.bbg-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.bbg-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.65rem 1.3rem;
+  border: 1px solid var(--bbg-amber);
+  border-radius: 3px;
+  background: var(--bbg-amber);
+  color: #000;
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.bbg-button:hover {
+  border-color: var(--bbg-amber-light);
+  background: var(--bbg-amber-light);
+}
+
+.bbg-button-outline {
+  border-color: rgba(255, 255, 255, 0.45);
+  background: transparent;
+  color: #fff;
+}
+
+.bbg-button-outline:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.bbg-button:focus-visible,
+.bbg-link:focus-visible {
+  outline: 2px solid var(--bbg-amber);
+  outline-offset: 3px;
+}
+
+/* Hero visual: a Terminal screen running BMC <GO>, with a dotted course badge.
+   The sequence waits until the screen is in view. */
+.bbg-stage:not(.is-active) * {
+  animation-play-state: paused;
+}
+
+.bbg-hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.bbg-stage {
+  position: relative;
+  width: 100%;
+  max-width: 26rem;
+  padding: 0 2.25rem 3.25rem 0;
+}
+
+.bbg-screen {
+  overflow: hidden;
+  border: 1px solid var(--bbg-line);
+  border-radius: 8px;
+  background: var(--bbg-screen);
+  box-shadow: 0 40px 80px -36px rgba(245, 178, 56, 0.42);
+  font-family: var(--bbg-mono);
+}
+
+.bbg-cmd {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.7rem 0.8rem 0.7rem 1rem;
+  border-bottom: 1px solid var(--bbg-line);
+  background: var(--bbg-bar);
+}
+
+.bbg-cmd-text {
+  display: block;
+  width: 3ch;
+  overflow: hidden;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+  white-space: nowrap;
+  color: var(--bbg-amber);
+  animation: bbg-type 390ms steps(3, end) 400ms both;
+}
+
+.bbg-caret {
+  flex: none;
+  width: 0.55rem;
+  height: 1.15rem;
+  background: var(--bbg-amber);
+  animation: bbg-blink 900ms steps(1, end) 850ms 4;
+}
+
+/* The green GO key, pressed once the command is typed. */
+.bbg-go {
+  margin-left: auto;
+  padding: 0.35rem 0.65rem;
+  border-radius: 4px;
+  background: var(--bbg-go);
+  box-shadow: 0 3px 0 var(--bbg-go-shade);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  color: #000;
+  animation: bbg-press 380ms ease 900ms both;
+}
+
+.bbg-screen-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1rem 0.55rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  animation: bbg-fade 400ms ease 1000ms both;
+}
+
+.bbg-screen-head span:last-child {
+  color: var(--bbg-soft);
+}
+
+.bbg-menu {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0.2rem 1rem 1rem;
+  list-style: none;
+}
+
+.bbg-menu-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    "num name state"
+    "bar bar bar";
+  align-items: baseline;
+  gap: 0.35rem 0.55rem;
+  font-size: 0.8125rem;
+  animation: bbg-row 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i) * 90ms + 1050ms);
+}
+
+.bbg-menu-num {
+  grid-area: num;
+  color: var(--bbg-amber);
+}
+
+.bbg-menu-name {
+  grid-area: name;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.bbg-menu-state {
+  grid-area: state;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--bbg-go-text);
+  animation: bbg-fade 240ms ease both;
+  animation-delay: calc(var(--i) * 200ms + 1700ms);
+}
+
+.bbg-menu-bar {
+  grid-area: bar;
+  display: block;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.bbg-menu-bar i {
+  display: block;
+  height: 100%;
+  background: var(--bbg-amber);
+  transform-origin: left;
+  animation: bbg-fill 550ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i) * 200ms + 1150ms);
+}
+
+/* Stays clear of the badge, which overlaps the screen's corner. */
+.bbg-status {
+  padding: 0.65rem 4.5rem 0.65rem 1rem;
+  background: var(--bbg-amber);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  text-transform: uppercase;
+  color: #000;
+  animation: bbg-fade 400ms ease 2400ms both;
+}
+
+/* After the dotted course badges on the BMC certificate. */
+.bbg-badge {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  width: 6.25rem;
+  height: 6.25rem;
+  border-radius: 999px;
+  background: #000;
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.92),
+    0 14px 30px -12px rgba(245, 178, 56, 0.55);
+  text-align: center;
+  animation: bbg-stamp 560ms cubic-bezier(0.2, 1.4, 0.4, 1) 2550ms both;
+}
+
+.bbg-badge::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 2px dotted rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+}
+
+.bbg-badge-kicker {
+  font-family: var(--bbg-mono);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--bbg-body);
+}
+
+.bbg-badge-name {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.bbg-badge-date {
+  font-family: var(--bbg-mono);
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: var(--bbg-amber);
+}
+
+@keyframes bbg-type {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes bbg-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes bbg-press {
+  45% {
+    box-shadow:
+      0 0 0 var(--bbg-go-shade),
+      0 0 0 4px rgba(36, 168, 90, 0.35);
+    transform: translateY(3px);
+  }
+}
+
+@keyframes bbg-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes bbg-row {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+}
+
+@keyframes bbg-fill {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes bbg-stamp {
+  from {
+    opacity: 0;
+    transform: scale(1.4) rotate(-12deg);
+  }
+}
+
+/* Charcoal band with the certificate's gold light and a strip of function codes */
+.bbg-band {
+  margin-top: 4rem;
+  margin-inline: calc((100% - 100cqw) / 2);
+  padding: 0 0 4rem;
+  border-block: 1px solid var(--bbg-line);
+  background:
+    radial-gradient(60% 90% at 100% 0%, rgba(245, 178, 56, 0.17), rgba(245, 178, 56, 0) 70%),
+    linear-gradient(115deg, rgba(245, 178, 56, 0) 58%, rgba(245, 178, 56, 0.07) 72%, rgba(245, 178, 56, 0) 86%),
+    rgb(16, 16, 16);
+}
+
+@media (min-width: 900px) {
+  .bbg-band {
+    margin-top: 5rem;
+    padding-bottom: 4.75rem;
+  }
+}
+
+/* Lines up with the band's content column. */
+.bbg-strip {
+  display: flex;
+  gap: 2rem;
+  overflow: hidden;
+  padding: 0.85rem var(--bbg-gutter);
+  padding-left: max(var(--bbg-gutter), calc((100% - 980px) / 2 + var(--bbg-gutter)));
+  border-bottom: 1px solid var(--bbg-line);
+  font-family: var(--bbg-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  -webkit-mask-image: linear-gradient(90deg, #000 80%, transparent);
+  mask-image: linear-gradient(90deg, #000 80%, transparent);
+}
+
+.bbg-strip span {
+  flex: none;
+  color: var(--bbg-amber);
+  opacity: 0;
+  transition: opacity 400ms ease;
+  transition-delay: calc(var(--i) * 70ms + 200ms);
+}
+
+.bbg-strip.is-active span {
+  opacity: 1;
+}
+
+.bbg-strip i {
+  font-style: normal;
+  color: var(--bbg-soft);
+}
+
+.bbg-band-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 3.5rem var(--bbg-gutter) 0;
+}
+
+@media (min-width: 900px) {
+  .bbg-band-inner {
+    padding-top: 4.25rem;
+  }
+}
+
+.bbg-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 2.25rem 0 0;
+}
+
+@media (min-width: 900px) {
+  .bbg-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.bbg-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.2rem 1.2rem 1.3rem;
+  border: 1px solid var(--bbg-line);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.bbg-stat-value {
+  order: -1;
+  margin: 0;
+  font-family: var(--bbg-mono);
+  font-size: clamp(1.375rem, 2.6vw, 1.875rem);
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--bbg-amber);
+}
+
+.bbg-stat-label {
+  font-size: 0.875rem;
+  line-height: 1.35;
+  color: var(--bbg-body);
+}
+
+.bbg-band-note {
+  max-width: 44rem;
+  margin: 2rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--bbg-body);
+}
+
+/* Sections */
+.bbg-section {
+  margin-top: 4.5rem;
+}
+
+@media (min-width: 900px) {
+  .bbg-section {
+    margin-top: 5.5rem;
+  }
+}
+
+.bbg-modules-section {
+  scroll-margin-top: 1.5rem;
+}
+
+/* Workflow */
+.bbg-flow {
+  position: relative;
+  margin-top: 2.5rem;
+}
+
+.bbg-flow-track {
+  position: absolute;
+  top: 1.25rem;
+  bottom: 1.25rem;
+  left: 1.125rem;
+  width: 2px;
+  overflow: hidden;
+  background: var(--bbg-line);
+}
+
+.bbg-flow-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--bbg-amber), var(--bbg-go));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1500ms cubic-bezier(0.32, 0.72, 0, 1) 200ms;
+}
+
+.bbg-flow.is-active .bbg-flow-fill {
+  transform: scaleY(1);
+}
+
+.bbg-flow-steps {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0 0 0 3.5rem;
+  list-style: none;
+}
+
+.bbg-flow-step {
+  position: relative;
+  opacity: 0.3;
+  transform: translateY(14px);
+  transition:
+    opacity 700ms ease,
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--step-index, 0) * 240ms + 300ms);
+}
+
+.bbg-flow.is-active .bbg-flow-step {
+  opacity: 1;
+  transform: none;
+}
+
+.bbg-flow-node {
+  position: absolute;
+  top: 0.85rem;
+  left: -3.5rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.375rem;
+  height: 2.375rem;
+  border: 2px solid rgb(60, 60, 60);
+  border-radius: 999px;
+  background: #000;
+  font-family: var(--bbg-mono);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--bbg-soft);
+  transition:
+    background-color 500ms ease,
+    border-color 500ms ease,
+    color 500ms ease;
+  transition-delay: calc(var(--step-index, 0) * 240ms + 380ms);
+}
+
+.bbg-flow.is-active .bbg-flow-node {
+  border-color: var(--bbg-amber);
+  background: var(--bbg-amber);
+  color: #000;
+}
+
+.bbg-flow.is-active .bbg-flow-step:last-child .bbg-flow-node {
+  border-color: var(--bbg-go);
+  background: var(--bbg-go);
+}
+
+.bbg-flow-card {
+  height: 100%;
+  padding: 1.35rem 1.5rem 1.5rem;
+  border: 1px solid var(--bbg-line);
+  border-radius: 6px;
+  background: var(--bbg-raised);
+}
+
+.bbg-flow-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.bbg-flow-body {
+  margin: 0.5rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--bbg-body);
+  text-wrap: pretty;
+}
+
+@media (max-width: 899px) {
+  /* Stop the vertical line at the last node. */
+  .bbg-flow-step:last-child::before {
+    content: "";
+    position: absolute;
+    top: 2.5rem;
+    bottom: -1.5rem;
+    left: -3.5rem;
+    width: 2.375rem;
+    background: #000;
+  }
+}
+
+@media (min-width: 900px) {
+  /* Runs from the first node's centre to the last node's centre. */
+  .bbg-flow-track {
+    top: 1.125rem;
+    right: auto;
+    bottom: auto;
+    left: 1.1875rem;
+    width: calc(66.667% + 0.667rem);
+    height: 2px;
+  }
+
+  .bbg-flow-fill {
+    background: linear-gradient(90deg, var(--bbg-amber), var(--bbg-go));
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .bbg-flow.is-active .bbg-flow-fill {
+    transform: scaleX(1);
+  }
+
+  .bbg-flow-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 3.5rem 0 0;
+  }
+
+  .bbg-flow-node {
+    top: -3.5rem;
+    left: 0;
+  }
+}
+
+/* Course facts: rows on phones, three columns from 640px */
+.bbg-results {
+  display: grid;
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+}
+
+.bbg-result {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--bbg-line);
+  border-radius: 6px;
+  background: var(--bbg-raised);
+}
+
+.bbg-result-value {
+  order: -1;
+  flex: 0 0 7rem;
+  margin: 0;
+  font-family: var(--bbg-mono);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--bbg-amber);
+}
+
+.bbg-result-label {
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--bbg-body);
+}
+
+@media (min-width: 640px) {
+  .bbg-results {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .bbg-result {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    padding: 1.25rem 1.25rem 1.35rem;
+  }
+
+  .bbg-result-value {
+    flex: none;
+    font-size: clamp(2.25rem, 4.2vw, 3rem);
+  }
+}
+
+.bbg-done {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 1.5rem 0 0;
+  font-size: 1rem;
+  line-height: 1.45;
+  color: #fff;
+  text-wrap: pretty;
+}
+
+.bbg-done-check {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 999px;
+  background: var(--bbg-go);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #000;
+}
+
+/* The core's eight hours as a ruler, then a card per module */
+.bbg-split {
+  margin-top: 2rem;
+}
+
+.bbg-split-bar {
+  display: flex;
+  height: 2.25rem;
+}
+
+.bbg-split-seg {
+  display: grid;
+  flex: var(--h) 1 0;
+  place-items: center;
+  min-width: 0;
+  border-radius: 3px;
+  background: var(--bbg-amber);
+  font-family: var(--bbg-mono);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #000;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i) * 160ms + 150ms);
+}
+
+/* A black seam between modules keeps each width true to its hours. */
+.bbg-split-seg:not(:last-child) {
+  box-shadow: inset -3px 0 0 #000;
+}
+
+.bbg-split.is-active .bbg-split-seg {
+  transform: none;
+}
+
+.bbg-split-ticks {
+  position: relative;
+  height: 1.25rem;
+  margin-top: 0.5rem;
+  font-family: var(--bbg-mono);
+  font-size: 0.75rem;
+  color: var(--bbg-soft);
+}
+
+.bbg-split-ticks span {
+  position: absolute;
+  top: 0;
+  left: var(--at);
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.bbg-split-ticks span:first-child {
+  transform: none;
+}
+
+.bbg-split-ticks span:last-child {
+  transform: translateX(-100%);
+}
+
+.bbg-modules {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .bbg-modules {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.bbg-modules > li {
+  display: flex;
+}
+
+.bbg-module {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1.25rem 1.4rem 1.45rem;
+  border: 1px solid var(--bbg-line);
+  border-radius: 6px;
+  background: var(--bbg-raised);
+}
+
+.bbg-module-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-family: var(--bbg-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.bbg-module-num {
+  font-weight: 600;
+  color: var(--bbg-amber);
+}
+
+.bbg-module-hours {
+  color: var(--bbg-soft);
+}
+
+.bbg-module-title {
+  margin: 0.6rem 0 0;
+  font-family: var(--font-display);
+  font-size: 1.3125rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #fff;
+}
+
+.bbg-module-lessons {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0.9rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--bbg-body);
+}
+
+.bbg-module-lessons li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.bbg-module-lessons li::before {
+  content: "›";
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: var(--bbg-mono);
+  font-weight: 700;
+  color: var(--bbg-amber);
+}
+
+/* Optional modules, with the certificate's dotted badges */
+.bbg-extras {
+  display: grid;
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .bbg-extras {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.bbg-extras > li {
+  display: flex;
+}
+
+.bbg-extra {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  width: 100%;
+  padding: 1.4rem;
+  border: 1px solid var(--bbg-line);
+  border-radius: 6px;
+  background: var(--bbg-raised);
+}
+
+.bbg-ring {
+  position: relative;
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.9);
+}
+
+.bbg-ring::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 2px dotted rgba(255, 255, 255, 0.8);
+  border-radius: 999px;
+}
+
+.bbg-ring-kicker {
+  font-family: var(--bbg-mono);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--bbg-body);
+}
+
+.bbg-ring-code {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.bbg-extra-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.bbg-extra-title {
+  font-family: var(--font-display);
+  font-size: 1.1875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #fff;
+}
+
+.bbg-extra-body {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--bbg-body);
+}
+
+.bbg-extra-date {
+  margin-top: 0.2rem;
+  font-family: var(--bbg-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--bbg-amber);
+}
+
+.bbg-extras-note {
+  margin: 1.25rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--bbg-soft);
+}
+
+/* BMC today */
+.bbg-cards {
+  display: grid;
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .bbg-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.bbg-cards > li {
+  display: flex;
+}
+
+.bbg-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  width: 100%;
+  padding: 1.35rem 1.4rem 1.5rem;
+  border: 1px solid var(--bbg-line);
+  border-top: 2px solid var(--bbg-amber);
+  border-radius: 6px;
+  background: var(--bbg-raised);
+}
+
+.bbg-card-title {
+  font-family: var(--font-display);
+  font-size: 1.1875rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.bbg-card-body {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--bbg-body);
+}
+
+/* Footer */
+.bbg-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--bbg-line);
+  font-size: 0.8125rem;
+  color: var(--bbg-soft);
+}
+
+.bbg-footer p {
+  max-width: 40rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.bbg-link {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--bbg-amber);
+  text-decoration: none;
+}
+
+.bbg-link:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bbg-flow-step,
+  .bbg-flow-node,
+  .bbg-flow-fill,
+  .bbg-split-seg,
+  .bbg-strip span {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* A still screen: the command typed, every module complete, the badge in place. */
+  .bbg-cmd-text,
+  .bbg-caret,
+  .bbg-go,
+  .bbg-screen-head,
+  .bbg-menu-row,
+  .bbg-menu-state,
+  .bbg-menu-bar i,
+  .bbg-status,
+  .bbg-badge {
+    animation: none !important;
+  }
+}
