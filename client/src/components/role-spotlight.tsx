@@ -12,6 +12,7 @@ import {
   type RefObject,
 } from "react";
 import { createPortal } from "react-dom";
+import { SpotlightTrigger } from "@/components/spotlight-trigger";
 import { cn } from "@/lib/utils";
 
 /*
@@ -533,25 +534,14 @@ export function RoleSpotlight({
 
   return (
     <>
-      <button
+      <SpotlightTrigger
         ref={triggerRef}
-        type="button"
-        className="role-spotlight-trigger"
+        label={triggerLabel}
+        hint={triggerHint}
         onClick={openSpotlight}
-        aria-haspopup="dialog"
         aria-expanded={isOpen}
         aria-controls={isOpen ? panelId : undefined}
-      >
-        <span className="role-spotlight-trigger-copy">
-          <span className="role-spotlight-trigger-label">{triggerLabel}</span>
-          <span className="role-spotlight-trigger-hint">{triggerHint}</span>
-        </span>
-        <span className="role-spotlight-trigger-icon" aria-hidden="true">
-          <svg viewBox="0 0 20 20">
-            <path d="M10 4.5v11M4.5 10h11" />
-          </svg>
-        </span>
-      </button>
+      />
       {portal}
     </>
   );

@@ -92,6 +92,7 @@ const allowedChangedBinaryHashes = new Map([
   ["attached_assets/73strings-clients/sofina.png", "67ef03884fac55ecc7f7c41877f11f0c72e604b4e2a14d3accd7a720f4ee44d3"],
   ["attached_assets/73strings-clients/waystone.png", "58a51038bb968e2d1030285f2e03509bddf08eb9017ad0e83da5a7d18d1c22a1"],
   ["attached_assets/bloomberg-wordmark.png", "dbad889c41e8df46187c0268b73e7b2a279fada39b808f09cb1554d9612f82bb"],
+  ["client/public/certificates/gre-general-test.webp", "7c47e6011ee84bbe83b8f0aaa84bfc6b9f1361a0b47019f5f0ad6b9724c769ff"],
 ]);
 const unexpectedBinaries = [];
 for (const file of regularFiles) {

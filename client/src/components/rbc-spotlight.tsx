@@ -6,6 +6,8 @@ import {
   useSpotlightInView,
 } from "@/components/role-spotlight";
 import { cn } from "@/lib/utils";
+import { spotlightTriggers } from "@/components/spotlight-triggers";
+import "@/styles/spotlights/rbc.css";
 
 /*
  * "Inside the role" panels for the two RBC experience cards and the RBC student
@@ -34,7 +36,6 @@ const roles: Record<
   {
     title: string;
     meta: string;
-    hint: string;
     headline: ReactNode;
     lede: string;
     figures: Figure[];
@@ -50,7 +51,6 @@ const roles: Record<
   advisor: {
     title: "Banking Advisor",
     meta: "Royal Bank of Canada · Kingston, ON · 2020–2021",
-    hint: "The bank, the clients and my results",
     headline: (
       <>
         Needs-based advice that kept clients <span className="rbc-highlight">coming back.</span>
@@ -85,7 +85,6 @@ const roles: Record<
   intern: {
     title: "Client Advisor Intern",
     meta: "Royal Bank of Canada · Fredericton, NB · 2019–2020",
-    hint: "The branch, the clients and my results",
     headline: (
       <>
         Solving client problems, and bringing banking <span className="rbc-highlight">online.</span>
@@ -120,7 +119,6 @@ const roles: Record<
   ambassador: {
     title: "Student Ambassador",
     meta: "Royal Bank of Canada · Fredericton, NB · 2019–2020",
-    hint: "The campus, the events and my results",
     headline: (
       <>
         Bringing RBC to campus, and students <span className="rbc-highlight">to RBC.</span>
@@ -256,8 +254,8 @@ export default function RbcSpotlight({ originRef, logoSrc, role }: RbcSpotlightP
       logoAlt="RBC logo"
       title={data.title}
       meta={data.meta}
-      triggerLabel="Inside the role"
-      triggerHint={data.hint}
+      triggerLabel={spotlightTriggers[`rbc-${role}`].label}
+      triggerHint={spotlightTriggers[`rbc-${role}`].hint}
       className="role-spotlight--rbc"
     >
       <section className="rbc-hero">

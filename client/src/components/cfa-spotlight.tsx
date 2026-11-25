@@ -6,6 +6,8 @@ import {
   useSpotlightInView,
 } from "@/components/role-spotlight";
 import { cn } from "@/lib/utils";
+import { spotlightTriggers } from "@/components/spotlight-triggers";
+import "@/styles/spotlights/cfa.css";
 
 /*
  * "Inside the credential" panel for the CFA Level I card, in CFA Institute's
@@ -217,8 +219,8 @@ export default function CfaSpotlight({ originRef, logoSrc }: CfaSpotlightProps) 
       logoAlt="CFA Institute logo"
       title="CFA Level I Candidate"
       meta="CFA Institute · CFA Program · 2026"
-      triggerLabel="Inside the credential"
-      triggerHint="The program, the exam and my status"
+      triggerLabel={spotlightTriggers.cfa.label}
+      triggerHint={spotlightTriggers.cfa.hint}
       className="role-spotlight--cfa"
     >
       <section className="cfa-hero">

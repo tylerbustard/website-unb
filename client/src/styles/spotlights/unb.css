@@ -1,0 +1,987 @@
+/* ------------------------------------------------------------------ */
+/* UNB theme: white pages with light headings, UNB red pill buttons   */
+/* and a UNB red band, light grey sections with square white cards,   */
+/* and charcoal accents from unb.ca's footer                          */
+/* ------------------------------------------------------------------ */
+
+.role-spotlight--unb {
+  --unb-red: rgb(210, 48, 59);
+  --unb-red-deep: rgb(189, 32, 43);
+  --unb-red-tint: rgb(252, 236, 237);
+  --unb-heading: rgb(0, 0, 0);
+  --unb-ink: rgb(45, 45, 45);
+  --unb-grey: rgb(98, 102, 107);
+  --unb-charcoal: rgb(57, 62, 68);
+  --unb-line: rgb(222, 224, 226);
+  --unb-mist: rgb(242, 243, 243);
+  --unb-teal: rgb(0, 127, 163);
+  --unb-gutter: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .role-spotlight--unb {
+    --unb-gutter: 3.5rem;
+  }
+}
+
+.role-spotlight--unb .role-spotlight-panel {
+  --role-spotlight-surface: rgb(255, 255, 255);
+  --role-spotlight-tile: rgba(255, 255, 255, 0);
+  --role-spotlight-title-color: rgb(0, 0, 0);
+  background: #fff;
+  color: var(--unb-ink);
+}
+
+/* The red and grey bands scroll straight under the edge; the close button has its own border. */
+.role-spotlight--unb .role-spotlight-panel::before {
+  display: none;
+}
+
+.role-spotlight--unb .role-spotlight-close {
+  background: #fff;
+  box-shadow:
+    0 2px 10px rgba(40, 44, 48, 0.16),
+    inset 0 0 0 1px var(--unb-line);
+  color: var(--unb-ink);
+}
+
+.role-spotlight--unb .role-spotlight-close:hover {
+  background: var(--unb-red);
+  color: #fff;
+}
+
+.role-spotlight--unb .role-spotlight-close:focus-visible {
+  outline-color: var(--unb-red);
+}
+
+.role-spotlight--unb .role-spotlight-scroll {
+  container-type: inline-size;
+  scrollbar-color: rgba(40, 44, 48, 0.3) transparent;
+}
+
+.role-spotlight--unb .role-spotlight-header {
+  gap: 1.25rem;
+}
+
+.role-spotlight--unb .role-spotlight-logo-tile {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+}
+
+.role-spotlight--unb .role-spotlight-logo {
+  width: 3rem;
+  height: 3rem;
+}
+
+.role-spotlight--unb .role-spotlight-heading {
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--unb-line);
+}
+
+.role-spotlight--unb .role-spotlight-title {
+  font-weight: 500;
+  color: var(--unb-heading);
+}
+
+.role-spotlight--unb .role-spotlight-meta {
+  color: var(--unb-grey);
+}
+
+/* Type: light headings, after the thin Proxima Nova on unb.ca */
+.unb-eyebrow {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--unb-red);
+}
+
+.unb-eyebrow.is-light {
+  color: #fff;
+}
+
+.unb-display {
+  margin: 0.75rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: var(--unb-heading);
+  text-wrap: balance;
+}
+
+.unb-heading {
+  max-width: 24ch;
+  margin: 0.6rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.875rem, 3.4vw, 2.5rem);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: var(--unb-heading);
+  text-wrap: balance;
+}
+
+.unb-heading.is-light {
+  color: #fff;
+}
+
+.unb-lede,
+.unb-section-lede {
+  max-width: 34rem;
+  margin: 1.25rem 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--unb-ink);
+  text-wrap: pretty;
+}
+
+.unb-section-lede {
+  max-width: 40rem;
+  margin-top: 1rem;
+  color: var(--unb-grey);
+}
+
+/* Hero */
+.unb-hero {
+  display: grid;
+  gap: 2.5rem;
+  padding-top: 2.75rem;
+}
+
+@media (min-width: 900px) {
+  .unb-hero {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: center;
+    padding-top: 3.25rem;
+  }
+}
+
+.unb-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.unb-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 2.75rem;
+  padding: 0.55rem 1.35rem;
+  border: 2px solid var(--unb-red);
+  border-radius: 999px;
+  background: var(--unb-red);
+  color: #fff;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.unb-button:hover {
+  border-color: var(--unb-red-deep);
+  background: var(--unb-red-deep);
+}
+
+.unb-button-chevron {
+  font-size: 1.25rem;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+.unb-button-outline {
+  background: #fff;
+  color: var(--unb-red);
+}
+
+.unb-button-outline:hover {
+  background: var(--unb-red-tint);
+  color: var(--unb-red-deep);
+}
+
+.unb-button:focus-visible,
+.unb-link:focus-visible {
+  outline: 2px solid var(--unb-red);
+  outline-offset: 3px;
+}
+
+/* Hero visual: my courses as a ring, finance in UNB red */
+.unb-hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.unb-stage {
+  position: relative;
+  width: 100%;
+  max-width: 25rem;
+  padding: 1.75rem 0 2.25rem;
+}
+
+.unb-donut {
+  position: relative;
+  width: min(16rem, 72%);
+  aspect-ratio: 1;
+  margin-right: 0.25rem;
+  margin-left: auto;
+}
+
+.unb-donut-ring {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.unb-donut-track {
+  fill: none;
+  stroke: var(--unb-mist);
+  stroke-width: 20;
+}
+
+.unb-seg {
+  fill: none;
+  stroke-width: 20;
+  animation: unb-seg 1000ms cubic-bezier(0.32, 0.72, 0, 1) both;
+  animation-delay: calc(var(--i) * 170ms + 350ms);
+}
+
+.unb-seg-0 {
+  stroke: var(--unb-red);
+}
+
+.unb-seg-1 {
+  stroke: var(--unb-charcoal);
+}
+
+.unb-seg-2 {
+  stroke: rgb(112, 118, 124);
+}
+
+.unb-seg-3 {
+  stroke: rgb(160, 165, 170);
+}
+
+.unb-seg-4 {
+  stroke: rgb(208, 211, 214);
+}
+
+@keyframes unb-seg {
+  from {
+    stroke-dasharray: 0 490;
+  }
+}
+
+.unb-donut-centre {
+  position: absolute;
+  inset: 22%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  text-align: center;
+}
+
+.unb-donut-kicker {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--unb-grey);
+}
+
+.unb-donut-value {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--unb-heading);
+}
+
+.unb-donut-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  color: var(--unb-ink);
+}
+
+.unb-donut-note i {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--unb-red);
+}
+
+.unb-award {
+  position: absolute;
+  top: 0.25rem;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  max-width: 11rem;
+  padding: 0.8rem 1rem 0.85rem;
+  border-radius: 4px;
+  background: var(--unb-red);
+  box-shadow: 0 16px 34px -18px rgba(150, 20, 30, 0.7);
+  color: #fff;
+  animation: unb-float 6s ease-in-out infinite;
+}
+
+.unb-award-value {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.unb-award-note {
+  margin-top: 0.15rem;
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+
+.unb-fund {
+  position: absolute;
+  bottom: 0.25rem;
+  left: 0.5rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 1rem 0.8rem;
+  border-radius: 4px;
+  background: var(--unb-charcoal);
+  box-shadow: 0 16px 34px -18px rgba(40, 44, 48, 0.75);
+  color: #fff;
+  animation: unb-float 6s ease-in-out 3s infinite;
+}
+
+.unb-fund-kicker {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.unb-fund-value {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+@keyframes unb-float {
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* UNB red band */
+.unb-band {
+  margin-top: 4rem;
+  margin-inline: calc((100% - 100cqw) / 2);
+  padding: 4rem 0;
+  background: linear-gradient(160deg, rgb(214, 52, 63) 0%, var(--unb-red) 45%, var(--unb-red-deep) 100%);
+  color: #fff;
+}
+
+@media (min-width: 900px) {
+  .unb-band {
+    margin-top: 5rem;
+    padding: 4.75rem 0;
+  }
+}
+
+.unb-band-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--unb-gutter);
+}
+
+.unb-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem 1rem;
+  margin: 2.25rem 0 0;
+}
+
+@media (min-width: 900px) {
+  .unb-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.unb-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.unb-stat-value {
+  order: -1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 2.375rem);
+  font-weight: 300;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.unb-stat-label {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: #fff;
+}
+
+.unb-band-note {
+  max-width: 44rem;
+  margin: 2rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #fff;
+}
+
+/* Sections */
+.unb-section {
+  margin-top: 4.5rem;
+}
+
+@media (min-width: 900px) {
+  .unb-section {
+    margin-top: 5.5rem;
+  }
+}
+
+.unb-degree {
+  scroll-margin-top: 1.5rem;
+}
+
+/* Workflow */
+.unb-flow {
+  position: relative;
+  margin-top: 2.5rem;
+}
+
+.unb-flow-track {
+  position: absolute;
+  top: 1.25rem;
+  bottom: 1.25rem;
+  left: 1.125rem;
+  width: 2px;
+  overflow: hidden;
+  background: var(--unb-line);
+}
+
+.unb-flow-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--unb-red), var(--unb-charcoal));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1500ms cubic-bezier(0.32, 0.72, 0, 1) 200ms;
+}
+
+.unb-flow.is-active .unb-flow-fill {
+  transform: scaleY(1);
+}
+
+.unb-flow-steps {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0 0 0 3.5rem;
+  list-style: none;
+}
+
+.unb-flow-step {
+  position: relative;
+  opacity: 0.3;
+  transform: translateY(14px);
+  transition:
+    opacity 700ms ease,
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--step-index, 0) * 240ms + 300ms);
+}
+
+.unb-flow.is-active .unb-flow-step {
+  opacity: 1;
+  transform: none;
+}
+
+.unb-flow-node {
+  position: absolute;
+  top: 0.85rem;
+  left: -3.5rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.375rem;
+  height: 2.375rem;
+  border: 2px solid var(--unb-line);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--unb-grey);
+  transition:
+    background-color 500ms ease,
+    border-color 500ms ease,
+    color 500ms ease;
+  transition-delay: calc(var(--step-index, 0) * 240ms + 380ms);
+}
+
+.unb-flow.is-active .unb-flow-node {
+  border-color: var(--unb-red);
+  background: var(--unb-red);
+  color: #fff;
+}
+
+.unb-flow.is-active .unb-flow-step:last-child .unb-flow-node {
+  border-color: var(--unb-charcoal);
+  background: var(--unb-charcoal);
+}
+
+.unb-flow-card {
+  height: 100%;
+  padding: 1.35rem 1.5rem 1.5rem;
+  border: 1px solid var(--unb-line);
+  border-radius: 2px;
+  background: #fff;
+}
+
+.unb-flow-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--unb-heading);
+}
+
+.unb-flow-body {
+  margin: 0.5rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--unb-ink);
+  text-wrap: pretty;
+}
+
+@media (max-width: 899px) {
+  /* Stop the vertical line at the last node. */
+  .unb-flow-step:last-child::before {
+    content: "";
+    position: absolute;
+    top: 2.5rem;
+    bottom: -1.5rem;
+    left: -3.5rem;
+    width: 2.375rem;
+    background: #fff;
+  }
+}
+
+@media (min-width: 900px) {
+  /* Runs from the first node's centre to the last node's centre. */
+  .unb-flow-track {
+    top: 1.125rem;
+    right: auto;
+    bottom: auto;
+    left: 1.1875rem;
+    width: calc(66.667% + 0.667rem);
+    height: 2px;
+  }
+
+  .unb-flow-fill {
+    background: linear-gradient(90deg, var(--unb-red), var(--unb-charcoal));
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .unb-flow.is-active .unb-flow-fill {
+    transform: scaleX(1);
+  }
+
+  .unb-flow-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 3.5rem 0 0;
+  }
+
+  .unb-flow-node {
+    top: -3.5rem;
+    left: 0;
+  }
+}
+
+/* My results: rows on phones, three columns from 640px */
+.unb-results {
+  display: grid;
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+}
+
+.unb-result {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1.1rem 1.25rem;
+  border-left: 3px solid var(--unb-red);
+  border-radius: 2px;
+  background: var(--unb-mist);
+}
+
+/* A fixed value column on phones so the three labels line up. */
+.unb-result-value {
+  order: -1;
+  flex: 0 0 8rem;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--unb-red);
+}
+
+.unb-result-label {
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--unb-ink);
+}
+
+@media (min-width: 640px) {
+  .unb-results {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .unb-result {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.45rem;
+    padding: 1.25rem 1.25rem 1.35rem;
+  }
+
+  .unb-result-value {
+    flex: none;
+    font-size: clamp(2.5rem, 4.6vw, 3.5rem);
+  }
+}
+
+/* Coursework on a light grey band, like unb.ca's sections */
+.unb-courses {
+  margin-top: 4.5rem;
+  margin-inline: calc((100% - 100cqw) / 2);
+  padding: 4rem 0;
+  background: var(--unb-mist);
+}
+
+@media (min-width: 900px) {
+  .unb-courses {
+    margin-top: 5.5rem;
+    padding: 4.75rem 0;
+  }
+}
+
+.unb-courses-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--unb-gutter);
+}
+
+.unb-courses-grid {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 900px) {
+  .unb-courses-grid {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+    align-items: start;
+    gap: 1.5rem;
+  }
+}
+
+.unb-bars {
+  padding: 1.35rem 1.5rem 1.5rem;
+  border-radius: 2px;
+  background: #fff;
+}
+
+.unb-bars-list {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.unb-bar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "label count"
+    "track track";
+  align-items: baseline;
+  gap: 0.3rem 0.75rem;
+}
+
+.unb-bar-label {
+  grid-area: label;
+  font-size: 0.875rem;
+  color: var(--unb-ink);
+}
+
+.unb-bar-count {
+  grid-area: count;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  color: var(--unb-heading);
+}
+
+.unb-bar-track {
+  grid-area: track;
+  display: block;
+  height: 0.5rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--unb-mist);
+}
+
+.unb-bar-track i {
+  display: block;
+  width: var(--w);
+  height: 100%;
+  border-radius: inherit;
+  background: var(--unb-charcoal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i) * 70ms + 150ms);
+}
+
+.unb-bar.is-major .unb-bar-label {
+  font-weight: 600;
+  color: var(--unb-heading);
+}
+
+.unb-bar.is-major .unb-bar-track i {
+  background: var(--unb-red);
+}
+
+.unb-bars.is-active .unb-bar-track i {
+  transform: scaleX(1);
+}
+
+@media (min-width: 640px) {
+  .unb-bar {
+    grid-template-columns: 12.5rem minmax(0, 1fr) 1.5rem;
+    grid-template-areas: "label track count";
+    align-items: center;
+    gap: 0.9rem;
+  }
+}
+
+/* My major, under a red header strip like unb.ca's program cards */
+.unb-major {
+  overflow: hidden;
+  border-radius: 2px;
+  background: #fff;
+}
+
+.unb-major-head {
+  margin: 0;
+  padding: 0.7rem 1.25rem;
+  background: var(--unb-red);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.unb-major-list {
+  margin: 0;
+  padding: 0.35rem 1.25rem 0.75rem;
+  list-style: none;
+}
+
+.unb-major-list li {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--unb-line);
+  font-size: 0.9375rem;
+  color: var(--unb-ink);
+}
+
+.unb-major-list li:last-child {
+  border-bottom: 0;
+}
+
+/* Student Investment Fund */
+.unb-growth {
+  display: grid;
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+}
+
+@media (min-width: 640px) {
+  .unb-growth {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem;
+  }
+}
+
+.unb-growth-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.4rem 1.5rem 1.5rem;
+  border: 1px solid var(--unb-line);
+  border-radius: 2px;
+  background: #fff;
+}
+
+.unb-growth-item.is-now {
+  border-color: var(--unb-charcoal);
+  background: var(--unb-charcoal);
+}
+
+.unb-growth-value {
+  order: -1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 5vw, 3.75rem);
+  font-weight: 300;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--unb-heading);
+}
+
+.unb-growth-label {
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--unb-grey);
+}
+
+.unb-growth-item.is-now .unb-growth-value {
+  color: #fff;
+}
+
+.unb-growth-item.is-now .unb-growth-label {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+@media (min-width: 640px) {
+  /* A red arrow from 1998 to 2024 across the gap between the tiles. */
+  .unb-growth-item.is-now::before,
+  .unb-growth-item.is-now::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+  }
+
+  .unb-growth-item.is-now::before {
+    left: -2.4rem;
+    width: 1.7rem;
+    height: 2px;
+    background: var(--unb-red);
+    transform: translateY(-50%);
+  }
+
+  .unb-growth-item.is-now::after {
+    left: -1.15rem;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-top: 2px solid var(--unb-red);
+    border-right: 2px solid var(--unb-red);
+    transform: translateY(-50%) rotate(45deg);
+  }
+}
+
+.unb-sif-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  max-width: 40rem;
+  margin: 1.5rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--unb-ink);
+}
+
+.unb-sif-note::before {
+  content: "";
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-top: 0.45rem;
+  border-radius: 999px;
+  background: var(--unb-red);
+}
+
+/* Footer */
+.unb-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--unb-line);
+  font-size: 0.8125rem;
+  color: var(--unb-grey);
+}
+
+.unb-footer p {
+  max-width: 40rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.unb-link {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--unb-teal);
+  text-decoration: none;
+}
+
+.unb-link:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .unb-flow-step,
+  .unb-flow-node,
+  .unb-flow-fill,
+  .unb-bar-track i {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* A still ring with every segment drawn, and still cards. */
+  .unb-seg,
+  .unb-award,
+  .unb-fund {
+    animation: none !important;
+  }
+}

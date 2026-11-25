@@ -5,15 +5,19 @@ import {
   useScrollAnimation,
   useStaggeredScrollAnimation,
 } from "@/hooks/useScrollAnimation";
-import { useRef, type RefObject } from "react";
+import { useRef, type ComponentType, type RefObject } from "react";
 import { useCounterAnimation } from "@/hooks/use-counter-animation";
-import BmoSpotlight from "@/components/bmo-spotlight";
-import GrantThorntonSpotlight from "@/components/grant-thornton-spotlight";
-import IrvingSpotlight from "@/components/irving-spotlight";
-import RbcSpotlight from "@/components/rbc-spotlight";
-import RoiSpotlight from "@/components/roi-spotlight";
-import SeventyThreeStringsSpotlight from "@/components/seventy-three-strings-spotlight";
-import TdSpotlight from "@/components/td-spotlight";
+import { LazySpotlight } from "@/components/lazy-spotlight";
+import {
+  loadBmoSpotlight,
+  loadGrantThorntonSpotlight,
+  loadIrvingSpotlight,
+  loadRbcSpotlight,
+  loadRoiSpotlight,
+  loadSeventyThreeStringsSpotlight,
+  loadTdSpotlight,
+} from "@/components/spotlight-loaders";
+import { spotlightTriggers } from "@/components/spotlight-triggers";
 import { slugify } from "@/lib/utils";
 import bmoLogo from "@assets/BMO_Logo.svg_1755913265896.png";
 import tdLogo from "@assets/Toronto-Dominion_Bank_logo.svg_1755913265896.png";
@@ -48,6 +52,19 @@ type SpotlightKey =
   | "rbc-intern"
   | "irving"
   | "grant-thornton";
+
+type PanelLoader = () => Promise<{
+  default: ComponentType<{ originRef: RefObject<HTMLElement>; logoSrc: string }>;
+}>;
+
+const spotlightLoaders: Record<Exclude<SpotlightKey, "rbc-advisor" | "rbc-intern">, PanelLoader> = {
+  "73-strings": loadSeventyThreeStringsSpotlight,
+  roi: loadRoiSpotlight,
+  bmo: loadBmoSpotlight,
+  td: loadTdSpotlight,
+  irving: loadIrvingSpotlight,
+  "grant-thornton": loadGrantThorntonSpotlight,
+};
 
 interface CounterStatProps {
   end: number;
@@ -391,27 +408,22 @@ export default function ExperienceSection() {
                         className={`experience-card-spotlight scroll-slide-up ${revealClass}`}
                         style={getScrollRevealStyle(chipStartDelay + exp.technologies.length * 65 + 60)}
                       >
-                        {exp.spotlight === "grant-thornton" ? (
-                          <GrantThorntonSpotlight
-                            originRef={spotlightRefs["grant-thornton"]}
-                            logoSrc={exp.logoSrc}
+                        {exp.spotlight === "rbc-advisor" || exp.spotlight === "rbc-intern" ? (
+                          <LazySpotlight
+                            load={loadRbcSpotlight}
+                            trigger={spotlightTriggers[exp.spotlight]}
+                            props={{
+                              originRef: spotlightRefs[exp.spotlight],
+                              logoSrc: exp.logoSrc,
+                              role: exp.spotlight === "rbc-advisor" ? "advisor" : "intern",
+                            }}
                           />
-                        ) : exp.spotlight === "irving" ? (
-                          <IrvingSpotlight originRef={spotlightRefs.irving} logoSrc={exp.logoSrc} />
-                        ) : exp.spotlight === "rbc-advisor" || exp.spotlight === "rbc-intern" ? (
-                          <RbcSpotlight
-                            originRef={spotlightRefs[exp.spotlight]}
-                            logoSrc={exp.logoSrc}
-                            role={exp.spotlight === "rbc-advisor" ? "advisor" : "intern"}
-                          />
-                        ) : exp.spotlight === "td" ? (
-                          <TdSpotlight originRef={spotlightRefs.td} logoSrc={exp.logoSrc} />
-                        ) : exp.spotlight === "bmo" ? (
-                          <BmoSpotlight originRef={spotlightRefs.bmo} logoSrc={exp.logoSrc} />
-                        ) : exp.spotlight === "roi" ? (
-                          <RoiSpotlight originRef={spotlightRefs.roi} logoSrc={exp.logoSrc} />
                         ) : (
-                          <SeventyThreeStringsSpotlight originRef={spotlightRefs["73-strings"]} logoSrc={exp.logoSrc} />
+                          <LazySpotlight
+                            load={spotlightLoaders[exp.spotlight]}
+                            trigger={spotlightTriggers[exp.spotlight]}
+                            props={{ originRef: spotlightRefs[exp.spotlight], logoSrc: exp.logoSrc }}
+                          />
                         )}
                       </div>
                     ) : null}

@@ -11,6 +11,8 @@ import {
   useShowSection,
 } from "@/components/credential-panel";
 import { cn } from "@/lib/utils";
+import { spotlightTriggers } from "@/components/spotlight-triggers";
+import "@/styles/spotlights/aif.css";
 
 /*
  * "Inside the credential" panel for the AI Fluency: Framework and Foundations card, in
@@ -177,8 +179,8 @@ export default function AifSpotlight({ originRef, logoSrc }: AifSpotlightProps) 
       logoAlt="Anthropic logo"
       title="AI Fluency: Framework and Foundations"
       meta="Anthropic · Completed 2026"
-      triggerLabel="Inside the credential"
-      triggerHint="The framework, the course and the series"
+      triggerLabel={spotlightTriggers.aif.label}
+      triggerHint={spotlightTriggers.aif.hint}
       className="role-spotlight--cred role-spotlight--aif"
     >
       <section className="cred-hero">
@@ -309,9 +311,9 @@ export default function AifSpotlight({ originRef, logoSrc }: AifSpotlightProps) 
 
       <section className="cred-section" aria-labelledby="aif-today-title">
         <SpotlightReveal>
-          <CredEyebrow>AI Fluency today</CredEyebrow>
+          <CredEyebrow>AI Fluency in 2026</CredEyebrow>
           <h3 id="aif-today-title" className="cred-heading">
-            Where the course stands now.
+            Where the course stands.
           </h3>
         </SpotlightReveal>
         <CredCards cards={today} />

@@ -6,6 +6,8 @@ import {
   useSpotlightInView,
 } from "@/components/role-spotlight";
 import { cn } from "@/lib/utils";
+import { spotlightTriggers } from "@/components/spotlight-triggers";
+import "@/styles/spotlights/gt.css";
 
 /*
  * "Inside the role" panel for the Grant Thornton experience card, in Doane Grant
@@ -27,7 +29,7 @@ const company = [
   { to: 3000, suffix: "+", label: "colleagues" },
   { to: 70, suffix: "+", label: "offices across Canada" },
   { to: 85, suffix: "+", label: "years since the firm was founded in Halifax" },
-  { to: 19, label: "years and counting as a Great Place to Work™" },
+  { to: 19, label: "years as a Great Place to Work™, as of 2026" },
 ];
 
 const workflow = [
@@ -182,8 +184,8 @@ export default function GrantThorntonSpotlight({ originRef, logoSrc }: GrantThor
       logoAlt="Grant Thornton logo"
       title="Tax Return Intern"
       meta="Grant Thornton LLP · Saint John, NB · 2018"
-      triggerLabel="Inside the role"
-      triggerHint="The firm, the returns and my results"
+      triggerLabel={spotlightTriggers["grant-thornton"].label}
+      triggerHint={spotlightTriggers["grant-thornton"].hint}
       className="role-spotlight--gt"
     >
       <section className="gt-hero">
@@ -274,7 +276,7 @@ export default function GrantThorntonSpotlight({ originRef, logoSrc }: GrantThor
       <section className="gt-services" aria-labelledby="gt-services-title">
         <div className="gt-services-inner">
           <SpotlightReveal>
-            <Eyebrow>Tax at Doane Grant Thornton today</Eyebrow>
+            <Eyebrow>Tax at Doane Grant Thornton in 2026</Eyebrow>
             <h3 id="gt-services-title" className="gt-heading">
               Compliance today, planning for tomorrow.
             </h3>

@@ -1,0 +1,961 @@
+/* ------------------------------------------------------------------ */
+/* BMO theme: Heebo light headings, deep navy, BMO blue pill buttons,  */
+/* warm cream and white sections with white cards                      */
+/* ------------------------------------------------------------------ */
+
+.role-spotlight--bmo {
+  --bmo-font: "Heebo", Arial, sans-serif;
+  --bmo-ink: rgb(0, 25, 40);
+  --bmo-grey: rgb(100, 108, 118);
+  --bmo-line: rgb(217, 220, 225);
+  --bmo-cream: rgb(248, 245, 240);
+  --bmo-blue: rgb(0, 117, 190);
+  --bmo-blue-dark: rgb(0, 92, 150);
+  --bmo-blue-tint: rgb(234, 243, 250);
+  --bmo-navy: rgb(0, 49, 87);
+  --bmo-sky: rgb(120, 185, 232);
+  --bmo-sand: rgb(205, 194, 178);
+  --bmo-gutter: 1.25rem;
+  --bmo-shadow:
+    0 2px 12px rgba(0, 25, 40, 0.08),
+    0 1px 2px rgba(0, 25, 40, 0.06);
+}
+
+@media (min-width: 768px) {
+  .role-spotlight--bmo {
+    --bmo-gutter: 3.5rem;
+  }
+}
+
+.role-spotlight--bmo .role-spotlight-panel {
+  --role-spotlight-surface: rgb(248, 245, 240);
+  --role-spotlight-tile: rgba(255, 255, 255, 0);
+  --role-spotlight-title-color: rgb(0, 25, 40);
+  background: var(--bmo-cream);
+  color: var(--bmo-ink);
+  font-family: var(--bmo-font);
+}
+
+.role-spotlight--bmo .role-spotlight-panel::before {
+  background: linear-gradient(180deg, var(--bmo-cream) 25%, rgba(248, 245, 240, 0));
+}
+
+.role-spotlight--bmo .role-spotlight-close {
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 2px 10px rgba(0, 25, 40, 0.12),
+    inset 0 0 0 1px rgba(0, 25, 40, 0.08);
+  color: var(--bmo-ink);
+}
+
+.role-spotlight--bmo .role-spotlight-close:hover {
+  background: #fff;
+}
+
+.role-spotlight--bmo .role-spotlight-close:focus-visible {
+  outline-color: var(--bmo-blue);
+}
+
+/* Lets full-bleed white bands size themselves to the panel (100cqw). */
+.role-spotlight--bmo .role-spotlight-scroll {
+  container-type: inline-size;
+  scrollbar-color: rgba(0, 25, 40, 0.25) transparent;
+}
+
+.role-spotlight--bmo .role-spotlight-header {
+  gap: 1.25rem;
+}
+
+.role-spotlight--bmo .role-spotlight-logo-tile {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+}
+
+.role-spotlight--bmo .role-spotlight-logo {
+  width: 3rem;
+  height: 3rem;
+}
+
+.role-spotlight--bmo .role-spotlight-heading {
+  padding-left: 1.25rem;
+  border-left: 1px solid rgba(0, 25, 40, 0.16);
+}
+
+.role-spotlight--bmo .role-spotlight-title {
+  font-family: var(--bmo-font);
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--bmo-ink);
+}
+
+.role-spotlight--bmo .role-spotlight-meta {
+  color: var(--bmo-grey);
+}
+
+/* Type */
+.bmo-overline {
+  margin: 0;
+  font-size: 1.375rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--bmo-ink);
+}
+
+.bmo-display {
+  margin: 0.6rem 0 0;
+  font-family: var(--bmo-font);
+  font-size: clamp(2.25rem, 4.6vw, 3.25rem);
+  font-weight: 300;
+  line-height: 1.12;
+  color: var(--bmo-ink);
+  text-wrap: balance;
+}
+
+.bmo-eyebrow {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--bmo-blue);
+}
+
+.bmo-heading {
+  max-width: 24ch;
+  margin: 0.65rem 0 0;
+  font-family: var(--bmo-font);
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  font-weight: 300;
+  line-height: 1.18;
+  color: var(--bmo-ink);
+  text-wrap: balance;
+}
+
+.bmo-heading-center {
+  max-width: 26ch;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.bmo-lede,
+.bmo-section-lede {
+  max-width: 34rem;
+  margin: 1.25rem 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--bmo-ink);
+  text-wrap: pretty;
+}
+
+.bmo-section-lede {
+  max-width: 40rem;
+  margin-top: 1rem;
+  color: var(--bmo-grey);
+}
+
+/* Hero */
+.bmo-hero {
+  display: grid;
+  gap: 2.5rem;
+  padding-top: 2.75rem;
+}
+
+@media (min-width: 900px) {
+  .bmo-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 2.5rem;
+    padding-top: 3.25rem;
+  }
+}
+
+.bmo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.bmo-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.6rem;
+  border: 2px solid var(--bmo-blue);
+  border-radius: 48px;
+  background: var(--bmo-blue);
+  color: #fff;
+  font: inherit;
+  font-family: var(--bmo-font);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+}
+
+.bmo-button:hover {
+  border-color: var(--bmo-blue-dark);
+  background: var(--bmo-blue-dark);
+}
+
+.bmo-button-ghost {
+  background: transparent;
+  color: var(--bmo-blue);
+}
+
+.bmo-button-ghost:hover {
+  border-color: var(--bmo-blue);
+  background: var(--bmo-blue);
+  color: #fff;
+}
+
+.bmo-button:focus-visible,
+.bmo-link:focus-visible {
+  outline: 2px solid var(--bmo-blue);
+  outline-offset: 3px;
+}
+
+/* Hero visual: a client review pack */
+.bmo-hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.bmo-stage {
+  position: relative;
+  width: 100%;
+  max-width: 25rem;
+  padding: 3rem 1.5rem 4.25rem;
+}
+
+/* Echoes the rounded corner on BMO's hero photography. */
+.bmo-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 14%;
+  border-radius: 0 44px 0 0;
+  background: linear-gradient(150deg, rgb(208, 228, 243) 0%, rgb(232, 226, 214) 100%);
+}
+
+.bmo-doc {
+  position: relative;
+  padding: 1.25rem;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow:
+    0 14px 34px -14px rgba(0, 25, 40, 0.32),
+    0 2px 6px rgba(0, 25, 40, 0.06);
+}
+
+.bmo-doc-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--bmo-line);
+}
+
+.bmo-doc-title {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.bmo-doc-tag {
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: var(--bmo-blue-tint);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--bmo-blue);
+}
+
+.bmo-doc-body {
+  display: grid;
+  grid-template-columns: 6.25rem minmax(0, 1fr);
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1.1rem 0;
+}
+
+.bmo-donut {
+  width: 6.25rem;
+  height: 6.25rem;
+  transform: rotate(-90deg);
+}
+
+.bmo-donut-track,
+.bmo-donut-slice {
+  fill: none;
+  stroke-width: 14;
+}
+
+.bmo-donut-track {
+  stroke: rgb(240, 238, 234);
+}
+
+.bmo-donut-slice {
+  stroke-dasharray: var(--dash) 100;
+  stroke-dashoffset: var(--offset);
+  animation: bmo-donut 1100ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i) * 140ms + 500ms);
+}
+
+@keyframes bmo-donut {
+  from {
+    stroke-dasharray: 0 100;
+  }
+}
+
+.bmo-legend {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.8125rem;
+}
+
+.bmo-legend li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.bmo-legend li span:first-child::before {
+  content: "";
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-right: 0.45rem;
+  border-radius: 2px;
+  background: var(--tone);
+}
+
+.bmo-legend-share {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.bmo-checklist {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0.95rem 0 0;
+  border-top: 1px solid var(--bmo-line);
+  list-style: none;
+  font-size: 0.8125rem;
+}
+
+.bmo-checklist li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.bmo-check {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 1.125rem;
+  height: 1.125rem;
+  border: 1.5px solid var(--bmo-line);
+  border-radius: 999px;
+  color: #fff;
+  animation: bmo-check 400ms ease both;
+  animation-delay: calc(var(--i) * 350ms + 1200ms);
+}
+
+.bmo-check svg {
+  width: 0.625rem;
+  height: 0.625rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  animation: bmo-check-mark 300ms ease both;
+  animation-delay: calc(var(--i) * 350ms + 1300ms);
+}
+
+@keyframes bmo-check {
+  to {
+    border-color: var(--bmo-blue);
+    background: var(--bmo-blue);
+  }
+}
+
+@keyframes bmo-check-mark {
+  to {
+    opacity: 1;
+  }
+}
+
+.bmo-float {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.7rem 0.95rem;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 10px 28px -10px rgba(0, 25, 40, 0.32);
+}
+
+.bmo-float-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--bmo-grey);
+}
+
+.bmo-float-value {
+  font-size: 1.375rem;
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--bmo-blue);
+}
+
+.bmo-float-a {
+  top: -0.25rem;
+  right: -0.25rem;
+  animation: bmo-float 7s ease-in-out infinite alternate;
+}
+
+.bmo-float-b {
+  bottom: 0.5rem;
+  left: -0.25rem;
+  animation: bmo-float 8s ease-in-out -2s infinite alternate-reverse;
+}
+
+@keyframes bmo-float {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-6px);
+  }
+}
+
+/* Full-bleed white bands */
+.bmo-band {
+  margin-top: 4rem;
+  margin-inline: calc((100% - 100cqw) / 2);
+  padding: 4rem 0;
+  background: #fff;
+}
+
+@media (min-width: 900px) {
+  .bmo-band {
+    margin-top: 5rem;
+    padding: 5rem 0;
+  }
+}
+
+.bmo-band-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--bmo-gutter);
+}
+
+.bmo-section {
+  margin-top: 4.5rem;
+}
+
+@media (min-width: 900px) {
+  .bmo-section {
+    margin-top: 5.5rem;
+  }
+}
+
+.bmo-role {
+  scroll-margin-top: 1rem;
+}
+
+/* Services */
+.bmo-services {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+  margin: 2.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 600px) {
+  .bmo-services {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .bmo-services {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.bmo-services > li,
+.bmo-awards > li {
+  display: flex;
+}
+
+.bmo-service {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 1.4rem;
+  border-radius: 12px;
+  background: var(--bmo-cream);
+}
+
+.bmo-service-icon {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 0.6rem;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--bmo-blue);
+}
+
+.bmo-service-icon svg,
+.bmo-award-icon svg {
+  width: 1.375rem;
+  height: 1.375rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.bmo-service-title {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--bmo-ink);
+}
+
+.bmo-service-body {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--bmo-grey);
+}
+
+.bmo-audiences {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--bmo-line);
+}
+
+.bmo-audiences-label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--bmo-ink);
+}
+
+.bmo-audiences ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bmo-audiences li {
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--bmo-line);
+  border-radius: 999px;
+  font-size: 0.875rem;
+  color: var(--bmo-ink);
+}
+
+/* Numbers: white pillar cards with hairline dividers */
+.bmo-pillars {
+  margin-top: 1.75rem;
+  padding: 1.5rem 1.25rem 1.25rem;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--bmo-shadow);
+}
+
+.bmo-pillars-title {
+  margin: 0 0 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--bmo-grey);
+}
+
+.bmo-pillars.is-mine .bmo-pillars-title {
+  color: var(--bmo-blue);
+}
+
+.bmo-pillars-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  margin: 0;
+}
+
+@media (min-width: 700px) {
+  .bmo-pillars-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.bmo-pillar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.25rem;
+  text-align: center;
+}
+
+.bmo-pillar + .bmo-pillar {
+  border-top: 1px solid var(--bmo-line);
+}
+
+@media (min-width: 700px) {
+  .bmo-pillar + .bmo-pillar {
+    border-top: 0;
+    border-left: 1px solid var(--bmo-line);
+  }
+}
+
+.bmo-pillar-value {
+  order: -1;
+  margin: 0;
+  font-size: clamp(2.5rem, 4.4vw, 3.25rem);
+  font-weight: 300;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--bmo-blue);
+}
+
+.bmo-pillar-label {
+  max-width: 16rem;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--bmo-ink);
+}
+
+/* Workflow */
+.bmo-flow {
+  position: relative;
+  margin-top: 2.5rem;
+}
+
+.bmo-flow-track {
+  position: absolute;
+  top: 1.25rem;
+  bottom: 1.25rem;
+  left: 1.125rem;
+  width: 2px;
+  overflow: hidden;
+  background: var(--bmo-line);
+}
+
+.bmo-flow-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--bmo-blue);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1500ms cubic-bezier(0.32, 0.72, 0, 1) 200ms;
+}
+
+.bmo-flow.is-active .bmo-flow-fill {
+  transform: scaleY(1);
+}
+
+.bmo-flow-steps {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0 0 0 3.5rem;
+  list-style: none;
+}
+
+.bmo-flow-step {
+  position: relative;
+  opacity: 0.3;
+  transform: translateY(14px);
+  transition:
+    opacity 700ms ease,
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--step-index, 0) * 240ms + 300ms);
+}
+
+.bmo-flow.is-active .bmo-flow-step {
+  opacity: 1;
+  transform: none;
+}
+
+.bmo-flow-node {
+  position: absolute;
+  top: 0.85rem;
+  left: -3.5rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.375rem;
+  height: 2.375rem;
+  border: 2px solid var(--bmo-line);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--bmo-grey);
+  transition:
+    background-color 500ms ease,
+    border-color 500ms ease,
+    color 500ms ease;
+  transition-delay: calc(var(--step-index, 0) * 240ms + 380ms);
+}
+
+.bmo-flow.is-active .bmo-flow-node {
+  border-color: var(--bmo-blue);
+  color: var(--bmo-blue);
+}
+
+.bmo-flow.is-active .bmo-flow-step.is-mine .bmo-flow-node {
+  background: var(--bmo-blue);
+  color: #fff;
+}
+
+.bmo-flow-card {
+  height: 100%;
+  padding: 1.4rem 1.5rem 1.5rem;
+  border-radius: 12px;
+  background: var(--bmo-cream);
+}
+
+.bmo-flow-step.is-mine .bmo-flow-card {
+  background: var(--bmo-blue-tint);
+  box-shadow: inset 0 3px 0 var(--bmo-blue);
+}
+
+.bmo-flow-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--bmo-grey);
+}
+
+.bmo-flow-step.is-mine .bmo-flow-tag {
+  color: var(--bmo-blue);
+}
+
+.bmo-flow-title {
+  margin: 0.6rem 0 0;
+  font-family: var(--bmo-font);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--bmo-ink);
+}
+
+.bmo-flow-body {
+  margin: 0.5rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--bmo-ink);
+  text-wrap: pretty;
+}
+
+@media (max-width: 899px) {
+  /* Stop the vertical line at the last node. */
+  .bmo-flow-step:last-child::before {
+    content: "";
+    position: absolute;
+    top: 2.5rem;
+    bottom: -1.5rem;
+    left: -3.5rem;
+    width: 2.375rem;
+    background: #fff;
+  }
+}
+
+@media (min-width: 900px) {
+  /* Runs from the first node's centre to the last node's centre. */
+  .bmo-flow-track {
+    top: 1.125rem;
+    right: auto;
+    bottom: auto;
+    left: 1.1875rem;
+    width: calc(66.667% + 0.667rem);
+    height: 2px;
+  }
+
+  .bmo-flow-fill {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .bmo-flow.is-active .bmo-flow-fill {
+    transform: scaleX(1);
+  }
+
+  .bmo-flow-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 3.5rem 0 0;
+  }
+
+  .bmo-flow-node {
+    top: -3.5rem;
+    left: 0;
+  }
+}
+
+/* Recognition */
+.bmo-awards {
+  display: grid;
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 900px) {
+  .bmo-awards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.bmo-award {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--bmo-shadow);
+}
+
+.bmo-award-icon {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 0.4rem;
+  border-radius: 999px;
+  background: var(--bmo-blue-tint);
+  color: var(--bmo-blue);
+}
+
+.bmo-award-title {
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--bmo-ink);
+}
+
+.bmo-award-source {
+  font-size: 0.875rem;
+  color: var(--bmo-grey);
+}
+
+/* Toolkit and footer */
+.bmo-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bmo-chip {
+  padding: 0.55rem 1.05rem;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px var(--bmo-line);
+  font-size: 0.9375rem;
+  color: var(--bmo-ink);
+}
+
+.bmo-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--bmo-line);
+  font-size: 0.8125rem;
+  color: var(--bmo-grey);
+}
+
+.bmo-footer p {
+  max-width: 40rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.bmo-link {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--bmo-blue);
+  text-decoration: none;
+}
+
+.bmo-link:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bmo-flow-step,
+  .bmo-flow-node,
+  .bmo-flow-fill {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .bmo-donut-slice,
+  .bmo-check,
+  .bmo-check svg,
+  .bmo-float {
+    animation: none !important;
+  }
+
+  /* Show the finished review pack. */
+  .bmo-check {
+    border-color: var(--bmo-blue);
+    background: var(--bmo-blue);
+  }
+
+  .bmo-check svg {
+    opacity: 1;
+  }
+}

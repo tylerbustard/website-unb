@@ -10,7 +10,11 @@ import {
   type CredFigure,
   type CredStep,
 } from "@/components/credential-panel";
+import type { CategoryKey } from "@/components/category-keys";
+import { categoryPanels } from "@/components/category-panels";
+import { spotlightTriggers } from "@/components/spotlight-triggers";
 import { cn } from "@/lib/utils";
+import "@/styles/spotlights/cat.css";
 
 /*
  * "Inside the category" panel for a certification category card. Each category is
@@ -35,7 +39,6 @@ export interface CategoryPanelConfig {
   icon: string;
   title: string;
   meta: string;
-  triggerHint: string;
   display: ReactNode;
   lede: string;
   /** Oldest first. */
@@ -76,10 +79,12 @@ function Timeline({ config }: { config: CategoryPanelConfig }) {
 
 interface CategorySpotlightProps {
   originRef: RefObject<HTMLElement>;
-  config: CategoryPanelConfig;
+  panel: CategoryKey;
 }
 
-export default function CategorySpotlight({ originRef, config }: CategorySpotlightProps) {
+export default function CategorySpotlight({ originRef, panel }: CategorySpotlightProps) {
+  const config = categoryPanels[panel];
+  const trigger = spotlightTriggers[`cat-${panel}`];
   const certsRef = useRef<HTMLElement>(null);
   const showCerts = useShowSection(certsRef);
   const id = config.theme.replace("role-spotlight--", "");
@@ -91,8 +96,8 @@ export default function CategorySpotlight({ originRef, config }: CategorySpotlig
       logoAlt=""
       title={config.title}
       meta={config.meta}
-      triggerLabel="Inside the category"
-      triggerHint={config.triggerHint}
+      triggerLabel={trigger.label}
+      triggerHint={trigger.hint}
       className={`role-spotlight--cred role-spotlight--cat ${config.theme}`}
     >
       <section className="cred-hero">

@@ -6,6 +6,8 @@ import {
   useSpotlightInView,
 } from "@/components/role-spotlight";
 import { cn } from "@/lib/utils";
+import { spotlightTriggers } from "@/components/spotlight-triggers";
+import "@/styles/spotlights/unb.css";
 
 /*
  * "Inside the degree" panel for the UNB education card, in UNB's branding: white
@@ -202,8 +204,8 @@ export default function UnbSpotlight({ originRef, logoSrc, courseAreas }: UnbSpo
       logoAlt="University of New Brunswick logo"
       title="University of New Brunswick"
       meta={"BBA, Finance · Saint John, NB · 2016–\u20602020"}
-      triggerLabel="Inside the degree"
-      triggerHint="The university, the program and my results"
+      triggerLabel={spotlightTriggers.unb.label}
+      triggerHint={spotlightTriggers.unb.hint}
       className="role-spotlight--unb"
     >
       <section className="unb-hero">

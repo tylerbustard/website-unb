@@ -1,0 +1,596 @@
+/* ------------------------------------------------------------------ */
+/* Shared credential panel parts (GRE, AI Fluency and the category     */
+/* panels). A theme sets the --cred-* colours on its .role-spotlight-- */
+/* class and adds its own hero visual and sections.                    */
+/* ------------------------------------------------------------------ */
+
+.role-spotlight--cred {
+  --cred-gutter: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .role-spotlight--cred {
+    --cred-gutter: 3.5rem;
+  }
+}
+
+.role-spotlight--cred .role-spotlight-panel {
+  background: var(--cred-surface);
+  color: var(--cred-body);
+}
+
+/* Lets the full-bleed band size itself to the panel (100cqw). */
+.role-spotlight--cred .role-spotlight-scroll {
+  container-type: inline-size;
+}
+
+.role-spotlight--cred .role-spotlight-header {
+  gap: 1.25rem;
+}
+
+.role-spotlight--cred .role-spotlight-logo-tile {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+}
+
+.role-spotlight--cred .role-spotlight-heading {
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--cred-line);
+}
+
+.role-spotlight--cred .role-spotlight-title {
+  color: var(--cred-ink);
+}
+
+.role-spotlight--cred .role-spotlight-meta {
+  color: var(--cred-soft);
+  text-wrap: balance;
+}
+
+.cred-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cred-accent);
+}
+
+.cred-display {
+  margin: 0.8rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.6vw, 3.25rem);
+  font-weight: var(--cred-display-weight, 700);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--cred-ink);
+  text-wrap: balance;
+}
+
+.cred-heading {
+  max-width: 24ch;
+  margin: 0.65rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.2vw, 2.375rem);
+  font-weight: var(--cred-heading-weight, 700);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--cred-ink);
+  text-wrap: balance;
+}
+
+.cred-lede,
+.cred-section-lede {
+  max-width: 34rem;
+  margin: 1.25rem 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--cred-body);
+  text-wrap: pretty;
+}
+
+.cred-section-lede {
+  max-width: 40rem;
+  margin-top: 1rem;
+}
+
+/* Hero */
+.cred-hero {
+  display: grid;
+  gap: 2.5rem;
+  padding-top: 2.75rem;
+}
+
+@media (min-width: 900px) {
+  .cred-hero {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: center;
+    padding-top: 3.25rem;
+  }
+}
+
+.cred-hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.cred-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.cred-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.65rem 1.3rem;
+  border: 1px solid var(--cred-accent);
+  border-radius: var(--cred-button-radius, 6px);
+  background: var(--cred-accent);
+  color: var(--cred-accent-ink);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.cred-button:hover {
+  border-color: var(--cred-accent-deep);
+  background: var(--cred-accent-deep);
+}
+
+.cred-button-outline {
+  border-color: var(--cred-outline, var(--cred-ink));
+  background: transparent;
+  color: var(--cred-ink);
+}
+
+.cred-button-outline:hover {
+  border-color: var(--cred-ink);
+  background: var(--cred-tint);
+}
+
+.cred-button:focus-visible,
+.cred-link:focus-visible {
+  outline: 2px solid var(--cred-accent);
+  outline-offset: 3px;
+}
+
+/* Full-bleed band */
+.cred-band {
+  margin-top: 4rem;
+  margin-inline: calc((100% - 100cqw) / 2);
+  padding: 4rem 0;
+  background: var(--cred-band-bg);
+  color: var(--cred-band-body);
+}
+
+@media (min-width: 900px) {
+  .cred-band {
+    margin-top: 5rem;
+    padding: 4.75rem 0;
+  }
+}
+
+.cred-band-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--cred-gutter);
+}
+
+.cred-band .cred-eyebrow {
+  color: var(--cred-band-accent);
+}
+
+.cred-band .cred-heading {
+  color: var(--cred-band-ink);
+}
+
+.cred-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 2.25rem 0 0;
+}
+
+@media (min-width: 900px) {
+  .cred-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.cred-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1.2rem 1.2rem 1.3rem;
+  border: 1px solid var(--cred-band-line);
+  border-radius: var(--cred-radius, 8px);
+  background: var(--cred-band-raised);
+}
+
+.cred-stat-value {
+  order: -1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.125rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--cred-band-accent);
+}
+
+.cred-stat-label {
+  font-size: 0.875rem;
+  line-height: 1.35;
+  color: var(--cred-band-body);
+}
+
+.cred-band-note {
+  max-width: 44rem;
+  margin: 2rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--cred-band-body);
+}
+
+/* Sections */
+.cred-section {
+  margin-top: 4.5rem;
+}
+
+@media (min-width: 900px) {
+  .cred-section {
+    margin-top: 5.5rem;
+  }
+}
+
+.cred-anchor {
+  scroll-margin-top: 1.5rem;
+}
+
+/* Workflow: a vertical line on phones, a horizontal line from 900px */
+.cred-flow {
+  position: relative;
+  margin-top: 2.5rem;
+}
+
+.cred-flow-track {
+  position: absolute;
+  top: 1.25rem;
+  bottom: 1.25rem;
+  left: 1.125rem;
+  width: 2px;
+  overflow: hidden;
+  background: var(--cred-line);
+}
+
+.cred-flow-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--cred-accent), var(--cred-done));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1500ms cubic-bezier(0.32, 0.72, 0, 1) 200ms;
+}
+
+.cred-flow.is-active .cred-flow-fill {
+  transform: scaleY(1);
+}
+
+.cred-flow-steps {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0 0 0 3.5rem;
+  list-style: none;
+}
+
+.cred-flow-step {
+  position: relative;
+  opacity: 0.3;
+  transform: translateY(14px);
+  transition:
+    opacity 700ms ease,
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--step-index, 0) * 240ms + 300ms);
+}
+
+.cred-flow.is-active .cred-flow-step {
+  opacity: 1;
+  transform: none;
+}
+
+.cred-flow-node {
+  position: absolute;
+  top: 0.85rem;
+  left: -3.5rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.375rem;
+  height: 2.375rem;
+  border: 2px solid var(--cred-node-line, var(--cred-line));
+  border-radius: 999px;
+  background: var(--cred-surface);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--cred-soft);
+  transition:
+    background-color 500ms ease,
+    border-color 500ms ease,
+    color 500ms ease;
+  transition-delay: calc(var(--step-index, 0) * 240ms + 380ms);
+}
+
+.cred-flow.is-active .cred-flow-node {
+  border-color: var(--cred-accent);
+  background: var(--cred-accent);
+  color: var(--cred-accent-ink);
+}
+
+.cred-flow.is-active .cred-flow-step:last-child .cred-flow-node {
+  border-color: var(--cred-done);
+  background: var(--cred-done);
+  color: var(--cred-done-ink);
+}
+
+.cred-flow-card {
+  height: 100%;
+  padding: 1.35rem 1.5rem 1.5rem;
+  border: 1px solid var(--cred-line);
+  border-radius: var(--cred-radius, 8px);
+  background: var(--cred-raised);
+}
+
+.cred-flow-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--cred-ink);
+}
+
+.cred-flow-body {
+  margin: 0.5rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--cred-body);
+  text-wrap: pretty;
+}
+
+@media (max-width: 899px) {
+  /* Stop the vertical line at the last node. */
+  .cred-flow-step:last-child::before {
+    content: "";
+    position: absolute;
+    top: 2.5rem;
+    bottom: -1.5rem;
+    left: -3.5rem;
+    width: 2.375rem;
+    background: var(--cred-surface);
+  }
+}
+
+@media (min-width: 900px) {
+  /* Runs from the first node's centre to the last node's centre. */
+  .cred-flow-track {
+    top: 1.125rem;
+    right: auto;
+    bottom: auto;
+    left: 1.1875rem;
+    width: calc(66.667% + 0.667rem);
+    height: 2px;
+  }
+
+  .cred-flow-fill {
+    background: linear-gradient(90deg, var(--cred-accent), var(--cred-done));
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .cred-flow.is-active .cred-flow-fill {
+    transform: scaleX(1);
+  }
+
+  .cred-flow-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 3.5rem 0 0;
+  }
+
+  .cred-flow-node {
+    top: -3.5rem;
+    left: 0;
+  }
+}
+
+/* Figures: rows on phones, three columns from 640px */
+.cred-results {
+  display: grid;
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+}
+
+.cred-result {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--cred-result-line, transparent);
+  border-radius: var(--cred-radius, 8px);
+  background: var(--cred-mist);
+}
+
+.cred-result-value {
+  order: -1;
+  flex: 0 0 auto;
+  min-width: 6.25rem;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 2.125rem;
+  font-weight: var(--cred-value-weight, 700);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--cred-value, var(--cred-accent));
+}
+
+.cred-result-label {
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--cred-body);
+}
+
+@media (min-width: 640px) {
+  .cred-results {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  /* A pair of figures splits the row in two. */
+  .cred-results:has(> .cred-result:nth-child(2):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cred-result {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.45rem;
+    padding: 1.25rem 1.25rem 1.35rem;
+  }
+
+  .cred-result-value {
+    flex: none;
+    font-size: clamp(2.25rem, 4.4vw, 3.25rem);
+  }
+}
+
+.cred-done {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 1.5rem 0 0;
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--cred-ink);
+  text-wrap: pretty;
+}
+
+.cred-done-check {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 999px;
+  background: var(--cred-done);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--cred-done-ink);
+}
+
+/* Cards */
+.cred-cards {
+  display: grid;
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .cred-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.cred-cards > li {
+  display: flex;
+}
+
+.cred-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  width: 100%;
+  padding: 1.35rem 1.4rem 1.5rem;
+  border: 1px solid var(--cred-line);
+  border-top: 3px solid var(--cred-accent);
+  border-radius: var(--cred-radius, 8px);
+  background: var(--cred-raised);
+}
+
+.cred-card-title {
+  font-family: var(--font-display);
+  font-size: 1.1875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--cred-ink);
+}
+
+.cred-card-body {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--cred-body);
+}
+
+/* Footer */
+.cred-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--cred-line);
+  font-size: 0.8125rem;
+  color: var(--cred-soft);
+}
+
+.cred-footer p {
+  max-width: 40rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.cred-link {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--cred-link, var(--cred-accent));
+  text-decoration: none;
+}
+
+.cred-link:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cred-flow-step,
+  .cred-flow-node,
+  .cred-flow-fill {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

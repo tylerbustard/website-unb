@@ -10,7 +10,9 @@ import { Eye } from "lucide-react";
 import universityLogo from "@assets/University_of_New_Brunswick_Logo.svg_1755912478863.png";
 import { getCertificateAsset } from "@/lib/certificates";
 import { CertificateModal, preloadCertificateImage, type CertificateModalCert } from "@/components/certificate-modal";
-import UnbSpotlight from "@/components/unb-spotlight";
+import { LazySpotlight } from "@/components/lazy-spotlight";
+import { loadUnbSpotlight } from "@/components/spotlight-loaders";
+import { spotlightTriggers } from "@/components/spotlight-triggers";
 
 interface CounterStatProps {
   end: number;
@@ -303,7 +305,11 @@ export default function EducationSection() {
             revealIndex: unbCardRevealIndex,
             cardRef: unbCardRef,
             spotlight: (
-              <UnbSpotlight originRef={unbCardRef} logoSrc={universityLogo} courseAreas={unbCourseCategories} />
+              <LazySpotlight
+                load={loadUnbSpotlight}
+                trigger={spotlightTriggers.unb}
+                props={{ originRef: unbCardRef, logoSrc: universityLogo, courseAreas: unbCourseCategories }}
+              />
             ),
           })}
         </div>

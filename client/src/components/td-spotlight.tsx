@@ -6,6 +6,8 @@ import {
   useSpotlightInView,
 } from "@/components/role-spotlight";
 import { cn } from "@/lib/utils";
+import { spotlightTriggers } from "@/components/spotlight-triggers";
+import "@/styles/spotlights/td.css";
 
 /*
  * "Inside the role" panel for the TD Canada Trust experience card, in TD's
@@ -221,8 +223,8 @@ export default function TdSpotlight({ originRef, logoSrc }: TdSpotlightProps) {
       logoAlt="TD logo"
       title="Financial Advisor"
       meta="TD Canada Trust · Kingston, ON · 2021–2022"
-      triggerLabel="Inside the role"
-      triggerHint="The branch, the clients and my results"
+      triggerLabel={spotlightTriggers.td.label}
+      triggerHint={spotlightTriggers.td.hint}
       className="role-spotlight--td"
     >
       <section className="td-hero">

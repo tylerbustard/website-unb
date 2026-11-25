@@ -19,6 +19,8 @@ import hamiltonLaneLogo from "@assets/73strings-clients/hamilton-lane.png";
 import investecLogo from "@assets/73strings-clients/investec.png";
 import sofinaLogo from "@assets/73strings-clients/sofina.png";
 import waystoneLogo from "@assets/73strings-clients/waystone.png";
+import { spotlightTriggers } from "@/components/spotlight-triggers";
+import "@/styles/spotlights/s73.css";
 
 /*
  * "Inside the role" panel for the 73 Strings experience card, styled after
@@ -308,8 +310,8 @@ export default function SeventyThreeStringsSpotlight({ originRef, logoSrc }: Sev
       logoAlt="73 Strings logo"
       title="Senior Associate, Portfolio Monitoring"
       meta="73 Strings · Toronto, ON · 2025–2026"
-      triggerLabel="Inside the role"
-      triggerHint="Clients, platform and day-to-day"
+      triggerLabel={spotlightTriggers["73-strings"].label}
+      triggerHint={spotlightTriggers["73-strings"].hint}
       className="role-spotlight--73"
     >
       <section className="rs-hero">

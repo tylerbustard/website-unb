@@ -7,6 +7,8 @@ import {
 } from "@/components/role-spotlight";
 import { IRVING_URL, company } from "@/components/irving-spotlight";
 import { cn } from "@/lib/utils";
+import { spotlightTriggers } from "@/components/spotlight-triggers";
+import "@/styles/spotlights/irving-volunteer.css";
 
 /*
  * "Inside the role" panel for the Irving Oil volunteer card in Community, in the same
@@ -41,7 +43,7 @@ const workflow = [
 const community = [
   {
     title: "Fuel the Care",
-    body: "Since 2002, fuel cards for families travelling for a child’s medical care, now across Atlantic Canada, Quebec, New England and Ireland.",
+    body: "Since 2002, fuel cards for families travelling for a child’s medical care, across Atlantic Canada, Quebec, New England and Ireland.",
   },
   {
     title: "Good Energy in Action",
@@ -141,8 +143,8 @@ export default function IrvingVolunteerSpotlight({ originRef, logoSrc }: IrvingV
       logoAlt="Irving Oil logo"
       title="Volunteer Staff"
       meta="Irving Oil Limited · Saint John, NB · 2018"
-      triggerLabel="Inside the role"
-      triggerHint="The event, the kids and how Irving gives back"
+      triggerLabel={spotlightTriggers["irving-volunteer"].label}
+      triggerHint={spotlightTriggers["irving-volunteer"].hint}
       className="role-spotlight--irving"
     >
       <section className="irv-hero">
@@ -230,12 +232,12 @@ export default function IrvingVolunteerSpotlight({ originRef, logoSrc }: IrvingV
 
       <section className="irv-section" aria-labelledby="irv-vol-community-title">
         <SpotlightReveal>
-          <Eyebrow>Irving in the community today</Eyebrow>
+          <Eyebrow>Irving in the community, 2026</Eyebrow>
           <h3 id="irv-vol-community-title" className="irv-heading">
             How Irving gives back.
           </h3>
           <p className="irv-section-lede">
-            Irving gives back in other ways too. These are some of them today.
+            Irving gives back in other ways too. These are some of them.
           </p>
         </SpotlightReveal>
         <ul className="irv-programs">

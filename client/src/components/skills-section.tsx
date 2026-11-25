@@ -11,17 +11,21 @@ import { useRef, useState, type RefObject } from "react";
 import { Eye } from "lucide-react";
 import { getCertificateAsset } from "@/lib/certificates";
 import { CertificateModal, preloadCertificateImage, type CertificateModalCert } from "@/components/certificate-modal";
-import CfaSpotlight from "@/components/cfa-spotlight";
-import TtsSpotlight from "@/components/tts-spotlight";
-import CsiSpotlight from "@/components/csi-spotlight";
-import BbgSpotlight from "@/components/bbg-spotlight";
-import EtsSpotlight from "@/components/ets-spotlight";
-import AifSpotlight from "@/components/aif-spotlight";
-import CategorySpotlight from "@/components/category-spotlight";
-import UnitedWaySpotlight from "@/components/united-way-spotlight";
-import IrvingVolunteerSpotlight from "@/components/irving-volunteer-spotlight";
-import RbcSpotlight from "@/components/rbc-spotlight";
-import { categoryKeyByTitle, categoryPanels, type CategoryKey } from "@/components/category-panels";
+import { LazySpotlight } from "@/components/lazy-spotlight";
+import {
+  loadAifSpotlight,
+  loadBbgSpotlight,
+  loadCategorySpotlight,
+  loadCfaSpotlight,
+  loadCsiSpotlight,
+  loadEtsSpotlight,
+  loadIrvingVolunteerSpotlight,
+  loadRbcSpotlight,
+  loadTtsSpotlight,
+  loadUnitedWaySpotlight,
+} from "@/components/spotlight-loaders";
+import { spotlightTriggers } from "@/components/spotlight-triggers";
+import { categoryKeyByTitle, type CategoryKey } from "@/components/category-keys";
 import unitedWayLogo from "@assets/United-Way-Logo_1755913265895.png";
 import rbcLogo from "@assets/rbc_logo.webp";
 import irvingLogo from "@assets/Irving_Oil.svg_1755913265895.png";
@@ -203,18 +207,18 @@ export default function CertificationsSection() {
   const renderCoreSpotlight = (key: CoreSpotlightKey, credential: Certification) => {
     switch (key) {
       case "cfa":
-        return <CfaSpotlight originRef={coreSpotlightRefs.cfa} logoSrc={credential.logoSrc ?? cfaLogo} />;
+        return <LazySpotlight load={loadCfaSpotlight} trigger={spotlightTriggers.cfa} props={{ originRef: coreSpotlightRefs.cfa, logoSrc: credential.logoSrc ?? cfaLogo }} />;
       case "tts":
-        return <TtsSpotlight originRef={coreSpotlightRefs.tts} logoSrc={credential.logoSrc ?? trainingTheStreetLogo} />;
+        return <LazySpotlight load={loadTtsSpotlight} trigger={spotlightTriggers.tts} props={{ originRef: coreSpotlightRefs.tts, logoSrc: credential.logoSrc ?? trainingTheStreetLogo }} />;
       case "csi":
-        return <CsiSpotlight originRef={coreSpotlightRefs.csi} logoSrc={credential.logoSrc ?? csiLogo} />;
+        return <LazySpotlight load={loadCsiSpotlight} trigger={spotlightTriggers.csi} props={{ originRef: coreSpotlightRefs.csi, logoSrc: credential.logoSrc ?? csiLogo }} />;
       case "bbg":
         // The panel draws the wordmark white on black, so it needs the transparent version.
-        return <BbgSpotlight originRef={coreSpotlightRefs.bbg} logoSrc={bloombergWordmark} />;
+        return <LazySpotlight load={loadBbgSpotlight} trigger={spotlightTriggers.bbg} props={{ originRef: coreSpotlightRefs.bbg, logoSrc: bloombergWordmark }} />;
       case "ets":
-        return <EtsSpotlight originRef={coreSpotlightRefs.ets} logoSrc={credential.logoSrc ?? etsLogo} />;
+        return <LazySpotlight load={loadEtsSpotlight} trigger={spotlightTriggers.ets} props={{ originRef: coreSpotlightRefs.ets, logoSrc: credential.logoSrc ?? etsLogo }} />;
       case "aif":
-        return <AifSpotlight originRef={coreSpotlightRefs.aif} logoSrc={credential.logoSrc ?? anthropicLogo} />;
+        return <LazySpotlight load={loadAifSpotlight} trigger={spotlightTriggers.aif} props={{ originRef: coreSpotlightRefs.aif, logoSrc: credential.logoSrc ?? anthropicLogo }} />;
     }
   };
   const certificationItemsAnimation = useStaggeredScrollAnimation(certificationRevealSequence.length + 3, {
@@ -488,9 +492,10 @@ export default function CertificationsSection() {
                         ) : null}
                         {categoryKey ? (
                           <div className={`experience-card-spotlight category-spotlight ${revealClass}`}>
-                            <CategorySpotlight
-                              originRef={categorySpotlightRefs[categoryKey]}
-                              config={categoryPanels[categoryKey]}
+                            <LazySpotlight
+                              load={loadCategorySpotlight}
+                              trigger={spotlightTriggers[`cat-${categoryKey}`]}
+                              props={{ originRef: categorySpotlightRefs[categoryKey], panel: categoryKey }}
                             />
                           </div>
                         ) : null}
@@ -597,11 +602,29 @@ export function CommunitySection() {
   const renderCommunitySpotlight = (activity: CommunityActivity) => {
     switch (activity.spotlight) {
       case "united-way":
-        return <UnitedWaySpotlight originRef={communitySpotlightRefs["united-way"]} logoSrc={activity.logoSrc ?? unitedWayLogo} />;
+        return (
+          <LazySpotlight
+            load={loadUnitedWaySpotlight}
+            trigger={spotlightTriggers["united-way"]}
+            props={{ originRef: communitySpotlightRefs["united-way"], logoSrc: activity.logoSrc ?? unitedWayLogo }}
+          />
+        );
       case "rbc":
-        return <RbcSpotlight originRef={communitySpotlightRefs.rbc} logoSrc={activity.logoSrc ?? rbcLogo} role="ambassador" />;
+        return (
+          <LazySpotlight
+            load={loadRbcSpotlight}
+            trigger={spotlightTriggers["rbc-ambassador"]}
+            props={{ originRef: communitySpotlightRefs.rbc, logoSrc: activity.logoSrc ?? rbcLogo, role: "ambassador" }}
+          />
+        );
       case "irving":
-        return <IrvingVolunteerSpotlight originRef={communitySpotlightRefs.irving} logoSrc={activity.logoSrc ?? irvingLogo} />;
+        return (
+          <LazySpotlight
+            load={loadIrvingVolunteerSpotlight}
+            trigger={spotlightTriggers["irving-volunteer"]}
+            props={{ originRef: communitySpotlightRefs.irving, logoSrc: activity.logoSrc ?? irvingLogo }}
+          />
+        );
       default:
         return null;
     }

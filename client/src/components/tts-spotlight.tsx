@@ -6,6 +6,8 @@ import {
   useSpotlightInView,
 } from "@/components/role-spotlight";
 import { cn } from "@/lib/utils";
+import { spotlightTriggers } from "@/components/spotlight-triggers";
+import "@/styles/spotlights/tts.css";
 
 /*
  * "Inside the credential" panel for the Training The Street DCF card, in Training
@@ -171,8 +173,8 @@ export default function TtsSpotlight({ originRef, logoSrc }: TtsSpotlightProps) 
       logoAlt="Training The Street logo"
       title="Discounted Cash Flow Analysis and Modeling"
       meta="Training The Street · 1-day course · 2024"
-      triggerLabel="Inside the credential"
-      triggerHint="The firm, the model and my certificate"
+      triggerLabel={spotlightTriggers.tts.label}
+      triggerHint={spotlightTriggers.tts.hint}
       className="role-spotlight--tts"
     >
       <section className="tts-hero">

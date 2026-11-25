@@ -1,0 +1,386 @@
+/* ------------------------------------------------------------------ */
+/* GRE theme: cream pages, deep plum type and bands, lavender          */
+/* highlights behind headlines, square orange buttons, after ets.org   */
+/* ------------------------------------------------------------------ */
+
+.role-spotlight--ets {
+  --ets-plum: rgb(56, 0, 46);
+  --ets-cream: rgb(255, 251, 234);
+  --ets-orange: rgb(214, 57, 0);
+  --ets-lavender: rgb(214, 169, 255);
+  --ets-lavender-soft: rgb(241, 228, 255);
+  --cred-surface: rgb(255, 251, 234);
+  --cred-ink: rgb(56, 0, 46);
+  --cred-body: rgb(78, 52, 72);
+  --cred-soft: rgb(112, 88, 106);
+  --cred-line: rgba(56, 0, 46, 0.14);
+  --cred-raised: rgb(255, 255, 255);
+  --cred-mist: rgb(244, 234, 230);
+  --cred-tint: rgba(56, 0, 46, 0.06);
+  --cred-accent: rgb(214, 57, 0);
+  --cred-accent-deep: rgb(176, 46, 0);
+  --cred-accent-ink: rgb(255, 251, 234);
+  --cred-done: rgb(56, 0, 46);
+  --cred-done-ink: rgb(255, 251, 234);
+  --cred-band-bg: rgb(56, 0, 46);
+  --cred-band-ink: rgb(255, 251, 234);
+  --cred-band-body: rgba(255, 251, 234, 0.84);
+  --cred-band-raised: rgba(255, 255, 255, 0.06);
+  --cred-band-line: rgba(255, 251, 234, 0.16);
+  --cred-band-accent: rgb(214, 169, 255);
+  --cred-button-radius: 0;
+  --cred-radius: 4px;
+}
+
+.role-spotlight--ets .role-spotlight-panel {
+  --role-spotlight-surface: rgb(255, 251, 234);
+  --role-spotlight-tile: rgba(255, 255, 255, 0);
+  --role-spotlight-title-color: rgb(56, 0, 46);
+}
+
+.role-spotlight--ets .role-spotlight-panel::before {
+  display: none;
+}
+
+.role-spotlight--ets .role-spotlight-close {
+  background: var(--ets-cream);
+  box-shadow:
+    0 2px 10px rgba(56, 0, 46, 0.14),
+    inset 0 0 0 1px var(--cred-line);
+  color: var(--ets-plum);
+}
+
+.role-spotlight--ets .role-spotlight-close:hover {
+  background: var(--ets-orange);
+  color: var(--ets-cream);
+}
+
+.role-spotlight--ets .role-spotlight-close:focus-visible {
+  outline-color: var(--ets-orange);
+}
+
+.role-spotlight--ets .role-spotlight-scroll {
+  scrollbar-color: rgba(56, 0, 46, 0.3) transparent;
+}
+
+.role-spotlight--ets .role-spotlight-logo {
+  width: 3.5rem;
+  height: 2.6rem;
+}
+
+/* Plum sentence-case labels led by the GRE's orange arrow. */
+.role-spotlight--ets .cred-eyebrow {
+  gap: 0.45rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ets-plum);
+}
+
+.role-spotlight--ets .cred-eyebrow::before {
+  content: "";
+  flex: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  background: var(--ets-orange);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 5l13 13M19 7v12H7' fill='none' stroke='black' stroke-width='3.2'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 5l13 13M19 7v12H7' fill='none' stroke='black' stroke-width='3.2'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.role-spotlight--ets .cred-band .cred-eyebrow {
+  color: var(--ets-cream);
+}
+
+/* Lavender blocks behind each line, as in the GRE's headlines. */
+.ets-mark {
+  padding: 0 0.08em;
+  background: var(--ets-lavender);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Hero visual: my three scores on their scales */
+.ets-report {
+  width: 100%;
+  max-width: 26rem;
+  overflow: hidden;
+  border: 1px solid var(--cred-line);
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 30px 60px -34px rgba(56, 0, 46, 0.45);
+}
+
+.ets-report-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1.15rem;
+  background: var(--ets-plum);
+  color: var(--ets-cream);
+}
+
+.ets-report-title {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.ets-report-title small,
+.ets-report-total small {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 251, 234, 0.75);
+}
+
+.ets-report-total {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: var(--font-display);
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ets-lavender);
+}
+
+.ets-scales {
+  display: grid;
+  gap: 1.2rem;
+  margin: 0;
+  padding: 1.15rem 1.15rem 1.3rem;
+  list-style: none;
+}
+
+.ets-scale {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    "name name score"
+    "track track track"
+    "min pct max";
+  align-items: center;
+  gap: 0.4rem 0.5rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 500ms ease,
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i) * 140ms + 250ms);
+}
+
+.ets-report.is-active .ets-scale {
+  opacity: 1;
+  transform: none;
+}
+
+.ets-scale-name {
+  grid-area: name;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--ets-plum);
+}
+
+.ets-scale-score {
+  grid-area: score;
+  justify-self: end;
+  min-width: 2.75rem;
+  padding: 0.25rem 0.45rem;
+  border-radius: 2px;
+  background: var(--ets-orange);
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+  color: var(--ets-cream);
+  opacity: 0;
+  transform: scale(0.6);
+  transition:
+    opacity 300ms ease,
+    transform 450ms cubic-bezier(0.2, 1.4, 0.4, 1);
+  transition-delay: calc(var(--i) * 140ms + 1250ms);
+}
+
+.ets-report.is-active .ets-scale-score {
+  opacity: 1;
+  transform: none;
+}
+
+.ets-scale-track {
+  grid-area: track;
+  position: relative;
+  display: block;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--ets-lavender-soft);
+}
+
+.ets-scale-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--pos);
+  border-radius: inherit;
+  background: var(--ets-lavender);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1000ms cubic-bezier(0.32, 0.72, 0, 1);
+  transition-delay: calc(var(--i) * 140ms + 350ms);
+}
+
+.ets-scale-marker {
+  position: absolute;
+  top: -0.35rem;
+  bottom: -0.35rem;
+  left: 0;
+  width: 3px;
+  margin-left: -1.5px;
+  border-radius: 2px;
+  background: var(--ets-plum);
+  transition: left 1000ms cubic-bezier(0.32, 0.72, 0, 1);
+  transition-delay: calc(var(--i) * 140ms + 350ms);
+}
+
+/* Keeps the marker inside the track at the top of the scale. */
+.ets-scale.is-top .ets-scale-marker {
+  margin-left: -3px;
+}
+
+.ets-report.is-active .ets-scale-fill {
+  transform: none;
+}
+
+.ets-report.is-active .ets-scale-marker {
+  left: var(--pos);
+}
+
+.ets-scale-min,
+.ets-scale-max,
+.ets-scale-pct {
+  font-size: 0.6875rem;
+  line-height: 1.2;
+  color: var(--cred-soft);
+}
+
+.ets-scale-min {
+  grid-area: min;
+}
+
+.ets-scale-pct {
+  grid-area: pct;
+  justify-self: center;
+  font-weight: 600;
+  color: var(--ets-plum);
+}
+
+.ets-scale-max {
+  grid-area: max;
+  justify-self: end;
+}
+
+.ets-scale.is-top .ets-scale-max {
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: var(--ets-lavender);
+  font-weight: 700;
+  color: var(--ets-plum);
+}
+
+/* Percentile bars */
+.ets-pcts {
+  margin-top: 2rem;
+}
+
+.ets-pct-list {
+  display: grid;
+  gap: 1.35rem;
+  margin: 0;
+  padding: 1.5rem 1.5rem 1.6rem;
+  border: 1px solid var(--cred-line);
+  border-radius: 4px;
+  background: #fff;
+  list-style: none;
+}
+
+.ets-pct {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "name value"
+    "track track";
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+}
+
+.ets-pct-name {
+  grid-area: name;
+  font-size: 0.9375rem;
+  color: var(--cred-body);
+}
+
+.ets-pct-name b {
+  margin-left: 0.25rem;
+  font-weight: 700;
+  color: var(--ets-plum);
+}
+
+.ets-pct-value {
+  grid-area: value;
+  font-size: 0.9375rem;
+  white-space: nowrap;
+  color: var(--cred-soft);
+}
+
+.ets-pct-value .role-spotlight-count {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ets-orange);
+}
+
+.ets-pct-track {
+  grid-area: track;
+  display: block;
+  height: 0.875rem;
+  overflow: hidden;
+  background: var(--cred-mist);
+}
+
+.ets-pct-track i {
+  display: block;
+  width: var(--w);
+  height: 100%;
+  background: linear-gradient(90deg, var(--ets-lavender), var(--ets-plum));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1100ms cubic-bezier(0.32, 0.72, 0, 1);
+  transition-delay: calc(var(--i) * 140ms + 250ms);
+}
+
+.ets-pcts.is-active .ets-pct-track i {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ets-scale,
+  .ets-scale-score,
+  .ets-scale-fill,
+  .ets-pct-track i {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .ets-scale-marker {
+    left: var(--pos) !important;
+    transition: none !important;
+  }
+}

@@ -1,6 +1,7 @@
 import { useCallback, type CSSProperties, type ReactNode, type RefObject } from "react";
 import { SpotlightCountUp, SpotlightReveal, useSpotlightInView } from "@/components/role-spotlight";
 import { cn } from "@/lib/utils";
+import "@/styles/spotlights/cred.css";
 
 /*
  * Shared parts for the newer "Inside the credential" panels (GRE, AI Fluency and the

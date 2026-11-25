@@ -6,6 +6,8 @@ import {
   useSpotlightInView,
 } from "@/components/role-spotlight";
 import { cn } from "@/lib/utils";
+import { spotlightTriggers } from "@/components/spotlight-triggers";
+import "@/styles/spotlights/csi.css";
 
 /*
  * "Inside the credential" panel for the Canadian Securities Course card, in the
@@ -251,8 +253,8 @@ export default function CsiSpotlight({ originRef, logoSrc }: CsiSpotlightProps) 
       logoAlt="Canadian Securities Institute logo"
       title="Canadian Securities Course"
       meta="Canadian Securities Institute · Completed May 2021"
-      triggerLabel="Inside the credential"
-      triggerHint="The institute, the exams and my result"
+      triggerLabel={spotlightTriggers.csi.label}
+      triggerHint={spotlightTriggers.csi.hint}
       className="role-spotlight--csi"
     >
       <section className="csi-hero">
@@ -356,7 +358,7 @@ export default function CsiSpotlight({ originRef, logoSrc }: CsiSpotlightProps) 
           <h3 id="csi-weights-title" className="csi-heading">
             Seventeen topics, weighted.
           </h3>
-          <p className="csi-section-lede">How CSI weights each exam today, from the course&rsquo;s exam outline.</p>
+          <p className="csi-section-lede">How CSI weights each exam, from the course&rsquo;s 2026 exam outline.</p>
         </SpotlightReveal>
         <SpotlightReveal delay={80}>
           <ExamWeights />
@@ -365,9 +367,9 @@ export default function CsiSpotlight({ originRef, logoSrc }: CsiSpotlightProps) 
 
       <section className="csi-section" aria-labelledby="csi-today-title">
         <SpotlightReveal>
-          <Eyebrow>The CSC today</Eyebrow>
+          <Eyebrow>The CSC in 2026</Eyebrow>
           <h3 id="csi-today-title" className="csi-heading">
-            Where the course stands now.
+            Where the course stands.
           </h3>
         </SpotlightReveal>
         <ul className="csi-cards">

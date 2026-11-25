@@ -11,6 +11,8 @@ import {
   useShowSection,
 } from "@/components/credential-panel";
 import { cn } from "@/lib/utils";
+import { spotlightTriggers } from "@/components/spotlight-triggers";
+import "@/styles/spotlights/ets.css";
 
 /*
  * "Inside the credential" panel for the GRE General Test card, in the GRE's branding
@@ -28,21 +30,25 @@ import { cn } from "@/lib/utils";
  * - ets.org scoring page: Verbal and Quantitative 130 to 170 in 1-point steps, Analytical
  *   Writing 0 to 6 in half points
  * - My ETS score report: tested May 30, 2024; Verbal 158 (77th percentile), Quantitative
- *   170 (91st), Analytical Writing 4.0 (63rd)
+ *   170 (91st), Analytical Writing 4.0. The panel leads with the 170 and the 328 total.
  */
 
 const GRE_URL = "https://www.ets.org/gre.html";
 
 const scores = [
-  { name: "Verbal Reasoning", score: "158", value: 158, min: 130, max: 170, percentile: "77th" },
-  { name: "Quantitative Reasoning", score: "170", value: 170, min: 130, max: 170, percentile: "91st", top: true },
-  { name: "Analytical Writing", score: "4.0", value: 4, min: 0, max: 6, percentile: "63rd" },
+  { name: "Quantitative Reasoning", score: "170", value: 170, min: 130, max: 170, note: "91st percentile", top: true },
+  { name: "Verbal Reasoning", score: "158", value: 158, min: 130, max: 170, note: "77th percentile" },
+  { name: "Analytical Writing", score: "4.0", value: 4, min: 0, max: 6, note: "Half-point scale" },
+];
+
+const headline = [
+  { to: 170, label: "in Quantitative Reasoning, the highest score on the scale" },
+  { to: 328, label: "in total, out of 340 across Quantitative and Verbal" },
 ];
 
 const percentiles = [
   { name: "Quantitative Reasoning", score: "170", to: 91, suffix: "st" },
   { name: "Verbal Reasoning", score: "158", to: 77, suffix: "th" },
-  { name: "Analytical Writing", score: "4.0", to: 63, suffix: "rd" },
 ];
 
 const program = [
@@ -123,7 +129,7 @@ function ScoreReport() {
               <b className="ets-scale-marker" />
             </span>
             <span className="ets-scale-min">{item.min}</span>
-            <span className="ets-scale-pct">{item.percentile} percentile</span>
+            <span className="ets-scale-pct">{item.note}</span>
             <span className="ets-scale-max">{item.top ? "Top of the scale" : item.max}</span>
           </li>
         ))}
@@ -132,7 +138,7 @@ function ScoreReport() {
   );
 }
 
-/** Percentile bars for each measure. */
+/** Percentile bars for the two scaled measures. */
 function Percentiles() {
   const { ref, active } = useSpotlightInView();
 
@@ -173,8 +179,8 @@ export default function EtsSpotlight({ originRef, logoSrc }: EtsSpotlightProps) 
       logoAlt="ETS logo"
       title="GRE General Test"
       meta="ETS · Taken May 2024"
-      triggerLabel="Inside the credential"
-      triggerHint="The test, my scores and how they compare"
+      triggerLabel={spotlightTriggers.ets.label}
+      triggerHint={spotlightTriggers.ets.hint}
       className="role-spotlight--cred role-spotlight--ets"
     >
       <section className="cred-hero">
@@ -247,9 +253,11 @@ export default function EtsSpotlight({ originRef, logoSrc }: EtsSpotlightProps) 
             Where 328 lands.
           </h3>
           <p className="cred-section-lede">
-            Each percentile is the share of test takers who scored lower, from my ETS score report.
+            A 170 is the highest Quantitative Reasoning score there is. Each percentile is the share of test takers
+            who scored lower, from my ETS score report.
           </p>
         </SpotlightReveal>
+        <CredResults figures={headline} />
         <SpotlightReveal delay={80}>
           <Percentiles />
         </SpotlightReveal>
@@ -257,9 +265,9 @@ export default function EtsSpotlight({ originRef, logoSrc }: EtsSpotlightProps) 
 
       <section className="cred-section" aria-labelledby="ets-today-title">
         <SpotlightReveal>
-          <CredEyebrow>The GRE today</CredEyebrow>
+          <CredEyebrow>The GRE in 2026</CredEyebrow>
           <h3 id="ets-today-title" className="cred-heading">
-            Where the test stands now.
+            Where the test stands.
           </h3>
         </SpotlightReveal>
         <CredCards cards={today} />

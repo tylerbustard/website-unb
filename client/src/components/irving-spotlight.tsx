@@ -6,6 +6,8 @@ import {
   useSpotlightInView,
 } from "@/components/role-spotlight";
 import { cn } from "@/lib/utils";
+import { spotlightTriggers } from "@/components/spotlight-triggers";
+import "@/styles/spotlights/irving.css";
 
 /*
  * "Inside the role" panel for the Irving Oil experience card, in Irving's
@@ -157,8 +159,8 @@ export default function IrvingSpotlight({ originRef, logoSrc }: IrvingSpotlightP
       logoAlt="Irving Oil logo"
       title="Marketing Intern"
       meta="Irving Oil Limited · Saint John, NB · 2018"
-      triggerLabel="Inside the role"
-      triggerHint="The customers, the research and my results"
+      triggerLabel={spotlightTriggers.irving.label}
+      triggerHint={spotlightTriggers.irving.hint}
       className="role-spotlight--irving"
     >
       <section className="irv-hero">
@@ -246,12 +248,12 @@ export default function IrvingSpotlight({ originRef, logoSrc }: IrvingSpotlightP
 
       <section className="irv-section" aria-labelledby="irv-programs-title">
         <SpotlightReveal>
-          <Eyebrow>The customer side of Irving today</Eyebrow>
+          <Eyebrow>The customer side of Irving in 2026</Eyebrow>
           <h3 id="irv-programs-title" className="irv-heading">
             Loyalty, offers and community.
           </h3>
           <p className="irv-section-lede">
-            Today Irving reaches customers through rewards for regulars, member offers and programs that give back.
+            Irving reaches customers through rewards for regulars, member offers and programs that give back.
           </p>
         </SpotlightReveal>
         <ul className="irv-programs">

@@ -6,6 +6,8 @@ import {
   useSpotlightInView,
 } from "@/components/role-spotlight";
 import { cn } from "@/lib/utils";
+import { spotlightTriggers } from "@/components/spotlight-triggers";
+import "@/styles/spotlights/bmo.css";
 
 /*
  * "Inside the role" panel for the BMO Private Wealth experience card, in BMO's
@@ -309,8 +311,8 @@ export default function BmoSpotlight({ originRef, logoSrc }: BmoSpotlightProps) 
       logoAlt="BMO logo"
       title="Portfolio Assistant"
       meta="BMO Private Wealth · Toronto, ON · 2022–2023"
-      triggerLabel="Inside the role"
-      triggerHint="The team, the clients and my work"
+      triggerLabel={spotlightTriggers.bmo.label}
+      triggerHint={spotlightTriggers.bmo.hint}
       className="role-spotlight--bmo"
     >
       <section className="bmo-hero">

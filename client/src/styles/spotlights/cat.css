@@ -1,0 +1,494 @@
+/* ------------------------------------------------------------------ */
+/* Certification category panels: shared layout (a timeline of the    */
+/* category's certificates and a card per certificate), then a theme   */
+/* per category after its lead issuer                                  */
+/* ------------------------------------------------------------------ */
+
+.role-spotlight--cat .role-spotlight-panel {
+  --role-spotlight-surface: rgb(255, 255, 255);
+  --role-spotlight-tile: rgba(255, 255, 255, 0);
+}
+
+.role-spotlight--cat .role-spotlight-panel::before {
+  display: none;
+}
+
+.role-spotlight--cat .role-spotlight-close {
+  background: #fff;
+  box-shadow:
+    0 2px 10px rgba(20, 24, 32, 0.12),
+    inset 0 0 0 1px var(--cred-line);
+  color: var(--cred-ink);
+}
+
+.role-spotlight--cat .role-spotlight-close:hover {
+  background: var(--cred-accent);
+  color: var(--cred-accent-ink);
+}
+
+.role-spotlight--cat .role-spotlight-close:focus-visible {
+  outline-color: var(--cred-accent);
+}
+
+.role-spotlight--cat .role-spotlight-scroll {
+  scrollbar-color: rgba(20, 24, 32, 0.28) transparent;
+}
+
+.role-spotlight--cat .role-spotlight-logo {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+/* Hero visual: the category's certificates on a rail, oldest first */
+.cat-timeline {
+  width: 100%;
+  max-width: 26rem;
+  overflow: hidden;
+  border: 1px solid var(--cred-line);
+  border-radius: var(--cred-radius, 8px);
+  background: #fff;
+  box-shadow: 0 28px 56px -34px rgba(20, 24, 32, 0.4);
+}
+
+.cat-timeline-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--cred-line);
+  background: var(--cred-mist);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cred-ink);
+}
+
+.cat-timeline-head span:last-child {
+  flex: none;
+  color: var(--cred-soft);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.cat-timeline-list {
+  position: relative;
+  display: grid;
+  gap: 0.15rem;
+  margin: 0;
+  padding: 0.75rem 1.1rem 0.9rem;
+  list-style: none;
+}
+
+/* The rail runs from the first dot's centre to the last one's. */
+.cat-timeline-list::before {
+  content: "";
+  position: absolute;
+  top: calc(0.75rem + 1.625rem);
+  bottom: calc(0.9rem + 1.625rem);
+  left: calc(1.1rem + 3rem + 0.6rem + 0.55rem - 1px);
+  width: 2px;
+  background: var(--cred-line);
+}
+
+.cat-timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3rem 1.1rem 2.25rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 3.25rem;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition:
+    opacity 450ms ease,
+    transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i) * 110ms + 250ms);
+}
+
+.cat-timeline.is-active .cat-timeline-item {
+  opacity: 1;
+  transform: none;
+}
+
+.cat-timeline-year {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--cred-ink);
+}
+
+.cat-timeline-dot {
+  justify-self: center;
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  background: var(--cat-dot, var(--cred-accent));
+  box-shadow: 0 0 0 1px var(--cat-dot, var(--cred-accent));
+}
+
+.cat-timeline-logo,
+.cat-cert-logo {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0.25rem;
+  border: 1px solid var(--cred-line);
+  border-radius: 6px;
+  background: #fff;
+}
+
+.cat-timeline-logo img,
+.cat-cert-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cat-timeline-name {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--cred-ink);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* A card per certificate */
+.cat-certs {
+  display: grid;
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .cat-certs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.cat-certs > li {
+  display: flex;
+}
+
+.cat-cert {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  width: 100%;
+  padding: 1.2rem 1.3rem 1.3rem;
+  border: 1px solid var(--cred-line);
+  border-radius: var(--cred-radius, 8px);
+  background: var(--cred-raised);
+}
+
+.cat-cert-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.cat-cert-logo {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.35rem;
+}
+
+.cat-cert-year {
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: var(--cred-mist);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--cred-ink);
+}
+
+.cat-cert-name {
+  font-family: var(--font-display);
+  font-size: 1.1875rem;
+  font-weight: var(--cat-name-weight, 600);
+  line-height: 1.25;
+  color: var(--cred-ink);
+}
+
+.cat-cert-issuer {
+  font-size: 0.8125rem;
+  color: var(--cred-soft);
+}
+
+.cat-cert-body {
+  margin-top: 0.35rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--cred-body);
+}
+
+.cat-cert-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+
+.cat-chip {
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--cat-chip-line, var(--cred-line));
+  border-radius: var(--cat-chip-radius, 999px);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--cat-chip-ink, var(--cred-accent-deep));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cat-timeline-item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Investment & Markets, after CFA Institute: white and cream pages, regular-weight
+   headings, blue pill buttons and a deep indigo band */
+.role-spotlight--cat-invest {
+  --cred-surface: rgb(255, 255, 255);
+  --cred-ink: rgb(31, 33, 34);
+  --cred-body: rgb(72, 75, 80);
+  --cred-soft: rgb(96, 99, 104);
+  --cred-line: rgb(226, 224, 219);
+  --cred-raised: rgb(255, 255, 255);
+  --cred-mist: rgb(250, 245, 238);
+  --cred-tint: rgba(51, 106, 255, 0.07);
+  --cred-accent: rgb(51, 106, 255);
+  --cred-accent-deep: rgb(32, 67, 161);
+  --cred-accent-ink: rgb(255, 255, 255);
+  --cred-done: rgb(29, 22, 132);
+  --cred-done-ink: rgb(255, 255, 255);
+  --cred-band-bg: rgb(29, 22, 132);
+  --cred-band-ink: rgb(255, 255, 255);
+  --cred-band-body: rgba(255, 255, 255, 0.84);
+  --cred-band-raised: rgba(255, 255, 255, 0.08);
+  --cred-band-line: rgba(255, 255, 255, 0.16);
+  --cred-band-accent: rgb(186, 204, 255);
+  --cred-outline: rgb(51, 106, 255);
+  --cred-button-radius: 999px;
+  --cred-radius: 12px;
+  --cred-display-weight: 400;
+  --cred-heading-weight: 400;
+  --cat-name-weight: 500;
+}
+
+.role-spotlight--cat-invest .role-spotlight-panel {
+  --role-spotlight-title-color: rgb(31, 33, 34);
+}
+
+.role-spotlight--cat-invest .cred-eyebrow {
+  font-size: 0.9375rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--cred-accent-deep);
+}
+
+.role-spotlight--cat-invest .cred-band .cred-eyebrow {
+  color: var(--cred-band-accent);
+}
+
+.role-spotlight--cat-invest .cred-button {
+  font-weight: 500;
+}
+
+.role-spotlight--cat-invest .cred-button-outline {
+  color: var(--cred-accent-deep);
+}
+
+/* Advisory & Wealth Planning, after CSI: white pages, light headings, CSI red,
+   uppercase buttons with small corners and a light grey band */
+.role-spotlight--cat-advisory {
+  --cred-surface: rgb(255, 255, 255);
+  --cred-ink: rgb(33, 37, 41);
+  --cred-body: rgb(85, 86, 90);
+  --cred-soft: rgb(102, 103, 107);
+  --cred-line: rgb(222, 222, 224);
+  --cred-raised: rgb(255, 255, 255);
+  --cred-mist: rgb(240, 240, 241);
+  --cred-tint: rgb(251, 234, 237);
+  --cred-accent: rgb(200, 16, 46);
+  --cred-accent-deep: rgb(160, 12, 36);
+  --cred-accent-ink: rgb(255, 255, 255);
+  --cred-done: rgb(33, 37, 41);
+  --cred-done-ink: rgb(255, 255, 255);
+  --cred-band-bg: rgb(240, 240, 241);
+  --cred-band-ink: rgb(33, 37, 41);
+  --cred-band-body: rgb(85, 86, 90);
+  --cred-band-raised: rgb(255, 255, 255);
+  --cred-band-line: rgba(255, 255, 255, 0);
+  --cred-band-accent: rgb(200, 16, 46);
+  --cred-outline: rgb(200, 16, 46);
+  --cred-button-radius: 5px;
+  --cred-radius: 6px;
+  --cred-display-weight: 300;
+  --cred-heading-weight: 300;
+  --cred-value-weight: 300;
+  --cat-name-weight: 500;
+  --cat-chip-radius: 4px;
+}
+
+.role-spotlight--cat-advisory .role-spotlight-panel {
+  --role-spotlight-title-color: rgb(33, 37, 41);
+}
+
+.role-spotlight--cat-advisory .cred-button {
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.role-spotlight--cat-advisory .cred-button-outline {
+  color: var(--cred-accent);
+}
+
+.role-spotlight--cat-advisory .cred-button-outline:hover {
+  border-color: var(--cred-accent-deep);
+  color: var(--cred-accent-deep);
+}
+
+.role-spotlight--cat-advisory .cred-card,
+.role-spotlight--cat-advisory .cat-cert {
+  border-top: 3px solid var(--cred-accent);
+}
+
+/* Quantitative & Statistical Methods, after Coursera: white pages, Coursera blue,
+   semibold headings, 8px corners and a pale blue band */
+.role-spotlight--cat-quant {
+  --cred-surface: rgb(255, 255, 255);
+  --cred-ink: rgb(13, 15, 18);
+  --cred-body: rgb(72, 84, 110);
+  --cred-soft: rgb(83, 97, 126);
+  --cred-line: rgb(221, 227, 237);
+  --cred-raised: rgb(255, 255, 255);
+  --cred-mist: rgb(242, 245, 250);
+  --cred-tint: rgba(0, 86, 210, 0.06);
+  --cred-accent: rgb(0, 86, 210);
+  --cred-accent-deep: rgb(0, 67, 168);
+  --cred-accent-ink: rgb(255, 255, 255);
+  --cred-done: rgb(13, 15, 18);
+  --cred-done-ink: rgb(255, 255, 255);
+  --cred-band-bg: rgb(240, 246, 255);
+  --cred-band-ink: rgb(13, 15, 18);
+  --cred-band-body: rgb(72, 84, 110);
+  --cred-band-raised: rgb(255, 255, 255);
+  --cred-band-line: rgb(214, 227, 248);
+  --cred-band-accent: rgb(0, 86, 210);
+  --cred-outline: rgb(0, 86, 210);
+  --cred-button-radius: 8px;
+  --cred-radius: 8px;
+  --cred-display-weight: 600;
+  --cred-heading-weight: 600;
+  --cat-chip-line: rgba(0, 86, 210, 0.25);
+}
+
+.role-spotlight--cat-quant .role-spotlight-panel {
+  --role-spotlight-title-color: rgb(13, 15, 18);
+}
+
+.role-spotlight--cat-quant .cred-eyebrow {
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.role-spotlight--cat-quant .cred-button-outline {
+  color: var(--cred-accent);
+}
+
+/* Data & Business Intelligence, after Google: white pages, regular-weight headings,
+   blue pill buttons, rounded cards, a pale blue band and Google's four colours */
+.role-spotlight--cat-data {
+  --g-blue: rgb(66, 133, 244);
+  --g-red: rgb(234, 67, 53);
+  --g-yellow: rgb(251, 188, 4);
+  --g-green: rgb(52, 168, 83);
+  --cred-surface: rgb(255, 255, 255);
+  --cred-ink: rgb(32, 33, 36);
+  --cred-body: rgb(60, 64, 67);
+  --cred-soft: rgb(95, 99, 104);
+  --cred-line: rgb(218, 220, 224);
+  --cred-raised: rgb(255, 255, 255);
+  --cred-mist: rgb(239, 242, 247);
+  --cred-tint: rgba(25, 103, 210, 0.07);
+  --cred-accent: rgb(25, 103, 210);
+  --cred-accent-deep: rgb(24, 90, 188);
+  --cred-accent-ink: rgb(255, 255, 255);
+  --cred-done: rgb(30, 142, 62);
+  --cred-done-ink: rgb(255, 255, 255);
+  --cred-band-bg: rgb(220, 241, 255);
+  --cred-band-ink: rgb(32, 33, 36);
+  --cred-band-body: rgb(60, 64, 67);
+  --cred-band-raised: rgb(255, 255, 255);
+  --cred-band-line: rgba(25, 103, 210, 0.14);
+  --cred-band-accent: rgb(25, 103, 210);
+  --cred-outline: rgb(218, 220, 224);
+  --cred-button-radius: 999px;
+  --cred-radius: 16px;
+  --cred-display-weight: 400;
+  --cred-heading-weight: 400;
+  --cred-value-weight: 400;
+  --cat-name-weight: 500;
+}
+
+.role-spotlight--cat-data .role-spotlight-panel {
+  --role-spotlight-title-color: rgb(32, 33, 36);
+}
+
+.role-spotlight--cat-data .cred-eyebrow {
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.role-spotlight--cat-data .cred-button {
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.role-spotlight--cat-data .cred-button-outline {
+  color: var(--cred-accent);
+}
+
+.role-spotlight--cat-data .cred-stat-value {
+  font-weight: 400;
+}
+
+/* Google's four colours, in turn, so each certificate keeps its colour on the rail
+   and on its card. */
+.role-spotlight--cat-data .is-k0 {
+  --cat-dot: var(--g-blue);
+}
+
+.role-spotlight--cat-data .is-k1 {
+  --cat-dot: var(--g-red);
+}
+
+.role-spotlight--cat-data .is-k2 {
+  --cat-dot: var(--g-yellow);
+}
+
+.role-spotlight--cat-data .is-k3 {
+  --cat-dot: var(--g-green);
+}
+
+.role-spotlight--cat-data .cat-cert {
+  border-top: 4px solid var(--cat-dot);
+}

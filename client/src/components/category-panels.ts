@@ -1,3 +1,4 @@
+import type { CategoryKey } from "@/components/category-keys";
 import type { CategoryPanelConfig } from "@/components/category-spotlight";
 import cfaLogo from "@assets/CFA_Institute_Logo_1755923720192.png";
 import csiLogo from "@assets/canadian securities institute_1755923720191.png";
@@ -44,22 +45,12 @@ function mark(background: string, paths: string) {
   return `data:image/svg+xml,${encodeURIComponent(svg)}`;
 }
 
-export type CategoryKey = "invest" | "advisory" | "quant" | "data";
-
-export const categoryKeyByTitle: Record<string, CategoryKey> = {
-  "Investment & Markets": "invest",
-  "Advisory & Wealth Planning": "advisory",
-  "Quantitative & Statistical Methods": "quant",
-  "Data & Business Intelligence": "data",
-};
-
 export const categoryPanels: Record<CategoryKey, CategoryPanelConfig> = {
   invest: {
     theme: "role-spotlight--cat-invest",
     icon: mark("rgb(29,22,132)", '<path d="M12 33l8-9 6 5 10-12"/><path d="M29 17h7v7"/>'),
     title: "Investment & Markets",
     meta: "4 certifications · 2019–2026",
-    triggerHint: "From market basics to the CFA Program",
     display: "From market basics to the CFA Program.",
     lede: "Four credentials that trace how I learned the markets: Bloomberg's market concepts in 2019, financial and valuation modeling in 2020, DCF modeling in 2024, and now Level I of the CFA Program.",
     certs: [
@@ -137,7 +128,6 @@ export const categoryPanels: Record<CategoryKey, CategoryPanelConfig> = {
     ),
     title: "Advisory & Wealth Planning",
     meta: "5 certifications · 2020–2023",
-    triggerHint: "CSI's path, from licensing to planning",
     display: "Five CSI courses, from licensing to planning.",
     lede: "Between 2020 and 2023 I worked through the Canadian Securities Institute's path for advisors: the licensing courses for mutual funds and securities, then client advice, CSI's certificate for personal bankers, and financial planning.",
     certs: [
@@ -220,7 +210,6 @@ export const categoryPanels: Record<CategoryKey, CategoryPanelConfig> = {
     icon: mark("rgb(0,86,210)", '<path d="M33 14H15l9 10-9 10h18"/>'),
     title: "Quantitative & Statistical Methods",
     meta: "7 certifications · 2020–2024",
-    triggerHint: "The math, the statistics and the models",
     display: "The math behind the models.",
     lede: "Seven credentials in the methods finance runs on: calculus and matrix algebra, inferential statistics and econometrics, machine learning and Excel modeling, plus a 170 on the GRE's quantitative section.",
     certs: [
@@ -319,7 +308,6 @@ export const categoryPanels: Record<CategoryKey, CategoryPanelConfig> = {
     icon: mark("rgb(25,103,210)", '<path d="M15 33v-8M24 33V15M33 33V21"/>'),
     title: "Data & Business Intelligence",
     meta: "5 certifications · 2021–2026",
-    triggerHint: "From spreadsheets to SQL, Python, Tableau and AI",
     display: "From raw data to decisions, and now AI.",
     lede: "Five programs covering an analyst's toolkit: Google's data analytics certificate, Python, SQL and Tableau specializations, and Anthropic's AI Fluency course.",
     certs: [

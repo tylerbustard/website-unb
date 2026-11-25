@@ -6,6 +6,8 @@ import {
   useSpotlightInView,
 } from "@/components/role-spotlight";
 import { cn } from "@/lib/utils";
+import { spotlightTriggers } from "@/components/spotlight-triggers";
+import "@/styles/spotlights/bbg.css";
 
 /*
  * "Inside the credential" panel for the Bloomberg Market Concepts card, after the
@@ -122,7 +124,7 @@ const today = [
   },
   {
     title: "A family of certificates",
-    body: "BMC now sits beside Bloomberg Finance Fundamentals and an ESG certificate, all CPD accredited.",
+    body: "BMC sits beside Bloomberg Finance Fundamentals and an ESG certificate, all CPD accredited.",
   },
   {
     title: "AI on the Terminal",
@@ -273,8 +275,8 @@ export default function BbgSpotlight({ originRef, logoSrc }: BbgSpotlightProps) 
       logoAlt="Bloomberg logo"
       title="Bloomberg Market Concepts"
       meta="Bloomberg · Completed July 2019"
-      triggerLabel="Inside the credential"
-      triggerHint="The course, the Terminal and my result"
+      triggerLabel={spotlightTriggers.bbg.label}
+      triggerHint={spotlightTriggers.bbg.hint}
       className="role-spotlight--bbg"
     >
       <section className="bbg-hero">
@@ -436,9 +438,9 @@ export default function BbgSpotlight({ originRef, logoSrc }: BbgSpotlightProps) 
 
       <section className="bbg-section" aria-labelledby="bbg-today-title">
         <SpotlightReveal>
-          <Eyebrow>BMC today</Eyebrow>
+          <Eyebrow>BMC in 2026</Eyebrow>
           <h3 id="bbg-today-title" className="bbg-heading">
-            Where the course stands now.
+            Where the course stands.
           </h3>
         </SpotlightReveal>
         <ul className="bbg-cards">

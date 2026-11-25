@@ -11,6 +11,8 @@ import {
   useShowSection,
 } from "@/components/credential-panel";
 import { cn } from "@/lib/utils";
+import { spotlightTriggers } from "@/components/spotlight-triggers";
+import "@/styles/spotlights/uw.css";
 
 /*
  * "Inside the role" panel for the United Way community card, in United Way Greater
@@ -43,10 +45,13 @@ const workflow = [
   { title: "Grow", body: "Over three years, the strategy raised 20% more funds for the GTA." },
 ];
 
+/** Whole years since 2020, counted so it never overstates: 6+ through 2027, 7+ in 2028, and so on. */
+const yearsServing = Math.max(6, new Date().getFullYear() - 2021);
+
 const results = [
   { to: 20, prefix: "+", suffix: "%", label: "more funds raised over three years" },
   { to: 15, prefix: "+", suffix: "%", label: "workplace participation and awareness" },
-  { to: 6, suffix: "+ yrs", label: "as a Next Gen Ambassador, since 2020" },
+  { to: yearsServing, suffix: "+ yrs", label: "as a Next Gen Ambassador, since 2020" },
 ];
 
 const organization = [
@@ -122,8 +127,8 @@ export default function UnitedWaySpotlight({ originRef, logoSrc }: UnitedWaySpot
       logoAlt="United Way logo"
       title="Next Gen Ambassador"
       meta="United Way · Toronto, ON · 2020–Present"
-      triggerLabel="Inside the role"
-      triggerHint="The campaign, my results and United Way today"
+      triggerLabel={spotlightTriggers["united-way"].label}
+      triggerHint={spotlightTriggers["united-way"].hint}
       className="role-spotlight--cred role-spotlight--uw"
     >
       <section className="uw-hero">
@@ -170,7 +175,7 @@ export default function UnitedWaySpotlight({ originRef, logoSrc }: UnitedWaySpot
               <CredWorkflow steps={workflow} />
             </SpotlightReveal>
             <CredResults figures={results} />
-            <CredDone>I&rsquo;ve been a Next Gen Ambassador since 2020, more than six years and counting.</CredDone>
+            <CredDone>I&rsquo;ve been a Next Gen Ambassador since 2020, and I still am.</CredDone>
           </section>
 
           <section className="cred-band" aria-labelledby="uw-org-title">
@@ -206,16 +211,16 @@ export default function UnitedWaySpotlight({ originRef, logoSrc }: UnitedWaySpot
 
           <section className="cred-section" aria-labelledby="uw-today-title">
             <SpotlightReveal>
-              <CredEyebrow>United Way today</CredEyebrow>
+              <CredEyebrow>United Way in 2026</CredEyebrow>
               <h3 id="uw-today-title" className="cred-heading">
-                What the GTA&rsquo;s United Way is doing now.
+                What the GTA&rsquo;s United Way is working on.
               </h3>
             </SpotlightReveal>
             <CredCards cards={today} />
           </section>
 
           <CredFooter
-            note="Facts come from unitedwaygt.org and United Way Greater Toronto's February 2026 campaign release. Role figures are my own."
+            note="Facts come from unitedwaygt.org (2026) and United Way Greater Toronto's February 2026 campaign release. Role figures are my own."
             href={UW_URL}
             linkLabel="Visit United Way"
           />

@@ -7,6 +7,8 @@ import {
 } from "@/components/role-spotlight";
 import { cn } from "@/lib/utils";
 import openAiMark from "@assets/openai_mark.png";
+import { spotlightTriggers } from "@/components/spotlight-triggers";
+import "@/styles/spotlights/roi.css";
 
 /*
  * "Inside the role" panel for the ROI experience card, styled after Roi's
@@ -270,8 +272,8 @@ export default function RoiSpotlight({ originRef, logoSrc }: RoiSpotlightProps) 
       logoAlt="Roi logo"
       title="Equity Analyst"
       meta="Roi · Toronto, ON · 2023–2025"
-      triggerLabel="Inside the role"
-      triggerHint="The app, my work and the OpenAI deal"
+      triggerLabel={spotlightTriggers.roi.label}
+      triggerHint={spotlightTriggers.roi.hint}
       className="role-spotlight--roi"
     >
       <section className="roi-hero">
