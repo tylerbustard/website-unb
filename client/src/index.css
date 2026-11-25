@@ -2715,26 +2715,6 @@
     letter-spacing: -0.015em;
   }
 
-  .hero2-role {
-    margin-top: 0.625rem;
-    max-width: 38rem;
-    color: hsl(215 16% 40%);
-    font-family: var(--font-text);
-    font-size: 1.02rem;
-    line-height: 1.55;
-  }
-
-  .hero2-role strong {
-    color: hsl(222 47% 11%);
-    font-weight: 700;
-  }
-
-  @media (min-width: 640px) {
-    .hero2-role {
-      font-size: 1.08rem;
-    }
-  }
-
   /* Highlights: 2x2 on phones and laptops, one row of four on wide screens */
   .hero2-highlights {
     display: grid;
@@ -2797,14 +2777,30 @@
     transition: padding 420ms cubic-bezier(0.34, 1.56, 0.64, 1), transform 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
+  /* "Live" status light: the core blinks while a ring ripples out from it */
   .hero2-island-dot {
+    position: relative;
     flex: none;
     width: 0.5rem;
     height: 0.5rem;
+  }
+
+  .hero2-island-dot::before,
+  .hero2-island-dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
     border-radius: 50%;
     background: #30d158;
-    box-shadow: 0 0 0 3px rgba(48, 209, 88, 0.22);
-    animation: hero2-island-pulse 2.4s ease-in-out infinite;
+  }
+
+  .hero2-island-dot::before {
+    box-shadow: 0 0 6px 1px rgba(48, 209, 88, 0.75);
+    animation: hero2-island-blink 1.4s ease-in-out infinite;
+  }
+
+  .hero2-island-dot::after {
+    animation: hero2-island-ping 1.4s cubic-bezier(0, 0, 0.2, 1) infinite;
   }
 
   .hero2-island-more {
@@ -2839,9 +2835,14 @@
     outline-offset: 3px;
   }
 
-  @keyframes hero2-island-pulse {
-    0%, 100% { box-shadow: 0 0 0 3px rgba(48, 209, 88, 0.22); }
-    50% { box-shadow: 0 0 0 6px rgba(48, 209, 88, 0.08); }
+  @keyframes hero2-island-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
+  }
+
+  @keyframes hero2-island-ping {
+    0% { opacity: 0.75; transform: scale(1); }
+    80%, 100% { opacity: 0; transform: scale(2.6); }
   }
 
   /* the capsule starts small and stretches open, like the Dynamic Island */
@@ -2878,7 +2879,8 @@
       transition: none;
     }
 
-    .hero2-island-dot {
+    .hero2-island-dot::before,
+    .hero2-island-dot::after {
       animation: none;
     }
   }

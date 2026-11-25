@@ -26,12 +26,12 @@ import bloombergLogo from "@assets/bloomberg_1755923720190.png";
 
 export default function HeroSection() {
   const isPageLoaded = useInitialPageAnimation(400);
-  // Short Apple-style profile copy: three specialties, the latest role and four highlights.
+  // Short Apple-style profile copy: three specialties and four highlights.
   const specialties = ["Portfolio monitoring.", "Investment research.", "AI-enabled analysis."];
   const yearsExperience = Math.max(1, new Date().getFullYear() - 2018); // first roles began in 2018
   const highlights = [
     { value: `${yearsExperience}+ years`, label: "of experience" },
-    { value: "15+", label: "portfolios monitored daily" },
+    { value: "500+", label: "portfolios monitored" },
     { value: "CFA Level I", label: "candidate, 2026" },
     { value: "BBA, Finance", label: "University of New Brunswick" },
   ];
@@ -111,9 +111,6 @@ export default function HeroSection() {
                   {index < specialties.length - 1 ? " " : null}
                 </Fragment>
               ))}
-            </p>
-            <p className="hero2-role">
-              Most recently <strong>Senior Associate, Portfolio Monitoring</strong> at <strong>73 Strings</strong>.
             </p>
             <dl className="hero2-highlights hero2-fade hero2-fade-facts">
               {highlights.map((highlight) => (
