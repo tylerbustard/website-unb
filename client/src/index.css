@@ -13735,3 +13735,935 @@ html.role-spotlight-open body {
     animation: none !important;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Canadian Securities Institute theme: white pages with light grey    */
+/* type, CSI red accents, uppercase buttons with small rounded corners,*/
+/* a light grey band and a gold certificate seal                       */
+/* ------------------------------------------------------------------ */
+
+.role-spotlight--csi {
+  --csi-red: rgb(200, 16, 46);
+  --csi-red-deep: rgb(160, 12, 36);
+  --csi-red-tint: rgb(251, 234, 237);
+  --csi-dark: rgb(33, 37, 41);
+  --csi-ink: rgb(85, 86, 90);
+  --csi-line: rgb(222, 222, 224);
+  --csi-mist: rgb(240, 240, 241);
+  --csi-paper: rgb(247, 243, 218);
+  --csi-gold-ink: rgb(110, 80, 20);
+  --csi-gutter: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .role-spotlight--csi {
+    --csi-gutter: 3.5rem;
+  }
+}
+
+.role-spotlight--csi .role-spotlight-panel {
+  --role-spotlight-surface: rgb(255, 255, 255);
+  --role-spotlight-tile: rgba(255, 255, 255, 0);
+  --role-spotlight-title-color: rgb(33, 37, 41);
+  background: #fff;
+  color: var(--csi-ink);
+}
+
+/* The grey band scrolls straight under the edge; the close button has its own border. */
+.role-spotlight--csi .role-spotlight-panel::before {
+  display: none;
+}
+
+.role-spotlight--csi .role-spotlight-close {
+  background: #fff;
+  box-shadow:
+    0 2px 10px rgba(33, 37, 41, 0.14),
+    inset 0 0 0 1px var(--csi-line);
+  color: var(--csi-dark);
+}
+
+.role-spotlight--csi .role-spotlight-close:hover {
+  background: var(--csi-red);
+  color: #fff;
+}
+
+.role-spotlight--csi .role-spotlight-close:focus-visible {
+  outline-color: var(--csi-red);
+}
+
+.role-spotlight--csi .role-spotlight-scroll {
+  container-type: inline-size;
+  scrollbar-color: rgba(33, 37, 41, 0.3) transparent;
+}
+
+.role-spotlight--csi .role-spotlight-header {
+  gap: 1.25rem;
+}
+
+.role-spotlight--csi .role-spotlight-logo-tile {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+}
+
+.role-spotlight--csi .role-spotlight-logo {
+  width: 3rem;
+  height: 3rem;
+}
+
+.role-spotlight--csi .role-spotlight-heading {
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--csi-line);
+}
+
+.role-spotlight--csi .role-spotlight-title {
+  font-weight: 500;
+  color: var(--csi-dark);
+}
+
+.role-spotlight--csi .role-spotlight-meta {
+  color: var(--csi-ink);
+}
+
+/* Type: light headings, after Bliss Pro on csi.ca */
+.csi-eyebrow {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--csi-red);
+}
+
+.csi-display {
+  margin: 0.75rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.6vw, 3.25rem);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--csi-dark);
+  text-wrap: balance;
+}
+
+.csi-heading {
+  max-width: 26ch;
+  margin: 0.6rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.2vw, 2.375rem);
+  font-weight: 300;
+  line-height: 1.14;
+  letter-spacing: -0.015em;
+  color: var(--csi-dark);
+  text-wrap: balance;
+}
+
+.csi-lede,
+.csi-section-lede {
+  max-width: 34rem;
+  margin: 1.25rem 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--csi-ink);
+  text-wrap: pretty;
+}
+
+.csi-section-lede {
+  max-width: 40rem;
+  margin-top: 1rem;
+}
+
+/* Hero */
+.csi-hero {
+  display: grid;
+  gap: 2.5rem;
+  padding-top: 2.75rem;
+}
+
+@media (min-width: 900px) {
+  .csi-hero {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: center;
+    padding-top: 3.25rem;
+  }
+}
+
+.csi-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.csi-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.65rem 1.35rem;
+  border: 1px solid var(--csi-red);
+  border-radius: 5px;
+  background: var(--csi-red);
+  color: #fff;
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.csi-button:hover {
+  border-color: var(--csi-red-deep);
+  background: var(--csi-red-deep);
+}
+
+.csi-button-outline {
+  background: #fff;
+  color: var(--csi-red);
+}
+
+.csi-button-outline:hover {
+  background: var(--csi-red-tint);
+  color: var(--csi-red-deep);
+}
+
+.csi-button:focus-visible,
+.csi-link:focus-visible {
+  outline: 2px solid var(--csi-red);
+  outline-offset: 3px;
+}
+
+/* Hero visual: the two exams and a gold completion seal on certificate paper */
+.csi-hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.csi-stage {
+  position: relative;
+  width: 100%;
+  max-width: 25rem;
+  height: 20rem;
+}
+
+/* Cream paper with the double rules of the CSC certificate. */
+.csi-stage::before {
+  content: "";
+  position: absolute;
+  inset: 1.75rem 1.25rem 1.25rem 1.75rem;
+  border-radius: 6px;
+  background:
+    linear-gradient(rgba(33, 37, 41, 0.7), rgba(33, 37, 41, 0.7)) 1.25rem 1.25rem / calc(100% - 2.5rem) 1px no-repeat,
+    linear-gradient(rgba(33, 37, 41, 0.7), rgba(33, 37, 41, 0.7)) 1.25rem calc(1.25rem + 4px) / calc(100% - 2.5rem) 2px
+      no-repeat,
+    linear-gradient(rgba(33, 37, 41, 0.7), rgba(33, 37, 41, 0.7)) 1.25rem calc(100% - 1.25rem - 4px) / calc(100% - 2.5rem)
+      2px no-repeat,
+    linear-gradient(rgba(33, 37, 41, 0.7), rgba(33, 37, 41, 0.7)) 1.25rem calc(100% - 1.25rem) / calc(100% - 2.5rem) 1px
+      no-repeat,
+    var(--csi-paper);
+}
+
+.csi-exam {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  width: 74%;
+  padding: 0.85rem 1rem 0.8rem;
+  border-top: 3px solid var(--csi-red);
+  border-radius: 6px;
+  background: #fff;
+  box-shadow:
+    0 16px 34px -20px rgba(33, 37, 41, 0.45),
+    0 0 0 1px rgba(33, 37, 41, 0.06);
+  animation: csi-rise 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i) * 180ms + 300ms);
+}
+
+.csi-exam:not(.is-two) {
+  top: 0;
+  right: 0;
+}
+
+/* Overlaps only exam one's bottom padding, so its pass label stays clear. */
+.csi-exam.is-two {
+  top: 9.5rem;
+  left: 0;
+}
+
+.csi-exam-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.csi-exam-kicker {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--csi-red);
+}
+
+.csi-exam-passed {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: var(--csi-red-tint);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--csi-red-deep);
+}
+
+.csi-exam-passed::before {
+  content: "✓";
+}
+
+.csi-exam-focus {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--csi-dark);
+}
+
+.csi-exam-meta {
+  font-size: 0.75rem;
+  color: var(--csi-ink);
+}
+
+/* The pass line at 60%, with the passing zone shaded beyond it. */
+.csi-exam-track {
+  position: relative;
+  display: block;
+  height: 0.4rem;
+  margin-top: 0.5rem;
+  border-radius: 999px;
+  background: var(--csi-mist);
+}
+
+.csi-exam-track::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 60%;
+  border-radius: 0 999px 999px 0;
+  background: rgba(200, 16, 46, 0.2);
+}
+
+.csi-exam-mark {
+  position: absolute;
+  top: -0.3rem;
+  bottom: -0.3rem;
+  left: 60%;
+  z-index: 1;
+  width: 2px;
+  border-radius: 1px;
+  background: var(--csi-red);
+}
+
+.csi-exam-mark-label {
+  position: relative;
+  left: 60%;
+  align-self: flex-start;
+  width: max-content;
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: var(--csi-ink);
+  transform: translateX(-50%);
+}
+
+.csi-seal {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 6.25rem;
+  height: 6.25rem;
+  filter: drop-shadow(0 10px 14px rgba(110, 80, 20, 0.35));
+  animation: csi-stamp 600ms cubic-bezier(0.2, 1.4, 0.4, 1) 1100ms both;
+}
+
+.csi-seal-shape {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 35% 30%, rgb(252, 234, 170), rgb(214, 174, 82) 42%, rgb(150, 112, 38) 100%);
+}
+
+.csi-seal-ring {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 72%;
+  height: 72%;
+  border: 1.5px solid rgba(110, 80, 20, 0.55);
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 3px rgba(255, 240, 200, 0.35);
+}
+
+.csi-seal-name {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--csi-gold-ink);
+  text-shadow: 0 1px 0 rgba(255, 245, 210, 0.6);
+}
+
+.csi-seal-date {
+  margin-top: 0.15rem;
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--csi-gold-ink);
+}
+
+@keyframes csi-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@keyframes csi-stamp {
+  from {
+    opacity: 0;
+    transform: scale(1.5) rotate(-14deg);
+  }
+}
+
+/* Light grey band with CSI's stats row */
+.csi-band {
+  margin-top: 4rem;
+  margin-inline: calc((100% - 100cqw) / 2);
+  padding: 4rem 0;
+  background: var(--csi-mist);
+}
+
+@media (min-width: 900px) {
+  .csi-band {
+    margin-top: 5rem;
+    padding: 4.75rem 0;
+  }
+}
+
+.csi-band-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--csi-gutter);
+}
+
+.csi-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 2.25rem 0 0;
+}
+
+@media (min-width: 900px) {
+  .csi-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.csi-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1.25rem 1.25rem 1.3rem;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.csi-stat-value {
+  order: -1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.625rem, 3vw, 2.125rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--csi-ink);
+}
+
+.csi-stat-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.35;
+  color: var(--csi-ink);
+}
+
+.csi-icon {
+  flex: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: none;
+  stroke: var(--csi-red);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.csi-band-note {
+  max-width: 44rem;
+  margin: 2rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--csi-ink);
+}
+
+/* Sections */
+.csi-section {
+  margin-top: 4.5rem;
+}
+
+@media (min-width: 900px) {
+  .csi-section {
+    margin-top: 5.5rem;
+  }
+}
+
+.csi-path {
+  scroll-margin-top: 1.5rem;
+}
+
+/* Workflow */
+.csi-flow {
+  position: relative;
+  margin-top: 2.5rem;
+}
+
+.csi-flow-track {
+  position: absolute;
+  top: 1.25rem;
+  bottom: 1.25rem;
+  left: 1.125rem;
+  width: 2px;
+  overflow: hidden;
+  background: var(--csi-line);
+}
+
+.csi-flow-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--csi-red), var(--csi-dark));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1500ms cubic-bezier(0.32, 0.72, 0, 1) 200ms;
+}
+
+.csi-flow.is-active .csi-flow-fill {
+  transform: scaleY(1);
+}
+
+.csi-flow-steps {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0 0 0 3.5rem;
+  list-style: none;
+}
+
+.csi-flow-step {
+  position: relative;
+  opacity: 0.3;
+  transform: translateY(14px);
+  transition:
+    opacity 700ms ease,
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--step-index, 0) * 240ms + 300ms);
+}
+
+.csi-flow.is-active .csi-flow-step {
+  opacity: 1;
+  transform: none;
+}
+
+.csi-flow-node {
+  position: absolute;
+  top: 0.85rem;
+  left: -3.5rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.375rem;
+  height: 2.375rem;
+  border: 2px solid var(--csi-line);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--csi-ink);
+  transition:
+    background-color 500ms ease,
+    border-color 500ms ease,
+    color 500ms ease;
+  transition-delay: calc(var(--step-index, 0) * 240ms + 380ms);
+}
+
+.csi-flow.is-active .csi-flow-node {
+  border-color: var(--csi-red);
+  background: var(--csi-red);
+  color: #fff;
+}
+
+.csi-flow.is-active .csi-flow-step:last-child .csi-flow-node {
+  border-color: var(--csi-dark);
+  background: var(--csi-dark);
+}
+
+.csi-flow-card {
+  height: 100%;
+  padding: 1.35rem 1.5rem 1.5rem;
+  border: 1px solid var(--csi-line);
+  border-radius: 6px;
+  background: #fff;
+}
+
+.csi-flow-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 500;
+  color: var(--csi-dark);
+}
+
+.csi-flow-body {
+  margin: 0.5rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--csi-ink);
+  text-wrap: pretty;
+}
+
+@media (max-width: 899px) {
+  /* Stop the vertical line at the last node. */
+  .csi-flow-step:last-child::before {
+    content: "";
+    position: absolute;
+    top: 2.5rem;
+    bottom: -1.5rem;
+    left: -3.5rem;
+    width: 2.375rem;
+    background: #fff;
+  }
+}
+
+@media (min-width: 900px) {
+  /* Runs from the first node's centre to the last node's centre. */
+  .csi-flow-track {
+    top: 1.125rem;
+    right: auto;
+    bottom: auto;
+    left: 1.1875rem;
+    width: calc(66.667% + 0.667rem);
+    height: 2px;
+  }
+
+  .csi-flow-fill {
+    background: linear-gradient(90deg, var(--csi-red), var(--csi-dark));
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .csi-flow.is-active .csi-flow-fill {
+    transform: scaleX(1);
+  }
+
+  .csi-flow-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 3.5rem 0 0;
+  }
+
+  .csi-flow-node {
+    top: -3.5rem;
+    left: 0;
+  }
+}
+
+/* Exam facts: rows on phones, three columns from 640px */
+.csi-results {
+  display: grid;
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+}
+
+.csi-result {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: 6px;
+  background: var(--csi-mist);
+}
+
+.csi-result-value {
+  order: -1;
+  flex: 0 0 6.5rem;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 300;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--csi-red);
+}
+
+.csi-result-label {
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--csi-ink);
+}
+
+@media (min-width: 640px) {
+  .csi-results {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .csi-result {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.45rem;
+    padding: 1.25rem 1.25rem 1.35rem;
+  }
+
+  .csi-result-value {
+    flex: none;
+    font-size: clamp(2.5rem, 4.6vw, 3.5rem);
+  }
+}
+
+.csi-done {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 1.5rem 0 0;
+  font-size: 1rem;
+  color: var(--csi-dark);
+}
+
+.csi-done-check {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 999px;
+  background: var(--csi-red);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Topic weights for each exam */
+.csi-weights {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 900px) {
+  .csi-weights {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 1.25rem;
+  }
+}
+
+.csi-weight-card {
+  padding: 1.35rem 1.5rem 1.5rem;
+  border: 1px solid var(--csi-line);
+  border-radius: 6px;
+  background: #fff;
+}
+
+.csi-weight-title {
+  margin: 0 0 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--csi-red);
+}
+
+.csi-weight-title span {
+  color: var(--csi-ink);
+}
+
+.csi-weight-list {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.csi-weight {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "name value"
+    "track track";
+  align-items: baseline;
+  gap: 0.3rem 0.75rem;
+}
+
+.csi-weight-name {
+  grid-area: name;
+  font-size: 0.875rem;
+  line-height: 1.35;
+  color: var(--csi-dark);
+}
+
+.csi-weight-value {
+  grid-area: value;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--csi-dark);
+}
+
+.csi-weight-track {
+  grid-area: track;
+  display: block;
+  height: 0.45rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--csi-mist);
+}
+
+.csi-weight-track i {
+  display: block;
+  width: var(--w);
+  height: 100%;
+  border-radius: inherit;
+  background: var(--csi-red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i) * 50ms + 150ms);
+}
+
+.csi-weights.is-active .csi-weight-track i {
+  transform: scaleX(1);
+}
+
+/* The CSC today */
+.csi-cards {
+  display: grid;
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .csi-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.csi-cards > li {
+  display: flex;
+}
+
+.csi-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  width: 100%;
+  padding: 1.35rem 1.4rem 1.5rem;
+  border: 1px solid var(--csi-line);
+  border-top: 3px solid var(--csi-red);
+  border-radius: 6px;
+  background: #fff;
+}
+
+.csi-card-title {
+  font-family: var(--font-display);
+  font-size: 1.1875rem;
+  font-weight: 500;
+  color: var(--csi-dark);
+}
+
+.csi-card-body {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--csi-ink);
+}
+
+/* Footer */
+.csi-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--csi-line);
+  font-size: 0.8125rem;
+  color: var(--csi-ink);
+}
+
+.csi-footer p {
+  max-width: 40rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.csi-link {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--csi-red);
+  text-decoration: none;
+}
+
+.csi-link:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .csi-flow-step,
+  .csi-flow-node,
+  .csi-flow-fill,
+  .csi-weight-track i {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Still exam cards and seal. */
+  .csi-exam,
+  .csi-seal {
+    animation: none !important;
+  }
+}
