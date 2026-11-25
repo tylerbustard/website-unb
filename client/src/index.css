@@ -2705,6 +2705,184 @@
     }
   }
 
+  /* ── Hero profile details (Apple-style, adapted to Archivo / Space Grotesk) ── */
+  .hero2-specialties {
+    color: hsl(222 47% 11%);
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.75rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+  }
+
+  .hero2-role {
+    margin-top: 0.625rem;
+    max-width: 38rem;
+    color: hsl(215 16% 40%);
+    font-family: var(--font-text);
+    font-size: 1.02rem;
+    line-height: 1.55;
+  }
+
+  .hero2-role strong {
+    color: hsl(222 47% 11%);
+    font-weight: 700;
+  }
+
+  @media (min-width: 640px) {
+    .hero2-role {
+      font-size: 1.08rem;
+    }
+  }
+
+  /* Highlights: 2x2 on phones and laptops, one row of four on wide screens */
+  .hero2-highlights {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1.5rem;
+    max-width: 46rem;
+    margin: 1.5rem 0 0;
+    border-bottom: 1px solid hsl(214 32% 91%);
+  }
+
+  .hero2-highlight {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    padding: 0.8rem 0;
+    border-top: 1px solid hsl(214 32% 91%);
+  }
+
+  .hero2-highlight dd {
+    margin: 0;
+    color: hsl(222 47% 11%);
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 1.05rem + 0.7vw, 1.625rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .hero2-highlight dt {
+    margin-top: 0.25rem;
+    color: hsl(215 16% 47%);
+    font-family: var(--font-text);
+    font-size: 0.8125rem;
+    line-height: 1.35;
+  }
+
+  @media (min-width: 1280px) {
+    .hero2-highlights {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  /* Availability capsule in the spirit of the Dynamic Island */
+  .hero2-island {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: 100%;
+    min-height: 2.25rem;
+    padding: 0.4375rem 1rem 0.4375rem 0.75rem;
+    border-radius: 999px;
+    background: #000;
+    color: #f5f5f7;
+    font-family: var(--font-text);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: nowrap;
+    box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.45);
+    transition: padding 420ms cubic-bezier(0.34, 1.56, 0.64, 1), transform 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .hero2-island-dot {
+    flex: none;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: #30d158;
+    box-shadow: 0 0 0 3px rgba(48, 209, 88, 0.22);
+    animation: hero2-island-pulse 2.4s ease-in-out infinite;
+  }
+
+  .hero2-island-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    max-width: 0;
+    margin-left: -0.5rem;
+    overflow: hidden;
+    color: #2997ff;
+    opacity: 0;
+    transition: max-width 420ms cubic-bezier(0.34, 1.56, 0.64, 1), margin 420ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 240ms ease;
+  }
+
+  @media (hover: hover) {
+    .hero2-island:hover,
+    .hero2-island:focus-visible {
+      padding-right: 1.125rem;
+      transform: scale(1.03);
+    }
+
+    .hero2-island:hover .hero2-island-more,
+    .hero2-island:focus-visible .hero2-island-more {
+      max-width: 8rem;
+      margin-left: 0.25rem;
+      opacity: 1;
+    }
+  }
+
+  .hero2-island:focus-visible {
+    outline: 2px solid hsl(215 74% 41%);
+    outline-offset: 3px;
+  }
+
+  @keyframes hero2-island-pulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(48, 209, 88, 0.22); }
+    50% { box-shadow: 0 0 0 6px rgba(48, 209, 88, 0.08); }
+  }
+
+  /* the capsule starts small and stretches open, like the Dynamic Island */
+  .hero2-island {
+    opacity: 0;
+  }
+
+  .hero2.is-ready .hero2-island {
+    animation: hero2-island-open 0.9s cubic-bezier(0.34, 1.4, 0.64, 1) 0.12s forwards;
+  }
+
+  @keyframes hero2-island-open {
+    from {
+      opacity: 0;
+      clip-path: inset(0 calc(50% - 1.125rem) round 999px);
+    }
+    25% {
+      opacity: 1;
+    }
+    to {
+      opacity: 1;
+      clip-path: inset(0 0 round 999px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero2-island {
+      opacity: 1;
+      animation: none !important;
+      transition: none;
+    }
+
+    .hero2-island-more {
+      transition: none;
+    }
+
+    .hero2-island-dot {
+      animation: none;
+    }
+  }
+
   .hero-logo-light {
     opacity: 0;
     animation: logo-light-up 0.5s ease-out forwards;

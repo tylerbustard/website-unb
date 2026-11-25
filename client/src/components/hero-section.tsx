@@ -1,3 +1,5 @@
+import { Fragment, type MouseEvent } from "react";
+import { ArrowRight } from "lucide-react";
 import { useInitialPageAnimation } from "@/hooks/useScrollAnimation";
 import profileImage from "@assets/89BBD451-CD8B-47EB-AA2E-C39D4637B01D_1_105_c_1755896148330.jpeg";
 
@@ -24,8 +26,24 @@ import bloombergLogo from "@assets/bloomberg_1755923720190.png";
 
 export default function HeroSection() {
   const isPageLoaded = useInitialPageAnimation(400);
-  const heroSummary =
-    "Finance and data-focused candidate targeting financial intelligence roles across investment research, portfolio monitoring, and AI-enabled analysis. Experience reviewing NAV inputs, holdings, cash flows, public company filings, and client portfolio materials, with a record of turning messy source data into decision-ready reporting. Strongest skill sets include investment analysis, reconciliation, Excel, SQL, Python workflows, product collaboration, and clear stakeholder communication.";
+  // Short Apple-style profile copy: three specialties, the latest role and four highlights.
+  const specialties = ["Portfolio monitoring.", "Investment research.", "AI-enabled analysis."];
+  const yearsExperience = Math.max(1, new Date().getFullYear() - 2018); // first roles began in 2018
+  const highlights = [
+    { value: `${yearsExperience}+ years`, label: "of experience" },
+    { value: "15+", label: "portfolios monitored daily" },
+    { value: "CFA Level I", label: "candidate, 2026" },
+    { value: "BBA, Finance", label: "University of New Brunswick" },
+  ];
+
+  const scrollToContact = (event: MouseEvent<HTMLAnchorElement>) => {
+    const target = document.getElementById("contact");
+    if (!target) return;
+    event.preventDefault();
+    const top = target.getBoundingClientRect().top + window.scrollY - 80;
+    const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+    window.scrollTo({ top, behavior });
+  };
 
 
   const institutionGroups: { src: string; alt: string; h?: number }[][] = [
@@ -69,6 +87,16 @@ export default function HeroSection() {
         {/* ── Name / summary + portrait plate ── */}
         <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_260px] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_340px] xl:gap-16">
           <div className="min-w-0">
+        {/* Availability, styled after the Dynamic Island: a black capsule that grows on hover. */}
+        <a href="#contact" onClick={scrollToContact} className="hero2-island mb-6 sm:mb-7">
+          <span className="hero2-island-dot" aria-hidden="true" />
+          <span className="hero2-island-text">Open to financial intelligence roles</span>{" "}
+          <span className="hero2-island-more">
+            Get in touch
+            <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+          </span>
+        </a>
+
         <h1 className="hero2-name uppercase" style={{ fontFamily: "var(--font-display)" }}>
           <span className="hero2-clip"><span className="hero2-rise hero2-l1">Tyler</span></span>
           <span className="hero2-clip"><span className="hero2-rise hero2-rise-2 hero2-l2">Bustard</span></span>
@@ -76,11 +104,26 @@ export default function HeroSection() {
 
 
             <div className="hero2-fade hero2-fade-copy mt-6 min-w-0 sm:mt-7">
-            <p className="hero-facts-label text-primary">Finance &amp; Technology</p>
-            <p className="mt-3 max-w-[38rem] text-[1.02rem] leading-[1.64] text-slate-600 sm:text-[1.08rem]">
-              {heroSummary}
+            <p className="hero2-specialties">
+              {specialties.map((specialty, index) => (
+                <Fragment key={specialty}>
+                  <span className="whitespace-nowrap">{specialty}</span>
+                  {index < specialties.length - 1 ? " " : null}
+                </Fragment>
+              ))}
             </p>
-            <div className="mt-6 border-t border-slate-200/80 pt-3">
+            <p className="hero2-role">
+              Most recently <strong>Senior Associate, Portfolio Monitoring</strong> at <strong>73 Strings</strong>.
+            </p>
+            <dl className="hero2-highlights hero2-fade hero2-fade-facts">
+              {highlights.map((highlight) => (
+                <div key={highlight.value} className="hero2-highlight">
+                  <dt>{highlight.label}</dt>
+                  <dd>{highlight.value}</dd>
+                </div>
+              ))}
+            </dl>
+            <div className="mt-5">
               <p className="hero-facts-label">Selected institutions</p>
               <div className="mt-3.5 flex flex-wrap items-center gap-x-7 gap-y-3.5">
                 {institutionGroups.map((group, groupIndex) => (
