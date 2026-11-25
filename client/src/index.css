@@ -10016,3 +10016,1025 @@ html.role-spotlight-open body {
     transform: rotate(0.5turn);
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Grant Thornton theme: white and warm sand pages, bold black         */
+/* headings, Grant Thornton purple and violet, red buttons with small  */
+/* corners, and round-cornered cards                                   */
+/* ------------------------------------------------------------------ */
+
+.role-spotlight--gt {
+  --gt-purple: rgb(79, 45, 127);
+  --gt-deep: rgb(43, 20, 77);
+  --gt-violet: rgb(160, 109, 255);
+  --gt-lilac: rgb(214, 196, 255);
+  --gt-tint: rgb(243, 238, 255);
+  --gt-red: rgb(206, 44, 44);
+  --gt-red-hover: rgb(174, 30, 30);
+  --gt-ink: rgb(0, 0, 0);
+  --gt-body: rgb(38, 38, 38);
+  --gt-grey: rgb(102, 102, 102);
+  --gt-line: rgb(224, 220, 215);
+  --gt-sand: rgb(242, 241, 239);
+  --gt-gutter: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .role-spotlight--gt {
+    --gt-gutter: 3.5rem;
+  }
+}
+
+.role-spotlight--gt .role-spotlight-panel {
+  --role-spotlight-surface: rgb(255, 255, 255);
+  --role-spotlight-tile: rgba(255, 255, 255, 0);
+  --role-spotlight-title-color: rgb(0, 0, 0);
+  background: #fff;
+  color: var(--gt-body);
+}
+
+/* The purple and sand bands scroll straight under the edge; the close button has its own border. */
+.role-spotlight--gt .role-spotlight-panel::before {
+  display: none;
+}
+
+.role-spotlight--gt .role-spotlight-close {
+  background: #fff;
+  box-shadow:
+    0 2px 10px rgba(43, 20, 77, 0.14),
+    inset 0 0 0 1px var(--gt-line);
+  color: var(--gt-purple);
+}
+
+.role-spotlight--gt .role-spotlight-close:hover {
+  background: var(--gt-purple);
+  color: #fff;
+}
+
+.role-spotlight--gt .role-spotlight-close:focus-visible {
+  outline-color: var(--gt-purple);
+}
+
+.role-spotlight--gt .role-spotlight-scroll {
+  container-type: inline-size;
+  scrollbar-color: rgba(43, 20, 77, 0.3) transparent;
+}
+
+.role-spotlight--gt .role-spotlight-header {
+  gap: 1.25rem;
+}
+
+.role-spotlight--gt .role-spotlight-logo-tile {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+}
+
+.role-spotlight--gt .role-spotlight-logo {
+  width: 3rem;
+  height: 3rem;
+}
+
+.role-spotlight--gt .role-spotlight-heading {
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--gt-line);
+}
+
+.role-spotlight--gt .role-spotlight-title {
+  color: var(--gt-ink);
+}
+
+.role-spotlight--gt .role-spotlight-meta {
+  color: var(--gt-grey);
+}
+
+/* Type */
+.gt-eyebrow {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  color: var(--gt-purple);
+}
+
+.gt-eyebrow.is-light {
+  color: var(--gt-lilac);
+}
+
+.gt-display {
+  margin: 0.75rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.6vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--gt-ink);
+  text-wrap: balance;
+}
+
+.gt-heading {
+  max-width: 26ch;
+  margin: 0.6rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.2vw, 2.375rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--gt-ink);
+  text-wrap: balance;
+}
+
+.gt-heading.is-light {
+  color: #fff;
+}
+
+.gt-lede,
+.gt-section-lede {
+  max-width: 34rem;
+  margin: 1.25rem 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--gt-body);
+  text-wrap: pretty;
+}
+
+.gt-section-lede {
+  max-width: 40rem;
+  margin-top: 1rem;
+  color: var(--gt-grey);
+}
+
+/* Hero */
+.gt-hero {
+  display: grid;
+  gap: 2.5rem;
+  padding-top: 2.75rem;
+}
+
+@media (min-width: 900px) {
+  .gt-hero {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: center;
+    padding-top: 3.25rem;
+  }
+}
+
+.gt-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.gt-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.875rem;
+  padding: 0.7rem 1.5rem;
+  border: 1px solid var(--gt-red);
+  border-radius: 4px;
+  background: var(--gt-red);
+  color: #fff;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.gt-button:hover {
+  border-color: var(--gt-red-hover);
+  background: var(--gt-red-hover);
+}
+
+.gt-button-outline {
+  border-color: var(--gt-purple);
+  background: #fff;
+  color: var(--gt-purple);
+}
+
+.gt-button-outline:hover {
+  border-color: var(--gt-purple);
+  background: var(--gt-tint);
+  color: var(--gt-deep);
+}
+
+.gt-button:focus-visible,
+.gt-link:focus-visible {
+  outline: 2px solid var(--gt-purple);
+  outline-offset: 3px;
+}
+
+/* Hero visual: a stack of client returns being checked and filed */
+.gt-hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.gt-stage {
+  position: relative;
+  width: 100%;
+  max-width: 25rem;
+  padding: 3rem 0.25rem 2.5rem;
+}
+
+.gt-orb {
+  position: absolute;
+  top: 0.75rem;
+  left: -0.5rem;
+  width: min(15rem, 64%);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: radial-gradient(circle at 35% 30%, rgba(160, 109, 255, 0.55), rgba(79, 45, 127, 0.3) 72%);
+  animation: gt-orb 10s ease-in-out infinite alternate;
+}
+
+@keyframes gt-orb {
+  to {
+    transform: translate(6%, 4%) scale(1.06);
+  }
+}
+
+.gt-curve {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.gt-curve path {
+  fill: none;
+  stroke: var(--gt-violet);
+  stroke-width: 1.5;
+  stroke-opacity: 0.6;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: gt-draw 1600ms cubic-bezier(0.32, 0.72, 0, 1) 500ms both;
+}
+
+@keyframes gt-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+.gt-metric {
+  position: absolute;
+  top: 0.25rem;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.65rem 0.95rem 0.7rem;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow:
+    0 14px 34px -16px rgba(43, 20, 77, 0.45),
+    0 0 0 1px rgba(43, 20, 77, 0.06);
+  animation: gt-float 6s ease-in-out infinite;
+}
+
+.gt-metric-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gt-grey);
+}
+
+.gt-metric-value {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--gt-purple);
+}
+
+@keyframes gt-float {
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.gt-stack {
+  position: relative;
+  z-index: 1;
+  width: min(17.5rem, 84%);
+  margin-left: auto;
+}
+
+.gt-sheet {
+  display: block;
+  border-radius: 24px;
+  background: #fff;
+}
+
+.gt-sheet-ghost {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--gt-line);
+}
+
+.gt-sheet-ghost.is-back {
+  border-color: rgba(160, 109, 255, 0.35);
+  background: var(--gt-tint);
+  transform: rotate(-7deg) translate(-0.9rem, 0.5rem);
+}
+
+.gt-sheet-ghost.is-mid {
+  box-shadow: 0 10px 24px -18px rgba(43, 20, 77, 0.5);
+  transform: rotate(-3.5deg) translate(-0.45rem, 0.25rem);
+}
+
+.gt-sheet-front {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.15rem 1.2rem 1.25rem;
+  box-shadow:
+    0 24px 48px -24px rgba(43, 20, 77, 0.55),
+    0 0 0 1px rgba(43, 20, 77, 0.06);
+}
+
+.gt-sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.gt-pill {
+  padding: 0.15rem 0.8rem;
+  border-radius: 999px;
+  background: var(--gt-violet);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--gt-deep);
+}
+
+.gt-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.15rem 0.65rem 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: var(--gt-purple);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #fff;
+  animation: gt-status 6s ease 0.3s infinite both;
+}
+
+.gt-status svg {
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+.gt-status path,
+.gt-line-check path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@keyframes gt-status {
+  0%,
+  38% {
+    opacity: 0;
+    transform: translateY(4px) scale(0.92);
+  }
+  44%,
+  86% {
+    opacity: 1;
+    transform: none;
+  }
+  94%,
+  100% {
+    opacity: 0;
+    transform: none;
+  }
+}
+
+.gt-lines {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.gt-line {
+  display: grid;
+  grid-template-columns: 5.75rem minmax(0, 1fr) 1.1rem;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.gt-line-label {
+  font-size: 0.75rem;
+  white-space: nowrap;
+  color: var(--gt-grey);
+}
+
+.gt-line-track {
+  display: block;
+  height: 0.45rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--gt-sand);
+}
+
+.gt-line-track i {
+  display: block;
+  width: 88%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--gt-purple), var(--gt-violet));
+  transform-origin: left;
+  animation: gt-fill 6s cubic-bezier(0.32, 0.72, 0, 1) infinite both;
+  animation-delay: calc(var(--i) * 350ms + 300ms);
+}
+
+.gt-line:nth-child(2) .gt-line-track i {
+  width: 70%;
+}
+
+.gt-line:nth-child(3) .gt-line-track i {
+  width: 80%;
+}
+
+.gt-line:nth-child(4) .gt-line-track i {
+  width: 60%;
+}
+
+@keyframes gt-fill {
+  0% {
+    opacity: 1;
+    transform: scaleX(0);
+  }
+  14%,
+  86% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  94%,
+  100% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+}
+
+.gt-line-check {
+  display: grid;
+  place-items: center;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 999px;
+  background: var(--gt-purple);
+  color: #fff;
+  animation: gt-check 6s ease infinite both;
+  animation-delay: calc(var(--i) * 350ms + 300ms);
+}
+
+.gt-line-check svg {
+  width: 0.7rem;
+  height: 0.7rem;
+}
+
+@keyframes gt-check {
+  0%,
+  12% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  17% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  20%,
+  86% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  94%,
+  100% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+/* Right-aligned so the "100+ returns" tag can overlap the sheet's empty corner. */
+.gt-sheet-foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--gt-line);
+  font-size: 0.75rem;
+  color: var(--gt-grey);
+}
+
+.gt-sheet-foot strong {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--gt-purple);
+}
+
+.gt-tag {
+  position: absolute;
+  bottom: 0.25rem;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 0.7rem 1.05rem 0.75rem;
+  border-radius: 16px;
+  background: var(--gt-purple);
+  box-shadow: 0 18px 36px -18px rgba(43, 20, 77, 0.7);
+  color: #fff;
+  animation: gt-float 6s ease-in-out 3s infinite;
+}
+
+.gt-tag-value {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.gt-tag-note {
+  font-size: 0.75rem;
+  color: var(--gt-lilac);
+}
+
+/* Purple band */
+.gt-band {
+  position: relative;
+  overflow: hidden;
+  margin-top: 4rem;
+  margin-inline: calc((100% - 100cqw) / 2);
+  padding: 4rem 0;
+  background: linear-gradient(135deg, var(--gt-purple) 0%, var(--gt-deep) 100%);
+  color: #fff;
+}
+
+@media (min-width: 900px) {
+  .gt-band {
+    margin-top: 5rem;
+    padding: 4.75rem 0;
+  }
+}
+
+/* A thin arc in the top corner, after the curves on Doane Grant Thornton's purple panels.
+   Sized so it clears the heading and stats at every width. */
+.gt-band::before {
+  content: "";
+  position: absolute;
+  top: -8rem;
+  right: -8rem;
+  width: 16rem;
+  height: 16rem;
+  border: 1px solid rgba(214, 196, 255, 0.3);
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+@media (min-width: 900px) {
+  .gt-band::before {
+    top: -12rem;
+    right: -12rem;
+    width: 24rem;
+    height: 24rem;
+  }
+}
+
+.gt-band-inner {
+  position: relative;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--gt-gutter);
+}
+
+.gt-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem 1rem;
+  margin: 2.25rem 0 0;
+}
+
+@media (min-width: 900px) {
+  .gt-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.gt-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding-top: 1rem;
+  border-top: 3px solid var(--gt-violet);
+}
+
+.gt-stat-value {
+  order: -1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.2vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.gt-stat-label {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--gt-lilac);
+}
+
+.gt-band-note {
+  max-width: 44rem;
+  margin: 2rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* Sections */
+.gt-section {
+  margin-top: 4.5rem;
+}
+
+@media (min-width: 900px) {
+  .gt-section {
+    margin-top: 5.5rem;
+  }
+}
+
+.gt-role {
+  scroll-margin-top: 1.5rem;
+}
+
+/* Workflow */
+.gt-flow {
+  position: relative;
+  margin-top: 2.5rem;
+}
+
+.gt-flow-track {
+  position: absolute;
+  top: 1.25rem;
+  bottom: 1.25rem;
+  left: 1.125rem;
+  width: 2px;
+  overflow: hidden;
+  background: var(--gt-line);
+}
+
+.gt-flow-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--gt-purple), var(--gt-violet));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1500ms cubic-bezier(0.32, 0.72, 0, 1) 200ms;
+}
+
+.gt-flow.is-active .gt-flow-fill {
+  transform: scaleY(1);
+}
+
+.gt-flow-steps {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0 0 0 3.5rem;
+  list-style: none;
+}
+
+.gt-flow-step {
+  position: relative;
+  opacity: 0.3;
+  transform: translateY(14px);
+  transition:
+    opacity 700ms ease,
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--step-index, 0) * 240ms + 300ms);
+}
+
+.gt-flow.is-active .gt-flow-step {
+  opacity: 1;
+  transform: none;
+}
+
+.gt-flow-node {
+  position: absolute;
+  top: 0.85rem;
+  left: -3.5rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.375rem;
+  height: 2.375rem;
+  border: 2px solid var(--gt-line);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--gt-grey);
+  transition:
+    background-color 500ms ease,
+    border-color 500ms ease,
+    color 500ms ease;
+  transition-delay: calc(var(--step-index, 0) * 240ms + 380ms);
+}
+
+.gt-flow.is-active .gt-flow-node {
+  border-color: var(--gt-purple);
+  background: var(--gt-purple);
+  color: #fff;
+}
+
+.gt-flow.is-active .gt-flow-step:last-child .gt-flow-node {
+  border-color: var(--gt-violet);
+  background: var(--gt-violet);
+  color: var(--gt-deep);
+}
+
+.gt-flow-card {
+  height: 100%;
+  padding: 1.35rem 1.5rem 1.5rem;
+  border: 1px solid var(--gt-line);
+  border-radius: 24px;
+  background: #fff;
+}
+
+.gt-flow-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--gt-ink);
+}
+
+.gt-flow-body {
+  margin: 0.5rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--gt-body);
+  text-wrap: pretty;
+}
+
+@media (max-width: 899px) {
+  /* Stop the vertical line at the last node. */
+  .gt-flow-step:last-child::before {
+    content: "";
+    position: absolute;
+    top: 2.5rem;
+    bottom: -1.5rem;
+    left: -3.5rem;
+    width: 2.375rem;
+    background: #fff;
+  }
+}
+
+@media (min-width: 900px) {
+  /* Runs from the first node's centre to the last node's centre. */
+  .gt-flow-track {
+    top: 1.125rem;
+    right: auto;
+    bottom: auto;
+    left: 1.1875rem;
+    width: calc(66.667% + 0.667rem);
+    height: 2px;
+  }
+
+  .gt-flow-fill {
+    background: linear-gradient(90deg, var(--gt-purple), var(--gt-violet));
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .gt-flow.is-active .gt-flow-fill {
+    transform: scaleX(1);
+  }
+
+  .gt-flow-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 3.5rem 0 0;
+  }
+
+  .gt-flow-node {
+    top: -3.5rem;
+    left: 0;
+  }
+}
+
+/* My results: rows on phones, three columns from 640px */
+.gt-results {
+  display: grid;
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+}
+
+.gt-result {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: 24px;
+  background: var(--gt-sand);
+}
+
+.gt-result-value {
+  order: -1;
+  flex: 0 0 6.25rem;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--gt-purple);
+}
+
+.gt-result-label {
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--gt-body);
+}
+
+@media (min-width: 640px) {
+  .gt-results {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .gt-result {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.45rem;
+    padding: 1.25rem 1.25rem 1.35rem;
+  }
+
+  .gt-result-value {
+    flex: none;
+    font-size: clamp(2.5rem, 4.6vw, 3.5rem);
+  }
+}
+
+/* Tax services, on a warm sand band like Doane Grant Thornton's insight lists */
+.gt-services {
+  margin-top: 4.5rem;
+  margin-inline: calc((100% - 100cqw) / 2);
+  padding: 4rem 0;
+  background: var(--gt-sand);
+}
+
+@media (min-width: 900px) {
+  .gt-services {
+    margin-top: 5.5rem;
+    padding: 4.75rem 0;
+  }
+}
+
+.gt-services-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--gt-gutter);
+}
+
+.gt-cards {
+  display: grid;
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .gt-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.gt-cards > li {
+  display: flex;
+}
+
+.gt-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  width: 100%;
+  padding: 1.5rem 1.5rem 1.6rem;
+  border-radius: 24px;
+  background: #fff;
+}
+
+.gt-card-category {
+  font-size: 0.75rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--gt-grey);
+}
+
+.gt-card-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--gt-purple);
+}
+
+.gt-card-body {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--gt-body);
+}
+
+/* Toolkit and footer */
+.gt-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gt-chip {
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--gt-line);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.9375rem;
+  color: var(--gt-deep);
+}
+
+.gt-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--gt-line);
+  font-size: 0.8125rem;
+  color: var(--gt-grey);
+}
+
+.gt-footer p {
+  max-width: 40rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.gt-link {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--gt-purple);
+  text-decoration: none;
+}
+
+.gt-link:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gt-flow-step,
+  .gt-flow-node,
+  .gt-flow-fill {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* A still, finished return: every line checked and the status filed. */
+  .gt-orb,
+  .gt-curve path,
+  .gt-metric,
+  .gt-tag,
+  .gt-status,
+  .gt-line-track i,
+  .gt-line-check {
+    animation: none !important;
+  }
+}
