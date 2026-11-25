@@ -17821,3 +17821,524 @@ html.role-spotlight-open body {
 .role-spotlight--cat-data .cat-cert {
   border-top: 4px solid var(--cat-dot);
 }
+
+/* ------------------------------------------------------------------ */
+/* United Way theme: a United Way red hero with heavy italic capitals, */
+/* white pill buttons, white pages with black type, a black band and   */
+/* the yellow of the logo, after unitedwaygt.org                       */
+/* ------------------------------------------------------------------ */
+
+.role-spotlight--uw {
+  --uw-red: rgb(218, 41, 28);
+  --uw-red-deep: rgb(178, 30, 20);
+  --uw-black: rgb(4, 5, 3);
+  --uw-yellow: rgb(255, 181, 0);
+  --uw-heavy: "Avenir Next", Avenir, var(--font-display);
+  --uw-inner-bottom: 3rem;
+  --cred-surface: rgb(255, 255, 255);
+  --cred-ink: rgb(4, 5, 3);
+  --cred-body: rgb(64, 64, 64);
+  --cred-soft: rgb(100, 100, 100);
+  --cred-line: rgb(226, 226, 226);
+  --cred-raised: rgb(255, 255, 255);
+  --cred-mist: rgb(246, 246, 246);
+  --cred-tint: rgba(218, 41, 28, 0.06);
+  --cred-accent: rgb(218, 41, 28);
+  --cred-accent-deep: rgb(178, 30, 20);
+  --cred-accent-ink: rgb(255, 255, 255);
+  --cred-done: rgb(4, 5, 3);
+  --cred-done-ink: rgb(255, 255, 255);
+  --cred-band-bg: rgb(4, 5, 3);
+  --cred-band-ink: rgb(255, 255, 255);
+  --cred-band-body: rgba(255, 255, 255, 0.8);
+  --cred-band-raised: rgba(255, 255, 255, 0.06);
+  --cred-band-line: rgba(255, 255, 255, 0.14);
+  --cred-band-accent: rgb(255, 181, 0);
+  --cred-button-radius: 999px;
+  --cred-radius: 6px;
+}
+
+@media (min-width: 768px) {
+  .role-spotlight--uw {
+    --uw-inner-bottom: 3.5rem;
+  }
+}
+
+.role-spotlight--uw .role-spotlight-panel {
+  --role-spotlight-surface: rgb(218, 41, 28);
+  --role-spotlight-tile: rgba(255, 255, 255, 0);
+  --role-spotlight-title-color: rgb(255, 255, 255);
+  background: var(--uw-red);
+  color: #fff;
+}
+
+.role-spotlight--uw .role-spotlight-panel::before {
+  display: none;
+}
+
+.role-spotlight--uw .role-spotlight-close {
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(4, 5, 3, 0.25);
+  color: var(--uw-red);
+}
+
+.role-spotlight--uw .role-spotlight-close:hover {
+  background: var(--uw-black);
+  color: #fff;
+}
+
+.role-spotlight--uw .role-spotlight-close:focus-visible {
+  outline-color: #fff;
+}
+
+.role-spotlight--uw .role-spotlight-logo {
+  width: 3rem;
+  height: 3rem;
+}
+
+.role-spotlight--uw .role-spotlight-heading {
+  border-left-color: rgba(255, 255, 255, 0.4);
+}
+
+.role-spotlight--uw .role-spotlight-title {
+  color: #fff;
+}
+
+.role-spotlight--uw .role-spotlight-meta {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* Heavy italic capitals for headings, as on unitedwaygt.org */
+.role-spotlight--uw .cred-heading,
+.uw-display {
+  font-family: var(--uw-heavy);
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.role-spotlight--uw .cred-heading {
+  max-width: 22ch;
+  font-size: clamp(1.625rem, 3vw, 2.25rem);
+  line-height: 1.05;
+}
+
+.role-spotlight--uw .cred-eyebrow {
+  font-family: var(--uw-heavy);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+/* The red hero */
+.uw-hero {
+  display: grid;
+  gap: 2.5rem;
+  padding: 2.75rem 0 3.5rem;
+}
+
+@media (min-width: 900px) {
+  .uw-hero {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    align-items: center;
+    padding: 3.25rem 0 4.5rem;
+  }
+}
+
+.uw-hero .cred-eyebrow {
+  color: #fff;
+}
+
+.uw-display {
+  margin: 0.8rem 0 0;
+  font-size: clamp(2.25rem, 4.8vw, 3.5rem);
+  line-height: 0.98;
+  color: #fff;
+  text-wrap: balance;
+}
+
+.uw-lede {
+  max-width: 34rem;
+  margin: 1.25rem 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: #fff;
+  text-wrap: pretty;
+}
+
+.uw-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.65rem 1.4rem;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--uw-red);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.uw-button:hover {
+  border-color: var(--uw-black);
+  background: var(--uw-black);
+  color: #fff;
+}
+
+.uw-button-outline {
+  background: transparent;
+  color: #fff;
+}
+
+.uw-button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+/* Hero visual: two campaign thermometers */
+.uw-campaign {
+  width: 100%;
+  max-width: 22rem;
+  padding: 1.2rem 1.3rem 1.4rem;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 30px 60px -30px rgba(4, 5, 3, 0.55);
+  color: var(--uw-black);
+}
+
+.uw-campaign-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-family: var(--uw-heavy);
+  font-size: 0.875rem;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.uw-campaign-chip {
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: var(--uw-yellow);
+  font-size: 0.6875rem;
+  font-style: normal;
+  letter-spacing: 0.04em;
+}
+
+.uw-thermos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.uw-thermo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.uw-thermo-value {
+  font-family: var(--uw-heavy);
+  font-size: 2rem;
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1;
+  color: var(--uw-red);
+  opacity: 0;
+  transition: opacity 400ms ease;
+  transition-delay: calc(var(--i) * 200ms + 1300ms);
+}
+
+.uw-campaign.is-active .uw-thermo-value {
+  opacity: 1;
+}
+
+.uw-tube {
+  position: relative;
+  width: 1.5rem;
+  height: 9.5rem;
+  margin-top: 0.6rem;
+  border: 2px solid var(--uw-black);
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+  background: rgb(246, 246, 246);
+}
+
+.uw-mercury {
+  position: absolute;
+  right: 3px;
+  bottom: 0;
+  left: 3px;
+  top: 3px;
+  border-radius: 999px 999px 0 0;
+  background: var(--uw-red);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 1300ms cubic-bezier(0.32, 0.72, 0, 1);
+  transition-delay: calc(var(--i) * 200ms + 250ms);
+}
+
+.uw-campaign.is-active .uw-mercury {
+  transform: none;
+}
+
+/* Where the campaign started, before the increase. */
+.uw-start {
+  position: absolute;
+  bottom: var(--start);
+  left: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  width: max-content;
+  margin-left: -1.6rem;
+  transform: translateY(50%);
+}
+
+.uw-start::before {
+  content: "";
+  width: 2.3rem;
+  border-top: 2px dashed var(--uw-black);
+}
+
+.uw-start span {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.uw-bulb {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-top: -0.35rem;
+  border: 2px solid var(--uw-black);
+  border-radius: 999px;
+  background: var(--uw-red);
+}
+
+.uw-thermo-label {
+  margin-top: 0.6rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.uw-thermo-note {
+  font-size: 0.75rem;
+  line-height: 1.3;
+  color: rgb(90, 90, 90);
+}
+
+/* The white body below the hero */
+.uw-body {
+  margin-inline: calc((100% - 100cqw) / 2);
+  margin-bottom: calc(var(--uw-inner-bottom) * -1);
+  padding-bottom: var(--uw-inner-bottom);
+  background: #fff;
+  color: var(--cred-body);
+}
+
+.uw-body-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--cred-gutter);
+}
+
+.uw-first {
+  margin-top: 0;
+  padding-top: 4rem;
+}
+
+@media (min-width: 900px) {
+  .uw-first {
+    margin-top: 0;
+    padding-top: 4.75rem;
+  }
+}
+
+.uw-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.uw-chip {
+  padding: 0.45rem 0.9rem;
+  border: 2px solid var(--uw-black);
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--uw-black);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .uw-thermo-value,
+  .uw-mercury {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Irving Oil volunteer panel: an event card with 100 children and the volunteer team */
+.irv-event {
+  width: 100%;
+  max-width: 22rem;
+  padding: 1.25rem 1.25rem 1.3rem;
+  border: 1px solid var(--irv-line);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 24px 48px -28px rgba(20, 27, 77, 0.35);
+}
+
+.irv-event-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.irv-event-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--irv-slate);
+}
+
+.irv-event-chip {
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: var(--irv-red-tint);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--irv-red);
+}
+
+.irv-event-grid {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 0.35rem;
+  margin-top: 1.1rem;
+}
+
+.irv-event-grid i {
+  display: block;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: var(--irv-line);
+  transform: scale(0.6);
+  transition:
+    background-color 300ms ease,
+    transform 400ms cubic-bezier(0.2, 1.4, 0.4, 1);
+  transition-delay: calc(var(--i) * 12ms + 300ms);
+}
+
+.irv-event.is-active .irv-event-grid i {
+  background: var(--irv-blue);
+  transform: none;
+}
+
+.irv-event.is-active .irv-event-grid i:nth-child(3n) {
+  background: var(--irv-red);
+}
+
+.irv-event-count {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-top: 1.1rem;
+}
+
+.irv-event-value {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--irv-red);
+}
+
+.irv-event-value b {
+  font-weight: 700;
+}
+
+.irv-event-label {
+  font-size: 0.875rem;
+  line-height: 1.35;
+  color: var(--irv-ink);
+}
+
+.irv-event-team {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--irv-line);
+}
+
+.irv-event-avatars {
+  display: flex;
+}
+
+.irv-event-avatars span {
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-left: -0.45rem;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  background: var(--irv-navy);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity 400ms ease,
+    transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i) * 90ms + 1500ms);
+}
+
+.irv-event-avatars span:first-child {
+  margin-left: 0;
+}
+
+.irv-event-avatars span:nth-child(2n) {
+  background: var(--irv-blue);
+}
+
+.irv-event-avatars span:nth-child(3) {
+  background: var(--irv-red);
+}
+
+.irv-event.is-active .irv-event-avatars span {
+  opacity: 1;
+  transform: none;
+}
+
+.irv-event-team-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--irv-slate);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .irv-event-grid i,
+  .irv-event-avatars span {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

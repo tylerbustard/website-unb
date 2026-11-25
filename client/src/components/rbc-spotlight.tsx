@@ -8,7 +8,8 @@ import {
 import { cn } from "@/lib/utils";
 
 /*
- * "Inside the role" panels for the two RBC experience cards, in RBC's
+ * "Inside the role" panels for the two RBC experience cards and the RBC student
+ * ambassador community card, in RBC's
  * branding: an RBC blue gradient header and hero with white type and RBC
  * yellow highlights, yellow primary buttons, then white and light grey
  * sections with RBC blue headings.
@@ -22,7 +23,7 @@ import { cn } from "@/lib/utils";
 
 const RBC_URL = "https://www.rbcroyalbank.com/personal.html";
 
-export type RbcRole = "advisor" | "intern";
+export type RbcRole = "advisor" | "intern" | "ambassador";
 
 type Figure = { to: number; prefix?: string; suffix?: string; label: string };
 type Step = { title: string; body: string };
@@ -42,6 +43,8 @@ const roles: Record<
     focusLede: string;
     focus: Focus[];
     toolkit: string[];
+    roleTitle: string;
+    visual: { title: string; chip: string; items: string[] };
   }
 > = {
   advisor: {
@@ -72,6 +75,12 @@ const roles: Record<
       { title: "TFSAs", body: "Tax-free savings accounts, where eligible growth and withdrawals aren’t taxed." },
     ],
     toolkit: ["Banking Products", "Financial Advisory", "Client Relationship Management", "Digital Banking"],
+    roleTitle: "From the first question to the result.",
+    visual: {
+      title: "Client goals",
+      chip: "Needs review",
+      items: ["Emergency savings", "Saving for a home", "Long-term investing"],
+    },
   },
   intern: {
     title: "Client Advisor Intern",
@@ -101,6 +110,47 @@ const roles: Record<
       { title: "Digital banking", body: "Getting clients set up with RBC Online Banking and the RBC Mobile app." },
     ],
     toolkit: ["Client Service", "Digital Banking", "Problem Resolution", "Customer Support"],
+    roleTitle: "From the first question to the result.",
+    visual: {
+      title: "Client visit",
+      chip: "Resolved",
+      items: ["Account issue fixed", "Online Banking set up", "RBC Mobile app installed"],
+    },
+  },
+  ambassador: {
+    title: "Student Ambassador",
+    meta: "Royal Bank of Canada · Fredericton, NB · 2019–2020",
+    hint: "The campus, the events and my results",
+    headline: (
+      <>
+        Bringing RBC to campus, and students <span className="rbc-highlight">to RBC.</span>
+      </>
+    ),
+    lede:
+      "RBC is Canada’s biggest bank, serving more than 19 million clients. As a student ambassador in Fredericton, I organized campus-wide events that raised student engagement and awareness by 25%, and built targeted outreach that lifted student participation in RBC events by 30%.",
+    figures: [
+      { to: 25, prefix: "+", suffix: "%", label: "student engagement and awareness" },
+      { to: 30, prefix: "+", suffix: "%", label: "student participation in RBC events" },
+    ],
+    steps: [
+      { title: "Plan", body: "I organized campus-wide events that brought RBC to where students already were." },
+      { title: "Reach", body: "Targeted outreach brought the right students in, lifting participation in RBC events by 30%." },
+      { title: "Engage", body: "Together, the events and outreach raised student engagement and awareness by 25%." },
+    ],
+    focusTitle: "Where I spent my time on campus.",
+    focusLede: "The role came down to three things: events worth showing up for, outreach that found the right students, and representing RBC well.",
+    focus: [
+      { title: "Campus events", body: "Campus-wide events that put RBC in front of students." },
+      { title: "Targeted outreach", body: "Outreach aimed at the students most likely to take part." },
+      { title: "Brand promotion", body: "Representing RBC on campus as the bank’s face to students." },
+    ],
+    toolkit: ["Event Management", "Strategic Outreach", "Campus Relations", "Brand Promotion", "Student Engagement"],
+    roleTitle: "From planning to participation.",
+    visual: {
+      title: "Campus event",
+      chip: "On campus",
+      items: ["Event planned", "Students invited", "RBC team on site"],
+    },
   },
 };
 
@@ -128,14 +178,11 @@ function BranchVisual({ role }: { role: RbcRole }) {
     <div className="rbc-stage" aria-hidden="true">
       <div className="rbc-card">
         <div className="rbc-card-head">
-          <span className="rbc-card-title">{role === "advisor" ? "Client goals" : "Client visit"}</span>
-          <span className="rbc-card-chip">{role === "advisor" ? "Needs review" : "Resolved"}</span>
+          <span className="rbc-card-title">{data.visual.title}</span>
+          <span className="rbc-card-chip">{data.visual.chip}</span>
         </div>
         <ul className="rbc-card-list">
-          {(role === "advisor"
-            ? ["Emergency savings", "Saving for a home", "Long-term investing"]
-            : ["Account issue fixed", "Online Banking set up", "RBC Mobile app installed"]
-          ).map((item, index) => (
+          {data.visual.items.map((item, index) => (
             <li key={item} style={{ "--i": index } as CSSProperties}>
               <span className="rbc-check">
                 <svg viewBox="0 0 12 12">
@@ -266,7 +313,7 @@ export default function RbcSpotlight({ originRef, logoSrc, role }: RbcSpotlightP
             <SpotlightReveal>
               <Eyebrow>My role</Eyebrow>
               <h3 id={id("role-title")} className="rbc-heading">
-                From the first question to the result.
+                {data.roleTitle}
               </h3>
             </SpotlightReveal>
             <SpotlightReveal delay={80}>

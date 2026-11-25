@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils";
  *   Whitegate, Ireland's only refinery
  */
 
-const IRVING_URL = "https://www.irvingoil.com/en-CA";
+export const IRVING_URL = "https://www.irvingoil.com/en-CA";
 
 const stages = [
   { label: "Reach", note: "New customers find Irving" },
@@ -28,7 +28,7 @@ const stages = [
   { label: "Retain", note: "Reasons to keep coming back" },
 ];
 
-const company = [
+export const company: { to?: number; suffix?: string; text?: string; label: string }[] = [
   { to: 320000, suffix: "+", label: "barrels a day at Canada’s largest refinery, in Saint John" },
   { to: 1000, suffix: "+", label: "fuelling locations across Eastern Canada and New England" },
   { to: 1600, suffix: "+", label: "people at the Saint John refinery" },

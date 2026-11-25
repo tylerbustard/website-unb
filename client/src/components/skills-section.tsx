@@ -18,6 +18,9 @@ import BbgSpotlight from "@/components/bbg-spotlight";
 import EtsSpotlight from "@/components/ets-spotlight";
 import AifSpotlight from "@/components/aif-spotlight";
 import CategorySpotlight from "@/components/category-spotlight";
+import UnitedWaySpotlight from "@/components/united-way-spotlight";
+import IrvingVolunteerSpotlight from "@/components/irving-volunteer-spotlight";
+import RbcSpotlight from "@/components/rbc-spotlight";
 import { categoryKeyByTitle, categoryPanels, type CategoryKey } from "@/components/category-panels";
 import unitedWayLogo from "@assets/United-Way-Logo_1755913265895.png";
 import rbcLogo from "@assets/rbc_logo.webp";
@@ -544,7 +547,11 @@ interface CommunityActivity {
   skills: string[];
   logoSrc?: string;
   color: string;
+  spotlight?: CommunitySpotlightKey;
 }
+
+/** Community cards that open an "Inside the role" panel. */
+type CommunitySpotlightKey = "united-way" | "rbc" | "irving";
 
 // Counter components for community section
 function CommunityCounter({ end, suffix = '', prefix = '', label, className = '', labelClassName = 'text-muted-foreground', delay = 0 }: CounterStatProps) {
@@ -582,6 +589,24 @@ export function CommunitySection() {
     fastStaggerDelay: 55,
   });
   
+  const communitySpotlightRefs: Record<CommunitySpotlightKey, RefObject<HTMLDivElement>> = {
+    "united-way": useRef<HTMLDivElement>(null),
+    rbc: useRef<HTMLDivElement>(null),
+    irving: useRef<HTMLDivElement>(null),
+  };
+  const renderCommunitySpotlight = (activity: CommunityActivity) => {
+    switch (activity.spotlight) {
+      case "united-way":
+        return <UnitedWaySpotlight originRef={communitySpotlightRefs["united-way"]} logoSrc={activity.logoSrc ?? unitedWayLogo} />;
+      case "rbc":
+        return <RbcSpotlight originRef={communitySpotlightRefs.rbc} logoSrc={activity.logoSrc ?? rbcLogo} role="ambassador" />;
+      case "irving":
+        return <IrvingVolunteerSpotlight originRef={communitySpotlightRefs.irving} logoSrc={activity.logoSrc ?? irvingLogo} />;
+      default:
+        return null;
+    }
+  };
+
   const communityActivities: CommunityActivity[] = [
     {
       title: "Next Gen Ambassador",
@@ -604,6 +629,7 @@ export function CommunitySection() {
       ],
       logoSrc: unitedWayLogo,
       color: "#FF5A28",
+      spotlight: "united-way",
     },
     {
       title: "Student Ambassador",
@@ -626,6 +652,7 @@ export function CommunitySection() {
       ],
       logoSrc: rbcLogo,
       color: "#005DAA",
+      spotlight: "rbc",
     },
     {
       title: "Volunteer Staff",
@@ -648,6 +675,7 @@ export function CommunitySection() {
       ],
       logoSrc: irvingLogo,
       color: "#1E40AF",
+      spotlight: "irving",
     }
   ];
   const currentYear = new Date().getFullYear();
@@ -694,6 +722,7 @@ export function CommunitySection() {
               return (
                 <div
                   key={index}
+                  ref={activity.spotlight ? communitySpotlightRefs[activity.spotlight] : undefined}
                   id={`community-${slugify(activity.organization)}`}
                   className={`community-card-shell group bg-white border border-border rounded-lg p-6 transition-shadow duration-200 hover:shadow-sm scroll-slide-up ${revealClass}`}
                   data-testid={`community-activity-${index}`}
@@ -709,13 +738,16 @@ export function CommunitySection() {
                             src={activity.logoSrc}
                             alt={`${activity.organization} Logo`}
                             className="experience-card-logo"
+                            data-spotlight-source="logo"
                           />
                         </div>
                       ) : null}
 
                       <div className="experience-card-copy min-w-0">
                         <div className="experience-card-title-row">
-                          <h3 className="text-lg font-semibold text-foreground">{activity.title}</h3>
+                          <h3 className="text-lg font-semibold text-foreground" data-spotlight-source="title">
+                            {activity.title}
+                          </h3>
                           <span className="experience-card-period text-sm font-medium text-muted-foreground">
                             {activity.period}
                           </span>
@@ -783,6 +815,14 @@ export function CommunitySection() {
                       ))}
                     </div>
                   </div>
+                  {activity.spotlight ? (
+                    <div
+                      className={`experience-card-spotlight scroll-slide-up ${revealClass}`}
+                      style={getScrollRevealStyle(chipStartDelay + activity.skills.length * 65 + 60)}
+                    >
+                      {renderCommunitySpotlight(activity)}
+                    </div>
+                  ) : null}
                 </div>
               );
             })()
