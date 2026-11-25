@@ -11913,3 +11913,895 @@ html.role-spotlight-open body {
     animation: none !important;
   }
 }
+
+/* Core credential cards with a panel: the + trigger sits at the card's foot. */
+.experience-card-spotlight.core-credential-spotlight {
+  margin-top: auto;
+}
+
+/* ------------------------------------------------------------------ */
+/* CFA Institute theme: white and warm cream pages with regular-weight */
+/* headings, CFA blue pill buttons, outlined pills, and a deep indigo  */
+/* band                                                                */
+/* ------------------------------------------------------------------ */
+
+.role-spotlight--cfa {
+  --cfa-blue: rgb(51, 106, 255);
+  --cfa-blue-deep: rgb(32, 67, 161);
+  --cfa-indigo: rgb(29, 22, 132);
+  --cfa-link: rgb(2, 101, 220);
+  --cfa-black: rgb(0, 0, 0);
+  --cfa-ink: rgb(31, 33, 34);
+  --cfa-grey: rgb(96, 99, 104);
+  --cfa-line: rgb(226, 224, 219);
+  --cfa-cream: rgb(250, 245, 238);
+  --cfa-gutter: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .role-spotlight--cfa {
+    --cfa-gutter: 3.5rem;
+  }
+}
+
+.role-spotlight--cfa .role-spotlight-panel {
+  --role-spotlight-surface: rgb(255, 255, 255);
+  --role-spotlight-tile: rgba(255, 255, 255, 0);
+  --role-spotlight-title-color: rgb(0, 0, 0);
+  background: #fff;
+  color: var(--cfa-ink);
+}
+
+/* The indigo and cream bands scroll straight under the edge; the close button has its own border. */
+.role-spotlight--cfa .role-spotlight-panel::before {
+  display: none;
+}
+
+.role-spotlight--cfa .role-spotlight-close {
+  background: #fff;
+  box-shadow:
+    0 2px 10px rgba(29, 22, 132, 0.14),
+    inset 0 0 0 1px var(--cfa-line);
+  color: var(--cfa-ink);
+}
+
+.role-spotlight--cfa .role-spotlight-close:hover {
+  background: var(--cfa-blue);
+  color: #fff;
+}
+
+.role-spotlight--cfa .role-spotlight-close:focus-visible {
+  outline-color: var(--cfa-blue);
+}
+
+.role-spotlight--cfa .role-spotlight-scroll {
+  container-type: inline-size;
+  scrollbar-color: rgba(29, 22, 132, 0.3) transparent;
+}
+
+.role-spotlight--cfa .role-spotlight-header {
+  gap: 1.25rem;
+}
+
+.role-spotlight--cfa .role-spotlight-logo-tile {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+}
+
+.role-spotlight--cfa .role-spotlight-logo {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+.role-spotlight--cfa .role-spotlight-heading {
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--cfa-line);
+}
+
+.role-spotlight--cfa .role-spotlight-title {
+  font-weight: 500;
+  color: var(--cfa-black);
+}
+
+.role-spotlight--cfa .role-spotlight-meta {
+  color: var(--cfa-grey);
+}
+
+/* Type: regular-weight headings, after Azo Sans on cfainstitute.org */
+.cfa-eyebrow {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--cfa-blue-deep);
+}
+
+.cfa-eyebrow.is-light {
+  color: rgb(186, 204, 255);
+}
+
+.cfa-display {
+  margin: 0.75rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.6vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--cfa-black);
+  text-wrap: balance;
+}
+
+.cfa-heading {
+  max-width: 26ch;
+  margin: 0.6rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.2vw, 2.375rem);
+  font-weight: 400;
+  line-height: 1.14;
+  letter-spacing: -0.015em;
+  color: var(--cfa-black);
+  text-wrap: balance;
+}
+
+.cfa-heading.is-light {
+  color: #fff;
+}
+
+.cfa-lede,
+.cfa-section-lede {
+  max-width: 34rem;
+  margin: 1.25rem 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--cfa-ink);
+  text-wrap: pretty;
+}
+
+.cfa-section-lede {
+  max-width: 40rem;
+  margin-top: 1rem;
+  color: var(--cfa-grey);
+}
+
+/* Hero */
+.cfa-hero {
+  display: grid;
+  gap: 2.5rem;
+  padding-top: 2.75rem;
+}
+
+@media (min-width: 900px) {
+  .cfa-hero {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: center;
+    padding-top: 3.25rem;
+  }
+}
+
+.cfa-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.cfa-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.875rem;
+  padding: 0.7rem 1.5rem;
+  border: 1px solid var(--cfa-blue);
+  border-radius: 999px;
+  background: var(--cfa-blue);
+  color: #fff;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.cfa-button:hover {
+  border-color: var(--cfa-blue-deep);
+  background: var(--cfa-blue-deep);
+}
+
+.cfa-button-outline {
+  border-color: var(--cfa-black);
+  background: #fff;
+  color: var(--cfa-black);
+}
+
+.cfa-button-outline:hover {
+  border-color: var(--cfa-black);
+  background: var(--cfa-black);
+  color: #fff;
+}
+
+.cfa-button:focus-visible,
+.cfa-link:focus-visible {
+  outline: 2px solid var(--cfa-blue);
+  outline-offset: 3px;
+}
+
+/* Hero visual: the three exams and the charter as a staircase */
+.cfa-hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.cfa-stage {
+  position: relative;
+  width: 100%;
+  max-width: 25rem;
+  height: 21rem;
+}
+
+/* Cream backdrop with a dot grid, after the network imagery on cfainstitute.org. */
+.cfa-stage::before {
+  content: "";
+  position: absolute;
+  inset: 1.25rem 0 0 2.5rem;
+  border-radius: 24px;
+  background-color: var(--cfa-cream);
+  background-image:
+    radial-gradient(circle at 75% 25%, rgba(51, 106, 255, 0.18), rgba(51, 106, 255, 0) 55%),
+    radial-gradient(circle, rgba(29, 22, 132, 0.13) 1px, transparent 1.6px);
+  background-size:
+    100% 100%,
+    14px 14px;
+}
+
+.cfa-step {
+  position: absolute;
+  bottom: calc(var(--i) * 24%);
+  left: calc(var(--i) * 12%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  width: 64%;
+  padding: 0.8rem 1rem 0.85rem;
+  border: 1px solid var(--cfa-line);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 14px 30px -20px rgba(29, 22, 132, 0.45);
+  animation: cfa-rise 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i) * 140ms + 300ms);
+}
+
+.cfa-step.is-current {
+  border-color: var(--cfa-blue);
+  background: var(--cfa-blue);
+}
+
+.cfa-step.is-charter {
+  border-color: var(--cfa-indigo);
+  background: var(--cfa-indigo);
+}
+
+/* "You are here" on Level I. */
+.cfa-step.is-current::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -0.4rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  background: var(--cfa-blue);
+  transform: translateY(-50%);
+  animation: cfa-pulse 2.4s ease-out infinite;
+}
+
+.cfa-step-level {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cfa-grey);
+}
+
+.cfa-step-skill {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  color: var(--cfa-ink);
+}
+
+.cfa-step.is-current .cfa-step-level,
+.cfa-step.is-charter .cfa-step-level {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.cfa-step.is-current .cfa-step-skill,
+.cfa-step.is-charter .cfa-step-skill {
+  color: #fff;
+}
+
+.cfa-step-badge {
+  position: absolute;
+  top: -0.65rem;
+  right: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 4px 12px -4px rgba(29, 22, 132, 0.35);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--cfa-blue-deep);
+}
+
+@keyframes cfa-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@keyframes cfa-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(51, 106, 255, 0.45);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 12px rgba(51, 106, 255, 0);
+  }
+}
+
+/* Indigo band */
+.cfa-band {
+  position: relative;
+  overflow: hidden;
+  margin-top: 4rem;
+  margin-inline: calc((100% - 100cqw) / 2);
+  padding: 4rem 0;
+  background: var(--cfa-indigo);
+  color: #fff;
+}
+
+@media (min-width: 900px) {
+  .cfa-band {
+    margin-top: 5rem;
+    padding: 4.75rem 0;
+  }
+}
+
+/* A dot grid that fades in toward the right edge. */
+.cfa-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.14) 1px, transparent 1.6px);
+  background-size: 16px 16px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 45%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 45%, #000 100%);
+  pointer-events: none;
+}
+
+.cfa-band-inner {
+  position: relative;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--cfa-gutter);
+}
+
+.cfa-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem 1rem;
+  margin: 2.25rem 0 0;
+}
+
+@media (min-width: 900px) {
+  .cfa-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.cfa-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--cfa-blue);
+}
+
+.cfa-stat-value {
+  order: -1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.cfa-stat-label {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.cfa-band-note {
+  max-width: 44rem;
+  margin: 2rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Sections */
+.cfa-section {
+  margin-top: 4.5rem;
+}
+
+@media (min-width: 900px) {
+  .cfa-section {
+    margin-top: 5.5rem;
+  }
+}
+
+.cfa-path {
+  scroll-margin-top: 1.5rem;
+}
+
+/* Workflow */
+.cfa-flow {
+  position: relative;
+  margin-top: 2.5rem;
+}
+
+.cfa-flow-track {
+  position: absolute;
+  top: 1.25rem;
+  bottom: 1.25rem;
+  left: 1.125rem;
+  width: 2px;
+  overflow: hidden;
+  background: var(--cfa-line);
+}
+
+.cfa-flow-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--cfa-blue), var(--cfa-indigo));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1500ms cubic-bezier(0.32, 0.72, 0, 1) 200ms;
+}
+
+.cfa-flow.is-active .cfa-flow-fill {
+  transform: scaleY(1);
+}
+
+.cfa-flow-steps {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0 0 0 3.5rem;
+  list-style: none;
+}
+
+.cfa-flow-step {
+  position: relative;
+  opacity: 0.3;
+  transform: translateY(14px);
+  transition:
+    opacity 700ms ease,
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--step-index, 0) * 240ms + 300ms);
+}
+
+.cfa-flow.is-active .cfa-flow-step {
+  opacity: 1;
+  transform: none;
+}
+
+.cfa-flow-node {
+  position: absolute;
+  top: 0.85rem;
+  left: -3.5rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.375rem;
+  height: 2.375rem;
+  border: 2px solid var(--cfa-line);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--cfa-grey);
+  transition:
+    background-color 500ms ease,
+    border-color 500ms ease,
+    color 500ms ease;
+  transition-delay: calc(var(--step-index, 0) * 240ms + 380ms);
+}
+
+.cfa-flow.is-active .cfa-flow-node {
+  border-color: var(--cfa-blue);
+  background: var(--cfa-blue);
+  color: #fff;
+}
+
+.cfa-flow.is-active .cfa-flow-step:last-child .cfa-flow-node {
+  border-color: var(--cfa-indigo);
+  background: var(--cfa-indigo);
+}
+
+.cfa-flow-card {
+  height: 100%;
+  padding: 1.35rem 1.5rem 1.5rem;
+  border: 1px solid var(--cfa-line);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.cfa-flow-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 500;
+  color: var(--cfa-black);
+}
+
+.cfa-flow-body {
+  margin: 0.5rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--cfa-ink);
+  text-wrap: pretty;
+}
+
+@media (max-width: 899px) {
+  /* Stop the vertical line at the last node. */
+  .cfa-flow-step:last-child::before {
+    content: "";
+    position: absolute;
+    top: 2.5rem;
+    bottom: -1.5rem;
+    left: -3.5rem;
+    width: 2.375rem;
+    background: #fff;
+  }
+}
+
+@media (min-width: 900px) {
+  /* Runs from the first node's centre to the last node's centre. */
+  .cfa-flow-track {
+    top: 1.125rem;
+    right: auto;
+    bottom: auto;
+    left: 1.1875rem;
+    width: calc(66.667% + 0.667rem);
+    height: 2px;
+  }
+
+  .cfa-flow-fill {
+    background: linear-gradient(90deg, var(--cfa-blue), var(--cfa-indigo));
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .cfa-flow.is-active .cfa-flow-fill {
+    transform: scaleX(1);
+  }
+
+  .cfa-flow-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 3.5rem 0 0;
+  }
+
+  .cfa-flow-node {
+    top: -3.5rem;
+    left: 0;
+  }
+}
+
+/* Exam facts: rows on phones, three columns from 640px */
+.cfa-results {
+  display: grid;
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+}
+
+.cfa-result {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: 16px;
+  background: var(--cfa-cream);
+}
+
+.cfa-result-value {
+  order: -1;
+  flex: 0 0 6.5rem;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 400;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--cfa-blue-deep);
+}
+
+.cfa-result-label {
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--cfa-ink);
+}
+
+@media (min-width: 640px) {
+  .cfa-results {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .cfa-result {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.45rem;
+    padding: 1.25rem 1.25rem 1.35rem;
+  }
+
+  .cfa-result-value {
+    flex: none;
+    font-size: clamp(2.5rem, 4.6vw, 3.5rem);
+  }
+}
+
+/* Level I topic weights on a cream band */
+.cfa-curriculum {
+  margin-top: 4.5rem;
+  margin-inline: calc((100% - 100cqw) / 2);
+  padding: 4rem 0;
+  background: var(--cfa-cream);
+}
+
+@media (min-width: 900px) {
+  .cfa-curriculum {
+    margin-top: 5.5rem;
+    padding: 4.75rem 0;
+  }
+}
+
+.cfa-curriculum-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 var(--cfa-gutter);
+}
+
+.cfa-weights {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 900px) {
+  .cfa-weights {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+.cfa-session {
+  padding: 1.35rem 1.5rem 1.5rem;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.cfa-session-title {
+  margin: 0 0 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cfa-grey);
+}
+
+.cfa-weight-list {
+  display: grid;
+  gap: 0.95rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cfa-weight {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "name value"
+    "track track";
+  align-items: baseline;
+  gap: 0.35rem 0.75rem;
+}
+
+.cfa-weight-name {
+  grid-area: name;
+  font-size: 0.875rem;
+  color: var(--cfa-ink);
+}
+
+.cfa-weight-value {
+  grid-area: value;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--cfa-ink);
+}
+
+.cfa-weight.is-top .cfa-weight-name,
+.cfa-weight.is-top .cfa-weight-value {
+  font-weight: 600;
+  color: var(--cfa-blue-deep);
+}
+
+.cfa-weight-track {
+  position: relative;
+  grid-area: track;
+  display: block;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: rgba(29, 22, 132, 0.08);
+}
+
+/* The range from the low to the high end of each topic's weight. */
+.cfa-weight-track i {
+  position: absolute;
+  top: 0;
+  right: calc(100% - var(--to));
+  bottom: 0;
+  left: var(--from);
+  border-radius: 999px;
+  background: var(--cfa-indigo);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i) * 60ms + 150ms);
+}
+
+.cfa-weight.is-top .cfa-weight-track i {
+  background: var(--cfa-blue);
+}
+
+.cfa-weights.is-active .cfa-weight-track i {
+  transform: scaleX(1);
+}
+
+/* The three levels */
+.cfa-levels {
+  display: grid;
+  gap: 0.75rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .cfa-levels {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.cfa-levels > li {
+  display: flex;
+}
+
+.cfa-level {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  width: 100%;
+  padding: 1.4rem 1.4rem 1.5rem;
+  border: 1px solid var(--cfa-line);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.cfa-level.is-mine {
+  border-color: var(--cfa-blue);
+  box-shadow: inset 0 0 0 1px var(--cfa-blue);
+}
+
+.cfa-level-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.cfa-level-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cfa-grey);
+}
+
+.cfa-level-chip {
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: var(--cfa-blue);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.cfa-level-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--cfa-black);
+}
+
+.cfa-level-body {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--cfa-ink);
+}
+
+/* Footer */
+.cfa-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--cfa-line);
+  font-size: 0.8125rem;
+  color: var(--cfa-grey);
+}
+
+.cfa-footer p {
+  max-width: 40rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.cfa-link {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--cfa-link);
+  text-decoration: none;
+}
+
+.cfa-link:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cfa-flow-step,
+  .cfa-flow-node,
+  .cfa-flow-fill,
+  .cfa-weight-track i {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* A still staircase with no pulse. */
+  .cfa-step,
+  .cfa-step.is-current::after {
+    animation: none !important;
+  }
+}

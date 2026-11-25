@@ -7,10 +7,11 @@ import {
 } from "@/hooks/useScrollAnimation";
 import { useCounterAnimation } from "@/hooks/use-counter-animation";
 import { slugify } from "@/lib/utils";
-import { useState } from "react";
+import { useRef, useState, type RefObject } from "react";
 import { Eye } from "lucide-react";
 import { getCertificateAsset } from "@/lib/certificates";
 import { CertificateModal, preloadCertificateImage, type CertificateModalCert } from "@/components/certificate-modal";
+import CfaSpotlight from "@/components/cfa-spotlight";
 import unitedWayLogo from "@assets/United-Way-Logo_1755913265895.png";
 import rbcLogo from "@assets/rbc_logo.webp";
 import irvingLogo from "@assets/Irving_Oil.svg_1755913265895.png";
@@ -24,6 +25,9 @@ import etsLogo from "@assets/ets_logo.webp";
 import anthropicLogo from "@assets/anthropic_mark.png";
 import googleLogo from "@assets/google_logo.svg";
 
+/** Core credentials that open an "Inside the credential" panel. */
+type CoreSpotlightKey = "cfa";
+
 interface Certification {
   name: string;
   year: string;
@@ -33,6 +37,7 @@ interface Certification {
   logoTone?: "anthropic" | "openai";
   detail?: string;
   emphasis?: boolean;
+  spotlight?: CoreSpotlightKey;
 }
 
 interface CertificationCategory {
@@ -74,6 +79,9 @@ export default function CertificationsSection() {
   });
 
   const [activeCert, setActiveCert] = useState<CertificateModalCert | null>(null);
+  const coreSpotlightRefs: Record<CoreSpotlightKey, RefObject<HTMLDivElement>> = {
+    cfa: useRef<HTMLDivElement>(null),
+  };
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
   const toggleCategory = (title: string) =>
     setExpandedCategories((prev) => {
@@ -97,7 +105,7 @@ export default function CertificationsSection() {
   };
 
   const coreCredentials: Certification[] = [
-    { name: "CFA Level I Candidate", year: "2026", issuer: "CFA Institute", logoSrc: cfaLogo },
+    { name: "CFA Level I Candidate", year: "2026", issuer: "CFA Institute", logoSrc: cfaLogo, spotlight: "cfa" },
     { name: "Discounted Cash Flow Analysis and Modeling", year: "2024", issuer: "Training The Street", logoSrc: trainingTheStreetLogo },
     { name: "Canadian Securities Course", year: "2021", issuer: "Canadian Securities Institute", logoSrc: csiLogo },
     { name: "Bloomberg Market Concepts", year: "2019", issuer: "Bloomberg", logoSrc: bloombergLogo },
@@ -170,6 +178,12 @@ export default function CertificationsSection() {
   const certificationRevealOrder = new Map(
     certificationRevealSequence.map((title, index) => [title, index]),
   );
+  const renderCoreSpotlight = (key: CoreSpotlightKey, credential: Certification) => {
+    switch (key) {
+      case "cfa":
+        return <CfaSpotlight originRef={coreSpotlightRefs.cfa} logoSrc={credential.logoSrc ?? cfaLogo} />;
+    }
+  };
   const certificationItemsAnimation = useStaggeredScrollAnimation(certificationRevealSequence.length + 3, {
     ...SCROLL_REVEAL_OBSERVER_OPTIONS,
     // The panel is far taller than a phone viewport, so a high threshold can never be
@@ -213,6 +227,64 @@ export default function CertificationsSection() {
             <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {coreCredentials.map((credential) => {
                 const coreAsset = getCertificateAsset(credential.name);
+                if (credential.spotlight) {
+                  // A card with a panel can't be one big button, so "View" becomes its own button
+                  // and the + trigger sits at the bottom, as on the experience cards.
+                  return (
+                    <div
+                      key={`core-${credential.name}`}
+                      ref={coreSpotlightRefs[credential.spotlight]}
+                      id={`core-cert-${slugify(credential.name)}`}
+                      className="core-credential-card group flex flex-col rounded-lg border border-border bg-white p-5 transition-shadow duration-200 hover:shadow-sm"
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        {credential.logoSrc ? (
+                          <span className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border bg-white p-2">
+                            <img
+                              src={credential.logoSrc}
+                              alt=""
+                              aria-hidden="true"
+                              className="h-full w-full object-contain"
+                              data-spotlight-source="logo"
+                            />
+                          </span>
+                        ) : null}
+                        <span className="mt-0.5 text-sm font-medium text-muted-foreground">{credential.year}</span>
+                      </div>
+                      <p
+                        className="mt-4 min-h-[2.6em] text-[0.99rem] font-semibold leading-snug text-foreground"
+                        data-spotlight-source="title"
+                      >
+                        {credential.name}
+                      </p>
+                      <div className="mb-5 mt-1 flex items-baseline justify-between gap-3">
+                        <p className="truncate text-xs text-muted-foreground">
+                          {credential.issuer}
+                          {credential.detail ? ` · ${credential.detail}` : ""}
+                        </p>
+                        {coreAsset ? (
+                          <button
+                            type="button"
+                            className="inline-flex shrink-0 items-center gap-1 rounded-sm text-xs font-medium text-primary opacity-70 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
+                            aria-haspopup="dialog"
+                            aria-label={`View ${credential.name} certificate`}
+                            onMouseEnter={() => preloadCertificateImage(coreAsset.image)}
+                            onFocus={() => preloadCertificateImage(coreAsset.image)}
+                            onClick={() => openCertificate(credential)}
+                          >
+                            <Eye size={13} aria-hidden="true" />
+                            View
+                          </button>
+                        ) : null}
+                      </div>
+                      <div
+                        className={`experience-card-spotlight core-credential-spotlight ${sectionAnimation.isVisible ? "visible" : ""}`}
+                      >
+                        {renderCoreSpotlight(credential.spotlight, credential)}
+                      </div>
+                    </div>
+                  );
+                }
                 return (
                   <div
                     key={`core-${credential.name}`}
