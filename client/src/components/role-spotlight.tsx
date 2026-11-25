@@ -123,6 +123,11 @@ interface SpotlightCountUpProps {
   decimals?: number;
 }
 
+/** 2151 -> "2,151"; keeps a fixed number of decimals (1.5 -> "1.5"). */
+function formatCount(value: number, decimals: number) {
+  return value.toLocaleString("en-CA", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+}
+
 /** Counts up to `to` the first time it is revealed. */
 export function SpotlightCountUp({
   to,
@@ -165,12 +170,12 @@ export function SpotlightCountUp({
     <span ref={ref as unknown as RefObject<HTMLSpanElement>} className="role-spotlight-count">
       <span aria-hidden="true">
         {prefix}
-        {value.toFixed(decimals)}
+        {formatCount(value, decimals)}
         {suffix}
       </span>
       <span className="sr-only">
         {prefix}
-        {to.toFixed(decimals)}
+        {formatCount(to, decimals)}
         {suffix}
       </span>
     </span>

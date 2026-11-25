@@ -10,6 +10,7 @@ import { useCounterAnimation } from "@/hooks/use-counter-animation";
 import BmoSpotlight from "@/components/bmo-spotlight";
 import RoiSpotlight from "@/components/roi-spotlight";
 import SeventyThreeStringsSpotlight from "@/components/seventy-three-strings-spotlight";
+import TdSpotlight from "@/components/td-spotlight";
 import { slugify } from "@/lib/utils";
 import bmoLogo from "@assets/BMO_Logo.svg_1755913265896.png";
 import tdLogo from "@assets/Toronto-Dominion_Bank_logo.svg_1755913265896.png";
@@ -35,7 +36,7 @@ interface Experience {
   spotlight?: SpotlightKey;
 }
 
-type SpotlightKey = "73-strings" | "roi" | "bmo";
+type SpotlightKey = "73-strings" | "roi" | "bmo" | "td";
 
 interface CounterStatProps {
   end: number;
@@ -64,6 +65,7 @@ export default function ExperienceSection() {
     "73-strings": useRef<HTMLDivElement>(null),
     roi: useRef<HTMLDivElement>(null),
     bmo: useRef<HTMLDivElement>(null),
+    td: useRef<HTMLDivElement>(null),
   };
   const sectionAnimation = useScrollAnimation(SCROLL_REVEAL_OBSERVER_OPTIONS);
   const headerAnimation = useScrollAnimation({
@@ -122,6 +124,7 @@ export default function ExperienceSection() {
       technologies: ["Financial Planning", "Sales", "Client Advisory", "Product Knowledge"],
       logoSrc: tdLogo,
       color: "#00AC46",
+      spotlight: "td",
     },
     {
       title: "Banking Advisor",
@@ -369,7 +372,9 @@ export default function ExperienceSection() {
                         className={`experience-card-spotlight scroll-slide-up ${revealClass}`}
                         style={getScrollRevealStyle(chipStartDelay + exp.technologies.length * 65 + 60)}
                       >
-                        {exp.spotlight === "bmo" ? (
+                        {exp.spotlight === "td" ? (
+                          <TdSpotlight originRef={spotlightRefs.td} logoSrc={exp.logoSrc} />
+                        ) : exp.spotlight === "bmo" ? (
                           <BmoSpotlight originRef={spotlightRefs.bmo} logoSrc={exp.logoSrc} />
                         ) : exp.spotlight === "roi" ? (
                           <RoiSpotlight originRef={spotlightRefs.roi} logoSrc={exp.logoSrc} />
