@@ -76,6 +76,7 @@ const allowedChangedBinaryHashes = new Map([
   ["client/public/Tyler-Bustard-Resume.pdf", "767eb2779dcf9484f1f454f260ee9f05126e6114520d949ddba13159e23eaa55"],
   ["client/public/resume-pages/Tyler-Bustard-Resume-page-1.webp", "81f25c78bb03b80ddfc4d5b0f209d67734f4f8195e919e53feb55c9fb21c5f92"],
   ["client/public/og-card.jpg", "f3f6b8da2e49d73bdcde6d77a2aee9dab47a0694c488911d2204862def94067b"],
+  ["client/src/assets/fonts/archivo-latin-900-normal.woff2", "e915040a27c5310623be7ae57b6e4c508e8800206dcc37abe99984510e74a66d"],
 ]);
 const unexpectedBinaries = [];
 for (const file of regularFiles) {

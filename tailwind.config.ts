@@ -11,6 +11,13 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        // Apple neutral greys in place of the blue-tinted slate scale
+        slate: {
+          50: "#f5f5f7", 100: "#e8e8ed", 200: "#d2d2d7", 300: "#aeaeb2", 400: "#86868b",
+          500: "#6e6e73", 600: "#515154", 700: "#424245", 800: "#333336", 900: "#1d1d1f", 950: "#111112",
+        },
+        // Apple blue for links and buttons
+        blue: { 500: "#0077ed", 600: "#0071e3", 700: "#0066cc" },
         background: "var(--background)",
         foreground: "var(--foreground)",
         card: {

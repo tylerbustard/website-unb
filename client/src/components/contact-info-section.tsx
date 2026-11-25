@@ -118,7 +118,7 @@ export default function ContactInfoSection() {
     <section
       ref={sectionAnimation.ref}
       id="contact"
-      className="relative overflow-hidden bg-white pt-16 pb-0 sm:pt-20 lg:pt-24"
+      className="relative overflow-hidden bg-slate-50 pt-16 pb-0 sm:pt-20 lg:pt-24"
     >
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
@@ -128,7 +128,7 @@ export default function ContactInfoSection() {
           className={`text-center mb-12 sm:mb-16 lg:mb-20 scroll-slide-up ${headerAnimation.isVisible ? "visible" : ""}`}
         >
           <p className="section-kicker mb-4">Contact</p>
-          <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+          <h2 className="text-[2.5rem] font-semibold leading-[1.1] tracking-[-0.009em] text-foreground sm:text-[3rem] sm:leading-[1.08349] sm:tracking-[-0.003em]">
             Let&apos;s connect
           </h2>
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground sm:text-xl lg:text-2xl">
@@ -144,6 +144,7 @@ export default function ContactInfoSection() {
 
               return (
                 <>
+                  <p className="section-kicker section-kicker--card mb-3">Direct contact</p>
                   <div className="contact-profile-header">
                     <div
                       className={`contact-profile-portrait hero-portrait-frame scroll-slide-up ${revealClass}`}
@@ -160,7 +161,6 @@ export default function ContactInfoSection() {
                     </div>
 
                     <div className="min-w-0">
-                      <p className="section-kicker mb-3">Direct contact</p>
                       <h3
                         className={`contact-feature-title scroll-slide-up ${revealClass}`}
                         style={getScrollRevealStyle("cardHeader")}
@@ -285,7 +285,7 @@ export default function ContactInfoSection() {
               return (
                 <>
                   <div>
-                    <p className="section-kicker mb-3">Send a note</p>
+                    <p className="section-kicker section-kicker--card mb-3">Send a note</p>
                     <h3
                       className={`contact-feature-title scroll-slide-up ${revealClass}`}
                       style={getScrollRevealStyle("cardHeader")}
@@ -418,7 +418,7 @@ export default function ContactInfoSection() {
               <>
                 <div className="contact-booking-header">
                   <div>
-                    <p className="section-kicker mb-3">Appointments</p>
+                    <p className="section-kicker section-kicker--card mb-3">Appointments</p>
                     <h3
                       className={`contact-feature-title scroll-slide-up ${revealClass}`}
                       style={getScrollRevealStyle("cardHeader")}

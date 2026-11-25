@@ -219,7 +219,7 @@ export default function ExperienceSection() {
     <section
       ref={sectionAnimation.ref}
       id="experience"
-      className={`py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-slate-50/50 scroll-fade-in ${sectionAnimation.isVisible ? 'visible' : ''}`}
+      className={`py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-slate-50 scroll-fade-in ${sectionAnimation.isVisible ? 'visible' : ''}`}
     >
       <div className="container-width">
         <div
@@ -227,7 +227,7 @@ export default function ExperienceSection() {
           className={`text-center mb-12 sm:mb-16 lg:mb-20 scroll-slide-up ${headerAnimation.isVisible ? 'visible' : ''}`}
         >
           <p className="section-kicker mb-4">Career history</p>
-          <h2 className="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+          <h2 className="mb-6 text-[2.5rem] font-semibold leading-[1.1] tracking-[-0.009em] text-foreground sm:text-[3rem] sm:leading-[1.08349] sm:tracking-[-0.003em]">
             Experience
           </h2>
           <p className="mx-auto max-w-3xl text-lg leading-relaxed text-muted-foreground sm:text-xl lg:text-2xl">

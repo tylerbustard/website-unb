@@ -3,19 +3,22 @@ import { useEffect, useRef } from "react";
 const TRADINGVIEW_TICKER_SCRIPT =
   "https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
 
+// Only symbols TradingView licenses for free widgets. Exchange-licensed feeds such as
+// SP:SPX, NASDAQ:NDX, TVC:DJI, TVC:RUT, TVC:VIX and NYMEX:CL1! render as a red "!" in the
+// tape, so the broad indices, VIX and crude use the widget-available CFD feeds instead.
 export const marketTickerSymbols = [
   { proName: "TSX:TSX", title: "TSX Composite" },
   { proName: "TSX:RY", title: "RBC" },
   { proName: "TSX:TD", title: "TD" },
   { proName: "TSX:BMO", title: "BMO" },
   { proName: "TSX:SHOP", title: "Shopify" },
-  { proName: "SP:SPX", title: "S&P 500" },
-  { proName: "NASDAQ:NDX", title: "Nasdaq 100" },
-  { proName: "TVC:DJI", title: "Dow 30" },
-  { proName: "TVC:RUT", title: "Russell 2000" },
-  { proName: "TVC:VIX", title: "VIX" },
+  { proName: "FOREXCOM:SPXUSD", title: "S&P 500" },
+  { proName: "FOREXCOM:NSXUSD", title: "Nasdaq 100" },
+  { proName: "FOREXCOM:DJI", title: "Dow 30" },
+  { proName: "FOREXCOM:US2000", title: "Russell 2000" },
+  { proName: "CAPITALCOM:VIX", title: "VIX" },
   { proName: "TVC:GOLD", title: "Gold" },
-  { proName: "NYMEX:CL1!", title: "Crude Oil" },
+  { proName: "TVC:USOIL", title: "Crude Oil" },
   { proName: "FX_IDC:USDCAD", title: "USD/CAD" },
   { proName: "NASDAQ:AAPL", title: "Apple" },
   { proName: "NASDAQ:MSFT", title: "Microsoft" },

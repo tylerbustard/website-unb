@@ -97,7 +97,7 @@ export default function HeroSection() {
           </span>
         </a>
 
-        <h1 className="hero2-name uppercase" style={{ fontFamily: "var(--font-display)" }}>
+        <h1 className="hero2-name uppercase">
           <span className="hero2-clip"><span className="hero2-rise hero2-l1">Tyler</span></span>
           <span className="hero2-clip"><span className="hero2-rise hero2-rise-2 hero2-l2">Bustard</span></span>
         </h1>

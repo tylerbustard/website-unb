@@ -469,7 +469,7 @@ ${canonicalResumePdfUrl}`,
               <path
                 className="nav-hello-path"
                 d="M 26.816767,36.748271 C 43.203424,67.240957 66.474145,0.31812069 55.270041,32.476855 32.265545,98.505836 29.893572,143.91569 29.893572,143.91569 c 0,0 4.58505,-70.596115 33.845596,-70.596115 29.260591,0 -7.777127,69.109905 17.759383,71.339255 C 107.03503,146.88818 149.25942,78.527398 122.65893,77.041175 96.058441,75.554951 85.096643,140.94325 120.74129,143.1726 156.38598,145.40195 207.35821,31.603066 175.96961,28.630598 144.581,25.65813 143.41473,139.457 175.33529,142.42948 c 31.92063,2.97247 85.36058,-115.66477 52.90796,-117.894121 -32.45261,-2.229351 -35.74697,113.798871 -2.23032,114.541991 21.28041,-1.48624 17.21663,-66.50088 44.88117,-65.014637 39.70208,3.309454 20.43206,76.844967 -7.41485,67.623637 -21.30785,-7.62146 -19.59447,-69.101693 7.53806,-67.61545 19.64913,2.562291 33.14886,28.34421 39.03973,9.71025"
-                stroke="#0f172a"
+                stroke="#1d1d1f"
                 strokeWidth="6"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -1523,7 +1523,7 @@ ${canonicalResumePdfUrl}`,
                       window.location.href = '/resume';
                     }
                   }}
-                  className="px-4 py-1.5 text-xs font-medium rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-all duration-200"
+                  className="px-4 py-1.5 text-xs font-medium rounded-full bg-blue-600 text-white hover:bg-blue-500 transition-all duration-200"
                 >
                   {isResumePage ? 'Close' : isUploadPage ? 'Home' : 'Resume'}
                 </button>
@@ -1701,7 +1701,7 @@ ${canonicalResumePdfUrl}`,
                     }
                     setIsMobileMenuOpen(false);
                   }}
-                  className="block w-full px-4 py-3 text-lg font-medium bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors"
+                  className="block w-full px-4 py-3 text-lg font-medium bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition-colors"
                 >
                   {isResumePage ? 'Close Resume' : isUploadPage ? 'Home' : 'Resume'}
                 </button>

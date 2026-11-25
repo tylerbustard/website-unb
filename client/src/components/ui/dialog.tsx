@@ -31,8 +31,11 @@ DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
 
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
->(({ className, children, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & {
+    /** Extra classes for the built-in close button (e.g. to centre it on a custom header). */
+    closeClassName?: string
+  }
+>(({ className, children, closeClassName, ...props }, ref) => (
   <DialogPortal>
     <DialogOverlay />
     <DialogPrimitive.Content
@@ -44,8 +47,16 @@ const DialogContent = React.forwardRef<
       {...props}
     >
       {children}
-      <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-        <X className="h-4 w-4" />
+      <DialogPrimitive.Close
+        className={cn(
+          // 32px grey circle; on touch screens the tap area grows to 48px around the same circle.
+          "group absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-full ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none [@media(hover:none)_and_(pointer:coarse)]:-m-2 [@media(hover:none)_and_(pointer:coarse)]:h-12 [@media(hover:none)_and_(pointer:coarse)]:w-12",
+          closeClassName
+        )}
+      >
+        <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#e8e8ed] text-[#424245] transition-colors group-hover:bg-[#dcdce1] group-hover:text-[#1d1d1f]">
+          <X className="h-4 w-4" strokeWidth={2.25} aria-hidden="true" />
+        </span>
         <span className="sr-only">Close</span>
       </DialogPrimitive.Close>
     </DialogPrimitive.Content>
