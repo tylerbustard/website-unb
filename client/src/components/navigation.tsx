@@ -1002,50 +1002,6 @@ ${canonicalResumePdfUrl}`,
 
               {/* Home Page Navigation - With Dropdowns */}
 
-              {/* Education */}
-              {isHomePage && (
-                <div
-                  className="relative dropdown-container"
-                  onMouseEnter={() => handleDropdownEnter('education')}
-                  onMouseLeave={handleDropdownLeave}
-                >
-                  <button
-                    onClick={(e) => { if (window.matchMedia('(pointer: coarse)').matches || e.detail === 0) { e.preventDefault(); setOpenDropdown(openDropdown === 'education' ? null : 'education'); } else { scrollToSection('#education'); } }}
-                    aria-expanded={openDropdown === 'education'}
-                    aria-controls="home-education-dropdown"
-                    className={navSectionButtonClasses(currentSection === 'education')}
-                  >
-                    Education
-                    <ChevronDown size={14} className={`transition-transform duration-200 ${openDropdown === 'education' ? 'rotate-180' : ''}`} />
-                  </button>
-                  {openDropdown === 'education' && (
-                    <div id="home-education-dropdown" className="absolute top-full left-0 -mt-1 w-80 z-[55] pt-1">
-                      <div
-                        className="liquid-glass-panel rounded-xl p-4 transition-all duration-200 mt-1"
-                        onMouseEnter={() => handleDropdownContentEnter('education')}
-                        onMouseLeave={handleDropdownContentLeave}
-                      >
-                        <div className="space-y-3">
-                          {educationDropdownItems.map((item) => (
-                            <button
-                              key={item.title}
-                              onClick={() => { scrollToSection(item.target); setOpenDropdown(null); }}
-                              className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
-                            >
-                              <div className="space-y-1">
-                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">{item.title}</div>
-                                <div className="text-xs text-slate-600">{item.subtitle}</div>
-                                <div className="text-xs text-slate-600">{item.detail}</div>
-                              </div>
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
-
               {/* Experience */}
               {isHomePage && (
                 <div
@@ -1184,6 +1140,50 @@ ${canonicalResumePdfUrl}`,
                               <div className="text-xs text-slate-600">Grant Thornton LLP</div>
                             </div>
                           </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Education */}
+              {isHomePage && (
+                <div
+                  className="relative dropdown-container"
+                  onMouseEnter={() => handleDropdownEnter('education')}
+                  onMouseLeave={handleDropdownLeave}
+                >
+                  <button
+                    onClick={(e) => { if (window.matchMedia('(pointer: coarse)').matches || e.detail === 0) { e.preventDefault(); setOpenDropdown(openDropdown === 'education' ? null : 'education'); } else { scrollToSection('#education'); } }}
+                    aria-expanded={openDropdown === 'education'}
+                    aria-controls="home-education-dropdown"
+                    className={navSectionButtonClasses(currentSection === 'education')}
+                  >
+                    Education
+                    <ChevronDown size={14} className={`transition-transform duration-200 ${openDropdown === 'education' ? 'rotate-180' : ''}`} />
+                  </button>
+                  {openDropdown === 'education' && (
+                    <div id="home-education-dropdown" className="absolute top-full left-0 -mt-1 w-80 z-[55] pt-1">
+                      <div
+                        className="liquid-glass-panel rounded-xl p-4 transition-all duration-200 mt-1"
+                        onMouseEnter={() => handleDropdownContentEnter('education')}
+                        onMouseLeave={handleDropdownContentLeave}
+                      >
+                        <div className="space-y-3">
+                          {educationDropdownItems.map((item) => (
+                            <button
+                              key={item.title}
+                              onClick={() => { scrollToSection(item.target); setOpenDropdown(null); }}
+                              className="w-full text-left hover:bg-slate-900/5 rounded-lg p-3 transition-all duration-200 group"
+                            >
+                              <div className="space-y-1">
+                                <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors duration-200">{item.title}</div>
+                                <div className="text-xs text-slate-600">{item.subtitle}</div>
+                                <div className="text-xs text-slate-600">{item.detail}</div>
+                              </div>
+                            </button>
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -1629,21 +1629,21 @@ ${canonicalResumePdfUrl}`,
                   <>
                     <button
                       onClick={() => {
-                        scrollToSection('#education');
-                        setIsMobileMenuOpen(false);
-                      }}
-                      className="block w-full text-left px-4 py-3 text-lg font-medium text-slate-900 hover:bg-slate-900/5 rounded-lg transition-all duration-200 active:scale-98"
-                    >
-                      Education
-                    </button>
-                    <button
-                      onClick={() => {
                         scrollToSection('#experience');
                         setIsMobileMenuOpen(false);
                       }}
                       className="block w-full text-left px-4 py-3 text-lg font-medium text-slate-900 hover:bg-slate-900/5 rounded-lg transition-all duration-200 active:scale-98"
                     >
                       Experience
+                    </button>
+                    <button
+                      onClick={() => {
+                        scrollToSection('#education');
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="block w-full text-left px-4 py-3 text-lg font-medium text-slate-900 hover:bg-slate-900/5 rounded-lg transition-all duration-200 active:scale-98"
+                    >
+                      Education
                     </button>
                     <button
                       onClick={() => {

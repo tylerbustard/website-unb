@@ -396,7 +396,7 @@ export default function EducationSection() {
     <section
       ref={sectionAnimation.ref}
       id="education"
-      className="py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-slate-50/50"
+      className="py-16 sm:py-20 lg:py-24 relative overflow-hidden"
     >
       <div className="container-width">
         {/* Header */}

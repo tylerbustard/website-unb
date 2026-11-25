@@ -219,7 +219,7 @@ export default function ExperienceSection() {
     <section
       ref={sectionAnimation.ref}
       id="experience"
-      className={`py-16 sm:py-20 lg:py-24 relative overflow-hidden scroll-fade-in ${sectionAnimation.isVisible ? 'visible' : ''}`}
+      className={`py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-slate-50/50 scroll-fade-in ${sectionAnimation.isVisible ? 'visible' : ''}`}
     >
       <div className="container-width">
         <div
