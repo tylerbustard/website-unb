@@ -5,7 +5,9 @@ import {
   useScrollAnimation,
   useStaggeredScrollAnimation,
 } from "@/hooks/useScrollAnimation";
+import { useRef } from "react";
 import { useCounterAnimation } from "@/hooks/use-counter-animation";
+import SeventyThreeStringsSpotlight from "@/components/seventy-three-strings-spotlight";
 import { slugify } from "@/lib/utils";
 import bmoLogo from "@assets/BMO_Logo.svg_1755913265896.png";
 import tdLogo from "@assets/Toronto-Dominion_Bank_logo.svg_1755913265896.png";
@@ -27,6 +29,8 @@ interface Experience {
   technologies: string[];
   logoSrc: string;
   color: string;
+  /** Shows the "Inside the role" expansion on this card. */
+  spotlight?: boolean;
 }
 
 interface CounterStatProps {
@@ -52,6 +56,7 @@ function CounterStat({ end, suffix = '', prefix = '', label, className = '', del
 }
 
 export default function ExperienceSection() {
+  const spotlightCardRef = useRef<HTMLDivElement>(null);
   const sectionAnimation = useScrollAnimation(SCROLL_REVEAL_OBSERVER_OPTIONS);
   const headerAnimation = useScrollAnimation({
     ...SCROLL_REVEAL_OBSERVER_OPTIONS,
@@ -189,6 +194,7 @@ export default function ExperienceSection() {
     technologies: ["Portfolio Monitoring", "Reconciliation", "NAV Validation", "SQL", "Excel"],
     logoSrc: seventyThreeStringsLogo,
     color: "#1e5ba8",
+    spotlight: true,
   };
 
   const experiences: Experience[] = [seventyThreeStringsExperience, ...baseExperiences];
@@ -254,7 +260,10 @@ export default function ExperienceSection() {
                 <div
                   className={`experience-card-shell scroll-slide-up ${revealClass}`}
                 >
-                  <div className="experience-card-surface group bg-white border border-border rounded-lg p-6 transition-shadow duration-200 hover:shadow-sm">
+                  <div
+                    ref={exp.spotlight ? spotlightCardRef : undefined}
+                    className="experience-card-surface group bg-white border border-border rounded-lg p-6 transition-shadow duration-200 hover:shadow-sm"
+                  >
                     {/* Header */}
                     <div className="experience-card-header mb-4">
                       <div
@@ -266,12 +275,15 @@ export default function ExperienceSection() {
                             src={exp.logoSrc}
                             alt={`${exp.company} Logo`}
                             className="experience-card-logo"
+                            data-spotlight-source="logo"
                           />
                         </div>
 
                         <div className="experience-card-copy min-w-0">
                           <div className="experience-card-title-row">
-                            <h3 className="text-lg font-semibold text-foreground">{exp.title}</h3>
+                            <h3 className="text-lg font-semibold text-foreground" data-spotlight-source="title">
+                              {exp.title}
+                            </h3>
                             <span className="experience-card-period text-sm font-medium text-muted-foreground">
                               {exp.period}
                             </span>
@@ -342,6 +354,14 @@ export default function ExperienceSection() {
                         ))}
                       </div>
                     </div>
+                    {exp.spotlight ? (
+                      <div
+                        className={`experience-card-spotlight scroll-slide-up ${revealClass}`}
+                        style={getScrollRevealStyle(chipStartDelay + exp.technologies.length * 65 + 60)}
+                      >
+                        <SeventyThreeStringsSpotlight originRef={spotlightCardRef} logoSrc={exp.logoSrc} />
+                      </div>
+                    ) : null}
                   </div>
                 </div>
                   );
